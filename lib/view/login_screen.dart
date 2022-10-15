@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movilidad/view/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -12,23 +13,22 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
   // editing controller
-  final TextEditingController usuarioController = new TextEditingController();
+  final TextEditingController userController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    
     //password field
     final usuarioField = TextFormField(
       autofocus: false,
-      controller: usuarioController,
+      controller: userController,
       validator: (value) {
         if (value!.isEmpty) {
           return ("El Usuario es requerido para ingresar");
         }
       },
       onSaved: (value) {
-        usuarioController.text = value!;
+        userController.text = value!;
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
-          //signIn(emailController.text, passwordController.text);
+          signIn(userController.text, passwordController.text);
         },
         child: Text(
           "Entrar",
@@ -128,5 +128,9 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void signIn(String username, String password) {
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
   }
 }
