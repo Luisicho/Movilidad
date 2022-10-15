@@ -1,29 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:movilidad/view/login_screen.dart';
 
 //RootWidget, creating a blank app for google materials design features
-void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      appBar: AppBar(
-        title: const Text('Movilidad APP'),
-        centerTitle: true,
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Movilidad APP',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
       ),
-      body: const Center(
-        child: Text(
-          'Hellow ninjas',
-          style: TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 2.0,
-            color: Colors.grey,
-            fontFamily: 'Roboto-Regular',
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Text('click'),
-        backgroundColor: Colors.red[600],),
-    ),
-  ));
+      home: LoginScreen(),
+    );
+  }
 }
