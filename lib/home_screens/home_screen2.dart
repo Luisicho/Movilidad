@@ -12,6 +12,7 @@ class _HomeScreen2State extends State<HomeScreen2> {
   Widget build(BuildContext context) {
     return Container(
         decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 33, 114, 36),
           image: DecorationImage(
             image: AssetImage(
               "assets/fondo2.png",
