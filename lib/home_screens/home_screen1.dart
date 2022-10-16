@@ -50,7 +50,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                   ),
                 ),
             )
-          )
-        );
+        )
+    );
   }
 }
