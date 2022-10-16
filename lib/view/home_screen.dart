@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final _formKey = GlobalKey<FormState>();
 
   //PagueController
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           Container(
-            alignment: Alignment(0,0.75),
+            alignment: const Alignment(0,0.75),
             child: 
             //dot indicator
             SmoothPageIndicator(

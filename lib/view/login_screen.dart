@@ -32,8 +32,8 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.person),
-        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        prefixIcon: const Icon(Icons.person),
+        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Usuario",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -60,8 +60,8 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.vpn_key),
-        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        prefixIcon: const Icon(Icons.vpn_key),
+        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Contraseña",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -75,12 +75,12 @@ class _LoginScreenState extends State<LoginScreen> {
       borderRadius: BorderRadius.circular(30),
       color: Colors.greenAccent,
       child: MaterialButton(
-        padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
           signIn(userController.text, passwordController.text);
         },
-        child: Text(
+        child: const Text(
           "Entrar",
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -113,13 +113,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         fit: BoxFit.contain,
                       ),
                     ),
-                    SizedBox(height: 45),
+                    const SizedBox(height: 45),
                     usuarioField,
-                    SizedBox(height: 25),
+                    const SizedBox(height: 25),
                     passwordField,
-                    SizedBox(height: 35),
+                    const SizedBox(height: 35),
                     loginButton,
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                   ],
                 ),
               ),
@@ -131,6 +131,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void signIn(String username, String password) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomeScreen()));
   }
 }
