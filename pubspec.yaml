@@ -39,8 +39,8 @@ dependencies:
   smooth_page_indicator: ^1.0.0
   flutter_map: any
   flutter_speed_dial: ^4.3.0
-  geocoding: ^1.0.5
-  geolocator: ^6.1.1
+  geolocator: ^8.0.0
+  fluttertoast: ^8.1.1
 
 dev_dependencies:
   flutter_test:

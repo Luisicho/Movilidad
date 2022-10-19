@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class levMain extends StatefulWidget {
   const levMain({super.key});
@@ -23,10 +25,12 @@ class _levMainState extends State<levMain> {
   final TextEditingController fechaController = new TextEditingController();
   final TextEditingController userController = new TextEditingController();
   final TextEditingController hourController = new TextEditingController();
-  
+
+  //Variables extras
 
   @override
   Widget build(BuildContext context) {
+    //--------------Object Varaible-----------------------
     //user field
     final usuarioField = TextFormField(
       autofocus: false,
@@ -99,9 +103,9 @@ class _levMainState extends State<levMain> {
       onTap: () async {
         // Get the date
         TimeOfDay? timePicket = await showTimePicker(
-          context: context, 
+          context: context,
           initialTime: TimeOfDay.now(),
-          );
+        );
         if (timePicket != null) {
           //make format to the time
           //var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
@@ -109,6 +113,7 @@ class _levMainState extends State<levMain> {
         }
       },
     );
+    //--------------Object Varaible-----------------------
 
     return Scaffold(
       body: Form(
@@ -142,8 +147,36 @@ class _levMainState extends State<levMain> {
               dateField,
               hourField,
               usuarioField,
+              TextButton(
+                child: Text('Posicion Actual'),
+                onPressed: () async {
+                  //Pedir permiso para posicion actual
+                  LocationPermission permission =
+                      await Geolocator.requestPermission();
+                  //Consigue posicion actual
+                  Position _currentPosition =
+                      await Geolocator.getCurrentPosition(
+                          desiredAccuracy: LocationAccuracy.high);
+                  String mesg = "Lon " +
+                      _currentPosition.longitude.toString() +
+                      " Lat " +
+                      _currentPosition.latitude.toString();
+                  Fluttertoast.showToast(
+                    msg: mesg,
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.CENTER,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                    fontSize: 16.0
+                  );
+                },
+              ),
             ],
           )),
     );
-  }
+    //------------------Functions-----------------
+
+    //------------------Functions-----------------
+  } //widget
 }
