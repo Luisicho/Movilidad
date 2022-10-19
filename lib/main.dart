@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movilidad/levantamiento/lev_main.dart';
 import 'package:movilidad/view/login_screen.dart';
 
 //RootWidget, creating a blank app for google materials design features
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: LoginScreen(),
+      home: levMain(),
+      //home: LoginScreen(),
     );
   }
 }
