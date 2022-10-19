@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\LUISM\\Desktop\\Flutter\\movilidad\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ky\\values-ky.xml",
+            "outputFile": "C:\\flutter\\Movilidad\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ky\\values-ky.xml",
             "map": [
                 {
                     "source": "C:\\Users\\LUISM\\.gradle\\caches\\transforms-3\\4ef803ba34d31dcf48df123a27eb5d76\\transformed\\jetified-play-services-basement-17.0.0\\res\\values-ky\\values.xml",
