@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:movilidad/levantamiento/first_step.dart';
 
 class levMain extends StatefulWidget {
   const levMain({super.key});
@@ -11,6 +12,7 @@ class levMain extends StatefulWidget {
 }
 
 class _levMainState extends State<levMain> {
+
   // form key avisa los cambios
   final _formKey = GlobalKey<FormState>();
 
@@ -21,27 +23,27 @@ class _levMainState extends State<levMain> {
   final userFocus = FocusNode();
 
   // editing controller
-  final TextEditingController folioController = new TextEditingController();
-  final TextEditingController fechaController = new TextEditingController();
-  final TextEditingController userController = new TextEditingController();
-  final TextEditingController hourController = new TextEditingController();
-
+  final TextEditingController folioController = TextEditingController();
+  final TextEditingController fechaController = TextEditingController();
+  final TextEditingController userController = TextEditingController();
+  final TextEditingController hourController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     //Inicio de variables
+    int currStep = 0;
     //ASIGNA HORA DE HOY
     hourController.text = TimeOfDay.now().format(context).toString();
     //ASIGNA DIA DE HOY
     fechaController.text = DateFormat("dd-MM-yyyy").format(DateTime.now());
-    
-    
+
     //--------------Object Varaible-----------------------
     //Folio Field
     final folioField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text('No. Folio'),
-        const SizedBox(width: 30),
+        const SizedBox(width: 10),
         Expanded(
           flex: 2,
           child: TextFormField(
@@ -115,20 +117,6 @@ class _levMainState extends State<levMain> {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            onTap: () async {
-              // Get the date
-              // DateTime? datePicket = await showDatePicker(
-              //   context: context,
-              //   initialDate: DateTime.now(),
-              //   firstDate: DateTime(1999),
-              //   lastDate: DateTime(2050),
-              // );
-              // if (datePicket != null) {
-              //   //make format to the date
-              //   var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
-              //   fechaController.text = formatedDate.toString();
-              // }
-            },
           ),
         ),
       ],
@@ -156,14 +144,6 @@ class _levMainState extends State<levMain> {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            onTap: () async {
-              // Get the date
-              //TimeOfDay? timePicket = await showTimePicker(context: context,initialTime: TimeOfDay.now(),);
-              //if (timePicket != null) {
-                //make format to the time
-                //hourController.text = timePicket.format(context).toString();
-              //}
-            },
           ),
         ),
       ],
@@ -172,12 +152,15 @@ class _levMainState extends State<levMain> {
     //--------------Object Varaible-----------------------
 
     //------------------Functions-----------------
-
-    //------------------Functions-----------------
-    return Scaffold(
-      body: Container(
-        margin: const EdgeInsets.all(20.0),
-        child: Form(
+    List<Step> getSteps() => [
+       Step(
+        state: currStep > 0 ? StepState.complete : StepState.indexed,
+        isActive: currStep >= 0,
+        title: const Text('Accidende'), 
+        content: Container(
+          height: 500,
+          margin: const EdgeInsets.all(10.0),
+          child: Form(
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -211,7 +194,36 @@ class _levMainState extends State<levMain> {
                   },
                 ),
               ],
-            )),
+            ),
+          ),
+        ),
+      ),
+      Step(
+        state: currStep > 1 ? StepState.complete : StepState.indexed,
+        isActive: currStep >= 1,
+        title: const Text('Afectados'), 
+        content: const SizedBox(
+          height: 500,
+          child: Text('data'),
+        ),
+      ),
+    ];
+    //------------------Functions-----------------
+
+    //return
+    return Scaffold(
+      body: Stepper(
+        type: StepperType.horizontal,
+        steps: getSteps(),
+        currentStep: currStep,
+        onStepContinue: () {
+          setState(() {
+            currStep++;
+          });
+        },
+        onStepCancel: currStep == 0 ? null : () => setState(() {
+          currStep--;
+        }),
       ),
     );
   } //widget
