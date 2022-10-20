@@ -37,7 +37,6 @@ class _levMainState extends State<levMain> {
   //-----Iniciar la ventana
   @override
   void initState() {
-    
     super.initState();
   }
 
@@ -175,12 +174,12 @@ class _levMainState extends State<levMain> {
               height: 500,
               margin: const EdgeInsets.all(10.0),
               child:
-                //------------Formulario
-                Form(
+                  //------------Formulario
+                  Form(
                 key: _formKey,
                 child:
-                  //------------ColumnaForm
-                  Column(
+                    //------------ColumnaForm
+                    Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     folioField,
@@ -189,13 +188,19 @@ class _levMainState extends State<levMain> {
                     usuarioField,
                     TextButton(
                       child: const Text('Posicion Actual'),
-                      onPressed: () async{
+                      onPressed: () async {
                         //Pedir permiso para posicion actual
-                        LocationPermission permission = await Geolocator.requestPermission();
+                        LocationPermission permission =
+                            await Geolocator.requestPermission();
                         //Consigue posicion actual
-                        Position _currentPosition = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+                        Position _currentPosition =
+                            await Geolocator.getCurrentPosition(
+                                desiredAccuracy: LocationAccuracy.high);
 
-                        String mesg = "Lon " +_currentPosition.longitude.toString() + " Lat " + _currentPosition.latitude.toString();
+                        String mesg = "Lon " +
+                            _currentPosition.longitude.toString() +
+                            " Lat " +
+                            _currentPosition.latitude.toString();
                         //-------------Toast
                         Fluttertoast.showToast(
                             msg: mesg,
@@ -240,7 +245,7 @@ class _levMainState extends State<levMain> {
                       textColor: Colors.white,
                       fontSize: 16.0);
                   //-------------Toast
-                }, 
+                },
                 child: Text('Guardar'),
               ),
             ),
@@ -255,9 +260,11 @@ class _levMainState extends State<levMain> {
         steps: getSteps(),
         currentStep: currStep,
         onStepContinue: () {
-          setState(() {
-            currStep++;
-          });
+          if (!(currStep == 2)){
+            setState(() {
+              currStep++;
+            });
+          }
         },
         onStepCancel: currStep == 0
             ? null
