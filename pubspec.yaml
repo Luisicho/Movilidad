@@ -41,6 +41,7 @@ dependencies:
   flutter_speed_dial: ^4.3.0
   geolocator: ^8.0.0
   fluttertoast: ^8.1.1
+  image_picker: ^0.8.6
 
 dev_dependencies:
   flutter_test:

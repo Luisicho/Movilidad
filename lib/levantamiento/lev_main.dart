@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:movilidad/levantamiento/first_step.dart';
+import 'package:image_picker/image_picker.dart';
 
 class levMain extends StatefulWidget {
   const levMain({super.key});
@@ -29,10 +30,13 @@ class _levMainState extends State<levMain> {
   final TextEditingController fechaController = TextEditingController();
   final TextEditingController userController = TextEditingController();
   final TextEditingController hourController = TextEditingController();
+  final TextEditingController latController = TextEditingController();
+  final TextEditingController lonController = TextEditingController();
   //Step2
 
   //-----------Inicio de variables y controladores------------------
   int currStep = 0;
+  final ImagePicker _picker = ImagePicker();
 
   //-----Iniciar la ventana
   @override
@@ -160,7 +164,79 @@ class _levMainState extends State<levMain> {
       ],
     );
 
-    //
+    //PosicionField
+    final posicionField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+            flex: 1,
+            child: TextFormField(
+              readOnly: true,
+              controller: lonController,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.add_location_outlined),
+                contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                hintText: "Longitud",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            )),
+        Expanded(
+          flex: 1,
+          child: TextFormField(
+            readOnly: true,
+            controller: latController,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.add_location_outlined),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "Latitud",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: TextButton(
+            child: const Text('Cargar Posicion'),
+            onPressed: () async {
+              //Pedir permiso para posicion actual
+              LocationPermission permission =
+                  await Geolocator.requestPermission();
+              //Consigue posicion actual
+              Position _currentPosition = await Geolocator.getCurrentPosition(
+                  desiredAccuracy: LocationAccuracy.high);
+              //Asigna coordenadas a Txt
+              latController.text = _currentPosition.latitude.toString();
+              lonController.text = _currentPosition.longitude.toString();
+              print(latController.text);
+              print(lonController.text);
+            },
+          ),
+        ),
+      ],
+    );
+    
+    //FotoField
+    final fotoField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: TextButton.icon(
+              icon: const Icon(Icons.image_outlined,size: 24.0,),
+              label: const Text("Pick Image"),
+              onPressed: () async{
+                //Abro galeria y pido fotografias
+                final List<XFile>? images = await _picker.pickMultiImage();
+              },
+            ),
+          ),
+      ],
+    );
+
     //--------------Step No1
     //--------------Object Varaible-----------------------
 
@@ -172,7 +248,7 @@ class _levMainState extends State<levMain> {
             title: const Text('Accidende'),
             content: Container(
               height: 500,
-              margin: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.all(5.0),
               child:
                   //------------Formulario
                   Form(
@@ -186,33 +262,8 @@ class _levMainState extends State<levMain> {
                     dateField,
                     hourField,
                     usuarioField,
-                    TextButton(
-                      child: const Text('Posicion Actual'),
-                      onPressed: () async {
-                        //Pedir permiso para posicion actual
-                        LocationPermission permission =
-                            await Geolocator.requestPermission();
-                        //Consigue posicion actual
-                        Position _currentPosition =
-                            await Geolocator.getCurrentPosition(
-                                desiredAccuracy: LocationAccuracy.high);
-
-                        String mesg = "Lon " +
-                            _currentPosition.longitude.toString() +
-                            " Lat " +
-                            _currentPosition.latitude.toString();
-                        //-------------Toast
-                        Fluttertoast.showToast(
-                            msg: mesg,
-                            toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.CENTER,
-                            timeInSecForIosWeb: 1,
-                            backgroundColor: Colors.red,
-                            textColor: Colors.white,
-                            fontSize: 16.0);
-                        //-------------Toast
-                      },
-                    ),
+                    posicionField,
+                    fotoField,
                   ],
                 ),
               ),
@@ -246,7 +297,7 @@ class _levMainState extends State<levMain> {
                       fontSize: 16.0);
                   //-------------Toast
                 },
-                child: Text('Guardar'),
+                child: const Text('Guardar'),
               ),
             ),
           ),
@@ -260,7 +311,7 @@ class _levMainState extends State<levMain> {
         steps: getSteps(),
         currentStep: currStep,
         onStepContinue: () {
-          if (!(currStep == 2)){
+          if (!(currStep == 2)) {
             setState(() {
               currStep++;
             });

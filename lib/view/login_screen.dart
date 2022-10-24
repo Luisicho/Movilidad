@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       height: 200,
                       child: Image.asset(
-                        "assets/logoNay.png",
+                        "assets/logoMovilidad.jpeg",
                         fit: BoxFit.contain,
                       ),
                     ),
