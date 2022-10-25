@@ -39,11 +39,12 @@ class _levMainState extends State<levMain> {
 
   //-----------Inicio de variables y controladores------------------
   int currStep = 0;
+  String VehiRespondable = "1";
   //ImagePicker
   final ImagePicker _picker = ImagePicker();
   final List<XFile>? images = List<XFile>.empty();
-  XFile? photo1,photo2,photo3,photo4,photo5,photo6 = XFile("no");
-  File? image1,image2,image3,image4,image5,image6;
+  XFile? photo1, photo2, photo3, photo4, photo5, photo6 = XFile("no");
+  File? image1, image2, image3, image4, image5, image6;
 
   //-----Iniciar la ventana
   @override
@@ -248,7 +249,7 @@ class _levMainState extends State<levMain> {
         ),
       ],
     );
-    
+
     //FotoField
     final fotoField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -260,35 +261,49 @@ class _levMainState extends State<levMain> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //Condicion para reemplazar el boton con la imagen cargada
-              image1 != null ? Image.file(image1!,width: 100,height: 100,fit: BoxFit.cover,):
-              TextButton(
-                child: const Text(" + "),
-                onPressed: () async {
-                  // Capture a photo
-                  photo1 = await _picker.pickImage(source: ImageSource.camera);
-                  if (photo1 == null) return;
-                  // transforma imagen a file
-                  final imageTemporal = File(photo1!.path);
-                  setState(() {
-                    this.image1 = imageTemporal;
-                  });
-                },
-              ),
+              image1 != null
+                  ? Image.file(
+                      image1!,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    )
+                  : TextButton(
+                      child: const Text(" + "),
+                      onPressed: () async {
+                        // Capture a photo
+                        photo1 =
+                            await _picker.pickImage(source: ImageSource.camera);
+                        if (photo1 == null) return;
+                        // transforma imagen a file
+                        final imageTemporal = File(photo1!.path);
+                        setState(() {
+                          this.image1 = imageTemporal;
+                        });
+                      },
+                    ),
               //Condicion para reemplazar el boton con la imagen cargada
-              image2 != null ? Image.file(image2!,width: 100,height: 100,fit: BoxFit.cover,):
-              TextButton(
-                child: const Text(" + "),
-                onPressed: () async {
-                  // Capture a photo
-                  photo2 = await _picker.pickImage(source: ImageSource.camera);
-                  if (photo2 == null) return;
-                  // transforma imagen a file
-                  final imageTemporal = File(photo1!.path);
-                  setState(() {
-                    this.image2 = imageTemporal;
-                  });
-                },
-              ),
+              image2 != null
+                  ? Image.file(
+                      image2!,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    )
+                  : TextButton(
+                      child: const Text(" + "),
+                      onPressed: () async {
+                        // Capture a photo
+                        photo2 =
+                            await _picker.pickImage(source: ImageSource.camera);
+                        if (photo2 == null) return;
+                        // transforma imagen a file
+                        final imageTemporal = File(photo1!.path);
+                        setState(() {
+                          this.image2 = imageTemporal;
+                        });
+                      },
+                    ),
             ],
           ),
         ),
@@ -299,35 +314,49 @@ class _levMainState extends State<levMain> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //Condicion para reemplazar el boton con la imagen cargada
-              image3 != null ? Image.file(image3!,width: 100,height: 100,fit: BoxFit.cover,):
-              TextButton(
-                child: const Text(" + "),
-                onPressed: () async {
-                  // Capture a photo
-                  photo3 = await _picker.pickImage(source: ImageSource.camera);
-                  if (photo3 == null) return;
-                  // transforma imagen a file
-                  final imageTemporal = File(photo3!.path);
-                  setState(() {
-                    this.image3 = imageTemporal;
-                  });
-                },
-              ),
+              image3 != null
+                  ? Image.file(
+                      image3!,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    )
+                  : TextButton(
+                      child: const Text(" + "),
+                      onPressed: () async {
+                        // Capture a photo
+                        photo3 =
+                            await _picker.pickImage(source: ImageSource.camera);
+                        if (photo3 == null) return;
+                        // transforma imagen a file
+                        final imageTemporal = File(photo3!.path);
+                        setState(() {
+                          this.image3 = imageTemporal;
+                        });
+                      },
+                    ),
               //Condicion para reemplazar el boton con la imagen cargada
-              image4 != null ? Image.file(image4!,width: 100,height: 100,fit: BoxFit.cover,):
-              TextButton(
-                child: const Text(" + "),
-                onPressed: () async {
-                  // Capture a photo
-                  photo4 = await _picker.pickImage(source: ImageSource.camera);
-                  if (photo4 == null) return;
-                  // transforma imagen a file
-                  final imageTemporal = File(photo4!.path);
-                  setState(() {
-                    this.image4 = imageTemporal;
-                  });
-                },
-              ),
+              image4 != null
+                  ? Image.file(
+                      image4!,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    )
+                  : TextButton(
+                      child: const Text(" + "),
+                      onPressed: () async {
+                        // Capture a photo
+                        photo4 =
+                            await _picker.pickImage(source: ImageSource.camera);
+                        if (photo4 == null) return;
+                        // transforma imagen a file
+                        final imageTemporal = File(photo4!.path);
+                        setState(() {
+                          this.image4 = imageTemporal;
+                        });
+                      },
+                    ),
             ],
           ),
         ),
@@ -338,36 +367,83 @@ class _levMainState extends State<levMain> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //Condicion para reemplazar el boton con la imagen cargada
-              image5 != null ? Image.file(image5!,width: 100,height: 100,fit: BoxFit.cover,):
-              TextButton(
-                child: const Text(" + "),
-                onPressed: () async {
-                  // Capture a photo
-                  photo5 = await _picker.pickImage(source: ImageSource.camera);
-                  if (photo5 == null) return;
-                  // transforma imagen a file
-                  final imageTemporal = File(photo5!.path);
-                  setState(() {
-                    this.image5 = imageTemporal;
-                  });
-                },
-              ),
+              image5 != null
+                  ? Image.file(
+                      image5!,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    )
+                  : TextButton(
+                      child: const Text(" + "),
+                      onPressed: () async {
+                        // Capture a photo
+                        photo5 =
+                            await _picker.pickImage(source: ImageSource.camera);
+                        if (photo5 == null) return;
+                        // transforma imagen a file
+                        final imageTemporal = File(photo5!.path);
+                        setState(() {
+                          this.image5 = imageTemporal;
+                        });
+                      },
+                    ),
               //Condicion para reemplazar el boton con la imagen cargada
-              image6 != null ? Image.file(image6!,width: 100,height: 100,fit: BoxFit.cover,):
-              TextButton(
-                child: const Text(" + "),
-                onPressed: () async {
-                  // Capture a photo
-                  photo6 = await _picker.pickImage(source: ImageSource.camera);
-                  if (photo6 == null) return;
-                  // transforma imagen a file
-                  final imageTemporal = File(photo6!.path);
-                  setState(() {
-                    this.image6 = imageTemporal;
-                  });
-                },
-              ),
+              image6 != null
+                  ? Image.file(
+                      image6!,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    )
+                  : TextButton(
+                      child: const Text(" + "),
+                      onPressed: () async {
+                        // Capture a photo
+                        photo6 =
+                            await _picker.pickImage(source: ImageSource.camera);
+                        if (photo6 == null) return;
+                        // transforma imagen a file
+                        final imageTemporal = File(photo6!.path);
+                        setState(() {
+                          this.image6 = imageTemporal;
+                        });
+                      },
+                    ),
             ],
+          ),
+        ),
+      ],
+    );
+
+    //VehiculoField
+    final vehiculoField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: RadioListTile(
+            title: Text("Servicio Publico"),
+            value: "1",
+            groupValue: VehiRespondable,
+            onChanged: (value) {
+              setState(() {
+                VehiRespondable = value.toString();
+              });
+            },
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: RadioListTile(
+            title: Text("Particular"),
+            value: "2",
+            groupValue: VehiRespondable,
+            onChanged: (value) {
+              setState(() {
+                VehiRespondable = value.toString();
+              });
+            },
           ),
         ),
       ],
@@ -388,21 +464,22 @@ class _levMainState extends State<levMain> {
               child:
                   //------------Formulario
                   Form(
-                  key: _formKey,
-                  child:
-                      //------------ColumnaForm
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          folioField,
-                          dateField,
-                          hourField,
-                          usuarioField,
-                          posicionField,
-                          fotoField,
-                        ],
-                      ),
+                key: _formKey,
+                child:
+                    //------------ColumnaForm
+                    Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    folioField,
+                    dateField,
+                    hourField,
+                    usuarioField,
+                    posicionField,
+                    fotoField,
+                    vehiculoField,
+                  ],
                 ),
+              ),
             ),
           ),
           Step(
