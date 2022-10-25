@@ -30,10 +30,13 @@ class _levMainState extends State<levMain> {
   //Step1
   final TextEditingController folioController = TextEditingController();
   final TextEditingController fechaController = TextEditingController();
-  final TextEditingController userController = TextEditingController();
   final TextEditingController hourController = TextEditingController();
   final TextEditingController latController = TextEditingController();
   final TextEditingController lonController = TextEditingController();
+  final TextEditingController noeconomicoController = TextEditingController();
+  final TextEditingController placasController = TextEditingController();
+
+  final TextEditingController userController = TextEditingController();
 
   //Step2
 
@@ -183,7 +186,7 @@ class _levMainState extends State<levMain> {
               controller: lonController,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.add_location_outlined),
-                contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
                 hintText: "Longitud",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -197,7 +200,7 @@ class _levMainState extends State<levMain> {
             controller: latController,
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.add_location_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
               hintText: "Latitud",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -219,8 +222,8 @@ class _levMainState extends State<levMain> {
               //Asigna coordenadas a Txt
               latController.text = _currentPosition.latitude.toString();
               lonController.text = _currentPosition.longitude.toString();
-              print(latController.text);
-              print(lonController.text);
+              //print(latController.text);
+              //print(lonController.text);
             },
           ),
         ),
@@ -449,6 +452,76 @@ class _levMainState extends State<levMain> {
       ],
     );
 
+    //PlacasField
+    final placasField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: VehiRespondable == "1" ? TextFormField(
+            enabled: true,
+            controller: noeconomicoController,
+            onFieldSubmitted: (value) {
+              FocusScope.of(context).requestFocus(userFocus);
+            },
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.all_inbox),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "No.Economico",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ) : TextFormField(
+            enabled: false,
+            controller: noeconomicoController,
+            onFieldSubmitted: (value) {
+              FocusScope.of(context).requestFocus(userFocus);
+            },
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.all_inbox),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "No.Economico",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          )
+        ),
+        Expanded(
+          flex: 1,
+          child: VehiRespondable == "2" ? TextFormField(
+            enabled: true,
+            controller: placasController,
+            onFieldSubmitted: (value) {
+              FocusScope.of(context).requestFocus(userFocus);
+            },
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.calendar_view_week),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "Placas",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ) : TextFormField(
+            enabled: false,
+            controller: placasController,
+            onFieldSubmitted: (value) {
+              FocusScope.of(context).requestFocus(userFocus);
+            },
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.calendar_view_week),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "Placas",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          )
+        ),
+      ],
+    );
     //--------------Step No1
     //--------------Object Varaible-----------------------
 
@@ -477,6 +550,7 @@ class _levMainState extends State<levMain> {
                     posicionField,
                     fotoField,
                     vehiculoField,
+                    placasField,
                   ],
                 ),
               ),
