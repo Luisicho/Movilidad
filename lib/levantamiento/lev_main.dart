@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:geolocator/geolocator.dart';
@@ -32,11 +34,16 @@ class _levMainState extends State<levMain> {
   final TextEditingController hourController = TextEditingController();
   final TextEditingController latController = TextEditingController();
   final TextEditingController lonController = TextEditingController();
+
   //Step2
 
   //-----------Inicio de variables y controladores------------------
   int currStep = 0;
+  //ImagePicker
   final ImagePicker _picker = ImagePicker();
+  final List<XFile>? images = List<XFile>.empty();
+  XFile? photo1,photo2,photo3,photo4,photo5,photo6 = XFile("no");
+  File? image1,image2,image3,image4,image5,image6;
 
   //-----Iniciar la ventana
   @override
@@ -218,22 +225,151 @@ class _levMainState extends State<levMain> {
         ),
       ],
     );
-    
-    //FotoField
-    final fotoField = Row(
+
+    //MultiFotoField
+    final multiFotoField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
           flex: 1,
           child: TextButton.icon(
-              icon: const Icon(Icons.image_outlined,size: 24.0,),
-              label: const Text("Pick Image"),
-              onPressed: () async{
-                //Abro galeria y pido fotografias
-                final List<XFile>? images = await _picker.pickMultiImage();
-              },
+            icon: const Icon(
+              Icons.image_outlined,
+              size: 24.0,
             ),
+            label: const Text("Abrir Galeria"),
+            onPressed: () async {
+              //Abro galeria y pido fotografias
+              final List<XFile>? images2 = await _picker.pickMultiImage();
+              //-----Agregar For y colocanado todas las fotografias en el list de arriba
+              //images.add(images2.sin);
+            },
           ),
+        ),
+      ],
+    );
+    
+    //FotoField
+    final fotoField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        //-------Column 1
+        Expanded(
+          flex: 1,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              //Condicion para reemplazar el boton con la imagen cargada
+              image1 != null ? Image.file(image1!,width: 100,height: 100,fit: BoxFit.cover,):
+              TextButton(
+                child: const Text(" + "),
+                onPressed: () async {
+                  // Capture a photo
+                  photo1 = await _picker.pickImage(source: ImageSource.camera);
+                  if (photo1 == null) return;
+                  // transforma imagen a file
+                  final imageTemporal = File(photo1!.path);
+                  setState(() {
+                    this.image1 = imageTemporal;
+                  });
+                },
+              ),
+              //Condicion para reemplazar el boton con la imagen cargada
+              image2 != null ? Image.file(image2!,width: 100,height: 100,fit: BoxFit.cover,):
+              TextButton(
+                child: const Text(" + "),
+                onPressed: () async {
+                  // Capture a photo
+                  photo2 = await _picker.pickImage(source: ImageSource.camera);
+                  if (photo2 == null) return;
+                  // transforma imagen a file
+                  final imageTemporal = File(photo1!.path);
+                  setState(() {
+                    this.image2 = imageTemporal;
+                  });
+                },
+              ),
+            ],
+          ),
+        ),
+        //-------Column 2
+        Expanded(
+          flex: 1,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              //Condicion para reemplazar el boton con la imagen cargada
+              image3 != null ? Image.file(image3!,width: 100,height: 100,fit: BoxFit.cover,):
+              TextButton(
+                child: const Text(" + "),
+                onPressed: () async {
+                  // Capture a photo
+                  photo3 = await _picker.pickImage(source: ImageSource.camera);
+                  if (photo3 == null) return;
+                  // transforma imagen a file
+                  final imageTemporal = File(photo3!.path);
+                  setState(() {
+                    this.image3 = imageTemporal;
+                  });
+                },
+              ),
+              //Condicion para reemplazar el boton con la imagen cargada
+              image4 != null ? Image.file(image4!,width: 100,height: 100,fit: BoxFit.cover,):
+              TextButton(
+                child: const Text(" + "),
+                onPressed: () async {
+                  // Capture a photo
+                  photo4 = await _picker.pickImage(source: ImageSource.camera);
+                  if (photo4 == null) return;
+                  // transforma imagen a file
+                  final imageTemporal = File(photo4!.path);
+                  setState(() {
+                    this.image4 = imageTemporal;
+                  });
+                },
+              ),
+            ],
+          ),
+        ),
+        //-------Column 3
+        Expanded(
+          flex: 1,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              //Condicion para reemplazar el boton con la imagen cargada
+              image5 != null ? Image.file(image5!,width: 100,height: 100,fit: BoxFit.cover,):
+              TextButton(
+                child: const Text(" + "),
+                onPressed: () async {
+                  // Capture a photo
+                  photo5 = await _picker.pickImage(source: ImageSource.camera);
+                  if (photo5 == null) return;
+                  // transforma imagen a file
+                  final imageTemporal = File(photo5!.path);
+                  setState(() {
+                    this.image5 = imageTemporal;
+                  });
+                },
+              ),
+              //Condicion para reemplazar el boton con la imagen cargada
+              image6 != null ? Image.file(image6!,width: 100,height: 100,fit: BoxFit.cover,):
+              TextButton(
+                child: const Text(" + "),
+                onPressed: () async {
+                  // Capture a photo
+                  photo6 = await _picker.pickImage(source: ImageSource.camera);
+                  if (photo6 == null) return;
+                  // transforma imagen a file
+                  final imageTemporal = File(photo6!.path);
+                  setState(() {
+                    this.image6 = imageTemporal;
+                  });
+                },
+              ),
+            ],
+          ),
+        ),
       ],
     );
 
@@ -247,26 +383,26 @@ class _levMainState extends State<levMain> {
             isActive: currStep >= 0,
             title: const Text('Accidende'),
             content: Container(
-              height: 500,
+              height: 800,
               margin: const EdgeInsets.all(5.0),
               child:
                   //------------Formulario
                   Form(
-                key: _formKey,
-                child:
-                    //------------ColumnaForm
-                    Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    folioField,
-                    dateField,
-                    hourField,
-                    usuarioField,
-                    posicionField,
-                    fotoField,
-                  ],
+                  key: _formKey,
+                  child:
+                      //------------ColumnaForm
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          folioField,
+                          dateField,
+                          hourField,
+                          usuarioField,
+                          posicionField,
+                          fotoField,
+                        ],
+                      ),
                 ),
-              ),
             ),
           ),
           Step(
