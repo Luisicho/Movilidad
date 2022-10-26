@@ -20,10 +20,7 @@ class _levMainState extends State<levMain> {
 
   // Focus Nodes
   //Step1
-  final folioFocus = FocusNode();
-  final fechaFocus = FocusNode();
-  final hourFocus = FocusNode();
-  final userFocus = FocusNode();
+  final noLicenciaFocus = FocusNode();
   //Step2
 
   // editing controller
@@ -35,8 +32,12 @@ class _levMainState extends State<levMain> {
   final TextEditingController lonController = TextEditingController();
   final TextEditingController noeconomicoController = TextEditingController();
   final TextEditingController placasController = TextEditingController();
-
-  final TextEditingController userController = TextEditingController();
+  final TextEditingController descripcionController = TextEditingController();
+  final TextEditingController concesionController = TextEditingController();
+  final TextEditingController nolicenciaController = TextEditingController();
+  final TextEditingController tipoController = TextEditingController();
+  final TextEditingController nombreController = TextEditingController();
+  final TextEditingController vigenciaController = TextEditingController();
 
   //Step2
 
@@ -73,7 +74,6 @@ class _levMainState extends State<levMain> {
         Expanded(
           flex: 2,
           child: TextFormField(
-              focusNode: folioFocus,
               controller: folioController,
               readOnly: true,
               decoration: InputDecoration(
@@ -84,39 +84,6 @@ class _levMainState extends State<levMain> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               )),
-        ),
-      ],
-    );
-
-    //user field
-    final usuarioField = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text('Usuario'),
-        const SizedBox(width: 30),
-        Expanded(
-          flex: 2,
-          child: TextFormField(
-            autofocus: false,
-            controller: userController,
-            validator: (value) {
-              if (value!.isEmpty) {
-                return ("El Usuario es requerido para ingresar");
-              }
-            },
-            onSaved: (value) {
-              userController.text = value!;
-            },
-            textInputAction: TextInputAction.done,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.person),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "Usuario",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
         ),
       ],
     );
@@ -132,9 +99,6 @@ class _levMainState extends State<levMain> {
           child: TextFormField(
             readOnly: true,
             controller: fechaController,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(hourFocus);
-            },
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.calendar_today),
               contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
@@ -159,9 +123,6 @@ class _levMainState extends State<levMain> {
           child: TextFormField(
             readOnly: true,
             controller: hourController,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(userFocus);
-            },
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.access_alarm),
               contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
@@ -192,7 +153,9 @@ class _levMainState extends State<levMain> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-            )),
+            )
+        ),
+        SizedBox(width: 05),
         Expanded(
           flex: 1,
           child: TextFormField(
@@ -457,71 +420,228 @@ class _levMainState extends State<levMain> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
+            flex: 1,
+            child: VehiRespondable == "1"
+                ? TextFormField(
+                    enabled: true,
+                    controller: noeconomicoController,
+                    onFieldSubmitted: (value) {
+                      FocusScope.of(context).requestFocus(noLicenciaFocus);
+                    },
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.all_inbox),
+                      contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                      hintText: "No.Economico",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  )
+                : TextFormField(
+                    enabled: false,
+                    controller: noeconomicoController,
+                    onFieldSubmitted: (value) {
+                      FocusScope.of(context).requestFocus(noLicenciaFocus);
+                    },
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.all_inbox),
+                      contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                      hintText: "No.Economico",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  )),
+        SizedBox(width: 05),
+        Expanded(
+            flex: 1,
+            child: VehiRespondable == "2"
+                ? TextFormField(
+                    enabled: true,
+                    controller: placasController,
+                    onFieldSubmitted: (value) {
+                      FocusScope.of(context).requestFocus(noLicenciaFocus);
+                    },
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.calendar_view_week),
+                      contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                      hintText: "Placas",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  )
+                : TextFormField(
+                    enabled: false,
+                    controller: placasController,
+                    onFieldSubmitted: (value) {
+                      FocusScope.of(context).requestFocus(noLicenciaFocus);
+                    },
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.calendar_view_week),
+                      contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                      hintText: "Placas",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  )),
+      ],
+    );
+
+    //DescripcionField
+    final descripcionField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
           flex: 1,
-          child: VehiRespondable == "1" ? TextFormField(
-            enabled: true,
-            controller: noeconomicoController,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(userFocus);
-            },
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.all_inbox),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "No.Economico",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ) : TextFormField(
-            enabled: false,
-            controller: noeconomicoController,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(userFocus);
-            },
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.all_inbox),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "No.Economico",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          )
+          child: Text("Descripcion"),
         ),
         Expanded(
-          flex: 1,
-          child: VehiRespondable == "2" ? TextFormField(
-            enabled: true,
-            controller: placasController,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(userFocus);
-            },
+          flex: 3,
+          child: TextFormField(
+            readOnly: true,
+            controller: descripcionController,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.calendar_view_week),
+              prefixIcon: const Icon(Icons.assessment_outlined),
               contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "Placas",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-          ) : TextFormField(
-            enabled: false,
-            controller: placasController,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(userFocus);
-            },
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.calendar_view_week),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "Placas",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          )
+          ),
         ),
       ],
     );
+
+    //Consen/particularField
+    final consenParticularField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text("Concensionario / Particular"),
+        ),
+        Expanded(
+          flex: 2,
+          child: TextFormField(
+            readOnly: true,
+            controller: concesionController,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.all_inbox),
+              contentPadding: const EdgeInsets.fromLTRB(05, 15, 05, 15),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+
+    //NoLicencia
+    final noLicenciaField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text("No. Licencia"),
+        ),
+        Expanded(
+          flex: 3,
+          child: TextFormField(
+            focusNode: noLicenciaFocus,
+            controller: nolicenciaController,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.all_inbox),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "No. Licencia",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+
+    //TipoField
+    final tipoField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text("Tipo"),
+        ),
+        Expanded(
+          flex: 5,
+          child: TextFormField(
+            readOnly: true,
+            controller: tipoController,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.all_inbox),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+
+    //NombreField
+    final nombreField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text("Nombre"),
+        ),
+        Expanded(
+          flex: 4,
+          child: TextFormField(
+            readOnly: true,
+            controller: nombreController,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.all_inbox),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+
+    //VigenciaField
+    final vigenciaField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text("Vigencia"),
+        ),
+        Expanded(
+          flex: 4,
+          child: TextFormField(
+            readOnly: true,
+            controller: vigenciaController,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.all_inbox),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+
+
+
     //--------------Step No1
     //--------------Object Varaible-----------------------
 
@@ -546,11 +666,16 @@ class _levMainState extends State<levMain> {
                     folioField,
                     dateField,
                     hourField,
-                    usuarioField,
                     posicionField,
                     fotoField,
                     vehiculoField,
                     placasField,
+                    descripcionField,
+                    consenParticularField,
+                    noLicenciaField,
+                    tipoField,
+                    nombreField,
+                    vigenciaField,
                   ],
                 ),
               ),
