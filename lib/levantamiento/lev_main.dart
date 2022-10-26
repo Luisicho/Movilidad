@@ -153,8 +153,7 @@ class _levMainState extends State<levMain> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-            )
-        ),
+            )),
         SizedBox(width: 05),
         Expanded(
           flex: 1,
@@ -489,6 +488,31 @@ class _levMainState extends State<levMain> {
       ],
     );
 
+    //BuscarPlaca
+    final buscarPlaca = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: TextButton(
+            onPressed: () {
+              //-------------Toast
+              Fluttertoast.showToast(
+                  msg: 'Buscando en nube',
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                  fontSize: 16.0);
+              //-------------Toast
+            },
+            child: const Text('Buscar Placas / No.Economico'),
+          ),
+        ),
+      ],
+    );
+
     //DescripcionField
     final descripcionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -553,13 +577,31 @@ class _levMainState extends State<levMain> {
             focusNode: noLicenciaFocus,
             controller: nolicenciaController,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.all_inbox),
+              prefixIcon: const Icon(Icons.account_box_sharp),
               contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
               hintText: "No. Licencia",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: TextButton(
+            onPressed: () {
+              //-------------Toast
+              Fluttertoast.showToast(
+                  msg: 'Buscando en nube',
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                  fontSize: 16.0);
+              //-------------Toast
+            },
+            child: const Text('Buscar'),
           ),
         ),
       ],
@@ -640,8 +682,6 @@ class _levMainState extends State<levMain> {
       ],
     );
 
-
-
     //--------------Step No1
     //--------------Object Varaible-----------------------
 
@@ -652,7 +692,7 @@ class _levMainState extends State<levMain> {
             isActive: currStep >= 0,
             title: const Text('Accidende'),
             content: Container(
-              height: 800,
+              height: 1000,
               margin: const EdgeInsets.all(5.0),
               child:
                   //------------Formulario
@@ -670,6 +710,7 @@ class _levMainState extends State<levMain> {
                     fotoField,
                     vehiculoField,
                     placasField,
+                    buscarPlaca,
                     descripcionField,
                     consenParticularField,
                     noLicenciaField,
