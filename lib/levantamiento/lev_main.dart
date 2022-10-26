@@ -552,7 +552,7 @@ class _levMainState extends State<levMain> {
             readOnly: true,
             controller: concesionController,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.all_inbox),
+              prefixIcon: const Icon(Icons.account_circle_outlined),
               contentPadding: const EdgeInsets.fromLTRB(05, 15, 05, 15),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -621,7 +621,7 @@ class _levMainState extends State<levMain> {
             readOnly: true,
             controller: tipoController,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.all_inbox),
+              prefixIcon: const Icon(Icons.contacts_outlined),
               contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -646,7 +646,7 @@ class _levMainState extends State<levMain> {
             readOnly: true,
             controller: nombreController,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.all_inbox),
+              prefixIcon: const Icon(Icons.document_scanner_outlined),
               contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -671,7 +671,7 @@ class _levMainState extends State<levMain> {
             readOnly: true,
             controller: vigenciaController,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.all_inbox),
+              prefixIcon: const Icon(Icons.ad_units_rounded),
               contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
