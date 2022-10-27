@@ -1,5 +1,5 @@
 name: movilidad
-description: A new Flutter project.
+description: Proyecto de Movilidad de la secretaria del estado de Nayarit.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -42,6 +42,12 @@ dependencies:
   geolocator: ^8.0.0
   fluttertoast: ^8.1.1
   image_picker: ^0.8.6
+  flutter_launcher_icons: ^0.10.0
+
+flutter_icons:
+  image_path: assets/icono-nay.png
+  android: true
+  ios: true
 
 dev_dependencies:
   flutter_test:

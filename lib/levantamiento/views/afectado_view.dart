@@ -72,6 +72,30 @@ class _afectadoViewState extends State<afectadoView> {
     ],
   );
 
+  //nombreAcField
+  final nombreAcField = Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      const Expanded(
+        flex: 1,
+        child: Text("Nombre Accidentado"),
+      ),
+      Expanded(
+        flex: 3,
+        child: TextFormField(
+          controller: vigenciaController,
+          decoration: InputDecoration(
+            prefixIcon: const Icon(Icons.ad_units_rounded),
+            contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            hintText: "Nombre Accidentado",
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -135,6 +159,9 @@ class _afectadoViewState extends State<afectadoView> {
             polizaField,
             const SizedBox(height: 10),
             vigenciaField,
+            const SizedBox(height: 10),
+            nombreAcField,
+            
             //--------------Pruebas Flutter
             TextButton(
               onPressed: () {
