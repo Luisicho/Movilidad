@@ -122,6 +122,32 @@ class _afectadoViewState extends State<afectadoView> {
     ],
   );
 
+  //DomicilioField
+  final domicilioField = Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      const Expanded(
+        flex: 1,
+        child: Text("Domicilio"),
+      ),
+      Expanded(
+        flex: 4,
+        child: TextFormField(
+          controller: vigenciaController,
+          decoration: InputDecoration(
+            prefixIcon: const Icon(Icons.ad_units_rounded),
+            contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            hintText: "Domicilio",
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -189,6 +215,8 @@ class _afectadoViewState extends State<afectadoView> {
             nombreAcField,
             const SizedBox(height: 10),
             CURPField,
+            const SizedBox(height: 10),
+            domicilioField,
             //--------------Pruebas Flutter
             TextButton(
               onPressed: () {
