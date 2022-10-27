@@ -20,6 +20,7 @@ final TextEditingController nombreAcController = TextEditingController();
 final TextEditingController CURPController = TextEditingController();
 final TextEditingController domicilioController = TextEditingController();
 final TextEditingController fechaController = TextEditingController();
+final TextEditingController hourController = TextEditingController();
 
 //Generales
 var initialList = "item1";
@@ -202,8 +203,8 @@ class _afectadoViewState extends State<afectadoView> {
       ],
     );
 
-    //DateField
-    final dateField = Row(
+    //DateRecepcionField
+    final dateRecepcionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
@@ -212,37 +213,92 @@ class _afectadoViewState extends State<afectadoView> {
         ),
         const SizedBox(width: 10),
         Expanded(
-            flex: 2,
-            child: TextFormField(
-              readOnly: true,
-              controller: fechaController,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.calendar_today),
-                contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                hintText: "Fecha",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+          flex: 2,
+          child: TextFormField(
+            readOnly: true,
+            controller: fechaController,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.calendar_today),
+              contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
+              hintText: "Fecha",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
               ),
-              onTap: () async {
-                // Get the date
-                DateTime? datePicket = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(1999),
-                  lastDate: DateTime(2050),
-                );
-                if (datePicket != null) {
-                  //make format to the date
-                  var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
-                  fechaController.text = formatedDate.toString();
-                }
-              },
             ),
+            onTap: () async {
+              // Get the date
+              DateTime? datePicket = await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(1999),
+                lastDate: DateTime(2050),
+              );
+              if (datePicket != null) {
+                //make format to the date
+                var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
+                fechaController.text = formatedDate.toString();
+              }
+            },
+          ),
         ),
       ],
     );
 
+    //HourRecepcionField
+    final hourRecepcionField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: Text("Hora"),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          flex: 2,
+          child: TextFormField(
+            readOnly: true,
+            controller: hourController,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.access_alarm),
+              contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
+              hintText: "Hora",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            onTap: () async {
+              // Get the date
+              TimeOfDay? timePicket = await showTimePicker(
+                context: context,
+                initialTime: TimeOfDay.now(),
+              );
+              if (timePicket != null) {
+                //make format to the time
+                //var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
+                hourController.text = timePicket.format(context).toString();
+              }
+            },
+          ),
+        ),
+      ],
+    );
+
+    //RecepcionField
+    final RecepcionField =
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center, 
+        children: [
+          Expanded(
+            flex: 2,
+            child: dateRecepcionField
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            flex: 1,
+            child: hourRecepcionField
+          ),
+        ]
+    );
 
     //----Return
     return Container(
@@ -265,8 +321,7 @@ class _afectadoViewState extends State<afectadoView> {
           const SizedBox(height: 10),
           domicilioField,
           const SizedBox(height: 10),
-          dateField,
-
+          RecepcionField,
           //--------------Pruebas Flutter
           TextButton(
             onPressed: () {
