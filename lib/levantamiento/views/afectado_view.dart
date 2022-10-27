@@ -97,6 +97,32 @@ class _afectadoViewState extends State<afectadoView> {
     ],
   );
 
+  //CURPField
+  final CURPField = Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      const Expanded(
+        flex: 1,
+        child: Text("CURP"),
+      ),
+      Expanded(
+        flex: 4,
+        child: TextFormField(
+          controller: vigenciaController,
+          decoration: InputDecoration(
+            prefixIcon: const Icon(Icons.ad_units_rounded),
+            contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            hintText: "CURP",
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -161,7 +187,8 @@ class _afectadoViewState extends State<afectadoView> {
             vigenciaField,
             const SizedBox(height: 10),
             nombreAcField,
-            
+            const SizedBox(height: 10),
+            CURPField,
             //--------------Pruebas Flutter
             TextButton(
               onPressed: () {
