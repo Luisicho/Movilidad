@@ -10,7 +10,11 @@ class afectadoView extends StatefulWidget {
 //-----------Variables globales
 // Focus Nodes
 //Step2
-final hourFocus = FocusNode();
+final nombreAFocus = FocusNode();
+final CURPFocus = FocusNode();
+final domicilioFocus = FocusNode();
+final descripcionFocus = FocusNode();
+
 
 // editing controller
 //Step2
@@ -23,8 +27,7 @@ final TextEditingController fechaRecepcionController = TextEditingController();
 final TextEditingController hourRecepcionController = TextEditingController();
 final TextEditingController fechaAltaController = TextEditingController();
 final TextEditingController hourAltaController = TextEditingController();
-
-
+final TextEditingController descripcionController = TextEditingController();
 
 //Generales
 //Generales
@@ -90,84 +93,99 @@ class _afectadoViewState extends State<afectadoView> {
     ],
   );
 
-  //nombreAcField
-  final nombreAcField = Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      const Expanded(
-        flex: 1,
-        child: Text("Nombre Accidentado"),
-      ),
-      Expanded(
-        flex: 3,
-        child: TextFormField(
-          controller: nombreAcController,
-          decoration: InputDecoration(
-            prefixIcon: const Icon(Icons.ad_units_rounded),
-            contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-            hintText: "Nombre Accidentado",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
-
-  //CURPField
-  final CURPField = Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      const Expanded(
-        flex: 1,
-        child: Text("CURP"),
-      ),
-      Expanded(
-        flex: 4,
-        child: TextFormField(
-          controller: CURPController,
-          decoration: InputDecoration(
-            prefixIcon: const Icon(Icons.ad_units_rounded),
-            contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-            hintText: "CURP",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
-
-  //DomicilioField
-  final domicilioField = Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      const Expanded(
-        flex: 1,
-        child: Text("Domicilio"),
-      ),
-      Expanded(
-        flex: 4,
-        child: TextFormField(
-          controller: domicilioController,
-          decoration: InputDecoration(
-            prefixIcon: const Icon(Icons.ad_units_rounded),
-            contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-            hintText: "Domicilio",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
 
   @override
   Widget build(BuildContext context) {
     //---------------Variables Locales Widget
+    //nombreAcField
+    final nombreAcField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text("Nombre Accidentado"),
+        ),
+        Expanded(
+          flex: 3,
+          child: TextFormField(
+            focusNode: nombreAFocus,
+            controller: nombreAcController,
+            onFieldSubmitted: (value) {
+              FocusScope.of(context).requestFocus(CURPFocus);
+            },
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.ad_units_rounded),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "Nombre Accidentado",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+
+      //CURPField
+    final CURPField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text("CURP"),
+        ),
+        Expanded(
+          flex: 4,
+          child: TextFormField(
+            focusNode: CURPFocus,
+            controller: CURPController,
+            onFieldSubmitted: (value) {
+              FocusScope.of(context).requestFocus(domicilioFocus);
+            },
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.ad_units_rounded),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "CURP",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+
+    //DomicilioField
+    final domicilioField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text("Domicilio"),
+        ),
+        Expanded(
+          flex: 4,
+          child: TextFormField(
+            focusNode: domicilioFocus,
+            controller: domicilioController,
+            onFieldSubmitted: (value) {
+              FocusScope.of(context).requestFocus(descripcionFocus);
+            },
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.ad_units_rounded),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "Domicilio",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+
+
+
     //aseguradoraField
     final aseguradoraField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -485,6 +503,33 @@ class _afectadoViewState extends State<afectadoView> {
       ],
     );
 
+  //DescripcionField
+  final descripcionField = Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      const Expanded(
+        flex: 1,
+        child: Text("Descripción"),
+      ),
+      Expanded(
+        flex: 4,
+        child: TextFormField(
+          focusNode: descripcionFocus,
+          controller: descripcionController,
+          decoration: InputDecoration(
+            prefixIcon: const Icon(Icons.ad_units_rounded),
+            contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            hintText: "Descripcion",
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+
+
 
     //----Return
     return Container(
@@ -514,6 +559,8 @@ class _afectadoViewState extends State<afectadoView> {
           RecepcionField,
           const SizedBox(height: 10),
           AltaField,
+          const SizedBox(height: 10),
+          descripcionField,
           //--------------Pruebas Flutter
           TextButton(
             onPressed: () {
