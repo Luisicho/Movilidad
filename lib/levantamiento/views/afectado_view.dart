@@ -535,48 +535,59 @@ class _afectadoViewState extends State<afectadoView> {
     return Container(
       height: 800,
       padding: EdgeInsets.all(10),
-      child:
+      child: SingleChildScrollView(
+        child: 
           //---------------Column
           Column(
-        children: [
-          const SizedBox(height: 10),
-          aseguradoraField,
-          const SizedBox(height: 10),
-          polizaField,
-          const SizedBox(height: 10),
-          vigenciaField,
-          const SizedBox(height: 10),
-          nombreAcField,
-          const SizedBox(height: 10),
-          CURPField,
-          const SizedBox(height: 10),
-          domicilioField,
-          const SizedBox(height: 10),
-          tipoARField,
-          const SizedBox(height: 10),
-          institucionMedField,
-          const SizedBox(height: 10),
-          RecepcionField,
-          const SizedBox(height: 10),
-          AltaField,
-          const SizedBox(height: 10),
-          descripcionField,
-          //--------------Pruebas Flutter
-          TextButton(
-            onPressed: () {
-              //-------------Toast
-              Fluttertoast.showToast(
-                  msg: aseguradora,
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.CENTER,
-                  timeInSecForIosWeb: 1,                  backgroundColor: Colors.red,
-                  textColor: Colors.white,
-                  fontSize: 16.0);
-              //-------------Toast
-            },
-            child: const Text('Buscar'),
+            children: [
+              Text(
+                'Agregar Afectado',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 32,
+                  color: Colors.blueGrey,
+                ),
+              ),
+              const SizedBox(height: 10),
+              aseguradoraField,
+              const SizedBox(height: 10),
+              polizaField,
+              const SizedBox(height: 10),
+              vigenciaField,
+              const SizedBox(height: 10),
+              nombreAcField,
+              const SizedBox(height: 10),
+              CURPField,
+              const SizedBox(height: 10),
+              domicilioField,
+              const SizedBox(height: 10),
+              tipoARField,
+              const SizedBox(height: 10),
+              institucionMedField,
+              const SizedBox(height: 10),
+              RecepcionField,
+              const SizedBox(height: 10),
+              AltaField,
+              const SizedBox(height: 10),
+              descripcionField,
+              //--------------Pruebas Flutter
+              ElevatedButton(
+                onPressed: () {
+                  //-------------Toast
+                  Fluttertoast.showToast(
+                      msg: aseguradora,
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 1,                  
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white,
+                      fontSize: 16.0);
+                  //-------------Toast
+                },
+                child: const Text('Agregar'),
+              ),
+            ],
           ),
-        ],
       ),
     );
   }
