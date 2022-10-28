@@ -444,6 +444,47 @@ class _afectadoViewState extends State<afectadoView> {
       ],
     );
 
+    //institucionMedField
+    final institucionMedField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: Text("Institucion Medica"),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+              child: DropdownButton(
+                // Initial Value
+                value: institucionMed,
+
+                // Down Arrow Icon
+                icon: const Icon(Icons.keyboard_arrow_down),
+
+                // Array list of items
+                items: listaInstitucionMed.map((String items) {
+                  return DropdownMenuItem(
+                    value: items,
+                    child: Text(items),
+                  );
+                }).toList(),
+
+                // After selecting the desired option,it will
+                // change button value to selected value
+                onChanged: (String? newValue) {
+                  setState(() {
+                    institucionMed = newValue!;
+                  });
+                },
+              ),
+            ),
+          ),
+      ],
+    );
+
 
     //----Return
     return Container(
@@ -467,6 +508,8 @@ class _afectadoViewState extends State<afectadoView> {
           domicilioField,
           const SizedBox(height: 10),
           tipoARField,
+          const SizedBox(height: 10),
+          institucionMedField,
           const SizedBox(height: 10),
           RecepcionField,
           const SizedBox(height: 10),
