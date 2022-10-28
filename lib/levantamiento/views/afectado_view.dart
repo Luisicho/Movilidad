@@ -27,8 +27,16 @@ final TextEditingController hourAltaController = TextEditingController();
 
 
 //Generales
-var initialList = "item1";
-var lista = ["item1", "item2", "item3"];
+//Generales
+var aseguradora = "item1";
+var listaAseguradora = ["item1", "item2", "item3"];
+
+var tipoAR = "item1";
+var listaTipoAR = ["item1", "item2", "item3"];
+
+var institucionMed = "item1";
+var listaInstitucionMed = ["item1", "item2", "item3"];
+
 
 class _afectadoViewState extends State<afectadoView> {
   //----------------Variables Locales
@@ -171,39 +179,33 @@ class _afectadoViewState extends State<afectadoView> {
         const SizedBox(width: 10),
         Expanded(
             flex: 2,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                border: Border.all(color: Colors.black38, width: 1),
-                borderRadius: BorderRadius.circular(50),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+              child: DropdownButton(
+                // Initial Value
+                value: aseguradora,
+
+                // Down Arrow Icon
+                icon: const Icon(Icons.keyboard_arrow_down),
+
+                // Array list of items
+                items: listaAseguradora.map((String items) {
+                  return DropdownMenuItem(
+                    value: items,
+                    child: Text(items),
+                  );
+                }).toList(),
+
+                // After selecting the desired option,it will
+                // change button value to selected value
+                onChanged: (String? newValue) {
+                  setState(() {
+                    aseguradora = newValue!;
+                  });
+                },
               ),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                child: DropdownButton(
-                  // Initial Value
-                  value: initialList,
-
-                  // Down Arrow Icon
-                  icon: const Icon(Icons.keyboard_arrow_down),
-
-                  // Array list of items
-                  items: lista.map((String items) {
-                    return DropdownMenuItem(
-                      value: items,
-                      child: Text(items),
-                    );
-                  }).toList(),
-
-                  // After selecting the desired option,it will
-                  // change button value to selected value
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      initialList = newValue!;
-                    });
-                  },
-                ),
-              ),
-            )),
+            ),
+          ),
       ],
     );
 
@@ -401,6 +403,46 @@ class _afectadoViewState extends State<afectadoView> {
         ]
     );
 
+    //tipoARField
+    final tipoARField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: Text("Tipo Atencion"),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+              child: DropdownButton(
+                // Initial Value
+                value: tipoAR,
+
+                // Down Arrow Icon
+                icon: const Icon(Icons.keyboard_arrow_down),
+
+                // Array list of items
+                items: listaTipoAR.map((String items) {
+                  return DropdownMenuItem(
+                    value: items,
+                    child: Text(items),
+                  );
+                }).toList(),
+
+                // After selecting the desired option,it will
+                // change button value to selected value
+                onChanged: (String? newValue) {
+                  setState(() {
+                    tipoAR = newValue!;
+                  });
+                },
+              ),
+            ),
+          ),
+      ],
+    );
 
 
     //----Return
@@ -424,6 +466,8 @@ class _afectadoViewState extends State<afectadoView> {
           const SizedBox(height: 10),
           domicilioField,
           const SizedBox(height: 10),
+          tipoARField,
+          const SizedBox(height: 10),
           RecepcionField,
           const SizedBox(height: 10),
           AltaField,
@@ -432,11 +476,10 @@ class _afectadoViewState extends State<afectadoView> {
             onPressed: () {
               //-------------Toast
               Fluttertoast.showToast(
-                  msg: initialList,
+                  msg: aseguradora,
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.CENTER,
-                  timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.red,
+                  timeInSecForIosWeb: 1,                  backgroundColor: Colors.red,
                   textColor: Colors.white,
                   fontSize: 16.0);
               //-------------Toast
