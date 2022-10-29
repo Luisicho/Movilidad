@@ -101,12 +101,8 @@ class _afectadoViewState extends State<afectadoView> {
     final nombreAcField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Nombre Accidentado"),
-        ),
         Expanded(
-          flex: 3,
+          flex: 1,
           child: TextFormField(
             focusNode: nombreAFocus,
             controller: nombreAcController,
@@ -130,12 +126,8 @@ class _afectadoViewState extends State<afectadoView> {
     final CURPField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("CURP"),
-        ),
         Expanded(
-          flex: 4,
+          flex: 1,
           child: TextFormField(
             focusNode: CURPFocus,
             controller: CURPController,
@@ -159,12 +151,8 @@ class _afectadoViewState extends State<afectadoView> {
     final domicilioField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Domicilio"),
-        ),
         Expanded(
-          flex: 4,
+          flex: 1,
           child: TextFormField(
             focusNode: domicilioFocus,
             controller: domicilioController,
@@ -183,8 +171,6 @@ class _afectadoViewState extends State<afectadoView> {
         ),
       ],
     );
-
-
 
     //aseguradoraField
     final aseguradoraField = Row(
@@ -565,9 +551,14 @@ class _afectadoViewState extends State<afectadoView> {
               const SizedBox(height: 10),
               institucionMedField,
               const SizedBox(height: 10),
-              RecepcionField,
+              dateRecepcionField,
               const SizedBox(height: 10),
-              AltaField,
+              hourRecepcionField,
+              Divider(),
+              const SizedBox(height: 10),
+              dateAltaField,
+              const SizedBox(height: 10),
+              hourAltaField,
               const SizedBox(height: 10),
               descripcionField,
               //--------------Pruebas Flutter

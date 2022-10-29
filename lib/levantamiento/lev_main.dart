@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:movilidad/levantamiento/first_step.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:movilidad/levantamiento/second_step.dart';
 
 class levMain extends StatefulWidget {
   const levMain({super.key});
@@ -726,10 +727,7 @@ class _levMainState extends State<levMain> {
             state: currStep > 1 ? StepState.complete : StepState.indexed,
             isActive: currStep >= 1,
             title: const Text('Afectados'),
-            content: const SizedBox(
-              height: 500,
-              child: Text('data'),
-            ),
+            content: secondStep(),
           ),
           Step(
             state: currStep > 2 ? StepState.complete : StepState.indexed,

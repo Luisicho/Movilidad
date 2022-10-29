@@ -19,7 +19,6 @@ class _secondStepState extends State<secondStep> {
           context: context,
           builder: (_) {
             return AlertDialog(
-              
               content: Container(
                 padding: EdgeInsets.all(0),
                 width: MediaQuery.of(context).size.width * 0.45,
@@ -31,16 +30,13 @@ class _secondStepState extends State<secondStep> {
           });
     }
 
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.75,
+      child: FloatingActionButton(
+        child: Text("Agregar"),
         onPressed: () {
           showAfectadoDialog();
-        },
-        child: Icon(Icons.add),
-      ),
-      body: Container(
-        height: MediaQuery.of(context).size.height * 0.75,
-        //height: 1000,
+        }
       ),
     );
   }
