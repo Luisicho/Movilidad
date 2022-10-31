@@ -93,7 +93,7 @@ class _levMainState extends State<levMain> {
     final dateField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text('No. Folio'),
+        const Text('Fecha llegada'),
         const SizedBox(width: 30),
         Expanded(
           flex: 2,
