@@ -40,7 +40,10 @@ class _levMainState extends State<levMain> {
   final TextEditingController nombreController = TextEditingController();
   final TextEditingController vigenciaController = TextEditingController();
   final TextEditingController hourLlegadaController = TextEditingController();
-  
+  final TextEditingController ubicacionController = TextEditingController();
+  final TextEditingController entreController = TextEditingController();
+  final TextEditingController yController = TextEditingController();
+
   //Step2
 
   //-----------Inicio de variables y controladores------------------
@@ -169,10 +172,77 @@ class _levMainState extends State<levMain> {
               if (timePicket != null) {
                 //make format to the time
                 //var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
-                hourAccidenteController.text = timePicket.format(context).toString();
+                hourAccidenteController.text =
+                    timePicket.format(context).toString();
               }
             },
           ),
+        ),
+      ],
+    );
+
+    //UbicacionField
+    final ubicacionField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text('Ubicación'),
+        const SizedBox(width: 10),
+        Expanded(
+          flex: 2,
+          child: TextFormField(
+              controller: ubicacionController,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.pages),
+                contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                hintText: "Ubicacion",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              )),
+        ),
+      ],
+    );
+
+    //entreField
+    final entreField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text('Entre'),
+        const SizedBox(width: 10),
+        Expanded(
+          flex: 2,
+          child: TextFormField(
+              controller: entreController,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.pages),
+                contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                hintText: "Entre",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              )),
+        ),
+      ],
+    );
+
+    //YField
+    final yField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text('y'),
+        const SizedBox(width: 10),
+        Expanded(
+          flex: 2,
+          child: TextFormField(
+              controller: yController,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.pages),
+                contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                hintText: "y",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              )),
         ),
       ],
     );
@@ -304,7 +374,7 @@ class _levMainState extends State<levMain> {
                             await _picker.pickImage(source: ImageSource.camera);
                         if (photo2 == null) return;
                         // transforma imagen a file
-                        final imageTemporal = File(photo1!.path);
+                        final imageTemporal = File(photo2!.path);
                         setState(() {
                           this.image2 = imageTemporal;
                         });
@@ -733,7 +803,7 @@ class _levMainState extends State<levMain> {
             isActive: currStep >= 0,
             title: const Text('Accidende'),
             content: Container(
-              height: 1000,
+              height: 1200,
               margin: const EdgeInsets.all(5.0),
               child:
                   //------------Formulario
@@ -745,16 +815,31 @@ class _levMainState extends State<levMain> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     folioField,
+                    const Divider(
+                      thickness: 2,
+                    ),
                     dateField,
                     hourLlegadaField,
                     hourAccidenteField,
+                    const Divider(
+                      thickness: 2,
+                    ),
+                    ubicacionField,
+                    entreField,
+                    yField,
                     posicionField,
                     fotoField,
+                    const Divider(
+                      thickness: 2,
+                    ),
                     vehiculoField,
                     placasField,
                     buscarPlaca,
                     descripcionField,
                     consenParticularField,
+                    const Divider(
+                      thickness: 2,
+                    ),
                     noLicenciaField,
                     tipoField,
                     nombreField,
