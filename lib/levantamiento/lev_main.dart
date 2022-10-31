@@ -28,7 +28,7 @@ class _levMainState extends State<levMain> {
   //Step1
   final TextEditingController folioController = TextEditingController();
   final TextEditingController fechaController = TextEditingController();
-  final TextEditingController hourController = TextEditingController();
+  final TextEditingController hourAccidenteController = TextEditingController();
   final TextEditingController latController = TextEditingController();
   final TextEditingController lonController = TextEditingController();
   final TextEditingController noeconomicoController = TextEditingController();
@@ -39,7 +39,8 @@ class _levMainState extends State<levMain> {
   final TextEditingController tipoController = TextEditingController();
   final TextEditingController nombreController = TextEditingController();
   final TextEditingController vigenciaController = TextEditingController();
-
+  final TextEditingController hourLlegadaController = TextEditingController();
+  
   //Step2
 
   //-----------Inicio de variables y controladores------------------
@@ -60,7 +61,7 @@ class _levMainState extends State<levMain> {
   @override
   Widget build(BuildContext context) {
     //ASIGNA HORA DE HOY
-    hourController.text = TimeOfDay.now().format(context).toString();
+    hourLlegadaController.text = TimeOfDay.now().format(context).toString();
     //ASIGNA DIA DE HOY
     fechaController.text = DateFormat("dd-MM-yyyy").format(DateTime.now());
 
@@ -113,8 +114,8 @@ class _levMainState extends State<levMain> {
       ],
     );
 
-    //HourField
-    final hourField = Row(
+    //HourLlegadaField
+    final hourLlegadaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text('Hora llegada'),
@@ -123,15 +124,54 @@ class _levMainState extends State<levMain> {
           flex: 2,
           child: TextFormField(
             readOnly: true,
-            controller: hourController,
+            controller: hourLlegadaController,
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.access_alarm),
               contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "Hora",
+              hintText: "Hora llegada",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
+          ),
+        ),
+      ],
+    );
+
+    //hourAccidenteField
+    final hourAccidenteField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: Text("Hora Accidente"),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          flex: 2,
+          child: TextFormField(
+            readOnly: true,
+            controller: hourAccidenteController,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.access_alarm),
+              contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
+              hintText: "Hora Accidente",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            onTap: () async {
+              // Get the date
+              TimeOfDay? timePicket = await showTimePicker(
+                context: context,
+                initialTime: TimeOfDay.now(),
+              );
+              if (timePicket != null) {
+                //make format to the time
+                //var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
+                hourAccidenteController.text = timePicket.format(context).toString();
+              }
+            },
           ),
         ),
       ],
@@ -706,7 +746,8 @@ class _levMainState extends State<levMain> {
                   children: [
                     folioField,
                     dateField,
-                    hourField,
+                    hourLlegadaField,
+                    hourAccidenteField,
                     posicionField,
                     fotoField,
                     vehiculoField,
