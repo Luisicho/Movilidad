@@ -31,7 +31,7 @@ class _secondStepState extends State<secondStep> {
           builder: (_) {
             return AlertDialog(
               content: Container(
-                padding: EdgeInsets.all(0),
+                padding: const EdgeInsets.all(0),
                 width: MediaQuery.of(context).size.width * 0.45,
                 child: afectadoView(addAfectado),
               ),
@@ -43,21 +43,34 @@ class _secondStepState extends State<secondStep> {
 
     return Container(
       height: MediaQuery.of(context).size.height * 0.75,
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          Container(
+            padding: const EdgeInsets.fromLTRB(0, 05, 0, 05),        
+            height: 50,
+            child: 
+            const Text(
+              "Lista de Afectados",
+              style: TextStyle(
+                fontSize: 22,
+                color: Colors.blueGrey,
+                fontWeight: FontWeight.w400,
+              ),
+            )
+          ),
           //Crea lista de afectados
           Expanded(
             flex: 2,
             child: ListView.builder(
               itemBuilder: (ctx, index) {
                 return Card(
-                  margin: EdgeInsets.all(4),
+                  margin: const EdgeInsets.all(4),
                   elevation: 8,
                   child: ListTile(
                     title: Text(
                       afectados[index].nombreAc,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 22,
                         color: Colors.blueGrey,
                         fontWeight: FontWeight.w400,
@@ -65,7 +78,7 @@ class _secondStepState extends State<secondStep> {
                     ),
                     subtitle: Text(
                       afectados[index].fechaRecepcion,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black12,
                         fontWeight: FontWeight.w300,
@@ -73,7 +86,7 @@ class _secondStepState extends State<secondStep> {
                     ),
                     trailing: Text(
                       afectados[index].horaRecepcion,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black26,
                         fontWeight: FontWeight.w200,
@@ -86,11 +99,12 @@ class _secondStepState extends State<secondStep> {
             ),
           ),
           //Boton agregar
-          Expanded(
-            flex: 1,
+          Container(
+            padding: const EdgeInsets.fromLTRB(0, 05, 0, 05),        
+            height: 50,
             child: 
             FloatingActionButton.extended(
-              label: Text("Agregar"),
+              label: const Text("Agregar"),
               onPressed: () {
                 showAfectadoDialog();
               }

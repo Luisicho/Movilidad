@@ -142,7 +142,7 @@ class _levMainState extends State<levMain> {
     final hourAccidenteField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
+        const Expanded(
           flex: 1,
           child: Text("Hora Accidente"),
         ),
@@ -195,7 +195,7 @@ class _levMainState extends State<levMain> {
                 ),
               ),
             )),
-        SizedBox(width: 05),
+        const SizedBox(width: 05),
         Expanded(
           flex: 1,
           child: TextFormField(
@@ -429,7 +429,7 @@ class _levMainState extends State<levMain> {
         Expanded(
           flex: 1,
           child: RadioListTile(
-            title: Text("Servicio Publico"),
+            title: const Text("Servicio Publico"),
             value: "1",
             groupValue: VehiRespondable,
             onChanged: (value) {
@@ -442,7 +442,7 @@ class _levMainState extends State<levMain> {
         Expanded(
           flex: 1,
           child: RadioListTile(
-            title: Text("Particular"),
+            title: const Text("Particular"),
             value: "2",
             groupValue: VehiRespondable,
             onChanged: (value) {
@@ -492,7 +492,7 @@ class _levMainState extends State<levMain> {
                       ),
                     ),
                   )),
-        SizedBox(width: 05),
+        const SizedBox(width: 05),
         Expanded(
             flex: 1,
             child: VehiRespondable == "2"
@@ -768,7 +768,7 @@ class _levMainState extends State<levMain> {
             state: currStep > 1 ? StepState.complete : StepState.indexed,
             isActive: currStep >= 1,
             title: const Text('Afectados'),
-            content: secondStep(),
+            content: const secondStep(),
           ),
           Step(
             state: currStep > 2 ? StepState.complete : StepState.indexed,

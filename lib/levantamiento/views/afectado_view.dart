@@ -178,7 +178,7 @@ class _afectadoViewState extends State<afectadoView> {
     final aseguradoraField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
+        const Expanded(
           flex: 1,
           child: Text("Aseguradora"),
         ),
@@ -219,7 +219,7 @@ class _afectadoViewState extends State<afectadoView> {
     final dateRecepcionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
+        const Expanded(
           flex: 1,
           child: Text("Fecha Recepción"),
         ),
@@ -260,7 +260,7 @@ class _afectadoViewState extends State<afectadoView> {
     final hourRecepcionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
+        const Expanded(
           flex: 1,
           child: Text("Hora"),
         ),
@@ -308,7 +308,7 @@ class _afectadoViewState extends State<afectadoView> {
     final dateAltaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
+        const Expanded(
           flex: 1,
           child: Text("Fecha Alta"),
         ),
@@ -349,7 +349,7 @@ class _afectadoViewState extends State<afectadoView> {
     final hourAltaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
+        const Expanded(
           flex: 1,
           child: Text("Hora"),
         ),
@@ -396,7 +396,7 @@ class _afectadoViewState extends State<afectadoView> {
     final tipoARField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
+        const Expanded(
           flex: 1,
           child: Text("Tipo Atencion"),
         ),
@@ -437,7 +437,7 @@ class _afectadoViewState extends State<afectadoView> {
     final institucionMedField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
+        const Expanded(
           flex: 1,
           child: Text("Institucion Medica"),
         ),
@@ -516,14 +516,14 @@ class _afectadoViewState extends State<afectadoView> {
     //----Return
     return Container(
       height: 800,
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: SingleChildScrollView(
         child:
             //---------------Column
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'Agregar Afectado',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -551,7 +551,7 @@ class _afectadoViewState extends State<afectadoView> {
                 dateRecepcionField,
                 const SizedBox(height: 10),
                 hourRecepcionField,
-                Divider(
+                const Divider(
                   thickness: 2,
                 ),
                 const SizedBox(height: 10),

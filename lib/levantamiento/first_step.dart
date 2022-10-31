@@ -21,10 +21,10 @@ class _firstStepState extends State<firstStep> {
   final userFocus = FocusNode();
 
   // editing controller
-  final TextEditingController folioController = new TextEditingController();
-  final TextEditingController fechaController = new TextEditingController();
-  final TextEditingController userController = new TextEditingController();
-  final TextEditingController hourController = new TextEditingController();
+  final TextEditingController folioController = TextEditingController();
+  final TextEditingController fechaController = TextEditingController();
+  final TextEditingController userController = TextEditingController();
+  final TextEditingController hourController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +74,7 @@ class _firstStepState extends State<firstStep> {
               if (value!.isEmpty) {
                 return ("El Usuario es requerido para ingresar");
               }
+              return null;
             },
             onSaved: (value) {
               userController.text = value!;
