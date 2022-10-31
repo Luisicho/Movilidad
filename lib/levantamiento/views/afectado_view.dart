@@ -34,7 +34,6 @@ final TextEditingController hourAltaController = TextEditingController();
 final TextEditingController descripcionController = TextEditingController();
 
 //Generales
-//Generales
 var aseguradora = "item1";
 var listaAseguradora = ["item1", "item2", "item3"];
 
@@ -501,6 +500,19 @@ class _afectadoViewState extends State<afectadoView> {
       ],
     );
 
+    void limpiarCeldas() {
+      polizaController.text = "";
+      vigenciaController.text = "";
+      nombreAcController.text = "";
+      CURPController.text = "";
+      domicilioController.text = "";
+      fechaRecepcionController.text = "";
+      hourRecepcionController.text = "";
+      fechaAltaController.text = "";
+      hourAltaController.text = "";
+      descripcionController.text = "";
+    }
+
     //----Return
     return Container(
       height: 800,
@@ -549,7 +561,7 @@ class _afectadoViewState extends State<afectadoView> {
                 const SizedBox(height: 10),
                 descripcionField,
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center, 
                   children: [
                     //--------------Boton para agregar Afectado
                     ElevatedButton(
@@ -570,6 +582,7 @@ class _afectadoViewState extends State<afectadoView> {
                               fechaAltaController.text,
                               hourAltaController.text,
                               descripcionController.text);
+                          limpiarCeldas();
                           //Agrega afectado
                           widget.addAfectado(afectado);
                           //-------------Toast
@@ -598,11 +611,13 @@ class _afectadoViewState extends State<afectadoView> {
                       },
                       child: const Text('Agregar'),
                     ),
-                  ]
-                ),
+                ],
+            ),
           ],
         ),
       ),
     );
   }
 }
+
+
