@@ -22,6 +22,12 @@ class _levMainState extends State<levMain> {
   // Focus Nodes
   //Step1
   final noLicenciaFocus = FocusNode();
+  final ubicacionFocus = FocusNode();
+  final entreFocus = FocusNode();
+  final yFocus = FocusNode();
+  final noEconomicoFocus = FocusNode();
+  final placasFocus = FocusNode();
+
   //Step2
 
   // editing controller
@@ -190,6 +196,10 @@ class _levMainState extends State<levMain> {
         Expanded(
           flex: 2,
           child: TextFormField(
+              focusNode: ubicacionFocus,
+              onFieldSubmitted: (value) {
+                FocusScope.of(context).requestFocus(entreFocus);
+              },
               controller: ubicacionController,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.add_location_alt_outlined),
@@ -212,6 +222,10 @@ class _levMainState extends State<levMain> {
         Expanded(
           flex: 2,
           child: TextFormField(
+              focusNode: entreFocus,
+              onFieldSubmitted: (value) {
+                FocusScope.of(context).requestFocus(yFocus);
+              },
               controller: entreController,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.add_location_alt_outlined),
@@ -234,6 +248,10 @@ class _levMainState extends State<levMain> {
         Expanded(
           flex: 2,
           child: TextFormField(
+              focusNode: yFocus,
+              onFieldSubmitted: (value) {
+                FocusScope.of(context).requestFocus(noEconomicoFocus);
+              },
               controller: yController,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.add_location_alt_outlined),
@@ -539,6 +557,7 @@ class _levMainState extends State<levMain> {
                 ? TextFormField(
                     enabled: true,
                     controller: noeconomicoController,
+                    focusNode: noEconomicoFocus,
                     onFieldSubmitted: (value) {
                       FocusScope.of(context).requestFocus(noLicenciaFocus);
                     },
@@ -554,9 +573,6 @@ class _levMainState extends State<levMain> {
                 : TextFormField(
                     enabled: false,
                     controller: noeconomicoController,
-                    onFieldSubmitted: (value) {
-                      FocusScope.of(context).requestFocus(noLicenciaFocus);
-                    },
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.all_inbox),
                       contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
@@ -573,6 +589,7 @@ class _levMainState extends State<levMain> {
                 ? TextFormField(
                     enabled: true,
                     controller: placasController,
+                    focusNode: placasFocus,
                     onFieldSubmitted: (value) {
                       FocusScope.of(context).requestFocus(noLicenciaFocus);
                     },
@@ -588,9 +605,6 @@ class _levMainState extends State<levMain> {
                 : TextFormField(
                     enabled: false,
                     controller: placasController,
-                    onFieldSubmitted: (value) {
-                      FocusScope.of(context).requestFocus(noLicenciaFocus);
-                    },
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.calendar_view_week),
                       contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),

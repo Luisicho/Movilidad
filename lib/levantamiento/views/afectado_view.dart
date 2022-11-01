@@ -15,6 +15,9 @@ class afectadoView extends StatefulWidget {
 //-----------Variables globales
 // Focus Nodes
 //Step2
+final polizaFocus = FocusNode();
+final vigenciaFocus = FocusNode();
+final tipoAFocus = FocusNode();
 final nombreAFocus = FocusNode();
 final CURPFocus = FocusNode();
 final domicilioFocus = FocusNode();
@@ -44,30 +47,36 @@ var listaInstitucionMed = ["item1", "item2", "item3"];
 class _afectadoViewState extends State<afectadoView> {
   //----------------Variables Locales
 
-  //polizaField
-  final polizaField = Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Expanded(
-        flex: 3,
-        child: TextFormField(
-          controller: polizaController,
-          decoration: InputDecoration(
-            prefixIcon: const Icon(Icons.article_outlined),
-            contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-            hintText: "Poliza",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
+  
 
   @override
   Widget build(BuildContext context) {
     //---------------Variables Locales Widget
+    //polizaField
+    final polizaField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 3,
+          child: TextFormField(
+            focusNode: polizaFocus,
+            onFieldSubmitted: (value) {
+              FocusScope.of(context).requestFocus(vigenciaFocus);
+            },
+            controller: polizaController,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.article_outlined),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "Poliza",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+
     //vigenciaField
     final vigenciaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -77,6 +86,10 @@ class _afectadoViewState extends State<afectadoView> {
           flex: 1,
           child: TextFormField(
             readOnly: true,
+            focusNode: vigenciaFocus,
+            onFieldSubmitted: (value) {
+              FocusScope.of(context).requestFocus(nombreAFocus);
+            },
             controller: vigenciaController,
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.calendar_today),
@@ -165,7 +178,7 @@ class _afectadoViewState extends State<afectadoView> {
             focusNode: domicilioFocus,
             controller: domicilioController,
             onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(descripcionFocus);
+              FocusScope.of(context).requestFocus(tipoAFocus);
             },
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.add_home_outlined),
@@ -405,6 +418,10 @@ class _afectadoViewState extends State<afectadoView> {
         Expanded(
           flex: 3,
           child: TextFormField(
+            focusNode: tipoAFocus,
+            onFieldSubmitted: (value) {
+              FocusScope.of(context).requestFocus(descripcionFocus);
+            },
             controller: tipoARController,
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.airline_seat_flat_outlined),
