@@ -890,6 +890,50 @@ class _levMainState extends State<levMain> {
       body: Stepper(
         type: StepperType.horizontal,
         steps: getSteps(),
+        controlsBuilder: (context, _) {
+          return Row(
+            children: <Widget>[
+              TextButton(
+                onPressed:(){
+                  //onStepContinue(),
+                  if (!(currStep == 2)) {
+                    setState(() {
+                      currStep++;
+                    });
+                  }  
+                },
+                style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(Colors.blue),
+                ),
+                child: const Text(
+                  'Continuar',
+                  style:
+                    TextStyle(
+                      color: Colors.white
+                    ),
+                ),
+              ),
+              TextButton(
+                //onStepCancel()
+                onPressed: currStep == 0
+                  ? null
+                  : () => setState(() {
+                        currStep--;
+                      }),
+                style: const ButtonStyle(
+                  
+                ),
+                child: const Text(
+                  'Regresar',
+                  style:
+                    TextStyle(
+                      color: Colors.blue
+                    ),
+                ),
+              ),
+            ],
+          );
+        },
         currentStep: currStep,
         onStepContinue: () {
           if (!(currStep == 2)) {

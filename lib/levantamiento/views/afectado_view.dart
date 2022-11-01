@@ -48,10 +48,6 @@ class _afectadoViewState extends State<afectadoView> {
   final polizaField = Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      const Expanded(
-        flex: 1,
-        child: Text("Poliza"),
-      ),
       Expanded(
         flex: 3,
         child: TextFormField(
@@ -76,13 +72,9 @@ class _afectadoViewState extends State<afectadoView> {
     final vigenciaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Vigencia"),
-        ),
         const SizedBox(width: 10),
         Expanded(
-          flex: 2,
+          flex: 1,
           child: TextFormField(
             readOnly: true,
             controller: vigenciaController,
@@ -410,10 +402,6 @@ class _afectadoViewState extends State<afectadoView> {
     final tipoARField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Tipo Atencion"),
-        ),
         Expanded(
           flex: 3,
           child: TextFormField(
@@ -476,10 +464,6 @@ class _afectadoViewState extends State<afectadoView> {
     final descripcionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Descripción"),
-        ),
         Expanded(
           flex: 4,
           child: TextFormField(
@@ -538,13 +522,25 @@ class _afectadoViewState extends State<afectadoView> {
             const SizedBox(height: 10),
             vigenciaField,
             const SizedBox(height: 10),
+            const Divider(
+              thickness: 2,
+            ),
+            const SizedBox(height: 10),
             nombreAcField,
             const SizedBox(height: 10),
             CURPField,
             const SizedBox(height: 10),
             domicilioField,
             const SizedBox(height: 10),
+            const Divider(
+              thickness: 2,
+            ),
+            const SizedBox(height: 10),
             tipoARField,
+            const SizedBox(height: 10),
+            const Divider(
+              thickness: 2,
+            ),
             const SizedBox(height: 10),
             institucionMedField,
             const SizedBox(height: 10),
@@ -558,6 +554,10 @@ class _afectadoViewState extends State<afectadoView> {
             dateAltaField,
             const SizedBox(height: 10),
             hourAltaField,
+            const SizedBox(height: 10),
+            const Divider(
+              thickness: 2,
+            ),
             const SizedBox(height: 10),
             descripcionField,
             Column(
