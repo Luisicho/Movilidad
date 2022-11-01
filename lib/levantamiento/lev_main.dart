@@ -192,7 +192,7 @@ class _levMainState extends State<levMain> {
           child: TextFormField(
               controller: ubicacionController,
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.pages),
+                prefixIcon: const Icon(Icons.add_location_alt_outlined),
                 contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                 hintText: "Ubicacion",
                 border: OutlineInputBorder(
@@ -214,7 +214,7 @@ class _levMainState extends State<levMain> {
           child: TextFormField(
               controller: entreController,
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.pages),
+                prefixIcon: const Icon(Icons.add_location_alt_outlined),
                 contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                 hintText: "Entre",
                 border: OutlineInputBorder(
@@ -236,7 +236,7 @@ class _levMainState extends State<levMain> {
           child: TextFormField(
               controller: yController,
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.pages),
+                prefixIcon: const Icon(Icons.add_location_alt_outlined),
                 contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                 hintText: "y",
                 border: OutlineInputBorder(
@@ -505,6 +505,8 @@ class _levMainState extends State<levMain> {
             onChanged: (value) {
               setState(() {
                 VehiRespondable = value.toString();
+                noeconomicoController.text = "";
+                placasController.text = "";
               });
             },
           ),
@@ -518,6 +520,8 @@ class _levMainState extends State<levMain> {
             onChanged: (value) {
               setState(() {
                 VehiRespondable = value.toString();
+                noeconomicoController.text = "";
+                placasController.text = "";
               });
             },
           ),
@@ -865,7 +869,7 @@ class _levMainState extends State<levMain> {
                 onPressed: () {
                   //-------------Toast
                   Fluttertoast.showToast(
-                      msg: 'Enviando a la nuve',
+                      msg: 'Enviando a la nube',
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.CENTER,
                       timeInSecForIosWeb: 1,
@@ -874,7 +878,7 @@ class _levMainState extends State<levMain> {
                       fontSize: 16.0);
                   //-------------Toast
                 },
-                child: const Text('Guardar'),
+                child: const Text('Guardar Datos de Accidente'),
               ),
             ),
           ),
