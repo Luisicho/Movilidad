@@ -1,0 +1,6 @@
+//------------------Codigo para cambiar el logo e icono de la aplicacion-----------
+//----- Powershell o CMD ----- //
+flutter pub get
+flutter pub run flutter_launcher_icons:main
+
+

@@ -16,11 +16,17 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController userController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
 
+  //focus nodes
+  FocusNode textSecondFocusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
-    //password field
+    //user field
     final usuarioField = TextFormField(
       autofocus: false,
+      onFieldSubmitted: (value) {
+        FocusScope.of(context).requestFocus(textSecondFocusNode);
+      },
       controller: userController,
       validator: (value) {
         if (value!.isEmpty) {
@@ -44,6 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
     //password field
     final passwordField = TextFormField(
       autofocus: false,
+      focusNode: textSecondFocusNode,
       controller: passwordController,
       obscureText: true,
       validator: (value) {
@@ -73,12 +80,17 @@ class _LoginScreenState extends State<LoginScreen> {
     final loginButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
-      color: Colors.greenAccent,
+      color: Colors.purple,
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
-          signIn(userController.text, passwordController.text);
+          //cambia el focus de la pantalla
+          FocusScope.of(context).unfocus();
+          //valida si es correcto el campo de texto
+          if (_formKey.currentState!.validate()) {
+            signIn(userController.text, passwordController.text);
+          }
         },
         child: const Text(
           "Entrar",
@@ -102,6 +114,8 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.all(36.0),
               child: Form(
                 key: _formKey,
+                //Valida automaticamente al escribir
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -109,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       height: 200,
                       child: Image.asset(
-                        "assets/logoNay.png",
+                        "assets/logoMovilidad.jpeg",
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -131,6 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void signIn(String username, String password) {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomeScreen()));
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const HomeScreen()));
   }
 }

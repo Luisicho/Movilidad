@@ -1,5 +1,5 @@
 name: movilidad
-description: A new Flutter project.
+description: Proyecto de Movilidad de la secretaria del estado de Nayarit.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -37,10 +37,22 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   smooth_page_indicator: ^1.0.0
+  flutter_map: any
+  flutter_speed_dial: ^4.3.0
+  geolocator: ^8.0.0
+  fluttertoast: ^8.1.1
+  image_picker: ^0.8.6
+  flutter_launcher_icons: ^0.10.0
+
+flutter_icons:
+  image_path: assets/icono-nay.png
+  android: true
+  ios: true
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
