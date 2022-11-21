@@ -904,6 +904,7 @@ class _levMainState extends State<levMain> {
       body: Stepper(
         type: StepperType.horizontal,
         steps: getSteps(),
+        //Builder para personalisar los botoner continue,cancel 
         controlsBuilder: (context, _) {
           return Row(
             children: <Widget>[
@@ -965,6 +966,3 @@ class _levMainState extends State<levMain> {
     );
   } //widget
 }
-
-void iniComponents(BuildContext context, TextEditingController fechaController,
-    TextEditingController hourController) async {}
