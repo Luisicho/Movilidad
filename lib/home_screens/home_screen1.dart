@@ -51,7 +51,14 @@ class _HomeScreen1State extends State<HomeScreen1> {
   }
 
   void goToMain() {
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const MapMain()));
+    //Inicia la pantalla MapMain
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return const MapMain();
+        },
+      ),
+    );
   }
 }

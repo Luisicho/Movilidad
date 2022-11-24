@@ -145,7 +145,16 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void signIn(String username, String password) {
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const HomeScreen()));
+    userController.text = "";
+    passwordController.text = "";
+    //Inicia la pantalla Home
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return const HomeScreen();
+        },
+      ),
+    );
   }
 }

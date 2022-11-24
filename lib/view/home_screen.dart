@@ -20,9 +20,35 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
+    return WillPopScope(
+      onWillPop: () async {
+        final shouldPop = await showDialog<bool>(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('¿Quieres regresar al inicio de secion?'),
+              actionsAlignment: MainAxisAlignment.spaceBetween,
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context, true);
+                  },
+                  child: const Text('Si'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context, false);
+                  },
+                  child: const Text('No'),
+                ),
+              ],
+            );
+          },
+        );
+        return shouldPop!;
+      },
+      child: Scaffold(
+        body: Stack(children: [
           PageView(
             controller: _pageController,
             children: [
@@ -33,17 +59,16 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           Container(
-            alignment: const Alignment(0,0.75),
-            child: 
-            //dot indicator
-            SmoothPageIndicator(
+            alignment: const Alignment(0, 0.75),
+            child:
+                //dot indicator
+                SmoothPageIndicator(
               controller: _pageController,
               count: 3,
             ),
           )
-        ]
+        ]),
       ),
     );
   }
-  
 }

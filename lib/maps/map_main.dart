@@ -29,13 +29,8 @@ class _MapMainState extends State<MapMain> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        if (isDialOpen.value) {
-          // Close Dial
-          isDialOpen.value = false;
-          return false;
-        }else {
-          return true;
-        }
+        Navigator.of(context).pop();
+        return false;
       },
       child: Scaffold(
         floatingActionButton: SpeedDial(

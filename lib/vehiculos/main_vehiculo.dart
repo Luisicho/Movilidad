@@ -30,50 +30,54 @@ class _MainVehiculoState extends State<MainVehiculo> {
     }
     
     //-----Return
-      return Scaffold(
-      appBar: AppBar(
-        title: const Text('Lista Vehiculos'),
-      ),
-      body: Column(
-        children: [
-          Container(
-            margin: const EdgeInsets.all(16),
-            child: TextField(
-              keyboardType: TextInputType.number,
-              controller: searchController,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.search),
-                hintText: 'Codigo Folio',
-                contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: Colors.blue)),
+      return WillPopScope(
+      onWillPop: () async {
+        Navigator.of(context).pop();
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Lista Vehiculos'),
+        ),
+        body: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.all(16),
+              child: TextField(
+                keyboardType: TextInputType.number,
+                controller: searchController,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.search),
+                  hintText: 'Codigo Folio',
+                  contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: Colors.blue)),
+                ),
+                onChanged: searchLevantamiento,
               ),
-              onChanged: searchLevantamiento,
             ),
-          ),
-          Expanded(
-              child: ListView.builder(
-              itemCount: levantamientos.length,
-              itemBuilder: (context, index) {
-                //Carga la lista en un ListViewBuilder
-                final levantamiento = levantamientos[index];
+            Expanded(
+                child: ListView.builder(
+                itemCount: levantamientos.length,
+                itemBuilder: (context, index) {
+                  //Carga la lista en un ListViewBuilder
+                  final levantamiento = levantamientos[index];
 
-                return ListTile(
-                  leading: Text(levantamiento.Folio),
-                  title: Text(levantamiento.Descripcion),
-                  onTap: () {
-                    //Funcion para abrir el levantamiento con su informacion
+                  return ListTile(
+                    leading: Text(levantamiento.Folio),
+                    title: Text(levantamiento.Descripcion),
+                    onTap: () {
+                      //Funcion para abrir el levantamiento con su informacion
 
-                  },
-                );
-              },
-            )
-          ),
-        ],
+                    },
+                  );
+                },
+              )
+            ),
+          ],
+        ),
       ),
     );
-
-    
   }
 }

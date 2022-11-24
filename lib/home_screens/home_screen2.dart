@@ -52,7 +52,14 @@ class _HomeScreen2State extends State<HomeScreen2> {
   }
 
   void goToMain() {
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const MainVehiculo()));
+    //Inicia la pantalla MapVehiculo
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return const MainVehiculo();
+        },
+      ),
+    );
   }
 }

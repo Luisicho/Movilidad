@@ -38,7 +38,8 @@ class _secondStepState extends State<secondStep> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
             );
-          });
+          }
+        );
     }
 
     return Container(
