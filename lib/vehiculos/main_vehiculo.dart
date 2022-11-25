@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:movilidad/vehiculos/model/levantamiento.dart';
+import '../levantamiento/model/levantamiento.dart';
 
 class MainVehiculo extends StatefulWidget {
   const MainVehiculo({super.key});
@@ -83,7 +83,7 @@ class _MainVehiculoState extends State<MainVehiculo> {
                     },
                   );
                 },
-              )
+              ),
             ),
           ],
         ),

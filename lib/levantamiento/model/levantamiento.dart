@@ -66,3 +66,15 @@ class Levantamiento {
       this.Nombre,
       this.Vigencia);
 }
+
+List<Levantamiento> listEjemploLevantamiento = [
+  Levantamiento._init('01', 'FechaLlegada', 'HoraLlegada', 'HoraAccidente','Ubicacion', 'Entre', 'Y', 'Longitud', 'Latitud',List<File>.empty(), 'NoEconomico', 'Placas', 'Descripcion', 'Concesionario', 'NoLicencia', 'Tipo', 'Nombre', 'Vigencia'),
+  Levantamiento._init('02', 'FechaLlegada', 'HoraLlegada', 'HoraAccidente','Ubicacion', 'Entre', 'Y', 'Longitud', 'Latitud',List<File>.empty(), 'NoEconomico', 'Placas', 'Descripcion', 'Concesionario', 'NoLicencia', 'Tipo', 'Nombre', 'Vigencia'),
+  Levantamiento._init('03', 'FechaLlegada', 'HoraLlegada', 'HoraAccidente','Ubicacion', 'Entre', 'Y', 'Longitud', 'Latitud',List<File>.empty(), 'NoEconomico', 'Placas', 'Descripcion', 'Concesionario', 'NoLicencia', 'Tipo', 'Nombre', 'Vigencia'),
+  Levantamiento._init('04', 'FechaLlegada', 'HoraLlegada', 'HoraAccidente','Ubicacion', 'Entre', 'Y', 'Longitud', 'Latitud',List<File>.empty(), 'NoEconomico', 'Placas', 'Descripcion', 'Concesionario', 'NoLicencia', 'Tipo', 'Nombre', 'Vigencia'),
+  Levantamiento._init('05', 'FechaLlegada', 'HoraLlegada', 'HoraAccidente','Ubicacion', 'Entre', 'Y', 'Longitud', 'Latitud',List<File>.empty(), 'NoEconomico', 'Placas', 'Descripcion', 'Concesionario', 'NoLicencia', 'Tipo', 'Nombre', 'Vigencia'),
+  Levantamiento._init('06', 'FechaLlegada', 'HoraLlegada', 'HoraAccidente','Ubicacion', 'Entre', 'Y', 'Longitud', 'Latitud',List<File>.empty(), 'NoEconomico', 'Placas', 'Descripcion', 'Concesionario', 'NoLicencia', 'Tipo', 'Nombre', 'Vigencia'),
+  Levantamiento._init('07', 'FechaLlegada', 'HoraLlegada', 'HoraAccidente','Ubicacion', 'Entre', 'Y', 'Longitud', 'Latitud',List<File>.empty(), 'NoEconomico', 'Placas', 'Descripcion', 'Concesionario', 'NoLicencia', 'Tipo', 'Nombre', 'Vigencia'),
+  
+];
+
