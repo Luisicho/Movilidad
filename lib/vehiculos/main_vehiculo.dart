@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:movilidad/vehiculos/model/levantamiento.dart';
 
 class MainVehiculo extends StatefulWidget {
@@ -69,7 +70,16 @@ class _MainVehiculoState extends State<MainVehiculo> {
                     title: Text(levantamiento.Descripcion),
                     onTap: () {
                       //Funcion para abrir el levantamiento con su informacion
-
+                      //-------------Toast
+                      Fluttertoast.showToast(
+                      msg: 'Enviando a la nube',
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white,
+                      fontSize: 16.0);
+                     //-------------Toast
                     },
                   );
                 },

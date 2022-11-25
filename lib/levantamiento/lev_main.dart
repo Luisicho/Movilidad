@@ -13,6 +13,8 @@ class levMain extends StatefulWidget {
 class _levMainState extends State<levMain> {
   //-----------Inicio de variables y controladores------------------
   int currStep = 0;
+  firstStep primerPaso = firstStep();
+  secondStep segundoPaso = secondStep();
 
   //-----Iniciar la ventana
   @override
@@ -28,13 +30,13 @@ class _levMainState extends State<levMain> {
             state: currStep > 0 ? StepState.complete : StepState.indexed,
             isActive: currStep >= 0,
             title: const Text('Accidende'),
-            content: const firstStep(),
+            content: primerPaso,
           ),
           Step(
             state: currStep > 1 ? StepState.complete : StepState.indexed,
             isActive: currStep >= 1,
             title: const Text('Afectados'),
-            content: const secondStep(),
+            content: segundoPaso,
           ),
           Step(
             state: currStep > 2 ? StepState.complete : StepState.indexed,
@@ -125,6 +127,5 @@ class _levMainState extends State<levMain> {
         ),
       ),
     );
-    
   } //widget
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -12,7 +14,7 @@ class Levantamiento {
   String Y;
   String Longitud;
   String Latitud;
-  List<XFile> FotosLev;
+  List<File> FotosLev = [File(''),File(''),File(''),File(''),File(''),File('')];
   String NoEconomico;
   String Placas;
   String Descripcion;
@@ -33,7 +35,6 @@ class Levantamiento {
     this.Y = "",
     this.Longitud = "",
     this.Latitud = "",
-    this.FotosLev = List<XFile>.empty(),
     this.NoEconomico = "",
     this.Placas = "",
     this.Descripcion = "",

@@ -8,7 +8,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:movilidad/levantamiento/model/levantamiento.dart';
 
 class firstStep extends StatefulWidget {
-  const firstStep({super.key});
+  //objeto
+  final Levantamiento levantamiento = Levantamiento();
+  firstStep({super.key, levantamiento});
 
   @override
   State<firstStep> createState() => _firstStepState();
@@ -55,20 +57,28 @@ class _firstStepState extends State<firstStep> {
   final List<XFile>? images = List<XFile>.empty();
   XFile? photo1, photo2, photo3, photo4, photo5, photo6 = XFile("no");
   File? image1, image2, image3, image4, image5, image6;
-  //objeto
-  Levantamiento levantamiento = Levantamiento();
 
   @override
   Widget build(BuildContext context) {
+
+    //FUNCION PARA CONSEGUIR FOLIO NUEVO
+    String getFolio() {
+      return "";
+    }
+
     //ASIGNA HORA DE HOY
     hourLlegadaController.text = TimeOfDay.now().format(context).toString();
     //Objeto
-    levantamiento.HoraLlegada = TimeOfDay.now().format(context).toString();
+    widget.levantamiento.HoraLlegada =
+        TimeOfDay.now().format(context).toString();
     //ASIGNA DIA DE HOY
     fechaController.text = DateFormat("dd-MM-yyyy").format(DateTime.now());
     //Objeto
-    levantamiento.FechaLlegada =
+    widget.levantamiento.FechaLlegada =
         DateFormat("dd-MM-yyyy").format(DateTime.now());
+
+    //Consigue folio nuevo
+    folioController.text = getFolio();
 
     //--------------Object Varaible-----------------------
     //--------------Step No1
@@ -91,10 +101,6 @@ class _firstStepState extends State<firstStep> {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            onChanged: (value) {
-              //Actualiza objeto levantamiento
-              levantamiento.Folio = value;
-            },
           ),
         ),
       ],
@@ -182,7 +188,7 @@ class _firstStepState extends State<firstStep> {
                 hourAccidenteController.text =
                     timePicket.format(context).toString();
                 //Guarda hora en objeto levantamiento
-                levantamiento.HoraAccidente =
+                widget.levantamiento.HoraAccidente =
                     timePicket.format(context).toString();
               }
             },
@@ -215,7 +221,7 @@ class _firstStepState extends State<firstStep> {
             ),
             onChanged: ((value) {
               //Objeto ubicacion
-              levantamiento.Ubicacion = value;
+              widget.levantamiento.Ubicacion = value;
             }),
           ),
         ),
@@ -246,7 +252,7 @@ class _firstStepState extends State<firstStep> {
             ),
             onChanged: ((value) {
               //Objeto cambio
-              levantamiento.Entre = value;
+              widget.levantamiento.Entre = value;
             }),
           ),
         ),
@@ -277,7 +283,7 @@ class _firstStepState extends State<firstStep> {
             ),
             onChanged: ((value) {
               //Objeto cambio
-              levantamiento.Y = value;
+              widget.levantamiento.Y = value;
             }),
           ),
         ),
@@ -332,8 +338,8 @@ class _firstStepState extends State<firstStep> {
               //Asigna coordenadas a Txt
               latController.text = _currentPosition.latitude.toString();
               lonController.text = _currentPosition.longitude.toString();
-              levantamiento.Latitud = _currentPosition.latitude.toString();
-              levantamiento.Longitud = _currentPosition.longitude.toString();
+              widget.levantamiento.Latitud = _currentPosition.latitude.toString();
+              widget.levantamiento.Longitud = _currentPosition.longitude.toString();
               //print(latController.text);
               //print(lonController.text);
             },
@@ -392,6 +398,8 @@ class _firstStepState extends State<firstStep> {
                         if (photo1 == null) return;
                         // transforma imagen a file
                         final imageTemporal = File(photo1!.path);
+                        //Agrega foto a la lista
+                        widget.levantamiento.FotosLev[0] = imageTemporal;
                         setState(() {
                           this.image1 = imageTemporal;
                         });
@@ -414,6 +422,8 @@ class _firstStepState extends State<firstStep> {
                         if (photo2 == null) return;
                         // transforma imagen a file
                         final imageTemporal = File(photo2!.path);
+                        //Agrega foto a la lista
+                        widget.levantamiento.FotosLev[1] = imageTemporal;
                         setState(() {
                           this.image2 = imageTemporal;
                         });
@@ -445,6 +455,8 @@ class _firstStepState extends State<firstStep> {
                         if (photo3 == null) return;
                         // transforma imagen a file
                         final imageTemporal = File(photo3!.path);
+                        //Agrega foto a la lista
+                        widget.levantamiento.FotosLev[2] = imageTemporal;
                         setState(() {
                           this.image3 = imageTemporal;
                         });
@@ -467,6 +479,8 @@ class _firstStepState extends State<firstStep> {
                         if (photo4 == null) return;
                         // transforma imagen a file
                         final imageTemporal = File(photo4!.path);
+                        //Agrega foto a la lista
+                        widget.levantamiento.FotosLev[3] = imageTemporal;
                         setState(() {
                           this.image4 = imageTemporal;
                         });
@@ -498,6 +512,8 @@ class _firstStepState extends State<firstStep> {
                         if (photo5 == null) return;
                         // transforma imagen a file
                         final imageTemporal = File(photo5!.path);
+                        //Agrega foto a la lista
+                        widget.levantamiento.FotosLev[4] = imageTemporal;
                         setState(() {
                           this.image5 = imageTemporal;
                         });
@@ -520,6 +536,8 @@ class _firstStepState extends State<firstStep> {
                         if (photo6 == null) return;
                         // transforma imagen a file
                         final imageTemporal = File(photo6!.path);
+                        //Agrega foto a la lista
+                        widget.levantamiento.FotosLev[5] = imageTemporal;
                         setState(() {
                           this.image6 = imageTemporal;
                         });
@@ -591,9 +609,8 @@ class _firstStepState extends State<firstStep> {
                       ),
                     ),
                     onChanged: (value) {
-                      levantamiento.NoEconomico = value;
-                    }
-                  )
+                      widget.levantamiento.NoEconomico = value;
+                    })
                 : TextFormField(
                     enabled: false,
                     controller: noeconomicoController,
@@ -626,9 +643,8 @@ class _firstStepState extends State<firstStep> {
                       ),
                     ),
                     onChanged: (value) {
-                      levantamiento.Placas = value;
-                    }
-                  )
+                      widget.levantamiento.Placas = value;
+                    })
                 : TextFormField(
                     enabled: false,
                     controller: placasController,
@@ -689,9 +705,6 @@ class _firstStepState extends State<firstStep> {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            onChanged: (value) {
-              levantamiento.Descripcion = value;
-            }
           ),
         ),
       ],
@@ -717,9 +730,6 @@ class _firstStepState extends State<firstStep> {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            onChanged: (value) {
-              levantamiento.Concesionario = value;
-            }
           ),
         ),
       ],
@@ -762,6 +772,8 @@ class _firstStepState extends State<firstStep> {
                   textColor: Colors.white,
                   fontSize: 16.0);
               //-------------Toast
+              //Cambia Objeto
+              widget.levantamiento.NoLicencia = nolicenciaController.text;
             },
             child: const Text('Buscar'),
           ),
@@ -845,7 +857,7 @@ class _firstStepState extends State<firstStep> {
     );
 
     //--------------Step No1
-    //multi foto, vehiculo field, no licencia, tipo, nombre, vigencia
+    //multi foto, Descripcion, concecionario, vehiculo field, no licencia, tipo, nombre, vigencia
 
     //--------------Object Varaible-----------------------
 

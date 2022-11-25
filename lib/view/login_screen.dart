@@ -52,6 +52,11 @@ class _LoginScreenState extends State<LoginScreen> {
       autofocus: false,
       focusNode: textSecondFocusNode,
       controller: passwordController,
+      onFieldSubmitted: (value) {
+        if (_formKey.currentState!.validate()) {
+          signIn(userController.text, value);
+        }
+      },
       obscureText: true,
       validator: (value) {
         RegExp regex = new RegExp(r'^.{6,}$');
@@ -145,8 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void signIn(String username, String password) {
-    userController.text = "";
-    passwordController.text = "";
+    clearTXT();
     //Inicia la pantalla Home
     Navigator.push(
       context,
@@ -156,5 +160,10 @@ class _LoginScreenState extends State<LoginScreen> {
         },
       ),
     );
+  }
+
+  void clearTXT() {
+    userController.text = "";
+    passwordController.text = "";
   }
 }
