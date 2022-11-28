@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:movilidad/levantamiento/first_step.dart';
-import 'package:movilidad/levantamiento/second_step.dart';
+
+import 'package:movilidad/src/levantamiento/first_step.dart';
+import 'package:movilidad/src/levantamiento/second_step.dart';
 
 class levMain extends StatefulWidget {
   const levMain({super.key});

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movilidad/home_screens/home_screen1.dart';
-import 'package:movilidad/home_screens/home_screen2.dart';
-import 'package:movilidad/home_screens/home_screen3.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import 'package:movilidad/src/home_screens/home_screen1.dart';
+import 'package:movilidad/src/home_screens/home_screen2.dart';
+import 'package:movilidad/src/home_screens/home_screen3.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -53,9 +55,9 @@ class _HomeScreenState extends State<HomeScreen> {
             controller: _pageController,
             children: [
               //Screens from page
-              HomeScreen1(),
-              HomeScreen2(),
-              HomeScreen3(),
+              const HomeScreen1(),
+              const HomeScreen2(),
+              const HomeScreen3(),
             ],
           ),
           Container(
