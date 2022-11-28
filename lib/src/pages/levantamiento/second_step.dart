@@ -2,8 +2,8 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'package:movilidad/src/levantamiento/model/afectado.dart';
-import 'package:movilidad/src/levantamiento/views/afectado_view.dart';
+import 'package:movilidad/src/pages/levantamiento/model/afectado.dart';
+import 'package:movilidad/src/pages/levantamiento/views/afectado_view.dart';
 
 class secondStep extends StatefulWidget {
   //Lista de afectados

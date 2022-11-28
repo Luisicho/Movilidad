@@ -65,23 +65,32 @@ class _MainVehiculoState extends State<MainVehiculo> {
                 itemBuilder: (context, index) {
                   //Carga la lista en un ListViewBuilder
                   final levantamiento = levantamientos[index];
-
-                  return ListTile(
-                    leading: Text(levantamiento.Folio),
-                    title: Text(levantamiento.Descripcion),
-                    onTap: () {
-                      //Funcion para abrir el levantamiento con su informacion
-                      //-------------Toast
-                      Fluttertoast.showToast(
-                      msg: 'Enviando a la nube',
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.CENTER,
-                      timeInSecForIosWeb: 1,
-                      backgroundColor: Colors.red,
-                      textColor: Colors.white,
-                      fontSize: 16.0);
-                     //-------------Toast
-                    },
+                  
+                  return Column(
+                    children: [
+                      ListTile(
+                        title: Text(levantamiento.Folio),
+                        subtitle: Text(levantamiento.Descripcion),
+                        leading: const Icon(Icons.car_crash),
+                        trailing: const Icon(Icons.keyboard_arrow_right),
+                        onTap: () {
+                          //Funcion para abrir el levantamiento con su informacion
+                          //-------------Toast
+                          Fluttertoast.showToast(
+                          msg: 'Abre Levantamiento ' + levantamiento.Folio,
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
+                         //-------------Toast
+                        },
+                      ),
+                      const Divider(
+                        thickness: 2,
+                      ),
+                    ],
                   );
                 },
               ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
-import 'package:movilidad/src/levantamiento/model/afectado.dart';
+import 'package:movilidad/src/pages/levantamiento/model/afectado.dart';
 
 class afectadoView extends StatefulWidget {
   //variables

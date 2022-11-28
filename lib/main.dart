@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:movilidad/src/levantamiento/lev_main.dart';
-import 'package:movilidad/src/levantamiento/second_step.dart';
-import 'package:movilidad/src/vehiculos/main_vehiculo.dart';
-import 'package:movilidad/src/view/home_screen.dart';
-import 'package:movilidad/src/view/login_screen.dart';
+import 'package:movilidad/src/pages/levantamiento/lev_main.dart';
+import 'package:movilidad/src/pages/levantamiento/second_step.dart';
+import 'package:movilidad/src/pages/vehiculos/main_vehiculo.dart';
+import 'package:movilidad/src/pages/view/home_screen.dart';
+import 'package:movilidad/src/pages/view/login_screen.dart';
 
 //RootWidget, creating a blank app for google materials design features
 Future<void> main() async {
