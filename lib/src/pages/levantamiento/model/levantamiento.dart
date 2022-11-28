@@ -75,7 +75,10 @@ class Levantamiento {
 List<Levantamiento> getList() {
   //Se conecta a la BD para conseguir lista
 
-  List<String> listaDeDB;
+  List<String> listaDeDB = vehiculoProvider.cargarData()
+    .then( (opciones) {
+      
+    });
   List<Levantamiento> listaNueva;
 
   for (String lev in listaDeDB) {
