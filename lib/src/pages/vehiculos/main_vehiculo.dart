@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'package:movilidad/src/pages/vehiculos/view/levantamiento_view.dart';
 import 'package:movilidad/src/providers/vehiculo_provider.dart';
 import 'package:movilidad/src/utils/icono_string_util.dart';
 import '../levantamiento/model/levantamiento.dart';
@@ -72,24 +73,23 @@ class _MainVehiculoState extends State<MainVehiculo> {
 
   //Funcion que crea lista nueva
   Widget _lista() {
-
     //Widget Future para crear lista a futuro luego de resivir la informacion
     return FutureBuilder(
       future: vehiculoProvider.cargarData(),
       initialData: [],
       builder: (context, snapshot) {
         return ListView(
-          children: _listaItems( snapshot.data ),
+          children: _listaItems(snapshot.data, context),
         );
       },
     );
-
   }
+
   //Funcion que agrega elementos a la lista nueva
-  List<Widget> _listaItems( List<dynamic>? data ) {
+  List<Widget> _listaItems(List<dynamic>? data, BuildContext context) {
     final List<Widget> opciones = [];
 
-    //Lee toda la informacion del JSON y la agrega a una lista de 
+    //Lee toda la informacion del JSON y la agrega a una lista de
     //  widgets que luego se muestran en lista
     data!.forEach((element) {
       final widgetTemp = ListTile(
@@ -99,21 +99,23 @@ class _MainVehiculoState extends State<MainVehiculo> {
         trailing: const Icon(Icons.keyboard_arrow_right),
         onTap: () {
           //Funcion para entrar a la ventana levantamiento
-          
+          //Crea ruta estatica
+          final route = MaterialPageRoute(builder: ((context) => const LevantamientoView()));
+          Navigator.push(context, route);
         },
       );
 
       //Agrega a arreglo opciones
-      opciones..add(widgetTemp)
-              ..add(Divider(thickness: 2,));
-
+      opciones
+        ..add(widgetTemp)
+        ..add(Divider(
+          thickness: 2,
+        ));
     });
 
     return opciones;
   }
-  
 }
-
 
 //------------CODIGO DE REPUESTO
 /*
