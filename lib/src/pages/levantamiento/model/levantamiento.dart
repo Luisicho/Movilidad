@@ -32,23 +32,23 @@ class Levantamiento {
 
   //Constructor objeto vacio
   Levantamiento()
-      : this.Folio = "",
-        this.FechaLlegada = "",
-        this.HoraLlegada = "",
-        this.HoraAccidente = "",
-        this.Ubicacion = "",
-        this.Entre = "",
-        this.Y = "",
-        this.Longitud = "",
-        this.Latitud = "",
-        this.NoEconomico = "",
-        this.Placas = "",
-        this.Descripcion = "",
-        this.Concesionario = "",
-        this.NoLicencia = "",
-        this.Tipo = "",
-        this.Nombre = "",
-        this.Vigencia = "";
+      : Folio = "",
+        FechaLlegada = "",
+        HoraLlegada = "",
+        HoraAccidente = "",
+        Ubicacion = "",
+        Entre = "",
+        Y = "",
+        Longitud = "",
+        Latitud = "",
+        NoEconomico = "",
+        Placas = "",
+        Descripcion = "",
+        Concesionario = "",
+        NoLicencia = "",
+        Tipo = "",
+        Nombre = "",
+        Vigencia = "";
 
   //Constructor
   Levantamiento._init(
@@ -70,6 +70,11 @@ class Levantamiento {
       this.Tipo,
       this.Nombre,
       this.Vigencia);
+  @override
+  String toString() {
+    return 
+      "Folio: $Folio Nombre: $Nombre FechaLlegada: $FechaLlegada Descripcion: $Descripcion HoraLlegada: $HoraLlegada HoraAccidente: $HoraAccidente Ubicacion: $Ubicacion Entre: $Entre Y: $Y Longitud: $Longitud Latitud: $Latitud NoEconomico: $NoEconomico Placas: $Placas Concesionario: $Concesionario NoLicencia: $NoLicencia Tipo: $Tipo Vigencia: $Vigencia";
+  }
 }
 /*
 List<Levantamiento> getList() {

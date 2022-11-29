@@ -89,6 +89,7 @@ class _MainVehiculoState extends State<MainVehiculo> {
   List<Widget> _listaItems(List<dynamic>? data, BuildContext context) {
     final List<Widget> opciones = [];
 
+
     //Lee toda la informacion del JSON y la agrega a una lista de
     //  widgets que luego se muestran en lista
     data!.forEach((element) {
@@ -100,7 +101,8 @@ class _MainVehiculoState extends State<MainVehiculo> {
         onTap: () {
           //Funcion para entrar a la ventana levantamiento
           //Crea ruta estatica
-          final route = MaterialPageRoute(builder: ((context) => LevantamientoView()));
+          final route =
+              MaterialPageRoute(builder: ((context) => LevantamientoView()));
           Navigator.push(context, route);
         },
       );
@@ -108,7 +110,7 @@ class _MainVehiculoState extends State<MainVehiculo> {
       //Agrega a arreglo opciones
       opciones
         ..add(widgetTemp)
-        ..add(Divider(
+        ..add(const Divider(
           thickness: 2,
         ));
     });

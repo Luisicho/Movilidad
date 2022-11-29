@@ -19,4 +19,11 @@ class Afectado {
   //Constructor
   Afectado(this.aseguradora,this.poliza,this.vigencia,this.nombreAc,this.CURP,this.domicilio,this.tipoAtencion,this.institucionMedica,this.fechaRecepcion,this.horaRecepcion,this.fechaAlta,this.horaAlta,this.Observaciones);
 
+  @override
+  String toString() {
+    // TODO: implement toString
+    return 
+      "Aseguradora: $aseguradora Poliza: $poliza Vigencia: $vigencia NombreAc: $nombreAc CURP: $CURP Domicilio: $domicilio TipoAtencion $tipoAtencion InstitucionMedica $institucionMedica FechaRecepcion: $fechaRecepcion HoraRecepcion $horaRecepcion FechaAlta: $fechaAlta HoraAlta: $horaAlta Observaciones $Observaciones";
+  }
+
 }

@@ -47,9 +47,11 @@ class _levMainState extends State<levMain> {
               height: 500,
               child: TextButton(
                 onPressed: () {
+                  String firtStep = primerPaso.levantamiento.toString();
+                  String secStep = segundoPaso.afectados[0].toString();
                   //-------------Toast
                   Fluttertoast.showToast(
-                      msg: 'Enviando a la nube',
+                      msg: 'Enviando a la nube $secStep --------------------- $firtStep',
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.CENTER,
                       timeInSecForIosWeb: 1,
