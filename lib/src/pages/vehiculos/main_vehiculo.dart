@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:movilidad/src/providers/vehiculo_provider.dart';
 
+import 'package:movilidad/src/providers/vehiculo_provider.dart';
+import 'package:movilidad/src/utils/icono_string_util.dart';
 import '../levantamiento/model/levantamiento.dart';
 
 class MainVehiculo extends StatefulWidget {
@@ -94,10 +95,11 @@ class _MainVehiculoState extends State<MainVehiculo> {
       final widgetTemp = ListTile(
         title: Text(element['folio']),
         subtitle: Text(element['descripcion']),
-        leading: Icon(Icons.car_crash),
-        trailing: Icon(Icons.keyboard_arrow_right),
+        leading: getIcon(element['icon']),
+        trailing: const Icon(Icons.keyboard_arrow_right),
         onTap: () {
           //Funcion para entrar a la ventana levantamiento
+          
         },
       );
 

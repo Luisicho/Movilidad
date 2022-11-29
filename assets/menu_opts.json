@@ -10,7 +10,7 @@
         },
         {
             "ruta" : "avatar",
-            "icon" : "accessibility",
+            "icon" : "car_crash",
             "texto": "Avatars",
             "folio": "02",
             "descripcion": "Hola 02"
@@ -21,6 +21,14 @@
             "texto": "Cards - Tarjetas",
             "folio": "03",
             "descripcion": "Hola 03"
+        }
+        ,
+        {
+            "ruta" : "card",
+            "icon" : "car_repair",
+            "texto": "Cards - Tarjetas",
+            "folio": "04",
+            "descripcion": "Hola 04"
         }
     ]
 }
