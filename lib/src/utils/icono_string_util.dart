@@ -6,6 +6,7 @@ final _icons = < String,IconData >{
   'folder_open'     : Icons.folder_open,
   'car_crash'       : Icons.car_crash,
   'car_repair'      : Icons.car_repair,
+  'airline_seat_flat_outlined'          : Icons.airline_seat_flat_outlined
 };
 //Consigue el icono en base a los ya existente en el arreglo
 Icon getIcon( String nombreIcono ){

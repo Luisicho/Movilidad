@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:movilidad/src/pages/levantamiento/model/afectado.dart';
 import 'package:movilidad/src/pages/levantamiento/views/afectado_view.dart';
+import 'package:movilidad/src/utils/icono_string_util.dart';
 
 class secondStep extends StatefulWidget {
   //Lista de afectados
@@ -20,6 +21,7 @@ class _secondStepState extends State<secondStep> {
 
   @override
   Widget build(BuildContext context) {
+    //Agrega afectado a un arreglo
     void addAfectado(Afectado afectado) {
       setState(() {
         widget.afectados.add(afectado);
@@ -30,7 +32,8 @@ class _secondStepState extends State<secondStep> {
     void showAfectadoDialog() {
       showDialog(
           context: context,
-          builder: (_) {
+          barrierDismissible: true,
+          builder: (context) {
             return AlertDialog(
               content: Container(
                 padding: const EdgeInsets.all(0),
@@ -66,11 +69,12 @@ class _secondStepState extends State<secondStep> {
           Expanded(
             flex: 2,
             child: ListView.builder(
-              itemBuilder: (ctx, index) {
+              itemBuilder: (context, index) {
                 return Card(
                   margin: const EdgeInsets.all(4),
                   elevation: 8,
                   child: ListTile(
+                    leading: getIcon('airline_seat_flat_outlined'),
                     title: Text(
                       widget.afectados[index].nombreAc,
                       style: const TextStyle(
@@ -80,7 +84,7 @@ class _secondStepState extends State<secondStep> {
                       ),
                     ),
                     subtitle: Text(
-                      widget.afectados[index].fechaRecepcion,
+                      widget.afectados[index].Observaciones,
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black12,
@@ -88,7 +92,7 @@ class _secondStepState extends State<secondStep> {
                       ),
                     ),
                     trailing: Text(
-                      widget.afectados[index].horaRecepcion,
+                      widget.afectados[index].fechaRecepcion,
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black26,
