@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:movilidad/src/pages/levantamiento/lev_main.dart';
-import 'package:movilidad/src/pages/levantamiento/second_step.dart';
-import 'package:movilidad/src/pages/vehiculos/main_vehiculo.dart';
-import 'package:movilidad/src/pages/view/home_screen.dart';
-import 'package:movilidad/src/pages/view/login_screen.dart';
+  
+import 'package:movilidad/src/routes/routes.dart';
 
 //RootWidget, creating a blank app for google materials design features
 Future<void> main() async {
@@ -23,9 +19,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      //home: levMain(),
-      home: LoginScreen(),
-      //home: HomeScreen(),
+      initialRoute: '/',
+      //Rutas de la APP
+      routes: getAplicationRoutes(),
     );
   }
 }

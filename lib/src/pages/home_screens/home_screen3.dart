@@ -56,13 +56,6 @@ class _HomeScreen3State extends State<HomeScreen3> {
 
   void goToMain() {
     //Inicia la pantalla MapVehiculo
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return const levMain();
-        },
-      ),
-    );
+    Navigator.pushNamed(context, 'lev_main');
   }
 }

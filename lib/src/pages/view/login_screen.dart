@@ -153,14 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void signIn(String username, String password) {
     clearTXT();
     //Inicia la pantalla Home
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return const HomeScreen();
-        },
-      ),
-    );
+    Navigator.pushNamed(context, 'home_screen');
   }
 
   void clearTXT() {
