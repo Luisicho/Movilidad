@@ -11,7 +11,7 @@ import 'package:movilidad/src/pages/levantamiento/model/levantamiento.dart';
 class firstStep extends StatefulWidget {
   //objeto
   final Levantamiento levantamiento = Levantamiento();
-  firstStep({super.key, levantamiento});
+  firstStep({super.key});
 
   @override
   State<firstStep> createState() => _firstStepState();
@@ -384,8 +384,10 @@ class _firstStepState extends State<firstStep> {
             children: [
               //Condicion para reemplazar el boton con la imagen cargada
               image1 != null
-                  ? Image.file(
-                      image1!,
+                  ? FadeInImage(
+                      image: FileImage(image1!),
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      fadeInDuration: const Duration(milliseconds: 200),
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
@@ -408,8 +410,10 @@ class _firstStepState extends State<firstStep> {
                     ),
               //Condicion para reemplazar el boton con la imagen cargada
               image2 != null
-                  ? Image.file(
-                      image2!,
+                  ? FadeInImage(
+                      image: FileImage(image2!),
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      fadeInDuration: const Duration(milliseconds: 200),
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
@@ -441,8 +445,10 @@ class _firstStepState extends State<firstStep> {
             children: [
               //Condicion para reemplazar el boton con la imagen cargada
               image3 != null
-                  ? Image.file(
-                      image3!,
+                  ? FadeInImage(
+                      image: FileImage(image3!),
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      fadeInDuration: const Duration(milliseconds: 200),
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
@@ -465,8 +471,10 @@ class _firstStepState extends State<firstStep> {
                     ),
               //Condicion para reemplazar el boton con la imagen cargada
               image4 != null
-                  ? Image.file(
-                      image4!,
+                  ? FadeInImage(
+                      image: FileImage(image4!),
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      fadeInDuration: const Duration(milliseconds: 200),
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
@@ -498,8 +506,10 @@ class _firstStepState extends State<firstStep> {
             children: [
               //Condicion para reemplazar el boton con la imagen cargada
               image5 != null
-                  ? Image.file(
-                      image5!,
+                  ? FadeInImage(
+                      image: FileImage(image5!),
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      fadeInDuration: const Duration(milliseconds: 200),
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
@@ -522,8 +532,10 @@ class _firstStepState extends State<firstStep> {
                     ),
               //Condicion para reemplazar el boton con la imagen cargada
               image6 != null
-                  ? Image.file(
-                      image6!,
+                  ? FadeInImage(
+                      image: FileImage(image6!),
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      fadeInDuration: const Duration(milliseconds: 200),
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
