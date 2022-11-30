@@ -16,6 +16,7 @@ class MainVehiculo extends StatefulWidget {
 class _MainVehiculoState extends State<MainVehiculo> {
   //--------Variables Locales
   final TextEditingController searchController = TextEditingController();
+  String valueABuscar = "";
   //Se carga la lista de todos los levantamientos
   List<Levantamiento> levantamientos = listEjemploLevantamiento;
 
@@ -23,15 +24,8 @@ class _MainVehiculoState extends State<MainVehiculo> {
   Widget build(BuildContext context) {
     //-----------------Funciones
     void searchLevantamiento(String value) {
-      //Busca en la lista de levantamientos el folio que se pide
-      final suggestions = listEjemploLevantamiento.where((obj) {
-        final folio = obj.Folio.toLowerCase();
-        final input = value.toLowerCase();
-
-        return folio.contains(input);
-      }).toList();
       //Actualiza lista de pantalla
-      setState(() => levantamientos = suggestions);
+      setState(() => valueABuscar = value);
     }
 
     //-----Return
@@ -89,10 +83,15 @@ class _MainVehiculoState extends State<MainVehiculo> {
   List<Widget> _listaItems(List<dynamic>? data, BuildContext context) {
     final List<Widget> opciones = [];
 
-
     //Lee toda la informacion del JSON y la agrega a una lista de
-    //  widgets que luego se muestran en lista
-    data!.forEach((element) {
+    //  widgets que luego se muestran en lista filtrandola para la
+    //  busqueda en el txt
+    data!.where((element) {
+      final folio = element['folio'];
+      final input = valueABuscar;
+
+      return folio.contains(input);
+    }).forEach((element) {
       final widgetTemp = ListTile(
         title: Text(element['folio']),
         subtitle: Text(element['descripcion']),
@@ -117,42 +116,39 @@ class _MainVehiculoState extends State<MainVehiculo> {
 
     return opciones;
   }
+
+  //Crea lista segun el builder
+  Widget _crearLista() {
+    return ListView.builder(
+        itemCount: levantamientos.length,
+        itemBuilder: (context, index) {
+          //variable que lee levantamiento a levantamiento
+          final levantamiento = levantamientos[index];
+
+          return Column(
+            children: [
+              ListTile(
+                title: Text(levantamiento.Folio),
+                subtitle: Text(levantamiento.Descripcion),
+                leading: const Icon(Icons.car_crash),
+                trailing: const Icon(Icons.keyboard_arrow_right),
+                onTap: () {
+                  //Funcion para entrar a la ventana levantamiento
+                  //Crea ruta estatica
+                  final route = MaterialPageRoute(
+                      builder: ((context) => LevantamientoView()));
+                  Navigator.push(context, route);
+                },
+              ),
+              const Divider(
+                thickness: 2,
+              ),
+            ],
+          );
+        });
+  }
 }
 
 //------------CODIGO DE REPUESTO
 /*
-.builder(
-                itemCount: levantamientos.length,
-                itemBuilder: (context, index) {
-                  //Carga la lista en un ListViewBuilder
-                  final levantamiento = levantamientos[index];
-
-                  return Column(
-                    children: [
-                      ListTile(
-                        title: Text(levantamiento.Folio),
-                        subtitle: Text(levantamiento.Descripcion),
-                        leading: const Icon(Icons.car_crash),
-                        trailing: const Icon(Icons.keyboard_arrow_right),
-                        onTap: () {
-                          //Funcion para abrir el levantamiento con su informacion
-                          //-------------Toast
-                          Fluttertoast.showToast(
-                              msg: 'Abre Levantamiento ' + levantamiento.Folio,
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.CENTER,
-                              timeInSecForIosWeb: 1,
-                              backgroundColor: Colors.red,
-                              textColor: Colors.white,
-                              fontSize: 16.0);
-                          //-------------Toast
-                        },
-                      ),
-                      const Divider(
-                        thickness: 2,
-                      ),
-                    ],
-                  );
-                },
-              ),
  */
