@@ -151,4 +151,15 @@ class _MainVehiculoState extends State<MainVehiculo> {
 
 //------------CODIGO DE REPUESTO
 /*
+    void searchLevantamiento(String value) { 
+      //Busca en la lista de levantamientos el folio que se pide
+      final suggestions = listEjemploLevantamiento.where((obj) {
+        final folio = obj.Folio.toLowerCase();
+        final input = value.toLowerCase();
+
+        return folio.contains(input);
+      }).toList();
+      //Actualiza lista de pantalla
+      setState(() => levantamientos = suggestions);
+    }
  */
