@@ -58,7 +58,7 @@ class _afectadoViewState extends State<afectadoView> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
-          flex: 3,
+          flex: 1,
           child: TextFormField(
             focusNode: polizaFocus,
             onFieldSubmitted: (value) {
@@ -82,7 +82,6 @@ class _afectadoViewState extends State<afectadoView> {
     final vigenciaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const SizedBox(width: 10),
         Expanded(
           flex: 1,
           child: TextFormField(
@@ -264,6 +263,7 @@ class _afectadoViewState extends State<afectadoView> {
                 initialDate: DateTime.now(),
                 firstDate: DateTime(1999),
                 lastDate: DateTime(2050),
+                locale: const Locale('es','ES'),
               );
               if (datePicket != null) {
                 //make format to the date
@@ -353,6 +353,7 @@ class _afectadoViewState extends State<afectadoView> {
                 initialDate: DateTime.now(),
                 firstDate: DateTime(1999),
                 lastDate: DateTime(2050),
+                locale: const Locale('es','ES'),
               );
               if (datePicket != null) {
                 //make format to the date

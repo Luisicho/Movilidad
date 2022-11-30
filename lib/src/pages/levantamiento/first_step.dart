@@ -181,7 +181,7 @@ class _firstStepState extends State<firstStep> {
               // Get the date
               TimeOfDay? timePicket = await showTimePicker(
                 context: context,
-                initialTime: TimeOfDay.now(),
+                initialTime: TimeOfDay.now(),                
               );
               if (timePicket != null) {
                 //make format to the time
