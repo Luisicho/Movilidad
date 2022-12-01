@@ -100,8 +100,12 @@ class _MainVehiculoState extends State<MainVehiculo> {
         onTap: () {
           //Funcion para entrar a la ventana levantamiento
           //Crea ruta estatica
-          final route =
-              MaterialPageRoute(builder: ((context) => LevantamientoView()));
+          final route = MaterialPageRoute(builder: ((context) {
+            //Se crea nueva vista y se pasa informacion
+            LevantamientoView newView = LevantamientoView();
+            newView.levantamiento.Folio = element['folio'];
+            return newView;
+          }));
           Navigator.push(context, route);
         },
       );
