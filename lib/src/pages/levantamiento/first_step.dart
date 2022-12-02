@@ -5,7 +5,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 
-
 import 'package:movilidad/src/pages/levantamiento/model/levantamiento.dart';
 
 class firstStep extends StatefulWidget {
@@ -61,10 +60,9 @@ class _firstStepState extends State<firstStep> {
 
   @override
   Widget build(BuildContext context) {
-
     //FUNCION PARA CONSEGUIR FOLIO NUEVO
     String getFolio() {
-      return "";
+      return "01";
     }
 
     //ASIGNA HORA DE HOY
@@ -181,7 +179,7 @@ class _firstStepState extends State<firstStep> {
               // Get the date
               TimeOfDay? timePicket = await showTimePicker(
                 context: context,
-                initialTime: TimeOfDay.now(),                
+                initialTime: TimeOfDay.now(),
               );
               if (timePicket != null) {
                 //make format to the time
@@ -339,8 +337,10 @@ class _firstStepState extends State<firstStep> {
               //Asigna coordenadas a Txt
               latController.text = _currentPosition.latitude.toString();
               lonController.text = _currentPosition.longitude.toString();
-              widget.levantamiento.Latitud = _currentPosition.latitude.toString();
-              widget.levantamiento.Longitud = _currentPosition.longitude.toString();
+              widget.levantamiento.Latitud =
+                  _currentPosition.latitude.toString();
+              widget.levantamiento.Longitud =
+                  _currentPosition.longitude.toString();
               //print(latController.text);
               //print(lonController.text);
             },
@@ -683,14 +683,17 @@ class _firstStepState extends State<firstStep> {
             onPressed: () {
               //-------------Toast
               Fluttertoast.showToast(
-                  msg: 'Buscando en nube',
+                  msg: 'Encontrado en nube',
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.CENTER,
                   timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.red,
+                  backgroundColor: Colors.green,
                   textColor: Colors.white,
                   fontSize: 16.0);
               //-------------Toast
+              descripcionController.text = 'Honda 2023';
+              concesionController.text = '091283HASJ09';
+              setState(() {});
             },
             child: const Text('Buscar Placas / No.Economico'),
           ),
@@ -777,16 +780,20 @@ class _firstStepState extends State<firstStep> {
             onPressed: () {
               //-------------Toast
               Fluttertoast.showToast(
-                  msg: 'Buscando en nube',
+                  msg: 'Encontrado en nube',
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.CENTER,
                   timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.red,
+                  backgroundColor: Colors.green,
                   textColor: Colors.white,
                   fontSize: 16.0);
               //-------------Toast
               //Cambia Objeto
               widget.levantamiento.NoLicencia = nolicenciaController.text;
+              tipoController.text = 'Chofer';
+              nombreController.text = 'Luis Miguel Hernandez';
+              vigenciaController.text = '10/2025';
+              setState(() {});
             },
             child: const Text('Buscar'),
           ),

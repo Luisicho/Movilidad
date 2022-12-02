@@ -100,16 +100,7 @@ class _secondStepState extends State<secondStep> {
                       ),
                     ),
                     onTap: () {
-                      //-------------Toast
-                      Fluttertoast.showToast(
-                      msg: 'Holaaa hago algo',
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.CENTER,
-                      timeInSecForIosWeb: 1,
-                      backgroundColor: Colors.red,
-                      textColor: Colors.white,
-                      fontSize: 16.0);
-                     //-------------Toast
+                      
                     },
                   ), 
                 );

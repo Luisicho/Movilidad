@@ -13,12 +13,12 @@ class _LevantamientoProvider {
     //Hace funcion asincrona para esperar respuesta antes de mandar al constructor
     //  Recupera la ruta de tu JSON para cargar
     final respuesta =
-        await rootBundle.loadString('assets/menu_opts.json');
+        await rootBundle.loadString('assets/accidente_opts.json');
 
     //Crea un Mapeado para decodificar el archivo JSON que se esta leyendo
     //  de esta forma se consigue un arreglo de este JSON
     Map dataMap = json.decode(respuesta);
-    opciones = dataMap['levantamientos'];
+    opciones = dataMap['accidentados'];
 
     return opciones;
   }

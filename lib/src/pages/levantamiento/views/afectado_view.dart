@@ -48,8 +48,6 @@ var listaInstitucionMed = ["item1", "item2", "item3"];
 class _afectadoViewState extends State<afectadoView> {
   //----------------Variables Locales
 
-  
-
   @override
   Widget build(BuildContext context) {
     //---------------Variables Locales Widget
@@ -263,7 +261,7 @@ class _afectadoViewState extends State<afectadoView> {
                 initialDate: DateTime.now(),
                 firstDate: DateTime(1999),
                 lastDate: DateTime(2050),
-                locale: const Locale('es','ES'),
+                locale: const Locale('es', 'ES'),
               );
               if (datePicket != null) {
                 //make format to the date
@@ -353,7 +351,7 @@ class _afectadoViewState extends State<afectadoView> {
                 initialDate: DateTime.now(),
                 firstDate: DateTime(1999),
                 lastDate: DateTime(2050),
-                locale: const Locale('es','ES'),
+                locale: const Locale('es', 'ES'),
               );
               if (datePicket != null) {
                 //make format to the date
@@ -586,6 +584,19 @@ class _afectadoViewState extends State<afectadoView> {
                 ElevatedButton(
                   onPressed: () {
                     try {
+                      if (nombreAcController.text.isEmpty) {
+                        //-------------Toast
+                        Fluttertoast.showToast(
+                            msg: "Se necesita el nombre",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.CENTER,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
+                        //-------------Toast
+                        return;
+                      }
                       //Funcion agregar afectado
                       final afectado = Afectado(
                           aseguradora,

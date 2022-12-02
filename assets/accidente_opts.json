@@ -1,0 +1,53 @@
+{
+    "nombreApp" : "Componentes",
+    "accidentados" : [
+        {
+            "icon" : "accessible_outlined",
+            "texto": "Luis Miguel Hernandez",
+            "folio": "01",
+            "descripcion": "Un vehiculo lo golpeo por su derecha y le rompio el pie"
+        },
+        {
+            "icon" : "accessible_outlined",
+            "texto": "Angel del Rio Limon",
+            "folio": "01",
+            "descripcion": "Fue golpeado en el lobulo frontal"
+        },
+        {
+            "icon" : "accessible_outlined",
+            "texto": "Felime Macias",
+            "folio": "02",
+            "descripcion": "Muerte Cerebrar por golpe en cabeza"
+        },
+        {
+            "icon" : "accessible_outlined",
+            "texto": "Alejandra Perez Rios",
+            "folio": "02",
+            "descripcion": "Su brazo resulto seriamente dañado por el accidente"
+        },
+        {
+            "icon" : "accessible_outlined",
+            "texto": "Mariza Alvarado",
+            "folio": "03",
+            "descripcion": "Sus piernas dejaron de funcionar"
+        },
+        {
+            "icon" : "accessible_outlined",
+            "texto": "Kesli Alatorre",
+            "folio": "03",
+            "descripcion": "Inconciente esperando que sus medicos nos den una respuesta"
+        },
+        {
+            "icon" : "accessible_outlined",
+            "texto": "Alfonzo Cuaron",
+            "folio": "04",
+            "descripcion": "Una de sus puernas resulto dañada, la otra sin daño aparente"
+        },
+        {
+            "icon" : "accessible_outlined",
+            "texto": "Veronica Rico",
+            "folio": "04",
+            "descripcion": "La leccion superficial no se ve, falta revicion por medicos especialistas"
+        }
+    ]
+}

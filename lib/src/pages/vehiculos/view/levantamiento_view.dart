@@ -94,9 +94,9 @@ class LevantamientoViewState extends State<LevantamientoView> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
         child: Column(children: <Widget>[
           ListTile(
-            title: Text(element['folio']),
+            title: Text(element['texto']),
             subtitle: Text(element['descripcion']),
-            leading: getIcon('accessible_outlined'),
+            leading: getIcon(element['icon']),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,

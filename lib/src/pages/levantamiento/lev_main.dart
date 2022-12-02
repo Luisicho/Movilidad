@@ -51,11 +51,11 @@ class _levMainState extends State<levMain> {
                   String secStep = segundoPaso.afectados[0].toString();
                   //-------------Toast
                   Fluttertoast.showToast(
-                      msg: 'Enviando a la nube $secStep --------------------- $firtStep',
+                      msg: 'Enviando a la nube',
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.CENTER,
                       timeInSecForIosWeb: 1,
-                      backgroundColor: Colors.red,
+                      backgroundColor: Colors.green,
                       textColor: Colors.white,
                       fontSize: 16.0);
                   //-------------Toast

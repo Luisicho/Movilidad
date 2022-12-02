@@ -40,7 +40,7 @@ class _MapMainState extends State<MapMain> {
           overlayOpacity: 0.0,
           spaceBetweenChildren: 12,
           spacing: 12,
-          closeManually: true,
+          closeManually: false,
           children: [
             SpeedDialChild(
                 // Icon ZOOM OUT
