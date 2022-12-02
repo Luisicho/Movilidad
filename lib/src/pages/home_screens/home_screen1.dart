@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../maps/map_main.dart';
 
 class HomeScreen1 extends StatefulWidget {
@@ -51,7 +52,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
   }
 
   void goToMain() {
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const MapMain()));
+    //Inicia la pantalla MapMain
+    Navigator.pushNamed(context, 'map_main');
   }
 }

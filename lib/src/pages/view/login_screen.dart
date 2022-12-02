@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movilidad/view/home_screen.dart';
+
+import 'package:movilidad/src/pages/view/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -52,6 +53,11 @@ class _LoginScreenState extends State<LoginScreen> {
       autofocus: false,
       focusNode: textSecondFocusNode,
       controller: passwordController,
+      onFieldSubmitted: (value) {
+        if (_formKey.currentState!.validate()) {
+          signIn(userController.text, value);
+        }
+      },
       obscureText: true,
       validator: (value) {
         RegExp regex = new RegExp(r'^.{6,}$');
@@ -97,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 20,
-            color: Colors.black,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -145,7 +151,13 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void signIn(String username, String password) {
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const HomeScreen()));
+    clearTXT();
+    //Inicia la pantalla Home
+    Navigator.pushNamed(context, 'home_screen');
+  }
+
+  void clearTXT() {
+    userController.text = "";
+    passwordController.text = "";
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movilidad/levantamiento/lev_main.dart';
-import 'package:movilidad/levantamiento/second_step.dart';
-import 'package:movilidad/view/login_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';  
+
+import 'package:movilidad/src/routes/routes.dart';
 
 //RootWidget, creating a blank app for google materials design features
 Future<void> main() async {
@@ -17,11 +17,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Movilidad APP',
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', 'US'),
+        const Locale('es', 'ES'),
+      ],
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      //home: levMain(),
-      home: LoginScreen(),
+      initialRoute: '/',
+      //Rutas de la APP
+      routes: getAplicationRoutes(),
     );
   }
 }

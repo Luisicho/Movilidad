@@ -1,11 +1,15 @@
 import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:movilidad/levantamiento/model/afectado.dart';
-import 'package:movilidad/levantamiento/views/afectado_view.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+import 'package:movilidad/src/pages/levantamiento/model/afectado.dart';
+import 'package:movilidad/src/pages/levantamiento/views/afectado_view.dart';
+import 'package:movilidad/src/utils/icono_string_util.dart';
 
 class secondStep extends StatefulWidget {
-  const secondStep({super.key});
+  //Lista de afectados
+  List<Afectado> afectados = [];
+  secondStep({super.key});
 
   @override
   State<secondStep> createState() => _secondStepState();
@@ -13,14 +17,14 @@ class secondStep extends StatefulWidget {
 
 class _secondStepState extends State<secondStep> {
   //------------Variables globales
-  //Lista de afectados
-  List<Afectado> afectados = [];
+  
 
   @override
   Widget build(BuildContext context) {
+    //Agrega afectado a un arreglo
     void addAfectado(Afectado afectado) {
       setState(() {
-        afectados.add(afectado);
+        widget.afectados.add(afectado);
       });
     }
 
@@ -28,7 +32,8 @@ class _secondStepState extends State<secondStep> {
     void showAfectadoDialog() {
       showDialog(
           context: context,
-          builder: (_) {
+          barrierDismissible: true,
+          builder: (context) {
             return AlertDialog(
               content: Container(
                 padding: const EdgeInsets.all(0),
@@ -38,7 +43,8 @@ class _secondStepState extends State<secondStep> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
             );
-          });
+          }
+        );
     }
 
     return Container(
@@ -63,13 +69,14 @@ class _secondStepState extends State<secondStep> {
           Expanded(
             flex: 2,
             child: ListView.builder(
-              itemBuilder: (ctx, index) {
+              itemBuilder: (context, index) {
                 return Card(
                   margin: const EdgeInsets.all(4),
                   elevation: 8,
                   child: ListTile(
+                    leading: getIcon('airline_seat_flat_outlined'),
                     title: Text(
-                      afectados[index].nombreAc,
+                      widget.afectados[index].nombreAc,
                       style: const TextStyle(
                         fontSize: 22,
                         color: Colors.blueGrey,
@@ -77,7 +84,7 @@ class _secondStepState extends State<secondStep> {
                       ),
                     ),
                     subtitle: Text(
-                      afectados[index].fechaRecepcion,
+                      widget.afectados[index].Observaciones,
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black12,
@@ -85,17 +92,20 @@ class _secondStepState extends State<secondStep> {
                       ),
                     ),
                     trailing: Text(
-                      afectados[index].horaRecepcion,
+                      widget.afectados[index].fechaRecepcion,
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black26,
                         fontWeight: FontWeight.w200,
                       ),
                     ),
-                  ),
+                    onTap: () {
+                      
+                    },
+                  ), 
                 );
               },
-              itemCount: afectados.length,
+              itemCount: widget.afectados.length,
             ),
           ),
           //Boton agregar

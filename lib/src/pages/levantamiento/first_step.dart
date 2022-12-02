@@ -1,21 +1,22 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:movilidad/levantamiento/first_step.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:movilidad/levantamiento/second_step.dart';
 
-class levMain extends StatefulWidget {
-  const levMain({super.key});
+import 'package:movilidad/src/pages/levantamiento/model/levantamiento.dart';
+
+class firstStep extends StatefulWidget {
+  //objeto
+  final Levantamiento levantamiento = Levantamiento();
+  firstStep({super.key});
 
   @override
-  State<levMain> createState() => _levMainState();
+  State<firstStep> createState() => _firstStepState();
 }
 
-class _levMainState extends State<levMain> {
+class _firstStepState extends State<firstStep> {
   // form key avisa los cambios
   final _formKey = GlobalKey<FormState>();
 
@@ -27,8 +28,6 @@ class _levMainState extends State<levMain> {
   final yFocus = FocusNode();
   final noEconomicoFocus = FocusNode();
   final placasFocus = FocusNode();
-
-  //Step2
 
   // editing controller
   //Step1
@@ -50,10 +49,8 @@ class _levMainState extends State<levMain> {
   final TextEditingController entreController = TextEditingController();
   final TextEditingController yController = TextEditingController();
 
-  //Step2
-
   //-----------Inicio de variables y controladores------------------
-  int currStep = 0;
+
   String VehiRespondable = "1";
   //ImagePicker
   final ImagePicker _picker = ImagePicker();
@@ -61,18 +58,26 @@ class _levMainState extends State<levMain> {
   XFile? photo1, photo2, photo3, photo4, photo5, photo6 = XFile("no");
   File? image1, image2, image3, image4, image5, image6;
 
-  //-----Iniciar la ventana
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
+    //FUNCION PARA CONSEGUIR FOLIO NUEVO
+    String getFolio() {
+      return "01";
+    }
+
     //ASIGNA HORA DE HOY
     hourLlegadaController.text = TimeOfDay.now().format(context).toString();
+    //Objeto
+    widget.levantamiento.HoraLlegada =
+        TimeOfDay.now().format(context).toString();
     //ASIGNA DIA DE HOY
     fechaController.text = DateFormat("dd-MM-yyyy").format(DateTime.now());
+    //Objeto
+    widget.levantamiento.FechaLlegada =
+        DateFormat("dd-MM-yyyy").format(DateTime.now());
+
+    //Consigue folio nuevo
+    folioController.text = getFolio();
 
     //--------------Object Varaible-----------------------
     //--------------Step No1
@@ -85,16 +90,17 @@ class _levMainState extends State<levMain> {
         Expanded(
           flex: 2,
           child: TextFormField(
-              controller: folioController,
-              readOnly: true,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.pages),
-                contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                hintText: "Folio",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              )),
+            controller: folioController,
+            readOnly: true,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.pages),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "Folio",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
         ),
       ],
     );
@@ -180,6 +186,9 @@ class _levMainState extends State<levMain> {
                 //var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
                 hourAccidenteController.text =
                     timePicket.format(context).toString();
+                //Guarda hora en objeto levantamiento
+                widget.levantamiento.HoraAccidente =
+                    timePicket.format(context).toString();
               }
             },
           ),
@@ -196,19 +205,24 @@ class _levMainState extends State<levMain> {
         Expanded(
           flex: 2,
           child: TextFormField(
-              focusNode: ubicacionFocus,
-              onFieldSubmitted: (value) {
-                FocusScope.of(context).requestFocus(entreFocus);
-              },
-              controller: ubicacionController,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.add_location_alt_outlined),
-                contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                hintText: "Ubicacion",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              )),
+            focusNode: ubicacionFocus,
+            onFieldSubmitted: (value) {
+              FocusScope.of(context).requestFocus(entreFocus);
+            },
+            controller: ubicacionController,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.add_location_alt_outlined),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "Ubicacion",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            onChanged: ((value) {
+              //Objeto ubicacion
+              widget.levantamiento.Ubicacion = value;
+            }),
+          ),
         ),
       ],
     );
@@ -222,19 +236,24 @@ class _levMainState extends State<levMain> {
         Expanded(
           flex: 2,
           child: TextFormField(
-              focusNode: entreFocus,
-              onFieldSubmitted: (value) {
-                FocusScope.of(context).requestFocus(yFocus);
-              },
-              controller: entreController,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.add_location_alt_outlined),
-                contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                hintText: "Entre",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              )),
+            focusNode: entreFocus,
+            onFieldSubmitted: (value) {
+              FocusScope.of(context).requestFocus(yFocus);
+            },
+            controller: entreController,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.add_location_alt_outlined),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "Entre",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            onChanged: ((value) {
+              //Objeto cambio
+              widget.levantamiento.Entre = value;
+            }),
+          ),
         ),
       ],
     );
@@ -248,19 +267,24 @@ class _levMainState extends State<levMain> {
         Expanded(
           flex: 2,
           child: TextFormField(
-              focusNode: yFocus,
-              onFieldSubmitted: (value) {
-                FocusScope.of(context).requestFocus(noEconomicoFocus);
-              },
-              controller: yController,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.add_location_alt_outlined),
-                contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                hintText: "y",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              )),
+            focusNode: yFocus,
+            onFieldSubmitted: (value) {
+              FocusScope.of(context).requestFocus(noEconomicoFocus);
+            },
+            controller: yController,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.add_location_alt_outlined),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "y",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            onChanged: ((value) {
+              //Objeto cambio
+              widget.levantamiento.Y = value;
+            }),
+          ),
         ),
       ],
     );
@@ -313,6 +337,10 @@ class _levMainState extends State<levMain> {
               //Asigna coordenadas a Txt
               latController.text = _currentPosition.latitude.toString();
               lonController.text = _currentPosition.longitude.toString();
+              widget.levantamiento.Latitud =
+                  _currentPosition.latitude.toString();
+              widget.levantamiento.Longitud =
+                  _currentPosition.longitude.toString();
               //print(latController.text);
               //print(lonController.text);
             },
@@ -356,8 +384,10 @@ class _levMainState extends State<levMain> {
             children: [
               //Condicion para reemplazar el boton con la imagen cargada
               image1 != null
-                  ? Image.file(
-                      image1!,
+                  ? FadeInImage(
+                      image: FileImage(image1!),
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      fadeInDuration: const Duration(milliseconds: 200),
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
@@ -371,6 +401,8 @@ class _levMainState extends State<levMain> {
                         if (photo1 == null) return;
                         // transforma imagen a file
                         final imageTemporal = File(photo1!.path);
+                        //Agrega foto a la lista
+                        widget.levantamiento.FotosLev[0] = imageTemporal;
                         setState(() {
                           this.image1 = imageTemporal;
                         });
@@ -378,8 +410,10 @@ class _levMainState extends State<levMain> {
                     ),
               //Condicion para reemplazar el boton con la imagen cargada
               image2 != null
-                  ? Image.file(
-                      image2!,
+                  ? FadeInImage(
+                      image: FileImage(image2!),
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      fadeInDuration: const Duration(milliseconds: 200),
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
@@ -393,6 +427,8 @@ class _levMainState extends State<levMain> {
                         if (photo2 == null) return;
                         // transforma imagen a file
                         final imageTemporal = File(photo2!.path);
+                        //Agrega foto a la lista
+                        widget.levantamiento.FotosLev[1] = imageTemporal;
                         setState(() {
                           this.image2 = imageTemporal;
                         });
@@ -409,8 +445,10 @@ class _levMainState extends State<levMain> {
             children: [
               //Condicion para reemplazar el boton con la imagen cargada
               image3 != null
-                  ? Image.file(
-                      image3!,
+                  ? FadeInImage(
+                      image: FileImage(image3!),
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      fadeInDuration: const Duration(milliseconds: 200),
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
@@ -424,6 +462,8 @@ class _levMainState extends State<levMain> {
                         if (photo3 == null) return;
                         // transforma imagen a file
                         final imageTemporal = File(photo3!.path);
+                        //Agrega foto a la lista
+                        widget.levantamiento.FotosLev[2] = imageTemporal;
                         setState(() {
                           this.image3 = imageTemporal;
                         });
@@ -431,8 +471,10 @@ class _levMainState extends State<levMain> {
                     ),
               //Condicion para reemplazar el boton con la imagen cargada
               image4 != null
-                  ? Image.file(
-                      image4!,
+                  ? FadeInImage(
+                      image: FileImage(image4!),
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      fadeInDuration: const Duration(milliseconds: 200),
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
@@ -446,6 +488,8 @@ class _levMainState extends State<levMain> {
                         if (photo4 == null) return;
                         // transforma imagen a file
                         final imageTemporal = File(photo4!.path);
+                        //Agrega foto a la lista
+                        widget.levantamiento.FotosLev[3] = imageTemporal;
                         setState(() {
                           this.image4 = imageTemporal;
                         });
@@ -462,8 +506,10 @@ class _levMainState extends State<levMain> {
             children: [
               //Condicion para reemplazar el boton con la imagen cargada
               image5 != null
-                  ? Image.file(
-                      image5!,
+                  ? FadeInImage(
+                      image: FileImage(image5!),
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      fadeInDuration: const Duration(milliseconds: 200),
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
@@ -477,6 +523,8 @@ class _levMainState extends State<levMain> {
                         if (photo5 == null) return;
                         // transforma imagen a file
                         final imageTemporal = File(photo5!.path);
+                        //Agrega foto a la lista
+                        widget.levantamiento.FotosLev[4] = imageTemporal;
                         setState(() {
                           this.image5 = imageTemporal;
                         });
@@ -484,8 +532,10 @@ class _levMainState extends State<levMain> {
                     ),
               //Condicion para reemplazar el boton con la imagen cargada
               image6 != null
-                  ? Image.file(
-                      image6!,
+                  ? FadeInImage(
+                      image: FileImage(image6!),
+                      placeholder: const AssetImage('assets/jar-loading.gif'),
+                      fadeInDuration: const Duration(milliseconds: 200),
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
@@ -499,6 +549,8 @@ class _levMainState extends State<levMain> {
                         if (photo6 == null) return;
                         // transforma imagen a file
                         final imageTemporal = File(photo6!.path);
+                        //Agrega foto a la lista
+                        widget.levantamiento.FotosLev[5] = imageTemporal;
                         setState(() {
                           this.image6 = imageTemporal;
                         });
@@ -569,7 +621,9 @@ class _levMainState extends State<levMain> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                  )
+                    onChanged: (value) {
+                      widget.levantamiento.NoEconomico = value;
+                    })
                 : TextFormField(
                     enabled: false,
                     controller: noeconomicoController,
@@ -601,7 +655,9 @@ class _levMainState extends State<levMain> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                  )
+                    onChanged: (value) {
+                      widget.levantamiento.Placas = value;
+                    })
                 : TextFormField(
                     enabled: false,
                     controller: placasController,
@@ -627,14 +683,17 @@ class _levMainState extends State<levMain> {
             onPressed: () {
               //-------------Toast
               Fluttertoast.showToast(
-                  msg: 'Buscando en nube',
+                  msg: 'Encontrado en nube',
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.CENTER,
                   timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.red,
+                  backgroundColor: Colors.green,
                   textColor: Colors.white,
                   fontSize: 16.0);
               //-------------Toast
+              descripcionController.text = 'Honda 2023';
+              concesionController.text = '091283HASJ09';
+              setState(() {});
             },
             child: const Text('Buscar Placas / No.Economico'),
           ),
@@ -721,14 +780,20 @@ class _levMainState extends State<levMain> {
             onPressed: () {
               //-------------Toast
               Fluttertoast.showToast(
-                  msg: 'Buscando en nube',
+                  msg: 'Encontrado en nube',
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.CENTER,
                   timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.red,
+                  backgroundColor: Colors.green,
                   textColor: Colors.white,
                   fontSize: 16.0);
               //-------------Toast
+              //Cambia Objeto
+              widget.levantamiento.NoLicencia = nolicenciaController.text;
+              tipoController.text = 'Chofer';
+              nombreController.text = 'Luis Miguel Hernandez';
+              vigenciaController.text = '10/2025';
+              setState(() {});
             },
             child: const Text('Buscar'),
           ),
@@ -812,159 +877,55 @@ class _levMainState extends State<levMain> {
     );
 
     //--------------Step No1
+    //multi foto, Descripcion, concecionario, vehiculo field, no licencia, tipo, nombre, vigencia
+
     //--------------Object Varaible-----------------------
 
-    //------------------Functions-----------------
-    List<Step> getSteps() => [
-          Step(
-            state: currStep > 0 ? StepState.complete : StepState.indexed,
-            isActive: currStep >= 0,
-            title: const Text('Accidende'),
-            content: Container(
-              height: 1200,
-              margin: const EdgeInsets.all(5.0),
-              child:
-                  //------------Formulario
-                  Form(
-                key: _formKey,
-                child:
-                    //------------ColumnaForm
-                    Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    folioField,
-                    const Divider(
-                      thickness: 2,
-                    ),
-                    dateField,
-                    hourLlegadaField,
-                    hourAccidenteField,
-                    const Divider(
-                      thickness: 2,
-                    ),
-                    ubicacionField,
-                    entreField,
-                    yField,
-                    posicionField,
-                    fotoField,
-                    const Divider(
-                      thickness: 2,
-                    ),
-                    vehiculoField,
-                    placasField,
-                    buscarPlaca,
-                    descripcionField,
-                    consenParticularField,
-                    const Divider(
-                      thickness: 2,
-                    ),
-                    noLicenciaField,
-                    tipoField,
-                    nombreField,
-                    vigenciaField,
-                  ],
-                ),
-              ),
+    return Container(
+      height: 1200,
+      margin: const EdgeInsets.all(5.0),
+      child:
+          //------------Formulario
+          Form(
+        key: _formKey,
+        child:
+            //------------ColumnaForm
+            Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            folioField,
+            const Divider(
+              thickness: 2,
             ),
-          ),
-          Step(
-            state: currStep > 1 ? StepState.complete : StepState.indexed,
-            isActive: currStep >= 1,
-            title: const Text('Afectados'),
-            content: const secondStep(),
-          ),
-          Step(
-            state: currStep > 2 ? StepState.complete : StepState.indexed,
-            isActive: currStep >= 2,
-            title: const Text('Completado'),
-            content: SizedBox(
-              height: 500,
-              child: TextButton(
-                onPressed: () {
-                  //-------------Toast
-                  Fluttertoast.showToast(
-                      msg: 'Enviando a la nube',
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.CENTER,
-                      timeInSecForIosWeb: 1,
-                      backgroundColor: Colors.red,
-                      textColor: Colors.white,
-                      fontSize: 16.0);
-                  //-------------Toast
-                },
-                child: const Text('Guardar Datos de Accidente'),
-              ),
+            dateField,
+            hourLlegadaField,
+            hourAccidenteField,
+            const Divider(
+              thickness: 2,
             ),
-          ),
-        ];
-    //------------------Functions-----------------
-
-    //----return
-    return Scaffold(
-      body: Stepper(
-        type: StepperType.horizontal,
-        steps: getSteps(),
-        controlsBuilder: (context, _) {
-          return Row(
-            children: <Widget>[
-              TextButton(
-                onPressed:(){
-                  //onStepContinue(),
-                  if (!(currStep == 2)) {
-                    setState(() {
-                      currStep++;
-                    });
-                  }  
-                },
-                style: const ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(Colors.blue),
-                ),
-                child: const Text(
-                  'Continuar',
-                  style:
-                    TextStyle(
-                      color: Colors.white
-                    ),
-                ),
-              ),
-              TextButton(
-                //onStepCancel()
-                onPressed: currStep == 0
-                  ? null
-                  : () => setState(() {
-                        currStep--;
-                      }),
-                style: const ButtonStyle(
-                  
-                ),
-                child: const Text(
-                  'Regresar',
-                  style:
-                    TextStyle(
-                      color: Colors.blue
-                    ),
-                ),
-              ),
-            ],
-          );
-        },
-        currentStep: currStep,
-        onStepContinue: () {
-          if (!(currStep == 2)) {
-            setState(() {
-              currStep++;
-            });
-          }
-        },
-        onStepCancel: currStep == 0
-            ? null
-            : () => setState(() {
-                  currStep--;
-                }),
+            ubicacionField,
+            entreField,
+            yField,
+            posicionField,
+            fotoField,
+            const Divider(
+              thickness: 2,
+            ),
+            vehiculoField,
+            placasField,
+            buscarPlaca,
+            descripcionField,
+            consenParticularField,
+            const Divider(
+              thickness: 2,
+            ),
+            noLicenciaField,
+            tipoField,
+            nombreField,
+            vigenciaField,
+          ],
+        ),
       ),
     );
   } //widget
 }
-
-void iniComponents(BuildContext context, TextEditingController fechaController,
-    TextEditingController hourController) async {}

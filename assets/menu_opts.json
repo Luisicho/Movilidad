@@ -1,0 +1,34 @@
+{
+    "nombreApp" : "Componentes",
+    "levantamientos" : [
+        {
+            "ruta" : "alert",
+            "icon" : "add_alert",
+            "texto": "Alertas",
+            "folio": "01",
+            "descripcion": "Hola 01"
+        },
+        {
+            "ruta" : "avatar",
+            "icon" : "car_crash",
+            "texto": "Avatars",
+            "folio": "02",
+            "descripcion": "Hola 02"
+        },
+        {
+            "ruta" : "card",
+            "icon" : "folder_open",
+            "texto": "Cards - Tarjetas",
+            "folio": "03",
+            "descripcion": "Hola 03"
+        }
+        ,
+        {
+            "ruta" : "card",
+            "icon" : "car_repair",
+            "texto": "Cards - Tarjetas",
+            "folio": "04",
+            "descripcion": "Hola 04"
+        }
+    ]
+}
