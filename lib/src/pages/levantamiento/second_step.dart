@@ -84,7 +84,7 @@ class _secondStepState extends State<secondStep> {
                       ),
                     ),
                     subtitle: Text(
-                      widget.afectados[index].Observaciones,
+                      widget.afectados[index].observaciones,
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black12,

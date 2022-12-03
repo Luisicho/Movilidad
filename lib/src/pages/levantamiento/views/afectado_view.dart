@@ -599,19 +599,19 @@ class _afectadoViewState extends State<afectadoView> {
                       }
                       //Funcion agregar afectado
                       final afectado = AfectadoModel(
-                          aseguradora,
-                          polizaController.text,
-                          vigenciaController.text,
-                          nombreAcController.text,
-                          CURPController.text,
-                          domicilioController.text,
-                          tipoARController.text,
-                          institucionMed,
-                          fechaRecepcionController.text,
-                          hourRecepcionController.text,
-                          fechaAltaController.text,
-                          hourAltaController.text,
-                          descripcionController.text);
+                          aseguradora: aseguradora,
+                          poliza: polizaController.text,
+                          vigencia: vigenciaController.text,
+                          nombreAc: nombreAcController.text,
+                          curp: CURPController.text,
+                          domicilio: domicilioController.text,
+                          tipoAtencion: tipoARController.text,
+                          institucionMedica: institucionMed,
+                          fechaRecepcion: fechaRecepcionController.text,
+                          horaRecepcion: hourRecepcionController.text,
+                          fechaAlta: fechaAltaController.text,
+                          horaAlta: hourAltaController.text,
+                          observaciones: descripcionController.text,);
                       limpiarCeldas();
                       //Agrega afectado
                       widget.addAfectado(afectado);
