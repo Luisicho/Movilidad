@@ -5,11 +5,30 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:movilidad/src/pages/levantamiento/model/levantamiento.dart';
+import 'package:movilidad/src/pages/levantamiento/model/levantamiento_model.dart';
 
 class firstStep extends StatefulWidget {
   //objeto
-  final Levantamiento levantamiento = Levantamiento();
+  final LevantamientoModel levantamiento = LevantamientoModel(
+      folio: '',
+      fechaLlegada: '',
+      horaLlegada: '',
+      horaAccidente: '',
+      ubicacion: '',
+      entre: '',
+      y: '',
+      longitud: '',
+      latitud: '',
+      noEconomico: '',
+      placas: '',
+      descripcion: '',
+      concesionario: '',
+      noLicencia: '',
+      tipo: '',
+      nombre: '',
+      vigencia: '',
+      fotosLev: List<File>.empty(),
+      );
   firstStep({super.key});
 
   @override
@@ -68,12 +87,12 @@ class _firstStepState extends State<firstStep> {
     //ASIGNA HORA DE HOY
     hourLlegadaController.text = TimeOfDay.now().format(context).toString();
     //Objeto
-    widget.levantamiento.HoraLlegada =
+    widget.levantamiento.horaLlegada =
         TimeOfDay.now().format(context).toString();
     //ASIGNA DIA DE HOY
     fechaController.text = DateFormat("dd-MM-yyyy").format(DateTime.now());
     //Objeto
-    widget.levantamiento.FechaLlegada =
+    widget.levantamiento.fechaLlegada =
         DateFormat("dd-MM-yyyy").format(DateTime.now());
 
     //Consigue folio nuevo
@@ -187,7 +206,7 @@ class _firstStepState extends State<firstStep> {
                 hourAccidenteController.text =
                     timePicket.format(context).toString();
                 //Guarda hora en objeto levantamiento
-                widget.levantamiento.HoraAccidente =
+                widget.levantamiento.horaAccidente =
                     timePicket.format(context).toString();
               }
             },
@@ -220,7 +239,7 @@ class _firstStepState extends State<firstStep> {
             ),
             onChanged: ((value) {
               //Objeto ubicacion
-              widget.levantamiento.Ubicacion = value;
+              widget.levantamiento.ubicacion = value;
             }),
           ),
         ),
@@ -251,7 +270,7 @@ class _firstStepState extends State<firstStep> {
             ),
             onChanged: ((value) {
               //Objeto cambio
-              widget.levantamiento.Entre = value;
+              widget.levantamiento.entre = value;
             }),
           ),
         ),
@@ -282,7 +301,7 @@ class _firstStepState extends State<firstStep> {
             ),
             onChanged: ((value) {
               //Objeto cambio
-              widget.levantamiento.Y = value;
+              widget.levantamiento.y = value;
             }),
           ),
         ),
@@ -337,9 +356,9 @@ class _firstStepState extends State<firstStep> {
               //Asigna coordenadas a Txt
               latController.text = _currentPosition.latitude.toString();
               lonController.text = _currentPosition.longitude.toString();
-              widget.levantamiento.Latitud =
+              widget.levantamiento.latitud =
                   _currentPosition.latitude.toString();
-              widget.levantamiento.Longitud =
+              widget.levantamiento.longitud =
                   _currentPosition.longitude.toString();
               //print(latController.text);
               //print(lonController.text);
@@ -402,7 +421,7 @@ class _firstStepState extends State<firstStep> {
                         // transforma imagen a file
                         final imageTemporal = File(photo1!.path);
                         //Agrega foto a la lista
-                        widget.levantamiento.FotosLev[0] = imageTemporal;
+                        widget.levantamiento.fotosLev[0] = imageTemporal;
                         setState(() {
                           this.image1 = imageTemporal;
                         });
@@ -428,7 +447,7 @@ class _firstStepState extends State<firstStep> {
                         // transforma imagen a file
                         final imageTemporal = File(photo2!.path);
                         //Agrega foto a la lista
-                        widget.levantamiento.FotosLev[1] = imageTemporal;
+                        widget.levantamiento.fotosLev[1] = imageTemporal;
                         setState(() {
                           this.image2 = imageTemporal;
                         });
@@ -463,7 +482,7 @@ class _firstStepState extends State<firstStep> {
                         // transforma imagen a file
                         final imageTemporal = File(photo3!.path);
                         //Agrega foto a la lista
-                        widget.levantamiento.FotosLev[2] = imageTemporal;
+                        widget.levantamiento.fotosLev[2] = imageTemporal;
                         setState(() {
                           this.image3 = imageTemporal;
                         });
@@ -489,7 +508,7 @@ class _firstStepState extends State<firstStep> {
                         // transforma imagen a file
                         final imageTemporal = File(photo4!.path);
                         //Agrega foto a la lista
-                        widget.levantamiento.FotosLev[3] = imageTemporal;
+                        widget.levantamiento.fotosLev[3] = imageTemporal;
                         setState(() {
                           this.image4 = imageTemporal;
                         });
@@ -524,7 +543,7 @@ class _firstStepState extends State<firstStep> {
                         // transforma imagen a file
                         final imageTemporal = File(photo5!.path);
                         //Agrega foto a la lista
-                        widget.levantamiento.FotosLev[4] = imageTemporal;
+                        widget.levantamiento.fotosLev[4] = imageTemporal;
                         setState(() {
                           this.image5 = imageTemporal;
                         });
@@ -550,7 +569,7 @@ class _firstStepState extends State<firstStep> {
                         // transforma imagen a file
                         final imageTemporal = File(photo6!.path);
                         //Agrega foto a la lista
-                        widget.levantamiento.FotosLev[5] = imageTemporal;
+                        widget.levantamiento.fotosLev[5] = imageTemporal;
                         setState(() {
                           this.image6 = imageTemporal;
                         });
@@ -622,7 +641,7 @@ class _firstStepState extends State<firstStep> {
                       ),
                     ),
                     onChanged: (value) {
-                      widget.levantamiento.NoEconomico = value;
+                      widget.levantamiento.noEconomico = value;
                     })
                 : TextFormField(
                     enabled: false,
@@ -656,7 +675,7 @@ class _firstStepState extends State<firstStep> {
                       ),
                     ),
                     onChanged: (value) {
-                      widget.levantamiento.Placas = value;
+                      widget.levantamiento.placas = value;
                     })
                 : TextFormField(
                     enabled: false,
@@ -789,7 +808,7 @@ class _firstStepState extends State<firstStep> {
                   fontSize: 16.0);
               //-------------Toast
               //Cambia Objeto
-              widget.levantamiento.NoLicencia = nolicenciaController.text;
+              widget.levantamiento.noLicencia = nolicenciaController.text;
               tipoController.text = 'Chofer';
               nombreController.text = 'Luis Miguel Hernandez';
               vigenciaController.text = '10/2025';

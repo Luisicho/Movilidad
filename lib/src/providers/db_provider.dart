@@ -60,9 +60,9 @@ class DBProvider {
   Future<int?> nuevoLevatamientoRaw(
       LevantamientoModel nuevoLevantamiento) async {
     //Extraer caracteristicas de levantamiento
-    String id = nuevoLevantamiento.Folio;
-    String tipo = nuevoLevantamiento.Descripcion;
-    String valor = nuevoLevantamiento.FechaLlegada;
+    String id = nuevoLevantamiento.folio;
+    String tipo = nuevoLevantamiento.descripcion;
+    String valor = nuevoLevantamiento.fechaLlegada;
     //verificar la base de datos
     final db = await database;
     //Insercion

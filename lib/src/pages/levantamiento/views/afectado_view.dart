@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
-import 'package:movilidad/src/pages/levantamiento/model/afectado.dart';
+import 'package:movilidad/src/pages/levantamiento/model/afectado_model.dart';
 
 class afectadoView extends StatefulWidget {
   //variables
-  final Function(Afectado) addAfectado;
+  final Function(AfectadoModel) addAfectado;
   afectadoView(this.addAfectado);
 
   @override
@@ -598,7 +598,7 @@ class _afectadoViewState extends State<afectadoView> {
                         return;
                       }
                       //Funcion agregar afectado
-                      final afectado = Afectado(
+                      final afectado = AfectadoModel(
                           aseguradora,
                           polizaController.text,
                           vigenciaController.text,

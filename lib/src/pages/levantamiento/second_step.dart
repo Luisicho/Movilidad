@@ -2,13 +2,13 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'package:movilidad/src/pages/levantamiento/model/afectado.dart';
+import 'package:movilidad/src/pages/levantamiento/model/afectado_model.dart';
 import 'package:movilidad/src/pages/levantamiento/views/afectado_view.dart';
 import 'package:movilidad/src/utils/icono_string_util.dart';
 
 class secondStep extends StatefulWidget {
   //Lista de afectados
-  List<Afectado> afectados = [];
+  List<AfectadoModel> afectados = [];
   secondStep({super.key});
 
   @override
@@ -22,7 +22,7 @@ class _secondStepState extends State<secondStep> {
   @override
   Widget build(BuildContext context) {
     //Agrega afectado a un arreglo
-    void addAfectado(Afectado afectado) {
+    void addAfectado(AfectadoModel afectado) {
       setState(() {
         widget.afectados.add(afectado);
       });

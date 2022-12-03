@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Afectado {
+class AfectadoModel {
   //Caracteristicas
   final String aseguradora;
   final String poliza;
@@ -17,7 +17,7 @@ class Afectado {
   final String Observaciones;
 
   //Constructor
-  Afectado(this.aseguradora,this.poliza,this.vigencia,this.nombreAc,this.CURP,this.domicilio,this.tipoAtencion,this.institucionMedica,this.fechaRecepcion,this.horaRecepcion,this.fechaAlta,this.horaAlta,this.Observaciones);
+  AfectadoModel(this.aseguradora,this.poliza,this.vigencia,this.nombreAc,this.CURP,this.domicilio,this.tipoAtencion,this.institucionMedica,this.fechaRecepcion,this.horaRecepcion,this.fechaAlta,this.horaAlta,this.Observaciones);
 
   @override
   String toString() {

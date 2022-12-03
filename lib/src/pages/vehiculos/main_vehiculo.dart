@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:movilidad/src/pages/vehiculos/view/levantamiento_view.dart';
+import 'package:movilidad/src/providers/db_provider.dart';
 import 'package:movilidad/src/providers/vehiculo_provider.dart';
 import 'package:movilidad/src/utils/icono_string_util.dart';
-import '../levantamiento/model/levantamiento.dart';
+import '../levantamiento/model/levantamiento_model.dart';
 
 class MainVehiculo extends StatefulWidget {
   const MainVehiculo({super.key});
@@ -18,10 +19,14 @@ class _MainVehiculoState extends State<MainVehiculo> {
   final TextEditingController searchController = TextEditingController();
   String valueABuscar = "";
   //Se carga la lista de todos los levantamientos
-  List<Levantamiento> levantamientos = listEjemploLevantamiento;
+  List<LevantamientoModel> levantamientos = listEjemploLevantamiento;
 
   @override
   Widget build(BuildContext context) {
+    //-----Variables
+    //Base de datos
+    DBProvider.db.database;
+
     //-----------------Funciones
     void searchLevantamiento(String value) {
       //Actualiza lista de pantalla
@@ -103,7 +108,7 @@ class _MainVehiculoState extends State<MainVehiculo> {
           final route = MaterialPageRoute(builder: ((context) {
             //Se crea nueva vista y se pasa informacion
             LevantamientoView newView = LevantamientoView();
-            newView.levantamiento.Folio = element['folio'];
+            newView.levantamiento.folio = element['folio'];
             return newView;
           }));
           Navigator.push(context, route);
@@ -132,8 +137,8 @@ class _MainVehiculoState extends State<MainVehiculo> {
           return Column(
             children: [
               ListTile(
-                title: Text(levantamiento.Folio),
-                subtitle: Text(levantamiento.Descripcion),
+                title: Text(levantamiento.folio),
+                subtitle: Text(levantamiento.descripcion),
                 leading: const Icon(Icons.car_crash),
                 trailing: const Icon(Icons.keyboard_arrow_right),
                 onTap: () {
