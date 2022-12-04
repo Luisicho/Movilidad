@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'dart:convert';
 
 AfectadoModel afectadoModelFromJson(String str) => AfectadoModel.fromJson(json.decode(str));

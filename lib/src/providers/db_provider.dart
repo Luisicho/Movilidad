@@ -70,7 +70,35 @@ class DBProvider {
       INSERT INTO LEVANTAMIENTO(ID,TIPO,VALOR)
         VALUES ('$id','$tipo','$valor')
     ''');
-
+    //Es el ID del ultimo registro insertado
     return res;
   }
+
+  //Get Levantamiento By ID
+  Future<LevantamientoModel?> getLevById(String folio) async {
+    //verificar la base de datos
+    final db = await database;
+    //Consulta
+    final res =
+        await db!.query('LEVANTAMIENTO', where: 'folio = ?', whereArgs: [folio]);
+    // SELECT * FROM LEVANTAMIENTO WHERE folio = '$folio'
+    return res.isNotEmpty 
+      ? LevantamientoModel.fromJson( res.first ) 
+      : null;
+
+  }
+
+  //Get Levantamiento By ID
+  Future<List<LevantamientoModel>?> getAllLev() async {
+    //verificar la base de datos
+    final db = await database;
+    //Consulta
+    final res =
+        await db!.query('LEVANTAMIENTO');
+    
+    return res.isNotEmpty 
+      ? res.map((e) => LevantamientoModel.fromJson(e)).toList()
+      : [];
+  }
+
 }
