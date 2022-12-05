@@ -105,4 +105,24 @@ class DBProvider {
     
     return res;
   }
+
+  Future<int> deleteLev( String folio ) async{
+    //verificar la base de datos
+    final db = await database;
+    //Eliminacion
+    final res = await db!.delete('LEVANTAMIENTO', where: 'folio = ?', whereArgs: [folio]);
+    
+    return res;
+  }
+
+  Future<int> deleteAllRawLev( String folio ) async{
+    //verificar la base de datos
+    final db = await database;
+    //Eliminacion
+    final res = await db!.rawDelete('''
+      DELETE FROM LEVANTAMIENTO
+    ''');
+    return res;
+  }
+
 }
