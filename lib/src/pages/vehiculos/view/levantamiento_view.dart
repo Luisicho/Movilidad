@@ -26,7 +26,14 @@ class LevantamientoView extends StatefulWidget {
       tipo: '',
       nombre: '',
       vigencia: '',
-      fotosLev: List<File>.empty(),
+      fotosLev: [
+        File(''),
+        File(''),
+        File(''),
+        File(''),
+        File(''),
+        File(''),
+      ],
       );
   //Constructores
   LevantamientoView({super.key});
