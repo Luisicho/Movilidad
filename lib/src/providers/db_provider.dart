@@ -79,13 +79,10 @@ class DBProvider {
     //verificar la base de datos
     final db = await database;
     //Consulta
-    final res =
-        await db!.query('LEVANTAMIENTO', where: 'folio = ?', whereArgs: [folio]);
+    final res = await db!
+        .query('LEVANTAMIENTO', where: 'folio = ?', whereArgs: [folio]);
     // SELECT * FROM LEVANTAMIENTO WHERE folio = '$folio'
-    return res.isNotEmpty 
-      ? LevantamientoModel.fromJson( res.first ) 
-      : null;
-
+    return res.isNotEmpty ? LevantamientoModel.fromJson(res.first) : null;
   }
 
   //Get Levantamiento By ID
@@ -93,12 +90,19 @@ class DBProvider {
     //verificar la base de datos
     final db = await database;
     //Consulta
-    final res =
-        await db!.query('LEVANTAMIENTO');
-    
-    return res.isNotEmpty 
-      ? res.map((e) => LevantamientoModel.fromJson(e)).toList()
-      : [];
+    final res = await db!.query('LEVANTAMIENTO');
+
+    return res.isNotEmpty
+        ? res.map((e) => LevantamientoModel.fromJson(e)).toList()
+        : [];
   }
 
+  Future<int> updateLev(LevantamientoModel lev) async {
+    //verificar la base de datos
+    final db = await database;
+    //Actualizacion
+    final res = await db!.update('LEVANTAMIENTO', lev.toJson(), where: 'folio = ?', whereArgs: [lev.folio]);
+    
+    return res;
+  }
 }
