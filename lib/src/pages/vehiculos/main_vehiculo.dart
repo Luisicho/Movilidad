@@ -25,7 +25,7 @@ class _MainVehiculoState extends State<MainVehiculo> {
   Widget build(BuildContext context) {
     //-----Variables
     //Base de datos
-    DBProvider.db.database;
+    //DBProvider.db.database;
 
     //-----------------Funciones
     void searchLevantamiento(String value) {
