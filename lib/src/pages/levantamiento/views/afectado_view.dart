@@ -611,7 +611,9 @@ class _afectadoViewState extends State<afectadoView> {
                           horaRecepcion: hourRecepcionController.text,
                           fechaAlta: fechaAltaController.text,
                           horaAlta: hourAltaController.text,
-                          observaciones: descripcionController.text,);
+                          observaciones: descripcionController.text,
+                          icon: 'accessible_outlined',
+                          );
                       limpiarCeldas();
                       //Agrega afectado
                       widget.addAfectado(afectado);

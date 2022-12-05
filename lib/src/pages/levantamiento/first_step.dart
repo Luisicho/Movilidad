@@ -35,6 +35,7 @@ class firstStep extends StatefulWidget {
         File(''),
         File(''),
       ],
+      icon: 'car_crash',
       );
   firstStep({super.key});
 

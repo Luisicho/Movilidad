@@ -34,6 +34,7 @@ class LevantamientoView extends StatefulWidget {
         File(''),
         File(''),
       ],
+      icon: 'car_crash',
       );
   //Constructores
   LevantamientoView({super.key});
