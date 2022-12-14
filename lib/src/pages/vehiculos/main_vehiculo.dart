@@ -43,6 +43,22 @@ class _MainVehiculoState extends State<MainVehiculo> {
         appBar: AppBar(
           title: const Text('Lista Vehiculos'),
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            //-------------Toast
+              Fluttertoast.showToast(
+              msg: 'Sincronizando a la nube',
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.CENTER,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.yellow,
+              textColor: Colors.white,
+              fontSize: 16.0);
+            //-------------Toast
+          },
+          backgroundColor: Colors.green,
+          child: const Icon(Icons.cloud),
+        ),
         body: Column(
           children: [
             Container(

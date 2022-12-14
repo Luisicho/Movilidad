@@ -76,7 +76,7 @@ class _firstStepState extends State<firstStep> {
   final TextEditingController entreController = TextEditingController();
   final TextEditingController yController = TextEditingController();
 
-  //-----------Inicio de variables y controladores------------------
+  //---------------------------------------------Inicio de variables y controladores------------------
 
   String VehiRespondable = "1";
   //ImagePicker
@@ -131,8 +131,8 @@ class _firstStepState extends State<firstStep> {
     //Consigue folio nuevo
     folioController.text = getFolio();
 
-    //--------------Object Varaible-----------------------
-    //--------------Step No1
+    //--------------------------------------------------Object Varaible-----------------------
+    //----------------------------------------------Step No1
     //Folio Field
     final folioField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -972,10 +972,10 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //--------------Step No1
+    //------------------------------------------------------------------Step No1
     //multi foto, Descripcion, concecionario, vehiculo field, no licencia, tipo, nombre, vigencia
 
-    //--------------Object Varaible-----------------------
+    //------------------------------------------------------------Object Variable-----------------------
 
     return Container(
       height: 1200,
