@@ -10,33 +10,33 @@ import 'package:movilidad/src/pages/levantamiento/model/levantamiento_model.dart
 class firstStep extends StatefulWidget {
   //objeto
   final LevantamientoModel levantamiento = LevantamientoModel(
-      folio: '',
-      fechaLlegada: '',
-      horaLlegada: '',
-      horaAccidente: '',
-      ubicacion: '',
-      entre: '',
-      y: '',
-      longitud: '',
-      latitud: '',
-      noEconomico: '',
-      placas: '',
-      descripcion: '',
-      concesionario: '',
-      noLicencia: '',
-      tipo: '',
-      nombre: '',
-      vigencia: '',
-      fotosLev: [
-        File(''),
-        File(''),
-        File(''),
-        File(''),
-        File(''),
-        File(''),
-      ],
-      icon: 'car_crash',
-      );
+    folio: '',
+    fechaLlegada: '',
+    horaLlegada: '',
+    horaAccidente: '',
+    ubicacion: '',
+    entre: '',
+    y: '',
+    longitud: '',
+    latitud: '',
+    noEconomico: '',
+    placas: '',
+    descripcion: '',
+    concesionario: '',
+    noLicencia: '',
+    tipo: '',
+    nombre: '',
+    vigencia: '',
+    fotosLev: [
+      File(''),
+      File(''),
+      File(''),
+      File(''),
+      File(''),
+      File(''),
+    ],
+    icon: 'car_crash',
+  );
   firstStep({super.key});
 
   @override
@@ -84,6 +84,31 @@ class _firstStepState extends State<firstStep> {
   final List<XFile>? images = List<XFile>.empty();
   XFile? photo1, photo2, photo3, photo4, photo5, photo6 = XFile("no");
   File? image1, image2, image3, image4, image5, image6;
+
+  var servicioP = [
+    {
+      'noeconomico': '1234',
+      'descripcion': "Camion 23",
+      'concecion': 'Pedro Casas'
+    },
+  ];
+
+  var Placas = [
+    {
+      'placas': '1234',
+      'descripcion': "Honda 24",
+      'concecion': 'Luis Miguel Hernandez'
+    },
+  ];
+
+  var licencias = [
+    {
+      'licencia': '1234',
+      'tipo': "Conductor",
+      'nombre': 'Miguel Angel Chon',
+      'vigencia': '20/2025'
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -708,18 +733,48 @@ class _firstStepState extends State<firstStep> {
           flex: 1,
           child: TextButton(
             onPressed: () {
+              var mensaje = 'No encontrado';
+              var color = Colors.red;
+              if (noeconomicoController.text != "") {
+                var busquedatemp = servicioP.where((element) =>
+                    element['noeconomico'] == noeconomicoController.text);
+                if (busquedatemp.isNotEmpty) {
+                  descripcionController.text =
+                      busquedatemp.first['descripcion']!;
+                  concesionController.text = busquedatemp.first['concecion']!;
+                  mensaje = 'Encontrado en nube';
+                  color = Colors.green;
+                  //Cambia objeto
+                  widget.levantamiento.noEconomico = noeconomicoController.text;
+                  widget.levantamiento.concesionario = concesionController.text;
+                  widget.levantamiento.descripcion = descripcionController.text;
+                }
+              }
+              if (placasController.text != "") {
+                var busquedatemp = Placas.where(
+                    (element) => element['placas'] == placasController.text);
+                if (busquedatemp.isNotEmpty) {
+                  descripcionController.text =
+                      busquedatemp.first['descripcion']!;
+                  concesionController.text = busquedatemp.first['concecion']!;
+                  mensaje = 'Encontrado en nube';
+                  color = Colors.green;
+                  //Cambiar objeto
+                  widget.levantamiento.placas = placasController.text;
+                  widget.levantamiento.descripcion = descripcionController.text;
+                  widget.levantamiento.concesionario = concesionController.text;
+                }
+              }
               //-------------Toast
               Fluttertoast.showToast(
-                  msg: 'Encontrado en nube',
+                  msg: mensaje,
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.CENTER,
                   timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.green,
+                  backgroundColor: color,
                   textColor: Colors.white,
                   fontSize: 16.0);
               //-------------Toast
-              descripcionController.text = 'Honda 2023';
-              concesionController.text = '091283HASJ09';
               setState(() {});
             },
             child: const Text('Buscar Placas / No.Economico'),
@@ -805,21 +860,35 @@ class _firstStepState extends State<firstStep> {
           flex: 1,
           child: TextButton(
             onPressed: () {
+              var mensaje = 'No encontrado';
+              var color = Colors.red;
+              if (nolicenciaController.text != "") {
+                var busquedatemp = licencias.where((element) =>
+                    element['licencia'] == nolicenciaController.text);
+                if (busquedatemp.isNotEmpty) {
+                  tipoController.text = busquedatemp.first['tipo']!;
+                  nombreController.text = busquedatemp.first['nombre']!;
+                  vigenciaController.text = busquedatemp.first['vigencia']!;
+                  mensaje = 'Encontrado en nube';
+                  color = Colors.green;
+                  //Cambia Objeto
+                  widget.levantamiento.noLicencia = nolicenciaController.text;
+                  widget.levantamiento.tipo = tipoController.text;
+                  widget.levantamiento.nombre = tipoController.text;
+                  widget.levantamiento.vigencia = vigenciaController.text;
+                }
+              }
               //-------------Toast
               Fluttertoast.showToast(
-                  msg: 'Encontrado en nube',
+                  msg: mensaje,
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.CENTER,
                   timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.green,
+                  backgroundColor: color,
                   textColor: Colors.white,
                   fontSize: 16.0);
               //-------------Toast
-              //Cambia Objeto
-              widget.levantamiento.noLicencia = nolicenciaController.text;
-              tipoController.text = 'Chofer';
-              nombreController.text = 'Luis Miguel Hernandez';
-              vigenciaController.text = '10/2025';
+
               setState(() {});
             },
             child: const Text('Buscar'),

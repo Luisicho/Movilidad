@@ -47,18 +47,59 @@ class _levMainState extends State<levMain> {
               height: 500,
               child: TextButton(
                 onPressed: () {
-                  String firtStep = primerPaso.levantamiento.toString();
-                  String secStep = segundoPaso.afectados[0].toString();
-                  //-------------Toast
-                  Fluttertoast.showToast(
-                      msg: 'Enviando a la nube',
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.CENTER,
-                      timeInSecForIosWeb: 1,
-                      backgroundColor: Colors.green,
-                      textColor: Colors.white,
-                      fontSize: 16.0);
-                  //-------------Toast
+                  var tempfirts = primerPaso.levantamiento;
+                  var error = '';
+                  var firtStep = true;
+                  var secStep = true;
+                  if (tempfirts.horaAccidente.isEmpty) {
+                    error += ' Hora accidente faltante \n';
+                    firtStep = false;
+                  }
+                  if (tempfirts.descripcion.isEmpty) {
+                    error += ' concesionario faltante \n';
+                    firtStep = false;
+                  }
+                  if (tempfirts.tipo.isEmpty) {
+                    error += ' chofer faltante \n';
+                    firtStep = false;
+                  }
+                  var fotos = 0;
+                  tempfirts.fotosLev.forEach((element) {
+                    if (element.path != '') fotos++;
+                  });
+                  if (fotos < 3) {
+                    error += ' minimo 3 fotos faltante \n';
+                    firtStep = false;
+                  }
+
+                  if (segundoPaso.afectados.isEmpty) {
+                    error += ' Agrege minimo 1 afectado \n';
+                    secStep = false;
+                  }
+
+                  if (secStep && firtStep) {
+                    //-------------Toast
+                    Fluttertoast.showToast(
+                        msg: 'Enviando a la nube',
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.CENTER,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.green,
+                        textColor: Colors.white,
+                        fontSize: 16.0);
+                    //-------------Toast
+                  } else {
+                    //-------------Toast
+                    Fluttertoast.showToast(
+                        msg: error,
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.CENTER,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.red,
+                        textColor: Colors.white,
+                        fontSize: 16.0);
+                    //-------------Toast
+                  }
                 },
                 child: const Text('Guardar Datos de Accidente'),
               ),
