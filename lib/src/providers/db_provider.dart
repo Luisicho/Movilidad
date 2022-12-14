@@ -17,6 +17,12 @@ class DBProvider {
 
   //Metodos get
   Future<Database?> get database async {
+    // Delete the database
+    //await deleteDatabase(path);
+    Directory documentsDirectory = await getApplicationDocumentsDirectory();
+    final path = join(documentsDirectory.path, 'ScansDB.db');
+    print(path);
+
     //Verifica si ya se inicio la instancia de DB
     if (database != null) return _database;
 
@@ -33,6 +39,14 @@ class DBProvider {
     final path = join(documentsDirectory.path, 'ScansDB.db');
     print(path);
 
+
+    //Sincronizacion con el BackEnd
+    //    Reglaz de negocio
+    //---------------Frappe OpenSource (ERPNext)------------------
+    //    Usuarios,roles    Notificaciones    DocType(Modelos)    UI
+    // -------------------Python BACKEND------------------
+    // -------------------Javascript FRONTEND-------------
+    // Maria DB 
     //Crear base de datos
     return await openDatabase(
       path,
@@ -41,9 +55,24 @@ class DBProvider {
       onCreate: (db, version) async {
         await db.execute('''
           CREATE TABLE LEVANTAMIENTO(
-            ID INTEGER PRIMARY KEY,
-            TIPO TEXT,
-            VALOR TEXT
+            folio INTEGER PRIMARY KEY AUTOINCREMENT,
+            fechaLlegada TEXT,
+            horaLlegada TEXT,
+            horaAccidente TEXT,
+            ubicacion TEXT,
+            entre TEXT,
+            y TEXT,
+            longitud TEXT,
+            latitud TEXT,
+            noEconomico TEXT,
+            placas TEXT,
+            descripcion TEXT,
+            concesionario TEXT,
+            noLicencia TEXT,
+            tipo TEXT,
+            nombre TEXT,
+            vigencia TEXT,
+            CONSTRAINT FK_lev_afectadoLev FOREIGN KEY (folio) REFERENCES AFECTADO_LEV(folio)
           );
         ''');
       },

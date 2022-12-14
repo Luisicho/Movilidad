@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
 import 'package:movilidad/src/pages/levantamiento/model/afectado_model.dart';
+import 'package:movilidad/src/providers/afectadoView_provider.dart';
 
 class afectadoView extends StatefulWidget {
   //variables
@@ -39,11 +40,119 @@ final TextEditingController descripcionController = TextEditingController();
 final TextEditingController tipoARController = TextEditingController();
 
 //Generales
-var aseguradora = "item1";
-var listaAseguradora = ["item1", "item2", "item3"];
+var aseguradora = "A.N.A. COMPAÑÍA DE SEGUROS, S.A. DE C.V.";
+var listaAseguradora = ["A.N.A. COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+,"AGROASEMEX, S.A."
+,"AIG SEGUROS MÉXICO, S.A. DE C.V."
+,"ALLIANZ MÉXICO, S.A."
+,"ASEGURADORA PATRIMONIAL DAÑOS, S.A."
+,"ASSURANT DAÑOS MÉXICO, S.A."
+,"AXA SEGUROS, S.A. DE C.V."
+,"BERKLEY INTERNATIONAL SEGUROS MÉXICO, S.A. DE C.V."
+,"CARDIF MÉXICO SEGUROS GENERALES, S.A. DE C.V."
+,"CHUBB SEGUROS MÉXICO, S.A."
+,"CITIBANAMEX SEGUROS, S.A. DE C.V."
+,"CRABI, S.A. DE C.V."
+,"DER NEUE HORIZONT RE, S.A."
+,"EL ÁGUILA, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+,"GENERAL DE SEGUROS, S.A.B."
+,"GRUPO MEXICANO DE SEGUROS, S.A. DE C.V."
+,"GRUPO NACIONAL PROVINCIAL, S.A.B"
+,"HDI SEGUROS, S.A. DE C.V."
+,"HSBC SEGUROS, S.A. DE C.V."
+,"LA LATINOAMERICANA SEGUROS, S.A."
+,"MAPFRE MÉXICO, S.A."
+,"PATRIMONIAL INBURSA, S.A."
+,"PRIMERO SEGUROS, S.A. DE C,V."
+,"QBE DE MÉXICO COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+,"QUÁLITAS, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+,"REASEGURADORA PATRIA, S.A."
+,"SEGUROS AFIRME, S.A. DE C.V."
+,"SEGUROS ATLAS, S.A."
+,"SEGUROS AZTECA DAÑOS, S.A. DE C.V."
+,"SEGUROS BANORTE, S.A DE C.V."
+,"SEGUROS BBVA BANCOMER, S.A. DE C.V."
+,"SEGUROS EL POTOSÍ, S.A."
+,"SEGUROS INBURSA, S.A."
+,"SEGUROS SURA, S.A. DE C.V."
+,"SEGUROS VE POR MÁS, S.A."
+,"SOMPO SEGUROS MÉXICO, S.A. DE C.V."
+,"SPT, SOCIEDAD MUTUALISTA DE SEGUROS"
+,"TOKIO MARINE, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+,"VIRGINIA SURETY SEGUROS DE MÉXICO, S.A. DE C.V."
+,"ZURICH ASEGURADORA MEXICANA, S.A. DE C.V."
+,"ZURICH SANTANDER SEGUROS MÉXICO, S.A."
+,"ZURICH, COMPAÑÍA DE SEGUROS, S.A."
+];
 
-var institucionMed = "item1";
-var listaInstitucionMed = ["item1", "item2", "item3"];
+var institucionMed = "UNIDAD BASICA DE REABILITACION";
+var listaInstitucionMed = ["UNIDAD BASICA DE REABILITACION"
+,"SANATORIO GUADALUPE"
+,"HOSPITAL GENERAL DE SUBZONA NUMERO 6"
+,"HOSPITAL INTEGRAL DE ACAPONETA"
+,"INSTITUTO DE SEGURIDAD SOCIAL PARA EL SERVICIO DE LOS TRABAJADORES DEL ESTADO DE NAYARIT"
+,"COORDINACION MEDICA MUNICIPAL AMATLAN DE CAÐAS"
+,"HOSPITAL CMQ RIVIERA NAYARIT"
+,"UNIDAD MEDICA DE SALUD DE MEZCALEZ"
+,"HOSPITAL MEDIC AIR"
+,"HOSPITAL GENERAL SAN FRANCISCO"
+,"UNIDAD MEDICA FAMILIAR NO 27 DE SAN JOSE DEL VALLE NAYARIT"
+,"INSTITUTO MEXICANO DEL SEGURO SOCIAL"
+,"INSTITUTO DE SEGURIDAD SOCIAL AL SERVICIO DE LOS TRABAJADORES DEL ESTADO"
+,"CRUZ ROJA MEXICANA"
+,"HOSPITAL SAINT LUKES"
+,"HOSPITAL TONDOROQUE"
+,"PUNTA MITA HOSPITAL"
+,"HOSPITAL BASICO COMUNITARIO DE COMPOSTELA"
+,"CONSULTORIO GINECOLOGICO"
+,"UNIDAD MEDICA RURAL"
+,"UNIDAD MEDICA RURAL NUMERO 71 COASTECOMATILLO"
+,"CLINICA RENTERIA"
+,"HOSPITAL BASICO COMUNITARIO LAS VARAS"
+,"INSTITUTO DE SEGURIDAD SOCIAL AL SERVICIO DE LOS TRABAJADORES DEL ESTADO"
+,"INSTITUTO MEXICANO DEL SEGURO SOCIAL IMSS"
+,"HOSPITAL GENERAL MIXTO DE JESUS MARIA"
+,"UNIDAD DE CONSULTA EXTERNA HUAJICORI"
+,"HOSPITAL INTEGRAL BASICO COMUNITARIO DE IXTLAN DEL RIO NAY"
+,"HOSPITAL INTEGRAL COMUNITARIO"
+,"HOSPITAL BASICO COMUNITARIO PUENTE DE CAMOTLAN"
+,"HOSPITAL GENERAL ROSAMORADA"
+,"IMSS"
+,"SANATORIO NAVAL DE SAN BLAS"
+,"CASA DE LA SALUD"
+,"UNIDAD MEDICA RURAL NO.68"
+,"HOSPITAL GENERAL SANTIAGO"
+,"HOSPITAL GENERAL DE ZONA NUMERO 10"
+,"HOSPITAL BASICO COMUNITARIO TECUALA"
+,"CLINICA SANTA MARIA"
+,"CRUZ ROJA MEXICANA IAP"
+,"CLINICA DE MEDICINA FAMILIAR DOCTOR JOAQUIN CANOVAS PUCHADES"
+,"INSTITUTO DE SEGURIDAD Y SERVICIOS SOCIALES DE LOS TRABAJADORES DEL ESTADO"
+,"INSTITUTO MEXICANO DEL SEGURO SOCIAL HOSPITAL GENERAL DE ZONA N 1"
+,"LA CRUZ CENTRO TOMOGRAFICO"
+,"CENTRO QUIRURGICO SAN RAFAEL"
+,"CENTRO DE ESPECIALIDADES PEDIATRICAS"
+,"SERVICOS DE SALUD DE NAYARIT"
+,"HOSPITAL DE ESPECIALIDADES PUERTA DE HIERRO TEPIC, S.A. DE C.V."
+,"CENTRO ESTATAL DE CANCEROLOGIA"
+,"HOSPITAL CIVIL DOCTOR ANTONIO GONZALEZ GUEVARA"
+,"SERVICIOS DE SALUD DE NAYARIT UNIDAD 2 DE AGOSTO"
+,"CENTRO MEDICO PUERTA DE HIERRO TEPIC"
+,"SANATORIO GUADALUPE"
+,"HOSPITAL PREMIUM HILLS"
+,"MULTIMEDICA SUR"
+,"INSTITUTO DE SEGURIDAD Y SERVICIO SOCIAL PARA LOS TRABAJADORES DEL ESTADO"
+,"SANATORIO DE LA LOMA S.A"
+,"UNIDAD AUXILIAR DE MEDICINA FAMILIAR NUMERO 25"
+,"CONSULTORIO MEDICO"
+,"CENTRO MEDICO QUIRURGICO ALEDA"
+,"CONSULTORIO DE GINECOLOGIA Y OBSTETRICIA"
+,"CENTRO QUIRURGICO TEPIC"
+,"HOSPITAL RURAL 22 IMSS BIENESTAR"
+,"HOSPITAL PUEBLO NUEVO"
+,"SERVICIO DE URGENCIAS HOSPITAL COMUNITARIO TUXPAN"
+,"INSTITUTO DEL SEGURO SOCIAL"
+];
 
 class _afectadoViewState extends State<afectadoView> {
   //----------------Variables Locales
@@ -436,6 +545,46 @@ class _afectadoViewState extends State<afectadoView> {
       ],
     );
 
+    //Funcion que agrega elementos al dropdown
+    List<DropdownMenuItem<String>> _cargarListaMed(List<dynamic>? data, BuildContext context) {
+      //Funcion similar a la de _listaItems en main_vehiculo
+      List<DropdownMenuItem<String>> opciones = [];
+      data!.forEach((element) {
+        final dropDownTemp = DropdownMenuItem(
+          value: element['NOMBRE_DEL_ESTABLECIMIENTO'].toString(),
+          child: Text(element['NOMBRE_DEL_ESTABLECIMIENTO'].toString()),
+        );
+        opciones.add(dropDownTemp);
+        institucionMed = opciones.first.value!;
+      });
+      return opciones;
+    }
+
+    //Funcion que crea dropdownNuevo
+    Widget _listaMedica() {
+      //Widget Future para crear lista a futuro luego de resivir la informacion
+      return FutureBuilder(
+          future: afectadoViewProvider.cargarData(),
+          initialData: [],
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<DropdownMenuItem<String>> listaTemp =
+                  _cargarListaMed(snapshot.data, context);
+              return DropdownButton(
+                value: institucionMed,
+                icon: const Icon(Icons.keyboard_arrow_down),
+                items:listaTemp,
+                onChanged: (newValue) {
+                  setState(() {
+                    institucionMed = newValue.toString();
+                  });
+                },
+              );
+            }
+            return Text('no data');
+          });
+    }
+
     //institucionMedField
     final institucionMedField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -466,7 +615,7 @@ class _afectadoViewState extends State<afectadoView> {
 
               // After selecting the desired option,it will
               // change button value to selected value
-              onChanged: (String? newValue) {
+              onChanged: (newValue) {
                 setState(() {
                   institucionMed = newValue!;
                 });
@@ -476,6 +625,10 @@ class _afectadoViewState extends State<afectadoView> {
         ),
       ],
     );
+
+    //Adopta una vocacion dentro de la iglecia que cristo fundo
+    // Hacer oracion por una vocacion es especial o en lo especifico
+    // imagen para orar por las vocaciones(Cristo), circulando una imagen cada hogar
 
     //DescripcionField
     final descripcionField = Row(
@@ -599,21 +752,21 @@ class _afectadoViewState extends State<afectadoView> {
                       }
                       //Funcion agregar afectado
                       final afectado = AfectadoModel(
-                          aseguradora: aseguradora,
-                          poliza: polizaController.text,
-                          vigencia: vigenciaController.text,
-                          nombreAc: nombreAcController.text,
-                          curp: CURPController.text,
-                          domicilio: domicilioController.text,
-                          tipoAtencion: tipoARController.text,
-                          institucionMedica: institucionMed,
-                          fechaRecepcion: fechaRecepcionController.text,
-                          horaRecepcion: hourRecepcionController.text,
-                          fechaAlta: fechaAltaController.text,
-                          horaAlta: hourAltaController.text,
-                          observaciones: descripcionController.text,
-                          icon: 'accessible_outlined',
-                          );
+                        aseguradora: aseguradora,
+                        poliza: polizaController.text,
+                        vigencia: vigenciaController.text,
+                        nombreAc: nombreAcController.text,
+                        curp: CURPController.text,
+                        domicilio: domicilioController.text,
+                        tipoAtencion: tipoARController.text,
+                        institucionMedica: institucionMed,
+                        fechaRecepcion: fechaRecepcionController.text,
+                        horaRecepcion: hourRecepcionController.text,
+                        fechaAlta: fechaAltaController.text,
+                        horaAlta: hourAltaController.text,
+                        observaciones: descripcionController.text,
+                        icon: 'accessible_outlined',
+                      );
                       limpiarCeldas();
                       //Agrega afectado
                       widget.addAfectado(afectado);

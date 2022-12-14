@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:movilidad/src/pages/view/home_screen.dart';
 
+import '../../providers/db_provider.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -152,6 +154,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void signIn(String username, String password) {
     clearTXT();
+    //Base de datos Inicia
+    //DBProvider.db.database;
     //Inicia la pantalla Home
     Navigator.pushNamed(context, 'home_screen');
   }

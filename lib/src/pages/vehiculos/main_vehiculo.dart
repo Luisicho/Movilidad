@@ -77,6 +77,7 @@ class _MainVehiculoState extends State<MainVehiculo> {
       future: vehiculoProvider.cargarData(),
       initialData: [],
       builder: (context, snapshot) {
+        print('Lista vehi $snapshot');
         return ListView(
           children: _listaItems(snapshot.data, context),
         );
