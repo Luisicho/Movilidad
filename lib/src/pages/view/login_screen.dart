@@ -112,44 +112,50 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
     //View complete
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: SingleChildScrollView(
-          child: Container(
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(36.0),
-              child: Form(
-                key: _formKey,
-                //Valida automaticamente al escribir
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(
-                      height: 200,
-                      child: Image.asset(
-                        "assets/logoMovilidad.jpeg",
-                        fit: BoxFit.contain,
+    return Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(
+                "assets/fondoSinMovilidad.png",
+              ),
+              fit: BoxFit.cover),
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Center(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(36.0),
+                child: Form(
+                  key: _formKey,
+                  //Valida automaticamente al escribir
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 200,
+                        child: Image.asset(
+                          "assets/logoMovilidad.png",
+                          fit: BoxFit.contain,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 45),
-                    usuarioField,
-                    const SizedBox(height: 25),
-                    passwordField,
-                    const SizedBox(height: 35),
-                    loginButton,
-                    const SizedBox(height: 15),
-                  ],
+                      const SizedBox(height: 45),
+                      usuarioField,
+                      const SizedBox(height: 25),
+                      passwordField,
+                      const SizedBox(height: 35),
+                      loginButton,
+                      const SizedBox(height: 15),
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 
   void signIn(String username, String password) {
