@@ -88,25 +88,155 @@ class _firstStepState extends State<firstStep> {
   var servicioP = [
     {
       'noeconomico': '1234',
-      'descripcion': "Camion 23",
-      'concecion': 'Pedro Casas'
+      'nuevonoeconomico': '1234',
+      'descripcion': "Taxi, NISSAN",
+      'concecion': 'Abrego Valdivia Martin'
+    },
+    {
+      'noeconomico': 'GTX-2239',
+      'nuevonoeconomico': 'NTP1963',
+      'descripcion': "TAXI",
+      'concecion': 'ABREGO GAMBOA BRENDA ARLIN,'
+    },
+    {
+      'noeconomico': 'GTX-4902',
+      'nuevonoeconomico': 'NTP2744',
+      'descripcion': "TAXI",
+      'concecion': 'ABREGO TOPETE PEDRO OSVALDO'
+    },
+    {
+      'noeconomico': 'GTX-1507',
+      'nuevonoeconomico': 'NTP3222',
+      'descripcion': "TAXI",
+      'concecion': 'ABREGO PERALES CARLOS ALBERTO'
+    },
+    {
+      'noeconomico': 'GTX-4927',
+      'nuevonoeconomico': 'NTP4714',
+      'descripcion': "TAXI",
+      'concecion': 'ABREGO MEDRANO EDUARDO'
+    },
+    {
+      'noeconomico': 'GTX-2742',
+      'nuevonoeconomico': 'NTP4819',
+      'descripcion': "TAXI",
+      'concecion': 'SAUCEDO MIRAMONTES ROBERTO ENRIQUE'
+    },
+    {
+      'noeconomico': 'GTX-5467',
+      'nuevonoeconomico': 'NTP4890',
+      'descripcion': "TAXI",
+      'concecion': 'ABALOS RODRIGUEZ JULIO ALFREDO'
+    },
+    {
+      'noeconomico': 'GTX-2516',
+      'nuevonoeconomico': 'NTP5312',
+      'descripcion': "TAXI",
+      'concecion': 'ABALOS MARIN ELIAZAR'
+    },
+    {
+      'noeconomico': 'GTX-551',
+      'nuevonoeconomico': 'NTP551',
+      'descripcion': "TAXI",
+      'concecion': 'PEREZ BAÑUELOS DIONICIO'
+    },
+    {
+      'noeconomico': 'GTX-559',
+      'nuevonoeconomico': 'NTP559',
+      'descripcion': "TAXI",
+      'concecion': 'MARTINEZ GOMEZ MA. MERCEDES'
+    },
+    {
+      'noeconomico': 'GTX-789',
+      'nuevonoeconomico': 'NTP789',
+      'descripcion': "TAXI",
+      'concecion': 'SALDATE CASTILLON VICTOR MANUEL'
     },
   ];
 
   var Placas = [
     {
-      'placas': '1234',
-      'descripcion': "Honda 24",
-      'concecion': 'Luis Miguel Hernandez'
+      'placas': ',1234',
+      'descripcion': "NISSAN",
+      'concecion': 'PEDRO PEREZ LOPEZ'
+    },
+    {
+      'placas': ',RGD-40-00',
+      'descripcion': "NISSAN",
+      'concecion': 'PEDRO PEREZ LOPEZ'
+    },
+    {
+      'placas': 'RGD-50-55',
+      'descripcion': "VOLKSWAGEN",
+      'concecion': 'ELI GARNICA LOZANO'
+    },
+    {
+      'placas': 'RGJ-52-10',
+      'descripcion': "FORD",
+      'concecion': 'OSCAR BUENO CARLOS'
+    },
+    {
+      'placas': 'RGY-52-10',
+      'descripcion': "HYUNDAI",
+      'concecion': 'RAUL LOPEZ PADILLA'
+    },
+    {
+      'placas': 'RGL-26-80',
+      'descripcion': "NISSAN",
+      'concecion': 'HERNAN COLINA DIAZ'
+    },
+    {
+      'placas': 'RGA-50-55',
+      'descripcion': "TOYOTA",
+      'concecion': 'FELIPE LAMAS MARTINEZ'
+    },
+    {
+      'placas': 'L156K',
+      'descripcion': "HONDA",
+      'concecion': 'JUANA PLACENCIA LOYOLA'
+    },
+    {
+      'placas': 'PF-25-920',
+      'descripcion': "FORD",
+      'concecion': 'CARMEN POLANCO PEREZ'
+    },
+    {
+      'placas': 'RGH-50-01',
+      'descripcion': "VOLKSWAGEN",
+      'concecion': 'CARLOS OCAÑA DIAZ'
     },
   ];
 
   var licencias = [
     {
       'licencia': '1234',
-      'tipo': "Conductor",
-      'nombre': 'Miguel Angel Chon',
-      'vigencia': '20/2025'
+      'tipo': "C",
+      'nombre': 'ABNER ULISES MENDOZA HERNANDEZ',
+      'vigencia': '07/26/2025'
+    },
+    {
+      'licencia': '11BDGTTN029448',
+      'tipo': "B",
+      'nombre': 'FERNANDO ELIASPALOMEQUE PEREZ',
+      'vigencia': '7/26/2024'
+    },
+    {
+      'licencia': '11BDGTTN029445',
+      'tipo': "B",
+      'nombre': 'YESSICA SANDOVAL CASTILLO',
+      'vigencia': '7/26/2024'
+    },
+    {
+      'licencia': '11ADGTTN005413',
+      'tipo': "A",
+      'nombre': 'ANA  MATILDE DE LAS MERCEDESPARDO HERNANDEZ',
+      'vigencia': '7/26/2024'
+    },
+    {
+      'licencia': '11ADGTTN005414',
+      'tipo': "C",
+      'nombre': 'ROSALIA GUADALUPEPEREZ PEREZ',
+      'vigencia': '7/26/2024,A'
     },
   ];
 
@@ -736,8 +866,11 @@ class _firstStepState extends State<firstStep> {
               var mensaje = 'No encontrado';
               var color = Colors.red;
               if (noeconomicoController.text != "") {
+                //Variables locales 
+                //Condicion para la busqueda
                 var busquedatemp = servicioP.where((element) =>
                     element['noeconomico'] == noeconomicoController.text);
+                
                 if (busquedatemp.isNotEmpty) {
                   descripcionController.text =
                       busquedatemp.first['descripcion']!;
@@ -749,8 +882,24 @@ class _firstStepState extends State<firstStep> {
                   widget.levantamiento.concesionario = concesionController.text;
                   widget.levantamiento.descripcion = descripcionController.text;
                 }
+                var busquedatemp2 = servicioP.where((element) =>
+                    element['nuevonoeconomico'] == noeconomicoController.text);
+                    
+                if (busquedatemp2.isNotEmpty) {
+                  descripcionController.text =
+                      busquedatemp2.first['descripcion']!;
+                  concesionController.text = busquedatemp2.first['concecion']!;
+                  mensaje = 'Encontrado en nube';
+                  color = Colors.green;
+                  //Cambia objeto
+                  widget.levantamiento.noEconomico = noeconomicoController.text;
+                  widget.levantamiento.concesionario = concesionController.text;
+                  widget.levantamiento.descripcion = descripcionController.text;
+                }
               }
               if (placasController.text != "") {
+                //Variables locales 
+                //Condicion para la busqueda
                 var busquedatemp = Placas.where(
                     (element) => element['placas'] == placasController.text);
                 if (busquedatemp.isNotEmpty) {
