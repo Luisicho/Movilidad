@@ -156,7 +156,7 @@ class _firstStepState extends State<firstStep> {
 
   var Placas = [
     {
-      'placas': ',1234',
+      'placas': '1234',
       'descripcion': "NISSAN",
       'concecion': 'PEDRO PEREZ LOPEZ'
     },

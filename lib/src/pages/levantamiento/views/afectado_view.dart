@@ -49,117 +49,119 @@ String? institucionMed;
 
 //Generales
 var aseguradora2 = "A.N.A. COMPAÑÍA DE SEGUROS, S.A. DE C.V.";
-var listaAseguradora = ["A.N.A. COMPAÑÍA DE SEGUROS, S.A. DE C.V."
-,"AGROASEMEX, S.A."
-,"AIG SEGUROS MÉXICO, S.A. DE C.V."
-,"ALLIANZ MÉXICO, S.A."
-,"ASEGURADORA PATRIMONIAL DAÑOS, S.A."
-,"ASSURANT DAÑOS MÉXICO, S.A."
-,"AXA SEGUROS, S.A. DE C.V."
-,"BERKLEY INTERNATIONAL SEGUROS MÉXICO, S.A. DE C.V."
-,"CARDIF MÉXICO SEGUROS GENERALES, S.A. DE C.V."
-,"CHUBB SEGUROS MÉXICO, S.A."
-,"CITIBANAMEX SEGUROS, S.A. DE C.V."
-,"CRABI, S.A. DE C.V."
-,"DER NEUE HORIZONT RE, S.A."
-,"EL ÁGUILA, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
-,"GENERAL DE SEGUROS, S.A.B."
-,"GRUPO MEXICANO DE SEGUROS, S.A. DE C.V."
-,"GRUPO NACIONAL PROVINCIAL, S.A.B"
-,"HDI SEGUROS, S.A. DE C.V."
-,"HSBC SEGUROS, S.A. DE C.V."
-,"LA LATINOAMERICANA SEGUROS, S.A."
-,"MAPFRE MÉXICO, S.A."
-,"PATRIMONIAL INBURSA, S.A."
-,"PRIMERO SEGUROS, S.A. DE C,V."
-,"QBE DE MÉXICO COMPAÑÍA DE SEGUROS, S.A. DE C.V."
-,"QUÁLITAS, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
-,"REASEGURADORA PATRIA, S.A."
-,"SEGUROS AFIRME, S.A. DE C.V."
-,"SEGUROS ATLAS, S.A."
-,"SEGUROS AZTECA DAÑOS, S.A. DE C.V."
-,"SEGUROS BANORTE, S.A DE C.V."
-,"SEGUROS BBVA BANCOMER, S.A. DE C.V."
-,"SEGUROS EL POTOSÍ, S.A."
-,"SEGUROS INBURSA, S.A."
-,"SEGUROS SURA, S.A. DE C.V."
-,"SEGUROS VE POR MÁS, S.A."
-,"SOMPO SEGUROS MÉXICO, S.A. DE C.V."
-,"SPT, SOCIEDAD MUTUALISTA DE SEGUROS"
-,"TOKIO MARINE, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
-,"VIRGINIA SURETY SEGUROS DE MÉXICO, S.A. DE C.V."
-,"ZURICH ASEGURADORA MEXICANA, S.A. DE C.V."
-,"ZURICH SANTANDER SEGUROS MÉXICO, S.A."
-,"ZURICH, COMPAÑÍA DE SEGUROS, S.A."
+var listaAseguradora = [
+  "A.N.A. COMPAÑÍA DE SEGUROS, S.A. DE C.V.",
+  "AGROASEMEX, S.A.",
+  "AIG SEGUROS MÉXICO, S.A. DE C.V.",
+  "ALLIANZ MÉXICO, S.A.",
+  "ASEGURADORA PATRIMONIAL DAÑOS, S.A.",
+  "ASSURANT DAÑOS MÉXICO, S.A.",
+  "AXA SEGUROS, S.A. DE C.V.",
+  "BERKLEY INTERNATIONAL SEGUROS MÉXICO, S.A. DE C.V.",
+  "CARDIF MÉXICO SEGUROS GENERALES, S.A. DE C.V.",
+  "CHUBB SEGUROS MÉXICO, S.A.",
+  "CITIBANAMEX SEGUROS, S.A. DE C.V.",
+  "CRABI, S.A. DE C.V.",
+  "DER NEUE HORIZONT RE, S.A.",
+  "EL ÁGUILA, COMPAÑÍA DE SEGUROS, S.A. DE C.V.",
+  "GENERAL DE SEGUROS, S.A.B.",
+  "GRUPO MEXICANO DE SEGUROS, S.A. DE C.V.",
+  "GRUPO NACIONAL PROVINCIAL, S.A.B",
+  "HDI SEGUROS, S.A. DE C.V.",
+  "HSBC SEGUROS, S.A. DE C.V.",
+  "LA LATINOAMERICANA SEGUROS, S.A.",
+  "MAPFRE MÉXICO, S.A.",
+  "PATRIMONIAL INBURSA, S.A.",
+  "PRIMERO SEGUROS, S.A. DE C,V.",
+  "QBE DE MÉXICO COMPAÑÍA DE SEGUROS, S.A. DE C.V.",
+  "QUÁLITAS, COMPAÑÍA DE SEGUROS, S.A. DE C.V.",
+  "REASEGURADORA PATRIA, S.A.",
+  "SEGUROS AFIRME, S.A. DE C.V.",
+  "SEGUROS ATLAS, S.A.",
+  "SEGUROS AZTECA DAÑOS, S.A. DE C.V.",
+  "SEGUROS BANORTE, S.A DE C.V.",
+  "SEGUROS BBVA BANCOMER, S.A. DE C.V.",
+  "SEGUROS EL POTOSÍ, S.A.",
+  "SEGUROS INBURSA, S.A.",
+  "SEGUROS SURA, S.A. DE C.V.",
+  "SEGUROS VE POR MÁS, S.A.",
+  "SOMPO SEGUROS MÉXICO, S.A. DE C.V.",
+  "SPT, SOCIEDAD MUTUALISTA DE SEGUROS",
+  "TOKIO MARINE, COMPAÑÍA DE SEGUROS, S.A. DE C.V.",
+  "VIRGINIA SURETY SEGUROS DE MÉXICO, S.A. DE C.V.",
+  "ZURICH ASEGURADORA MEXICANA, S.A. DE C.V.",
+  "ZURICH SANTANDER SEGUROS MÉXICO, S.A.",
+  "ZURICH, COMPAÑÍA DE SEGUROS, S.A."
 ];
 
 var institucionMed2 = "UNIDAD BASICA DE REABILITACION";
-var listaInstitucionMed = ["UNIDAD BASICA DE REABILITACION"
-,"SANATORIO GUADALUPE ACAPONETA"
-,"HOSPITAL GENERAL DE SUBZONA NUMERO 6"
-,"HOSPITAL INTEGRAL DE ACAPONETA"
-,"INSTITUTO DE SEGURIDAD SOCIAL PARA EL SERVICIO DE LOS TRABAJADORES DEL ESTADO DE NAYARIT"
-,"COORDINACION MEDICA MUNICIPAL AMATLAN DE CAÐAS"
-,"HOSPITAL CMQ RIVIERA NAYARIT"
-,"UNIDAD MEDICA DE SALUD DE MEZCALEZ"
-,"HOSPITAL MEDIC AIR"
-,"HOSPITAL GENERAL SAN FRANCISCO"
-,"UNIDAD MEDICA FAMILIAR NO 27 DE SAN JOSE DEL VALLE NAYARIT"
-,"INSTITUTO MEXICANO DEL SEGURO SOCIAL"
-,"INSTITUTO DE SEGURIDAD SOCIAL AL SERVICIO DE LOS TRABAJADORES DEL ESTADO"
-,"CRUZ ROJA MEXICANA"
-,"HOSPITAL SAINT LUKES"
-,"HOSPITAL TONDOROQUE"
-,"PUNTA MITA HOSPITAL"
-,"HOSPITAL BASICO COMUNITARIO DE COMPOSTELA"
-,"CONSULTORIO GINECOLOGICO"
-,"UNIDAD MEDICA RURAL"
-,"UNIDAD MEDICA RURAL NUMERO 71 COASTECOMATILLO"
-,"CLINICA RENTERIA"
-,"HOSPITAL BASICO COMUNITARIO LAS VARAS"
-,"INSTITUTO DE SEGURIDAD SOCIAL AL SERVICIO DE LOS TRABAJADORES DEL ESTADO"
-,"INSTITUTO MEXICANO DEL SEGURO SOCIAL IMSS"
-,"HOSPITAL GENERAL MIXTO DE JESUS MARIA"
-,"UNIDAD DE CONSULTA EXTERNA HUAJICORI"
-,"HOSPITAL INTEGRAL BASICO COMUNITARIO DE IXTLAN DEL RIO NAY"
-,"HOSPITAL INTEGRAL COMUNITARIO"
-,"HOSPITAL BASICO COMUNITARIO PUENTE DE CAMOTLAN"
-,"HOSPITAL GENERAL ROSAMORADA"
-,"IMSS"
-,"SANATORIO NAVAL DE SAN BLAS"
-,"CASA DE LA SALUD"
-,"UNIDAD MEDICA RURAL NO.68"
-,"HOSPITAL GENERAL SANTIAGO"
-,"HOSPITAL GENERAL DE ZONA NUMERO 10"
-,"HOSPITAL BASICO COMUNITARIO TECUALA"
-,"CLINICA SANTA MARIA"
-,"CRUZ ROJA MEXICANA IAP"
-,"CLINICA DE MEDICINA FAMILIAR DOCTOR JOAQUIN CANOVAS PUCHADES"
-,"INSTITUTO DE SEGURIDAD Y SERVICIOS SOCIALES DE LOS TRABAJADORES DEL ESTADO"
-,"INSTITUTO MEXICANO DEL SEGURO SOCIAL HOSPITAL GENERAL DE ZONA N 1"
-,"LA CRUZ CENTRO TOMOGRAFICO"
-,"CENTRO QUIRURGICO SAN RAFAEL"
-,"CENTRO DE ESPECIALIDADES PEDIATRICAS"
-,"SERVICOS DE SALUD DE NAYARIT"
-,"HOSPITAL DE ESPECIALIDADES PUERTA DE HIERRO TEPIC, S.A. DE C.V."
-,"CENTRO ESTATAL DE CANCEROLOGIA"
-,"HOSPITAL CIVIL DOCTOR ANTONIO GONZALEZ GUEVARA"
-,"SERVICIOS DE SALUD DE NAYARIT UNIDAD 2 DE AGOSTO"
-,"CENTRO MEDICO PUERTA DE HIERRO TEPIC"
-,"SANATORIO GUADALUPE TEPIC"
-,"HOSPITAL PREMIUM HILLS"
-,"MULTIMEDICA SUR"
-,"INSTITUTO DE SEGURIDAD Y SERVICIO SOCIAL PARA LOS TRABAJADORES DEL ESTADO"
-,"SANATORIO DE LA LOMA S.A"
-,"UNIDAD AUXILIAR DE MEDICINA FAMILIAR NUMERO 25"
-,"CONSULTORIO MEDICO"
-,"CENTRO MEDICO QUIRURGICO ALEDA"
-,"CONSULTORIO DE GINECOLOGIA Y OBSTETRICIA"
-,"CENTRO QUIRURGICO TEPIC"
-,"HOSPITAL RURAL 22 IMSS BIENESTAR"
-,"HOSPITAL PUEBLO NUEVO"
-,"SERVICIO DE URGENCIAS HOSPITAL COMUNITARIO TUXPAN"
-,"INSTITUTO DEL SEGURO SOCIAL"
+var listaInstitucionMed = [
+  "UNIDAD BASICA DE REABILITACION",
+  "SANATORIO GUADALUPE ACAPONETA",
+  "HOSPITAL GENERAL DE SUBZONA NUMERO 6",
+  "HOSPITAL INTEGRAL DE ACAPONETA",
+  "INSTITUTO DE SEGURIDAD SOCIAL PARA EL SERVICIO DE LOS TRABAJADORES DEL ESTADO DE NAYARIT",
+  "COORDINACION MEDICA MUNICIPAL AMATLAN DE CAÐAS",
+  "HOSPITAL CMQ RIVIERA NAYARIT",
+  "UNIDAD MEDICA DE SALUD DE MEZCALEZ",
+  "HOSPITAL MEDIC AIR",
+  "HOSPITAL GENERAL SAN FRANCISCO",
+  "UNIDAD MEDICA FAMILIAR NO 27 DE SAN JOSE DEL VALLE NAYARIT",
+  "INSTITUTO MEXICANO DEL SEGURO SOCIAL",
+  "INSTITUTO DE SEGURIDAD SOCIAL AL SERVICIO DE LOS TRABAJADORES DEL ESTADO",
+  "CRUZ ROJA MEXICANA",
+  "HOSPITAL SAINT LUKES",
+  "HOSPITAL TONDOROQUE",
+  "PUNTA MITA HOSPITAL",
+  "HOSPITAL BASICO COMUNITARIO DE COMPOSTELA",
+  "CONSULTORIO GINECOLOGICO",
+  "UNIDAD MEDICA RURAL",
+  "UNIDAD MEDICA RURAL NUMERO 71 COASTECOMATILLO",
+  "CLINICA RENTERIA",
+  "HOSPITAL BASICO COMUNITARIO LAS VARAS",
+  "INSTITUTO DE SEGURIDAD SOCIAL AL SERVICIO DE LOS TRABAJADORES DEL ESTADO",
+  "INSTITUTO MEXICANO DEL SEGURO SOCIAL IMSS",
+  "HOSPITAL GENERAL MIXTO DE JESUS MARIA",
+  "UNIDAD DE CONSULTA EXTERNA HUAJICORI",
+  "HOSPITAL INTEGRAL BASICO COMUNITARIO DE IXTLAN DEL RIO NAY",
+  "HOSPITAL INTEGRAL COMUNITARIO",
+  "HOSPITAL BASICO COMUNITARIO PUENTE DE CAMOTLAN",
+  "HOSPITAL GENERAL ROSAMORADA",
+  "IMSS",
+  "SANATORIO NAVAL DE SAN BLAS",
+  "CASA DE LA SALUD",
+  "UNIDAD MEDICA RURAL NO.68",
+  "HOSPITAL GENERAL SANTIAGO",
+  "HOSPITAL GENERAL DE ZONA NUMERO 10",
+  "HOSPITAL BASICO COMUNITARIO TECUALA",
+  "CLINICA SANTA MARIA",
+  "CRUZ ROJA MEXICANA IAP",
+  "CLINICA DE MEDICINA FAMILIAR DOCTOR JOAQUIN CANOVAS PUCHADES",
+  "INSTITUTO DE SEGURIDAD Y SERVICIOS SOCIALES DE LOS TRABAJADORES DEL ESTADO",
+  "INSTITUTO MEXICANO DEL SEGURO SOCIAL HOSPITAL GENERAL DE ZONA N 1",
+  "LA CRUZ CENTRO TOMOGRAFICO",
+  "CENTRO QUIRURGICO SAN RAFAEL",
+  "CENTRO DE ESPECIALIDADES PEDIATRICAS",
+  "SERVICOS DE SALUD DE NAYARIT",
+  "HOSPITAL DE ESPECIALIDADES PUERTA DE HIERRO TEPIC, S.A. DE C.V.",
+  "CENTRO ESTATAL DE CANCEROLOGIA",
+  "HOSPITAL CIVIL DOCTOR ANTONIO GONZALEZ GUEVARA",
+  "SERVICIOS DE SALUD DE NAYARIT UNIDAD 2 DE AGOSTO",
+  "CENTRO MEDICO PUERTA DE HIERRO TEPIC",
+  "SANATORIO GUADALUPE TEPIC",
+  "HOSPITAL PREMIUM HILLS",
+  "MULTIMEDICA SUR",
+  "INSTITUTO DE SEGURIDAD Y SERVICIO SOCIAL PARA LOS TRABAJADORES DEL ESTADO",
+  "SANATORIO DE LA LOMA S.A",
+  "UNIDAD AUXILIAR DE MEDICINA FAMILIAR NUMERO 25",
+  "CONSULTORIO MEDICO",
+  "CENTRO MEDICO QUIRURGICO ALEDA",
+  "CONSULTORIO DE GINECOLOGIA Y OBSTETRICIA",
+  "CENTRO QUIRURGICO TEPIC",
+  "HOSPITAL RURAL 22 IMSS BIENESTAR",
+  "HOSPITAL PUEBLO NUEVO",
+  "SERVICIO DE URGENCIAS HOSPITAL COMUNITARIO TUXPAN",
+  "INSTITUTO DEL SEGURO SOCIAL"
 ];
 
 class _afectadoViewState extends State<afectadoView> {
@@ -516,52 +518,27 @@ class _afectadoViewState extends State<afectadoView> {
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //Funcion futura que se construye cuando todo el proceso termina (cargarData)
-    //  retorna segundos despues la informacion de la Lista
-    Future<List<String>> cargarData() async {
-      List<dynamic> opciones = [];
-      List<String> establecimiento = [];
-      //Hace funcion asincrona para esperar respuesta antes de mandar al constructor
-      //  Recupera la ruta de tu JSON para cargar
-      final respuesta =
-          await rootBundle.loadString('assets/serviciosMedicos.json');
-
-      //Crea un Mapeado para decodificar el archivo JSON que se esta leyendo
-      //  de esta forma se consigue un arreglo de este JSON
-      /*var jsonData = json.decode(respuesta) as List;
-      for (var element in jsonData) {
-        establecimiento.add(element["serviciosMedicos"]);
-      }*/
-      Map dataMap = json.decode(respuesta);
-
-      opciones = dataMap['serviciosMedicos'];
-      opciones.forEach(
-        (element) {
-          establecimiento.add(element['NOMBRE_DEL_ESTABLECIMIENTO']);
-        },
-      );
-      setState(() => institucionMed = establecimiento.first);
-      return establecimiento;
-    }
-
     //Funcion que crea dropdownNuevo
     Widget _listaMedica() {
       //Widget Future para crear lista a futuro luego de resivir la informacion
       return FutureBuilder(
-          future: cargarData(),
+          future: afectadoViewProvider.cargarDataMedica(),
           initialData: [],
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               var data = snapshot.data!;
+              List<DropdownMenuItem> tempList = [];
+              data.forEach((element) {
+                tempList.add(DropdownMenuItem(
+                  child: Text(element['nom_estab']),
+                  value: element['nom_estab'],
+                ));
+              });
               return DropdownButton(
+                hint: Text('Selecciona Institucion'),
                 value: institucionMed,
                 icon: const Icon(Icons.keyboard_arrow_down),
-                items: data.map((element) {
-                  return DropdownMenuItem(
-                    value: element, 
-                    child: Text(element)
-                  );
-                },).toList(),
+                items: tempList,
                 onChanged: (newValue) {
                   setState(() {
                     institucionMed = newValue.toString();
@@ -576,8 +553,7 @@ class _afectadoViewState extends State<afectadoView> {
     Future<List<String>> cargarAseguradora() async {
       List<dynamic> opciones = [];
       List<String> establecimiento = [];
-      final respuesta =
-          await rootBundle.loadString('assets/aseguradora.json');
+      final respuesta = await rootBundle.loadString('assets/aseguradora.json');
 
       Map dataMap = json.decode(respuesta);
 
@@ -601,12 +577,12 @@ class _afectadoViewState extends State<afectadoView> {
               return DropdownButton(
                 value: aseguradora,
                 icon: const Icon(Icons.keyboard_arrow_down),
-                items: data.map((element) {
-                  return DropdownMenuItem(
-                    value: element, 
-                    child: Text(element)
-                  );
-                },).toList(),
+                items: data.map(
+                  (element) {
+                    return DropdownMenuItem(
+                        value: element, child: Text(element));
+                  },
+                ).toList(),
                 onChanged: (newValue) {
                   setState(() {
                     aseguradora = newValue.toString();
@@ -622,9 +598,6 @@ class _afectadoViewState extends State<afectadoView> {
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-
     //aseguradoraField
     final aseguradoraField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -639,7 +612,7 @@ class _afectadoViewState extends State<afectadoView> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
             child: //_listaAseguradora(),
-            DropdownButton(
+                DropdownButton(
               // Initial Value
               value: aseguradora2,
 
@@ -681,7 +654,7 @@ class _afectadoViewState extends State<afectadoView> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
             child: //_listaMedica(),
-             DropdownButton(
+            DropdownButton(
               // Initial Value
               value: institucionMed2,
 
