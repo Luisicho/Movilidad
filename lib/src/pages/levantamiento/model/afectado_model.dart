@@ -23,14 +23,14 @@ class AfectadoModel {
     required this.icon,
   });
 
-  String aseguradora;
+  String? aseguradora;
   String poliza;
   String vigencia;
   String nombreAc;
   String curp;
   String domicilio;
   String tipoAtencion;
-  String institucionMedica;
+  String? institucionMedica;
   String fechaRecepcion;
   String horaRecepcion;
   String fechaAlta;

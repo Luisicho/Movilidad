@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
@@ -40,7 +43,12 @@ final TextEditingController descripcionController = TextEditingController();
 final TextEditingController tipoARController = TextEditingController();
 
 //Generales
-var aseguradora = "A.N.A. COMPAÑÍA DE SEGUROS, S.A. DE C.V.";
+String? aseguradora;
+
+String? institucionMed;
+
+//Generales
+var aseguradora2 = "A.N.A. COMPAÑÍA DE SEGUROS, S.A. DE C.V.";
 var listaAseguradora = ["A.N.A. COMPAÑÍA DE SEGUROS, S.A. DE C.V."
 ,"AGROASEMEX, S.A."
 ,"AIG SEGUROS MÉXICO, S.A. DE C.V."
@@ -85,9 +93,9 @@ var listaAseguradora = ["A.N.A. COMPAÑÍA DE SEGUROS, S.A. DE C.V."
 ,"ZURICH, COMPAÑÍA DE SEGUROS, S.A."
 ];
 
-var institucionMed = "UNIDAD BASICA DE REABILITACION";
+var institucionMed2 = "UNIDAD BASICA DE REABILITACION";
 var listaInstitucionMed = ["UNIDAD BASICA DE REABILITACION"
-,"SANATORIO GUADALUPE"
+,"SANATORIO GUADALUPE ACAPONETA"
 ,"HOSPITAL GENERAL DE SUBZONA NUMERO 6"
 ,"HOSPITAL INTEGRAL DE ACAPONETA"
 ,"INSTITUTO DE SEGURIDAD SOCIAL PARA EL SERVICIO DE LOS TRABAJADORES DEL ESTADO DE NAYARIT"
@@ -138,7 +146,7 @@ var listaInstitucionMed = ["UNIDAD BASICA DE REABILITACION"
 ,"HOSPITAL CIVIL DOCTOR ANTONIO GONZALEZ GUEVARA"
 ,"SERVICIOS DE SALUD DE NAYARIT UNIDAD 2 DE AGOSTO"
 ,"CENTRO MEDICO PUERTA DE HIERRO TEPIC"
-,"SANATORIO GUADALUPE"
+,"SANATORIO GUADALUPE TEPIC"
 ,"HOSPITAL PREMIUM HILLS"
 ,"MULTIMEDICA SUR"
 ,"INSTITUTO DE SEGURIDAD Y SERVICIO SOCIAL PARA LOS TRABAJADORES DEL ESTADO"
@@ -294,47 +302,6 @@ class _afectadoViewState extends State<afectadoView> {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
-            ),
-          ),
-        ),
-      ],
-    );
-
-    //aseguradoraField
-    final aseguradoraField = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Aseguradora"),
-        ),
-        const SizedBox(width: 10),
-        Expanded(
-          flex: 2,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-            child: DropdownButton(
-              // Initial Value
-              value: aseguradora,
-
-              // Down Arrow Icon
-              icon: const Icon(Icons.keyboard_arrow_down),
-
-              // Array list of items
-              items: listaAseguradora.map((String items) {
-                return DropdownMenuItem(
-                  value: items,
-                  child: Text(items),
-                );
-              }).toList(),
-
-              // After selecting the desired option,it will
-              // change button value to selected value
-              onChanged: (String? newValue) {
-                setState(() {
-                  aseguradora = newValue!;
-                });
-              },
             ),
           ),
         ),
@@ -545,35 +512,56 @@ class _afectadoViewState extends State<afectadoView> {
       ],
     );
 
-    //Funcion que agrega elementos al dropdown
-    List<DropdownMenuItem<String>> _cargarListaMed(List<dynamic>? data, BuildContext context) {
-      //Funcion similar a la de _listaItems en main_vehiculo
-      List<DropdownMenuItem<String>> opciones = [];
-      data!.forEach((element) {
-        final dropDownTemp = DropdownMenuItem(
-          value: element['NOMBRE_DEL_ESTABLECIMIENTO'].toString(),
-          child: Text(element['NOMBRE_DEL_ESTABLECIMIENTO'].toString()),
-        );
-        opciones.add(dropDownTemp);
-        institucionMed = opciones.first.value!;
-      });
-      return opciones;
+//----------------------------------------------------------------------Proveedores-------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    //Funcion futura que se construye cuando todo el proceso termina (cargarData)
+    //  retorna segundos despues la informacion de la Lista
+    Future<List<String>> cargarData() async {
+      List<dynamic> opciones = [];
+      List<String> establecimiento = [];
+      //Hace funcion asincrona para esperar respuesta antes de mandar al constructor
+      //  Recupera la ruta de tu JSON para cargar
+      final respuesta =
+          await rootBundle.loadString('assets/serviciosMedicos.json');
+
+      //Crea un Mapeado para decodificar el archivo JSON que se esta leyendo
+      //  de esta forma se consigue un arreglo de este JSON
+      /*var jsonData = json.decode(respuesta) as List;
+      for (var element in jsonData) {
+        establecimiento.add(element["serviciosMedicos"]);
+      }*/
+      Map dataMap = json.decode(respuesta);
+
+      opciones = dataMap['serviciosMedicos'];
+      opciones.forEach(
+        (element) {
+          establecimiento.add(element['NOMBRE_DEL_ESTABLECIMIENTO']);
+        },
+      );
+      setState(() => institucionMed = establecimiento.first);
+      return establecimiento;
     }
 
     //Funcion que crea dropdownNuevo
     Widget _listaMedica() {
       //Widget Future para crear lista a futuro luego de resivir la informacion
       return FutureBuilder(
-          future: afectadoViewProvider.cargarData(),
+          future: cargarData(),
           initialData: [],
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List<DropdownMenuItem<String>> listaTemp =
-                  _cargarListaMed(snapshot.data, context);
+              var data = snapshot.data!;
               return DropdownButton(
                 value: institucionMed,
                 icon: const Icon(Icons.keyboard_arrow_down),
-                items:listaTemp,
+                items: data.map((element) {
+                  return DropdownMenuItem(
+                    value: element, 
+                    child: Text(element)
+                  );
+                },).toList(),
                 onChanged: (newValue) {
                   setState(() {
                     institucionMed = newValue.toString();
@@ -584,6 +572,100 @@ class _afectadoViewState extends State<afectadoView> {
             return Text('no data');
           });
     }
+
+    Future<List<String>> cargarAseguradora() async {
+      List<dynamic> opciones = [];
+      List<String> establecimiento = [];
+      final respuesta =
+          await rootBundle.loadString('assets/aseguradora.json');
+
+      Map dataMap = json.decode(respuesta);
+
+      opciones = dataMap['aseguradora'];
+      opciones.forEach(
+        (element) {
+          establecimiento.add(element['Nombre de la Institución II']);
+        },
+      );
+      setState(() => aseguradora = establecimiento.first);
+      return establecimiento;
+    }
+
+    Widget _listaAseguradora() {
+      return FutureBuilder(
+          future: cargarAseguradora(),
+          initialData: [],
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              var data = snapshot.data!;
+              return DropdownButton(
+                value: aseguradora,
+                icon: const Icon(Icons.keyboard_arrow_down),
+                items: data.map((element) {
+                  return DropdownMenuItem(
+                    value: element, 
+                    child: Text(element)
+                  );
+                },).toList(),
+                onChanged: (newValue) {
+                  setState(() {
+                    aseguradora = newValue.toString();
+                  });
+                },
+              );
+            }
+            return Text('no data');
+          });
+    }
+
+//----------------------------------------------------------------------Proveedores-------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+    //aseguradoraField
+    final aseguradoraField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text("Aseguradora"),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          flex: 2,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+            child: //_listaAseguradora(),
+            DropdownButton(
+              // Initial Value
+              value: aseguradora2,
+
+              // Down Arrow Icon
+              icon: const Icon(Icons.keyboard_arrow_down),
+
+              // Array list of items
+              items: listaAseguradora.map((String items) {
+                return DropdownMenuItem(
+                  value: items,
+                  child: Text(items),
+                );
+              }).toList(),
+
+              // After selecting the desired option,it will
+              // change button value to selected value
+              onChanged: (String? newValue) {
+                setState(() {
+                  aseguradora2 = newValue!;
+                });
+              },
+            ),
+          ),
+        ),
+      ],
+    );
 
     //institucionMedField
     final institucionMedField = Row(
@@ -598,9 +680,10 @@ class _afectadoViewState extends State<afectadoView> {
           flex: 2,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-            child: DropdownButton(
+            child: //_listaMedica(),
+             DropdownButton(
               // Initial Value
-              value: institucionMed,
+              value: institucionMed2,
 
               // Down Arrow Icon
               icon: const Icon(Icons.keyboard_arrow_down),
@@ -617,18 +700,14 @@ class _afectadoViewState extends State<afectadoView> {
               // change button value to selected value
               onChanged: (newValue) {
                 setState(() {
-                  institucionMed = newValue!;
+                  institucionMed2 = newValue!;
                 });
               },
-            ),
+            ), 
           ),
         ),
       ],
     );
-
-    //Adopta una vocacion dentro de la iglecia que cristo fundo
-    // Hacer oracion por una vocacion es especial o en lo especifico
-    // imagen para orar por las vocaciones(Cristo), circulando una imagen cada hogar
 
     //DescripcionField
     final descripcionField = Row(
