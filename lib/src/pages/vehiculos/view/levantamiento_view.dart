@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:movilidad/src/providers/levantamiento_provider.dart';
 
 import '../../../utils/icono_string_util.dart';
-import '../../levantamiento/model/levantamiento_model.dart';
+import '../../../model/levantamiento_model.dart';
 
 class LevantamientoView extends StatefulWidget {
   //Caracteristicas

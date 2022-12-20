@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 
-import 'package:movilidad/src/pages/levantamiento/model/afectado_model.dart';
+import 'package:movilidad/src/model/afectado_model.dart';
 import 'package:movilidad/src/providers/afectadoView_provider.dart';
 
 class afectadoView extends StatefulWidget {
@@ -526,7 +526,9 @@ class _afectadoViewState extends State<afectadoView> {
           initialData: [],
           builder: (context, snapshot) {
             if (snapshot.hasData) {
+              //Variable que contiene la informacion
               var data = snapshot.data!;
+              //Lista temporal con la informacion para los dropdown
               List<DropdownMenuItem> tempList = [];
               data.forEach((element) {
                 tempList.add(DropdownMenuItem(
@@ -534,6 +536,7 @@ class _afectadoViewState extends State<afectadoView> {
                   value: element['nom_estab'],
                 ));
               });
+              //Retrona objeto dropdown
               return DropdownButton(
                 hint: Text('Selecciona Institucion'),
                 value: institucionMed,
@@ -550,39 +553,28 @@ class _afectadoViewState extends State<afectadoView> {
           });
     }
 
-    Future<List<String>> cargarAseguradora() async {
-      List<dynamic> opciones = [];
-      List<String> establecimiento = [];
-      final respuesta = await rootBundle.loadString('assets/aseguradora.json');
-
-      Map dataMap = json.decode(respuesta);
-
-      opciones = dataMap['aseguradora'];
-      opciones.forEach(
-        (element) {
-          establecimiento.add(element['Nombre de la Institución II']);
-        },
-      );
-      setState(() => aseguradora = establecimiento.first);
-      return establecimiento;
-    }
-
     Widget _listaAseguradora() {
       return FutureBuilder(
-          future: cargarAseguradora(),
+          future: afectadoViewProvider.cargarDataAseguradora(),
           initialData: [],
           builder: (context, snapshot) {
             if (snapshot.hasData) {
+              //Variable que contiene la informacion
               var data = snapshot.data!;
+              //Lista temporal con la informacion para los dropdown
+              List<DropdownMenuItem> tempList = [];
+              data.forEach((element) {
+                tempList.add(DropdownMenuItem(
+                  child: Text(element['nombre']),
+                  value: element['nombre'],
+                ));
+              });
+              //Retrona objeto dropdown
               return DropdownButton(
+                hint: Text('Selecciona Aseguradora'),
                 value: aseguradora,
                 icon: const Icon(Icons.keyboard_arrow_down),
-                items: data.map(
-                  (element) {
-                    return DropdownMenuItem(
-                        value: element, child: Text(element));
-                  },
-                ).toList(),
+                items: tempList,
                 onChanged: (newValue) {
                   setState(() {
                     aseguradora = newValue.toString();
@@ -634,7 +626,7 @@ class _afectadoViewState extends State<afectadoView> {
                   aseguradora2 = newValue!;
                 });
               },
-            ),
+            ), 
           ),
         ),
       ],

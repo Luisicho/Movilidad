@@ -5,7 +5,7 @@ import 'package:movilidad/src/pages/vehiculos/view/levantamiento_view.dart';
 import 'package:movilidad/src/providers/db_provider.dart';
 import 'package:movilidad/src/providers/vehiculo_provider.dart';
 import 'package:movilidad/src/utils/icono_string_util.dart';
-import '../levantamiento/model/levantamiento_model.dart';
+import '../../model/levantamiento_model.dart';
 
 class MainVehiculo extends StatefulWidget {
   const MainVehiculo({super.key});
@@ -93,7 +93,6 @@ class _MainVehiculoState extends State<MainVehiculo> {
       future: vehiculoProvider.cargarData(),
       initialData: [],
       builder: (context, snapshot) {
-        print('Lista vehi $snapshot');
         return ListView(
           children: _listaItems(snapshot.data, context),
         );

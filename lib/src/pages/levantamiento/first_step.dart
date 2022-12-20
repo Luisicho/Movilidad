@@ -5,7 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:movilidad/src/pages/levantamiento/model/levantamiento_model.dart';
+import 'package:movilidad/src/model/levantamiento_model.dart';
 
 class firstStep extends StatefulWidget {
   //objeto

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
 import 'package:path_provider/path_provider.dart';
-import 'package:movilidad/src/pages/levantamiento/model/levantamiento_model.dart';
-export 'package:movilidad/src/pages/levantamiento/model/levantamiento_model.dart';
+import 'package:movilidad/src/model/levantamiento_model.dart';
+export 'package:movilidad/src/model/levantamiento_model.dart';
 
 class DBProvider {
   //Instancia de base de datos

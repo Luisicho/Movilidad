@@ -1,173 +1,170 @@
 {
     "nombreApp" : "Componentes",
     "aseguradora" : [
-            {
-             "No.": 1,
-             "Nombre de la Institución II": "A.N.A. COMPAÑÍA DE SEGUROS, S.A. DE C.V."
-            },
-            {
-             "No.": 2,
-             "Nombre de la Institución II": "AGROASEMEX, S.A."
-            },
-            {
-             "No.": 3,
-             "Nombre de la Institución II": "AIG SEGUROS MÉXICO, S.A. DE C.V."
-            },
-            {
-             "No.": 4,
-             "Nombre de la Institución II": "ALLIANZ MÉXICO, S.A."
-            },
-            {
-             "No.": 5,
-             "Nombre de la Institución II": "ASEGURADORA PATRIMONIAL DAÑOS, S.A."
-            },
-            {
-             "No.": 6,
-             "Nombre de la Institución II": "ASSURANT DAÑOS MÉXICO, S.A."
-            },
-            {
-             "No.": 7,
-             "Nombre de la Institución II": "AXA SEGUROS, S.A. DE C.V."
-            },
-            {
-             "No.": 8,
-             "Nombre de la Institución II": "BERKLEY INTERNATIONAL SEGUROS MÉXICO, S.A. DE C.V."
-            },
-            {
-             "No.": 9,
-             "Nombre de la Institución II": "CARDIF MÉXICO SEGUROS GENERALES, S.A. DE C.V."
-            },
-            {
-             "No.": 10,
-             "Nombre de la Institución II": "CHUBB SEGUROS MÉXICO, S.A."
-            },
-            {
-             "No.": 11,
-             "Nombre de la Institución II": "CITIBANAMEX SEGUROS, S.A. DE C.V."
-            },
-            {
-             "No.": 12,
-             "Nombre de la Institución II": "CRABI, S.A. DE C.V."
-            },
-            {
-             "No.": 13,
-             "Nombre de la Institución II": "DER NEUE HORIZONT RE, S.A."
-            },
-            {
-             "No.": 14,
-             "Nombre de la Institución II": "EL ÁGUILA, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
-            },
-            {
-             "No.": 15,
-             "Nombre de la Institución II": "GENERAL DE SEGUROS, S.A.B."
-            },
-            {
-             "No.": 16,
-             "Nombre de la Institución II": "GRUPO MEXICANO DE SEGUROS, S.A. DE C.V."
-            },
-            {
-             "No.": 17,
-             "Nombre de la Institución II": "GRUPO NACIONAL PROVINCIAL, S.A.B"
-            },
-            {
-             "No.": 18,
-             "Nombre de la Institución II": "HDI SEGUROS, S.A. DE C.V."
-            },
-            {
-             "No.": 19,
-             "Nombre de la Institución II": "HSBC SEGUROS, S.A. DE C.V."
-            },
-            {
-             "No.": 20,
-             "Nombre de la Institución II": "LA LATINOAMERICANA SEGUROS, S.A."
-            },
-            {
-             "No.": 21,
-             "Nombre de la Institución II": "MAPFRE MÉXICO, S.A."
-            },
-            {
-             "No.": 22,
-             "Nombre de la Institución II": "PATRIMONIAL INBURSA, S.A."
-            },
-            {
-             "No.": 23,
-             "Nombre de la Institución II": "PRIMERO SEGUROS, S.A. DE C,V."
-            },
-            {
-             "No.": 24,
-             "Nombre de la Institución II": "QBE DE MÉXICO COMPAÑÍA DE SEGUROS, S.A. DE C.V."
-            },
-            {
-             "No.": 25,
-             "Nombre de la Institución II": "QUÁLITAS, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
-            },
-            {
-             "No.": 26,
-             "Nombre de la Institución II": "REASEGURADORA PATRIA, S.A."
-            },
-            {
-             "No.": 27,
-             "Nombre de la Institución II": "SEGUROS AFIRME, S.A. DE C.V."
-            },
-            {
-             "No.": 28,
-             "Nombre de la Institución II": "SEGUROS ATLAS, S.A."
-            },
-            {
-             "No.": 29,
-             "Nombre de la Institución II": "SEGUROS AZTECA DAÑOS, S.A. DE C.V."
-            },
-            {
-             "No.": 30,
-             "Nombre de la Institución II": "SEGUROS BANORTE, S.A DE C.V."
-            },
-            {
-             "No.": 31,
-             "Nombre de la Institución II": "SEGUROS BBVA BANCOMER, S.A. DE C.V."
-            },
-            {
-             "No.": 32,
-             "Nombre de la Institución II": "SEGUROS EL POTOSÍ, S.A."
-            },
-            {
-             "No.": 33,
-             "Nombre de la Institución II": "SEGUROS INBURSA, S.A."
-            },
-            {
-             "No.": 34,
-             "Nombre de la Institución II": "SEGUROS SURA, S.A. DE C.V."
-            },
-            {
-             "No.": 35,
-             "Nombre de la Institución II": "SEGUROS VE POR MÁS, S.A."
-            },
-            {
-             "No.": 36,
-             "Nombre de la Institución II": "SOMPO SEGUROS MÉXICO, S.A. DE C.V."
-            },
-            {
-             "No.": 37,
-             "Nombre de la Institución II": "SPT, SOCIEDAD MUTUALISTA DE SEGUROS"
-            },
-            {
-             "No.": 38,
-             "Nombre de la Institución II": "TOKIO MARINE, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
-            },
-            {
-             "No.": 39,
-             "Nombre de la Institución II": "VIRGINIA SURETY SEGUROS DE MÉXICO, S.A. DE C.V."
-            },
-            {
-             "No.": 40,
-             "Nombre de la Institución II": "ZURICH ASEGURADORA MEXICANA, S.A. DE C.V."
-            },
-            {
-             "No.": 41,
-             "Nombre de la Institución II": "ZURICH SANTANDER SEGUROS MÉXICO, S.A."
-            },
-            {
-             "No.": 42,
-             "Nombre de la Institución II": "ZURICH, COMPAÑÍA DE SEGUROS, S.A."
-            }
+        {
+            "id": 1,
+            "nombre": "SEGUROS BANORTE, S.A DE C.V."
+        },
+        {
+            "id": 2,
+            "nombre": "ALLIANZ MÉXICO, S.A."
+        },
+        {
+            "id": 3,
+            "nombre": "PATRIMONIAL INBURSA, S.A."
+        },
+        {
+            "id": 4,
+            "nombre": "SEGUROS EL POTOSÍ, S.A."
+        },
+        {
+            "id": 5,
+            "nombre": "GENERAL DE SEGUROS, S.A.B."
+        },
+        {
+            "id": 6,
+            "nombre": "SEGUROS SURA, S.A. DE C.V."
+        },
+        {
+            "id": 7,
+            "nombre": "AIG SEGUROS MÉXICO, S.A. DE C.V."
+        },
+        {
+            "id": 8,
+            "nombre": "LA LATINOAMERICANA SEGUROS, S.A."
+        },
+        {
+            "id": 9,
+            "nombre": "SEGUROS VE POR MÁS, S.A."
+        },
+        {
+            "id": 10,
+            "nombre": "ZURICH SANTANDER SEGUROS MÉXICO, S.A."
+        },
+        {
+            "id": 11,
+            "nombre": "SEGUROS INBURSA, S.A."
+        },
+        {
+            "id": 12,
+            "nombre": "SEGUROS ATLAS, S.A."
+        },
+        {
+            "id": 13,
+            "nombre": "ZURICH, COMPAÑÍA DE SEGUROS, S.A."
+        },
+        {
+            "id": 14,
+            "nombre": "HDI SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 15,
+            "nombre": "QBE DE MÉXICO COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 16,
+            "nombre": "CHUBB SEGUROS MÉXICO, S.A."
+        },
+        {
+            "id": 17,
+            "nombre": "MAPFRE MÉXICO, S.A."
+        },
+        {
+            "id": 18,
+            "nombre": "GRUPO NACIONAL PROVINCIAL, S.A.B"
+        },
+        {
+            "id": 19,
+            "nombre": "QUÁLITAS, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 20,
+            "nombre": "AXA SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 21,
+            "nombre": "CITIBANAMEX SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 22,
+            "nombre": "REASEGURADORA PATRIA, S.A."
+        },
+        {
+            "id": 23,
+            "nombre": "ASSURANT DAÑOS MÉXICO, S.A."
+        },
+        {
+            "id": 24,
+            "nombre": "AGROASEMEX, S.A."
+        },
+        {
+            "id": 25,
+            "nombre": "HSBC SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 26,
+            "nombre": "SEGUROS BBVA BANCOMER, S.A. DE C.V."
+        },
+        {
+            "id": 27,
+            "nombre": "TOKIO MARINE, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 28,
+            "nombre": "EL ÁGUILA, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 29,
+            "nombre": "A.N.A. COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 30,
+            "nombre": "GRUPO MEXICANO DE SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 31,
+            "nombre": "SOMPO SEGUROS MÉXICO, S.A. DE C.V."
+        },
+        {
+            "id": 32,
+            "nombre": "SEGUROS AFIRME, S.A. DE C.V."
+        },
+        {
+            "id": 33,
+            "nombre": "ASEGURADORA PATRIMONIAL DAÑOS, S.A."
+        },
+        {
+            "id": 34,
+            "nombre": "SEGUROS AZTECA DAÑOS, S.A. DE C.V."
+        },
+        {
+            "id": 35,
+            "nombre": "CARDIF MÉXICO SEGUROS GENERALES, S.A. DE C.V."
+        },
+        {
+            "id": 36,
+            "nombre": "PRIMERO SEGUROS, S.A. DE C,V."
+        },
+        {
+            "id": 37,
+            "nombre": "SPT, SOCIEDAD MUTUALISTA DE SEGUROS"
+        },
+        {
+            "id": 38,
+            "nombre": "DER NEUE HORIZONT RE, S.A."
+        },
+        {
+            "id": 39,
+            "nombre": "VIRGINIA SURETY SEGUROS DE MÉXICO, S.A. DE C.V."
+        },
+        {
+            "id": 40,
+            "nombre": "BERKLEY INTERNATIONAL SEGUROS MÉXICO, S.A. DE C.V."
+        },
+        {
+            "id": 41,
+            "nombre": "CRABI, S.A. DE C.V."
+        }
+        
     ]
 }
