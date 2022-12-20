@@ -47,7 +47,7 @@ class _MainVehiculoState extends State<MainVehiculo> {
           onPressed: (){
             //-------------Toast
               Fluttertoast.showToast(
-              msg: 'Sincronizando a la nube',
+              msg: 'Sincronizado a la nube',
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.CENTER,
               timeInSecForIosWeb: 1,
@@ -55,6 +55,7 @@ class _MainVehiculoState extends State<MainVehiculo> {
               textColor: Colors.white,
               fontSize: 16.0);
             //-------------Toast
+            setState(() => valueABuscar = ' ');
           },
           backgroundColor: Colors.green,
           child: const Icon(Icons.cloud),

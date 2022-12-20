@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:movilidad/src/pages/view/home_screen.dart';
-
-import '../../providers/db_provider.dart';
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
