@@ -37,7 +37,7 @@ class _secondStepState extends State<secondStep> {
             return AlertDialog(
               content: Container(
                 padding: const EdgeInsets.all(0),
-                width: MediaQuery.of(context).size.width * 0.45,
+                width: MediaQuery.of(context).size.width,
                 child: afectadoView(addAfectado),
               ),
               shape: RoundedRectangleBorder(

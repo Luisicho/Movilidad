@@ -600,33 +600,11 @@ class _afectadoViewState extends State<afectadoView> {
         ),
         const SizedBox(width: 10),
         Expanded(
-          flex: 2,
+          flex: 5,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-            child: //_listaAseguradora(),
-                DropdownButton(
-              // Initial Value
-              value: aseguradora2,
-
-              // Down Arrow Icon
-              icon: const Icon(Icons.keyboard_arrow_down),
-
-              // Array list of items
-              items: listaAseguradora.map((String items) {
-                return DropdownMenuItem(
-                  value: items,
-                  child: Text(items),
-                );
-              }).toList(),
-
-              // After selecting the desired option,it will
-              // change button value to selected value
-              onChanged: (String? newValue) {
-                setState(() {
-                  aseguradora2 = newValue!;
-                });
-              },
-            ), 
+            child: _listaAseguradora(),
+                
           ),
         ),
       ],
@@ -642,33 +620,10 @@ class _afectadoViewState extends State<afectadoView> {
         ),
         const SizedBox(width: 10),
         Expanded(
-          flex: 2,
+          flex: 5,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-            child: //_listaMedica(),
-            DropdownButton(
-              // Initial Value
-              value: institucionMed2,
-
-              // Down Arrow Icon
-              icon: const Icon(Icons.keyboard_arrow_down),
-
-              // Array list of items
-              items: listaInstitucionMed.map((String items) {
-                return DropdownMenuItem(
-                  value: items,
-                  child: Text(items),
-                );
-              }).toList(),
-
-              // After selecting the desired option,it will
-              // change button value to selected value
-              onChanged: (newValue) {
-                setState(() {
-                  institucionMed2 = newValue!;
-                });
-              },
-            ), 
+            child: _listaMedica(), 
           ),
         ),
       ],
