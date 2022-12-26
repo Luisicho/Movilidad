@@ -17,9 +17,9 @@ class _HomeScreen2State extends State<HomeScreen2> {
           color: Color.fromARGB(255, 33, 114, 36),
           image: DecorationImage(
               image: AssetImage(
-                "assets/fondo2.png",
+                "assets/fondoMovilidad.png",
               ),
-              fit: BoxFit.fill),
+              fit: BoxFit.cover),
         ),
         child: Scaffold(
             backgroundColor: Colors.transparent,

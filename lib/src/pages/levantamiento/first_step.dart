@@ -5,11 +5,38 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:movilidad/src/pages/levantamiento/model/levantamiento.dart';
+import 'package:movilidad/src/model/levantamiento_model.dart';
 
 class firstStep extends StatefulWidget {
   //objeto
-  final Levantamiento levantamiento = Levantamiento();
+  final LevantamientoModel levantamiento = LevantamientoModel(
+    folio: '',
+    fechaLlegada: '',
+    horaLlegada: '',
+    horaAccidente: '',
+    ubicacion: '',
+    entre: '',
+    y: '',
+    longitud: '',
+    latitud: '',
+    noEconomico: '',
+    placas: '',
+    descripcion: '',
+    concesionario: '',
+    noLicencia: '',
+    tipo: '',
+    nombre: '',
+    vigencia: '',
+    fotosLev: [
+      File(''),
+      File(''),
+      File(''),
+      File(''),
+      File(''),
+      File(''),
+    ],
+    icon: 'car_crash',
+  );
   firstStep({super.key});
 
   @override
@@ -49,7 +76,7 @@ class _firstStepState extends State<firstStep> {
   final TextEditingController entreController = TextEditingController();
   final TextEditingController yController = TextEditingController();
 
-  //-----------Inicio de variables y controladores------------------
+  //---------------------------------------------Inicio de variables y controladores------------------
 
   String VehiRespondable = "1";
   //ImagePicker
@@ -57,6 +84,161 @@ class _firstStepState extends State<firstStep> {
   final List<XFile>? images = List<XFile>.empty();
   XFile? photo1, photo2, photo3, photo4, photo5, photo6 = XFile("no");
   File? image1, image2, image3, image4, image5, image6;
+
+  var servicioP = [
+    {
+      'noeconomico': '1234',
+      'nuevonoeconomico': '1234',
+      'descripcion': "Taxi, NISSAN",
+      'concecion': 'Abrego Valdivia Martin'
+    },
+    {
+      'noeconomico': 'GTX-2239',
+      'nuevonoeconomico': 'NTP1963',
+      'descripcion': "TAXI",
+      'concecion': 'ABREGO GAMBOA BRENDA ARLIN,'
+    },
+    {
+      'noeconomico': 'GTX-4902',
+      'nuevonoeconomico': 'NTP2744',
+      'descripcion': "TAXI",
+      'concecion': 'ABREGO TOPETE PEDRO OSVALDO'
+    },
+    {
+      'noeconomico': 'GTX-1507',
+      'nuevonoeconomico': 'NTP3222',
+      'descripcion': "TAXI",
+      'concecion': 'ABREGO PERALES CARLOS ALBERTO'
+    },
+    {
+      'noeconomico': 'GTX-4927',
+      'nuevonoeconomico': 'NTP4714',
+      'descripcion': "TAXI",
+      'concecion': 'ABREGO MEDRANO EDUARDO'
+    },
+    {
+      'noeconomico': 'GTX-2742',
+      'nuevonoeconomico': 'NTP4819',
+      'descripcion': "TAXI",
+      'concecion': 'SAUCEDO MIRAMONTES ROBERTO ENRIQUE'
+    },
+    {
+      'noeconomico': 'GTX-5467',
+      'nuevonoeconomico': 'NTP4890',
+      'descripcion': "TAXI",
+      'concecion': 'ABALOS RODRIGUEZ JULIO ALFREDO'
+    },
+    {
+      'noeconomico': 'GTX-2516',
+      'nuevonoeconomico': 'NTP5312',
+      'descripcion': "TAXI",
+      'concecion': 'ABALOS MARIN ELIAZAR'
+    },
+    {
+      'noeconomico': 'GTX-551',
+      'nuevonoeconomico': 'NTP551',
+      'descripcion': "TAXI",
+      'concecion': 'PEREZ BAÑUELOS DIONICIO'
+    },
+    {
+      'noeconomico': 'GTX-559',
+      'nuevonoeconomico': 'NTP559',
+      'descripcion': "TAXI",
+      'concecion': 'MARTINEZ GOMEZ MA. MERCEDES'
+    },
+    {
+      'noeconomico': 'GTX-789',
+      'nuevonoeconomico': 'NTP789',
+      'descripcion': "TAXI",
+      'concecion': 'SALDATE CASTILLON VICTOR MANUEL'
+    },
+  ];
+
+  var Placas = [
+    {
+      'placas': '1234',
+      'descripcion': "NISSAN",
+      'concecion': 'PEDRO PEREZ LOPEZ'
+    },
+    {
+      'placas': ',RGD-40-00',
+      'descripcion': "NISSAN",
+      'concecion': 'PEDRO PEREZ LOPEZ'
+    },
+    {
+      'placas': 'RGD-50-55',
+      'descripcion': "VOLKSWAGEN",
+      'concecion': 'ELI GARNICA LOZANO'
+    },
+    {
+      'placas': 'RGJ-52-10',
+      'descripcion': "FORD",
+      'concecion': 'OSCAR BUENO CARLOS'
+    },
+    {
+      'placas': 'RGY-52-10',
+      'descripcion': "HYUNDAI",
+      'concecion': 'RAUL LOPEZ PADILLA'
+    },
+    {
+      'placas': 'RGL-26-80',
+      'descripcion': "NISSAN",
+      'concecion': 'HERNAN COLINA DIAZ'
+    },
+    {
+      'placas': 'RGA-50-55',
+      'descripcion': "TOYOTA",
+      'concecion': 'FELIPE LAMAS MARTINEZ'
+    },
+    {
+      'placas': 'L156K',
+      'descripcion': "HONDA",
+      'concecion': 'JUANA PLACENCIA LOYOLA'
+    },
+    {
+      'placas': 'PF-25-920',
+      'descripcion': "FORD",
+      'concecion': 'CARMEN POLANCO PEREZ'
+    },
+    {
+      'placas': 'RGH-50-01',
+      'descripcion': "VOLKSWAGEN",
+      'concecion': 'CARLOS OCAÑA DIAZ'
+    },
+  ];
+
+  var licencias = [
+    {
+      'licencia': '1234',
+      'tipo': "C",
+      'nombre': 'ABNER ULISES MENDOZA HERNANDEZ',
+      'vigencia': '07/26/2025'
+    },
+    {
+      'licencia': '11BDGTTN029448',
+      'tipo': "B",
+      'nombre': 'FERNANDO ELIASPALOMEQUE PEREZ',
+      'vigencia': '7/26/2024'
+    },
+    {
+      'licencia': '11BDGTTN029445',
+      'tipo': "B",
+      'nombre': 'YESSICA SANDOVAL CASTILLO',
+      'vigencia': '7/26/2024'
+    },
+    {
+      'licencia': '11ADGTTN005413',
+      'tipo': "A",
+      'nombre': 'ANA  MATILDE DE LAS MERCEDESPARDO HERNANDEZ',
+      'vigencia': '7/26/2024'
+    },
+    {
+      'licencia': '11ADGTTN005414',
+      'tipo': "C",
+      'nombre': 'ROSALIA GUADALUPEPEREZ PEREZ',
+      'vigencia': '7/26/2024,A'
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -68,19 +250,19 @@ class _firstStepState extends State<firstStep> {
     //ASIGNA HORA DE HOY
     hourLlegadaController.text = TimeOfDay.now().format(context).toString();
     //Objeto
-    widget.levantamiento.HoraLlegada =
+    widget.levantamiento.horaLlegada =
         TimeOfDay.now().format(context).toString();
     //ASIGNA DIA DE HOY
     fechaController.text = DateFormat("dd-MM-yyyy").format(DateTime.now());
     //Objeto
-    widget.levantamiento.FechaLlegada =
+    widget.levantamiento.fechaLlegada =
         DateFormat("dd-MM-yyyy").format(DateTime.now());
 
     //Consigue folio nuevo
     folioController.text = getFolio();
 
-    //--------------Object Varaible-----------------------
-    //--------------Step No1
+    //--------------------------------------------------Object Varaible-----------------------
+    //----------------------------------------------Step No1
     //Folio Field
     final folioField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -187,7 +369,7 @@ class _firstStepState extends State<firstStep> {
                 hourAccidenteController.text =
                     timePicket.format(context).toString();
                 //Guarda hora en objeto levantamiento
-                widget.levantamiento.HoraAccidente =
+                widget.levantamiento.horaAccidente =
                     timePicket.format(context).toString();
               }
             },
@@ -220,7 +402,7 @@ class _firstStepState extends State<firstStep> {
             ),
             onChanged: ((value) {
               //Objeto ubicacion
-              widget.levantamiento.Ubicacion = value;
+              widget.levantamiento.ubicacion = value;
             }),
           ),
         ),
@@ -251,7 +433,7 @@ class _firstStepState extends State<firstStep> {
             ),
             onChanged: ((value) {
               //Objeto cambio
-              widget.levantamiento.Entre = value;
+              widget.levantamiento.entre = value;
             }),
           ),
         ),
@@ -282,7 +464,7 @@ class _firstStepState extends State<firstStep> {
             ),
             onChanged: ((value) {
               //Objeto cambio
-              widget.levantamiento.Y = value;
+              widget.levantamiento.y = value;
             }),
           ),
         ),
@@ -337,9 +519,9 @@ class _firstStepState extends State<firstStep> {
               //Asigna coordenadas a Txt
               latController.text = _currentPosition.latitude.toString();
               lonController.text = _currentPosition.longitude.toString();
-              widget.levantamiento.Latitud =
+              widget.levantamiento.latitud =
                   _currentPosition.latitude.toString();
-              widget.levantamiento.Longitud =
+              widget.levantamiento.longitud =
                   _currentPosition.longitude.toString();
               //print(latController.text);
               //print(lonController.text);
@@ -402,7 +584,7 @@ class _firstStepState extends State<firstStep> {
                         // transforma imagen a file
                         final imageTemporal = File(photo1!.path);
                         //Agrega foto a la lista
-                        widget.levantamiento.FotosLev[0] = imageTemporal;
+                        widget.levantamiento.fotosLev[0] = imageTemporal;
                         setState(() {
                           this.image1 = imageTemporal;
                         });
@@ -428,7 +610,7 @@ class _firstStepState extends State<firstStep> {
                         // transforma imagen a file
                         final imageTemporal = File(photo2!.path);
                         //Agrega foto a la lista
-                        widget.levantamiento.FotosLev[1] = imageTemporal;
+                        widget.levantamiento.fotosLev[1] = imageTemporal;
                         setState(() {
                           this.image2 = imageTemporal;
                         });
@@ -463,7 +645,7 @@ class _firstStepState extends State<firstStep> {
                         // transforma imagen a file
                         final imageTemporal = File(photo3!.path);
                         //Agrega foto a la lista
-                        widget.levantamiento.FotosLev[2] = imageTemporal;
+                        widget.levantamiento.fotosLev[2] = imageTemporal;
                         setState(() {
                           this.image3 = imageTemporal;
                         });
@@ -489,7 +671,7 @@ class _firstStepState extends State<firstStep> {
                         // transforma imagen a file
                         final imageTemporal = File(photo4!.path);
                         //Agrega foto a la lista
-                        widget.levantamiento.FotosLev[3] = imageTemporal;
+                        widget.levantamiento.fotosLev[3] = imageTemporal;
                         setState(() {
                           this.image4 = imageTemporal;
                         });
@@ -524,7 +706,7 @@ class _firstStepState extends State<firstStep> {
                         // transforma imagen a file
                         final imageTemporal = File(photo5!.path);
                         //Agrega foto a la lista
-                        widget.levantamiento.FotosLev[4] = imageTemporal;
+                        widget.levantamiento.fotosLev[4] = imageTemporal;
                         setState(() {
                           this.image5 = imageTemporal;
                         });
@@ -550,7 +732,7 @@ class _firstStepState extends State<firstStep> {
                         // transforma imagen a file
                         final imageTemporal = File(photo6!.path);
                         //Agrega foto a la lista
-                        widget.levantamiento.FotosLev[5] = imageTemporal;
+                        widget.levantamiento.fotosLev[5] = imageTemporal;
                         setState(() {
                           this.image6 = imageTemporal;
                         });
@@ -622,7 +804,7 @@ class _firstStepState extends State<firstStep> {
                       ),
                     ),
                     onChanged: (value) {
-                      widget.levantamiento.NoEconomico = value;
+                      widget.levantamiento.noEconomico = value;
                     })
                 : TextFormField(
                     enabled: false,
@@ -656,7 +838,7 @@ class _firstStepState extends State<firstStep> {
                       ),
                     ),
                     onChanged: (value) {
-                      widget.levantamiento.Placas = value;
+                      widget.levantamiento.placas = value;
                     })
                 : TextFormField(
                     enabled: false,
@@ -681,18 +863,67 @@ class _firstStepState extends State<firstStep> {
           flex: 1,
           child: TextButton(
             onPressed: () {
+              var mensaje = 'No encontrado';
+              var color = Colors.red;
+              if (noeconomicoController.text != "") {
+                //Variables locales 
+                //Condicion para la busqueda
+                var busquedatemp = servicioP.where((element) =>
+                    element['noeconomico'] == noeconomicoController.text);
+                
+                if (busquedatemp.isNotEmpty) {
+                  descripcionController.text =
+                      busquedatemp.first['descripcion']!;
+                  concesionController.text = busquedatemp.first['concecion']!;
+                  mensaje = 'Encontrado en nube';
+                  color = Colors.green;
+                  //Cambia objeto
+                  widget.levantamiento.noEconomico = noeconomicoController.text;
+                  widget.levantamiento.concesionario = concesionController.text;
+                  widget.levantamiento.descripcion = descripcionController.text;
+                }
+                var busquedatemp2 = servicioP.where((element) =>
+                    element['nuevonoeconomico'] == noeconomicoController.text);
+                    
+                if (busquedatemp2.isNotEmpty) {
+                  descripcionController.text =
+                      busquedatemp2.first['descripcion']!;
+                  concesionController.text = busquedatemp2.first['concecion']!;
+                  mensaje = 'Encontrado en nube';
+                  color = Colors.green;
+                  //Cambia objeto
+                  widget.levantamiento.noEconomico = noeconomicoController.text;
+                  widget.levantamiento.concesionario = concesionController.text;
+                  widget.levantamiento.descripcion = descripcionController.text;
+                }
+              }
+              if (placasController.text != "") {
+                //Variables locales 
+                //Condicion para la busqueda
+                var busquedatemp = Placas.where(
+                    (element) => element['placas'] == placasController.text);
+                if (busquedatemp.isNotEmpty) {
+                  descripcionController.text =
+                      busquedatemp.first['descripcion']!;
+                  concesionController.text = busquedatemp.first['concecion']!;
+                  mensaje = 'Encontrado en nube';
+                  color = Colors.green;
+                  //Cambiar objeto
+                  widget.levantamiento.placas = placasController.text;
+                  widget.levantamiento.descripcion = descripcionController.text;
+                  widget.levantamiento.concesionario = concesionController.text;
+                }
+              }
               //-------------Toast
               Fluttertoast.showToast(
-                  msg: 'Encontrado en nube',
+                  msg: mensaje,
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.CENTER,
                   timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.green,
+                  backgroundColor: color,
                   textColor: Colors.white,
                   fontSize: 16.0);
               //-------------Toast
-              descripcionController.text = 'Honda 2023';
-              concesionController.text = '091283HASJ09';
               setState(() {});
             },
             child: const Text('Buscar Placas / No.Economico'),
@@ -778,21 +1009,35 @@ class _firstStepState extends State<firstStep> {
           flex: 1,
           child: TextButton(
             onPressed: () {
+              var mensaje = 'No encontrado';
+              var color = Colors.red;
+              if (nolicenciaController.text != "") {
+                var busquedatemp = licencias.where((element) =>
+                    element['licencia'] == nolicenciaController.text);
+                if (busquedatemp.isNotEmpty) {
+                  tipoController.text = busquedatemp.first['tipo']!;
+                  nombreController.text = busquedatemp.first['nombre']!;
+                  vigenciaController.text = busquedatemp.first['vigencia']!;
+                  mensaje = 'Encontrado en nube';
+                  color = Colors.green;
+                  //Cambia Objeto
+                  widget.levantamiento.noLicencia = nolicenciaController.text;
+                  widget.levantamiento.tipo = tipoController.text;
+                  widget.levantamiento.nombre = tipoController.text;
+                  widget.levantamiento.vigencia = vigenciaController.text;
+                }
+              }
               //-------------Toast
               Fluttertoast.showToast(
-                  msg: 'Encontrado en nube',
+                  msg: mensaje,
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.CENTER,
                   timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.green,
+                  backgroundColor: color,
                   textColor: Colors.white,
                   fontSize: 16.0);
               //-------------Toast
-              //Cambia Objeto
-              widget.levantamiento.NoLicencia = nolicenciaController.text;
-              tipoController.text = 'Chofer';
-              nombreController.text = 'Luis Miguel Hernandez';
-              vigenciaController.text = '10/2025';
+
               setState(() {});
             },
             child: const Text('Buscar'),
@@ -876,10 +1121,10 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //--------------Step No1
+    //------------------------------------------------------------------Step No1
     //multi foto, Descripcion, concecionario, vehiculo field, no licencia, tipo, nombre, vigencia
 
-    //--------------Object Varaible-----------------------
+    //------------------------------------------------------------Object Variable-----------------------
 
     return Container(
       height: 1200,

@@ -3,32 +3,32 @@
     "levantamientos" : [
         {
             "ruta" : "alert",
-            "icon" : "add_alert",
+            "icon" : "car_crash",
             "texto": "Alertas",
             "folio": "01",
-            "descripcion": "Hola 01"
+            "descripcion": "Automovil con choque muy aparatoso"
         },
         {
             "ruta" : "avatar",
             "icon" : "car_crash",
             "texto": "Avatars",
             "folio": "02",
-            "descripcion": "Hola 02"
+            "descripcion": "Vehiculo moticiclista accidentado"
         },
         {
             "ruta" : "card",
-            "icon" : "folder_open",
+            "icon" : "car_crash",
             "texto": "Cards - Tarjetas",
             "folio": "03",
-            "descripcion": "Hola 03"
+            "descripcion": "Siniestro poco comun, ocurrio una tristesa"
         }
         ,
         {
             "ruta" : "card",
-            "icon" : "car_repair",
+            "icon" : "car_crash",
             "texto": "Cards - Tarjetas",
             "folio": "04",
-            "descripcion": "Hola 04"
+            "descripcion": "El vehiculo publico choco con una combi"
         }
     ]
 }

@@ -1,0 +1,170 @@
+{
+    "nombreApp" : "Componentes",
+    "aseguradora" : [
+        {
+            "id": 1,
+            "nombre": "SEGUROS BANORTE, S.A DE C.V."
+        },
+        {
+            "id": 2,
+            "nombre": "ALLIANZ MÉXICO, S.A."
+        },
+        {
+            "id": 3,
+            "nombre": "PATRIMONIAL INBURSA, S.A."
+        },
+        {
+            "id": 4,
+            "nombre": "SEGUROS EL POTOSÍ, S.A."
+        },
+        {
+            "id": 5,
+            "nombre": "GENERAL DE SEGUROS, S.A.B."
+        },
+        {
+            "id": 6,
+            "nombre": "SEGUROS SURA, S.A. DE C.V."
+        },
+        {
+            "id": 7,
+            "nombre": "AIG SEGUROS MÉXICO, S.A. DE C.V."
+        },
+        {
+            "id": 8,
+            "nombre": "LA LATINOAMERICANA SEGUROS, S.A."
+        },
+        {
+            "id": 9,
+            "nombre": "SEGUROS VE POR MÁS, S.A."
+        },
+        {
+            "id": 10,
+            "nombre": "ZURICH SANTANDER SEGUROS MÉXICO, S.A."
+        },
+        {
+            "id": 11,
+            "nombre": "SEGUROS INBURSA, S.A."
+        },
+        {
+            "id": 12,
+            "nombre": "SEGUROS ATLAS, S.A."
+        },
+        {
+            "id": 13,
+            "nombre": "ZURICH, COMPAÑÍA DE SEGUROS, S.A."
+        },
+        {
+            "id": 14,
+            "nombre": "HDI SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 15,
+            "nombre": "QBE DE MÉXICO COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 16,
+            "nombre": "CHUBB SEGUROS MÉXICO, S.A."
+        },
+        {
+            "id": 17,
+            "nombre": "MAPFRE MÉXICO, S.A."
+        },
+        {
+            "id": 18,
+            "nombre": "GRUPO NACIONAL PROVINCIAL, S.A.B"
+        },
+        {
+            "id": 19,
+            "nombre": "QUÁLITAS, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 20,
+            "nombre": "AXA SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 21,
+            "nombre": "CITIBANAMEX SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 22,
+            "nombre": "REASEGURADORA PATRIA, S.A."
+        },
+        {
+            "id": 23,
+            "nombre": "ASSURANT DAÑOS MÉXICO, S.A."
+        },
+        {
+            "id": 24,
+            "nombre": "AGROASEMEX, S.A."
+        },
+        {
+            "id": 25,
+            "nombre": "HSBC SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 26,
+            "nombre": "SEGUROS BBVA BANCOMER, S.A. DE C.V."
+        },
+        {
+            "id": 27,
+            "nombre": "TOKIO MARINE, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 28,
+            "nombre": "EL ÁGUILA, COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 29,
+            "nombre": "A.N.A. COMPAÑÍA DE SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 30,
+            "nombre": "GRUPO MEXICANO DE SEGUROS, S.A. DE C.V."
+        },
+        {
+            "id": 31,
+            "nombre": "SOMPO SEGUROS MÉXICO, S.A. DE C.V."
+        },
+        {
+            "id": 32,
+            "nombre": "SEGUROS AFIRME, S.A. DE C.V."
+        },
+        {
+            "id": 33,
+            "nombre": "ASEGURADORA PATRIMONIAL DAÑOS, S.A."
+        },
+        {
+            "id": 34,
+            "nombre": "SEGUROS AZTECA DAÑOS, S.A. DE C.V."
+        },
+        {
+            "id": 35,
+            "nombre": "CARDIF MÉXICO SEGUROS GENERALES, S.A. DE C.V."
+        },
+        {
+            "id": 36,
+            "nombre": "PRIMERO SEGUROS, S.A. DE C,V."
+        },
+        {
+            "id": 37,
+            "nombre": "SPT, SOCIEDAD MUTUALISTA DE SEGUROS"
+        },
+        {
+            "id": 38,
+            "nombre": "DER NEUE HORIZONT RE, S.A."
+        },
+        {
+            "id": 39,
+            "nombre": "VIRGINIA SURETY SEGUROS DE MÉXICO, S.A. DE C.V."
+        },
+        {
+            "id": 40,
+            "nombre": "BERKLEY INTERNATIONAL SEGUROS MÉXICO, S.A. DE C.V."
+        },
+        {
+            "id": 41,
+            "nombre": "CRABI, S.A. DE C.V."
+        }
+        
+    ]
+}

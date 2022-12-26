@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../pages/levantamiento/lev_main.dart';
 import '../pages/maps/map_main.dart';
 import '../pages/vehiculos/main_vehiculo.dart';
-import '../pages/view/home_screen.dart';
-import '../pages/view/login_screen.dart';
+import '../pages/home_screen.dart';
+import '../pages/login_screen.dart';
 
 Map<String, WidgetBuilder> getAplicationRoutes() {
   return <String, WidgetBuilder>{

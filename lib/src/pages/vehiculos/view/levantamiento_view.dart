@@ -1,12 +1,41 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:movilidad/src/providers/levantamiento_provider.dart';
 
 import '../../../utils/icono_string_util.dart';
-import '../../levantamiento/model/levantamiento.dart';
+import '../../../model/levantamiento_model.dart';
 
 class LevantamientoView extends StatefulWidget {
   //Caracteristicas
-  Levantamiento levantamiento = Levantamiento();
+  LevantamientoModel levantamiento = LevantamientoModel(
+      folio: '',
+      fechaLlegada: '',
+      horaLlegada: '',
+      horaAccidente: '',
+      ubicacion: '',
+      entre: '',
+      y: '',
+      longitud: '',
+      latitud: '',
+      noEconomico: '',
+      placas: '',
+      descripcion: '',
+      concesionario: '',
+      noLicencia: '',
+      tipo: '',
+      nombre: '',
+      vigencia: '',
+      fotosLev: [
+        File(''),
+        File(''),
+        File(''),
+        File(''),
+        File(''),
+        File(''),
+      ],
+      icon: 'car_crash',
+      );
   //Constructores
   LevantamientoView({super.key});
   @override
@@ -23,7 +52,7 @@ class LevantamientoViewState extends State<LevantamientoView> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Folio ${widget.levantamiento.Folio}'),
+          title: Text('Folio ${widget.levantamiento.folio}'),
         ),
         body: _lista(),
       ),
@@ -84,7 +113,7 @@ class LevantamientoViewState extends State<LevantamientoView> {
     //  busqueda en el txt
     data!.where((element) {
       final folio = element['folio'];
-      final input = widget.levantamiento.Folio;
+      final input = widget.levantamiento.folio;
 
       return folio.contains(input);
     }).forEach((element) {
