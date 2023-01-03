@@ -10,8 +10,8 @@ import 'package:movilidad/src/providers/afectadoView_provider.dart';
 
 class afectadoView extends StatefulWidget {
   //variables
-  final Function(AfectadoModel) addAfectado;
-  afectadoView(this.addAfectado);
+  final Function(AfectadoModel) addAfectado; // variable referencia al addAfectado de secondStep
+  afectadoView(this.addAfectado); // constructor que resive referencia de la funcion addAfectado de secondStep
 
   @override
   State<afectadoView> createState() => _afectadoViewState();
@@ -169,6 +169,11 @@ class _afectadoViewState extends State<afectadoView> {
 
   @override
   Widget build(BuildContext context) {
+
+    /* A MEJORAR
+      Se puede crear funcion que cree Fileds donde se pase nombre de field, icono y controlador asi reducimos codigo
+
+    */
     //---------------Variables Locales Widget
     //polizaField
     final polizaField = Row(

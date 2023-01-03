@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:movilidad/src/model/levantamiento_model.dart';
+import 'package:movilidad/src/pages/levantamiento/views/placasEconomico_view.dart';
 
 class firstStep extends StatefulWidget {
   //objeto
@@ -242,10 +243,65 @@ class _firstStepState extends State<firstStep> {
 
   @override
   Widget build(BuildContext context) {
+    /* A MEJORAR
+      Se puede crear funcion que cree Fileds donde se pase nombre de field, icono y controlador asi reducimos codigo
+
+    */
+
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------Funciones-------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
     //FUNCION PARA CONSEGUIR FOLIO NUEVO
     String getFolio() {
       return "01";
     }
+
+    void agregarManual(LevantamientoModel lev) {
+      //Limpia celdas
+      noeconomicoController.text = '';
+      placasController.text = '';
+      //Validacion
+      if (lev.placas != '') {
+        placasController.text = lev.placas;
+        //Cambia objeto
+        widget.levantamiento.placas = lev.placas;
+        VehiRespondable = "2";
+      }
+      if (lev.noEconomico != '') {
+        noeconomicoController.text = lev.noEconomico;
+        //Cambia objeto
+        widget.levantamiento.noEconomico = lev.noEconomico;
+        VehiRespondable = "1";
+      }
+      //Asignacion
+      descripcionController.text = lev.descripcion;
+      concesionController.text = lev.concesionario;
+      //Cambia objeto
+      widget.levantamiento.concesionario = concesionController.text;
+      widget.levantamiento.descripcion = descripcionController.text;
+      setState(() {}); //Actualiza pantalla
+    }
+
+    void mostrarVentanaEmergente(BuildContext context) {
+      showDialog(
+          context: context,
+          barrierDismissible: true,
+          builder: (context) {
+            return AlertDialog(
+              content: Container(
+                padding: const EdgeInsets.all(0),
+                width: MediaQuery.of(context).size.width,
+                child: placasEcoDialog(agregarManual),
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+            );
+          });
+    } //widget
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------Funciones-------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //ASIGNA HORA DE HOY
     hourLlegadaController.text = TimeOfDay.now().format(context).toString();
@@ -261,7 +317,10 @@ class _firstStepState extends State<firstStep> {
     //Consigue folio nuevo
     folioController.text = getFolio();
 
-    //--------------------------------------------------Object Varaible-----------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------Object Variable-------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
     //----------------------------------------------Step No1
     //Folio Field
     final folioField = Row(
@@ -866,11 +925,11 @@ class _firstStepState extends State<firstStep> {
               var mensaje = 'No encontrado';
               var color = Colors.red;
               if (noeconomicoController.text != "") {
-                //Variables locales 
+                //Variables locales
                 //Condicion para la busqueda
                 var busquedatemp = servicioP.where((element) =>
                     element['noeconomico'] == noeconomicoController.text);
-                
+
                 if (busquedatemp.isNotEmpty) {
                   descripcionController.text =
                       busquedatemp.first['descripcion']!;
@@ -884,7 +943,7 @@ class _firstStepState extends State<firstStep> {
                 }
                 var busquedatemp2 = servicioP.where((element) =>
                     element['nuevonoeconomico'] == noeconomicoController.text);
-                    
+
                 if (busquedatemp2.isNotEmpty) {
                   descripcionController.text =
                       busquedatemp2.first['descripcion']!;
@@ -898,7 +957,7 @@ class _firstStepState extends State<firstStep> {
                 }
               }
               if (placasController.text != "") {
-                //Variables locales 
+                //Variables locales
                 //Condicion para la busqueda
                 var busquedatemp = Placas.where(
                     (element) => element['placas'] == placasController.text);
@@ -928,6 +987,14 @@ class _firstStepState extends State<firstStep> {
             },
             child: const Text('Buscar Placas / No.Economico'),
           ),
+        ), //-------------Fin boton Buscar placas
+        Expanded(
+          flex: 1,
+          child: TextButton(
+              child: const Text('Agregado Manual'),
+              onPressed: () {
+                mostrarVentanaEmergente(context);
+              }),
         ),
       ],
     );
@@ -1124,7 +1191,9 @@ class _firstStepState extends State<firstStep> {
     //------------------------------------------------------------------Step No1
     //multi foto, Descripcion, concecionario, vehiculo field, no licencia, tipo, nombre, vigencia
 
-    //------------------------------------------------------------Object Variable-----------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------Object Variable-------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     return Container(
       height: 1200,
@@ -1172,5 +1241,5 @@ class _firstStepState extends State<firstStep> {
         ),
       ),
     );
-  } //widget
+  }
 }
