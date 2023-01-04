@@ -21,6 +21,7 @@ class LevantamientoModel {
     required this.ubicacion,
     required this.entre,
     required this.y,
+    required this.entre2,
     required this.longitud,
     required this.latitud,
     required this.noEconomico,
@@ -42,6 +43,7 @@ class LevantamientoModel {
   String ubicacion;
   String entre;
   String y;
+  String entre2;
   String longitud;
   String latitud;
   String noEconomico;
@@ -71,6 +73,7 @@ class LevantamientoModel {
         ubicacion: json["ubicacion"],
         entre: json["entre"],
         y: json["y"],
+        entre2: json["entre2"],
         longitud: json["longitud"],
         latitud: json["latitud"],
         noEconomico: json["noEconomico"],
@@ -93,6 +96,7 @@ class LevantamientoModel {
         "ubicacion": ubicacion,
         "entre": entre,
         "y": y,
+        "entre2": entre2,
         "longitud": longitud,
         "latitud": latitud,
         "noEconomico": noEconomico,
@@ -108,7 +112,7 @@ class LevantamientoModel {
       };
   @override
   String toString() {
-    return "Folio: $folio Nombre: $nombre FechaLlegada: $fechaLlegada Descripcion: $descripcion HoraLlegada: $horaLlegada HoraAccidente: $horaAccidente Ubicacion: $ubicacion Entre: $entre Y: $y Longitud: $longitud Latitud: $latitud NoEconomico: $noEconomico Placas: $placas Concesionario: $concesionario NoLicencia: $noLicencia Tipo: $tipo Vigencia: $vigencia";
+    return "Folio: $folio Nombre: $nombre FechaLlegada: $fechaLlegada Descripcion: $descripcion HoraLlegada: $horaLlegada HoraAccidente: $horaAccidente Ubicacion: $ubicacion Entre: $entre Y: $y Entre2: $entre2 Longitud: $longitud Latitud: $latitud NoEconomico: $noEconomico Placas: $placas Concesionario: $concesionario NoLicencia: $noLicencia Tipo: $tipo Vigencia: $vigencia";
   }
 }
 
@@ -121,6 +125,7 @@ List<LevantamientoModel> listEjemploLevantamiento = [
     ubicacion: 'Ubicacion',
     entre: 'Entre',
     y: 'Y',
+    entre2: 'Entre2',
     longitud: 'Longitud',
     latitud: 'Latitud',
     noEconomico: 'NoEconomico',
@@ -142,6 +147,7 @@ List<LevantamientoModel> listEjemploLevantamiento = [
     ubicacion: 'Ubicacion',
     entre: 'Entre',
     y: 'Y',
+    entre2: 'Entre2',
     longitud: 'Longitud',
     latitud: 'Latitud',
     noEconomico: 'NoEconomico',
@@ -163,6 +169,7 @@ List<LevantamientoModel> listEjemploLevantamiento = [
     ubicacion: 'Ubicacion',
     entre: 'Entre',
     y: 'Y',
+    entre2: 'Entre2',
     longitud: 'Longitud',
     latitud: 'Latitud',
     noEconomico: 'NoEconomico',

@@ -16,6 +16,7 @@ class LevantamientoView extends StatefulWidget {
       ubicacion: '',
       entre: '',
       y: '',
+      entre2: '',
       longitud: '',
       latitud: '',
       noEconomico: '',

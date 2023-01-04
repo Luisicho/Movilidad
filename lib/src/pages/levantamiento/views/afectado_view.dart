@@ -10,8 +10,10 @@ import 'package:movilidad/src/providers/afectadoView_provider.dart';
 
 class afectadoView extends StatefulWidget {
   //variables
-  final Function(AfectadoModel) addAfectado; // variable referencia al addAfectado de secondStep
-  afectadoView(this.addAfectado); // constructor que resive referencia de la funcion addAfectado de secondStep
+  final Function(AfectadoModel)
+      addAfectado; // variable referencia al addAfectado de secondStep
+  afectadoView(
+      this.addAfectado); // constructor que resive referencia de la funcion addAfectado de secondStep
 
   @override
   State<afectadoView> createState() => _afectadoViewState();
@@ -49,14 +51,13 @@ String? institucionMed;
 
 //Generales
 var atencion = 'En sitio/ambulancia';
-var listaAtencion = ['En sitio/ambulancia','Hospitalización','Defunción'];
+var listaAtencion = ['En sitio/ambulancia', 'Hospitalizacion', 'Defuncion'];
 
 class _afectadoViewState extends State<afectadoView> {
   //----------------Variables Locales
 
   @override
   Widget build(BuildContext context) {
-
     /* A MEJORAR
       Se puede crear funcion que cree Fileds donde se pase nombre de field, icono y controlador asi reducimos codigo
 
@@ -86,7 +87,7 @@ class _afectadoViewState extends State<afectadoView> {
               });
               //Retrona objeto dropdown
               return DropdownButton(
-                hint: Text('Selecciona Institucion'),
+                hint: const Text('Selecciona Institucion'),
                 value: institucionMed,
                 icon: const Icon(Icons.keyboard_arrow_down),
                 items: tempList,
@@ -97,7 +98,7 @@ class _afectadoViewState extends State<afectadoView> {
                 },
               );
             }
-            return Text('no data');
+            return const Text('no data');
           });
     }
 
@@ -119,7 +120,7 @@ class _afectadoViewState extends State<afectadoView> {
               });
               //Retrona objeto dropdown
               return DropdownButton(
-                hint: Text('Selecciona Aseguradora'),
+                hint: const Text('Selecciona Aseguradora'),
                 value: aseguradora,
                 icon: const Icon(Icons.keyboard_arrow_down),
                 items: tempList,
@@ -130,10 +131,40 @@ class _afectadoViewState extends State<afectadoView> {
                 },
               );
             }
-            return Text('no data');
+            return const Text('no data');
           });
     }
 
+    //Funcion que crea TextFields
+    Widget buildTextField(
+        String hint,
+        TextEditingController controller,
+        IconData icon,
+        bool enable,
+        EdgeInsets pad,
+        int flexInt,
+        FocusNode Focus,
+        FocusNode nextFocus) {
+      return Expanded(
+        flex: flexInt,
+        child: TextFormField(
+          focusNode: Focus,
+          onFieldSubmitted: (value) {
+            FocusScope.of(context).requestFocus(nextFocus);
+          },
+          controller: controller,
+          readOnly: enable,
+          decoration: InputDecoration(
+            prefixIcon: Icon(icon),
+            contentPadding: pad,
+            hintText: hint,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+      );
+    }
 
     void limpiarCeldas() {
       polizaController.text = "";
@@ -161,24 +192,15 @@ class _afectadoViewState extends State<afectadoView> {
     final polizaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
-          flex: 1,
-          child: TextFormField(
-            focusNode: polizaFocus,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(vigenciaFocus);
-            },
-            controller: polizaController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.article_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "Poliza",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField(
+            'Poliza',
+            polizaController,
+            Icons.article_outlined,
+            false,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            1,
+            polizaFocus,
+            vigenciaFocus),
       ],
     );
 
@@ -226,24 +248,15 @@ class _afectadoViewState extends State<afectadoView> {
     final nombreAcField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
-          flex: 1,
-          child: TextFormField(
-            focusNode: nombreAFocus,
-            controller: nombreAcController,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(CURPFocus);
-            },
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.attribution_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 05, 15),
-              hintText: "Nombre Accidentado",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField(
+            'Nombre Accidentado',
+            nombreAcController,
+            Icons.attribution_outlined,
+            false,
+            const EdgeInsets.fromLTRB(20, 15, 05, 15),
+            1,
+            nombreAFocus,
+            CURPFocus),
       ],
     );
 
@@ -251,24 +264,15 @@ class _afectadoViewState extends State<afectadoView> {
     final CURPField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
-          flex: 1,
-          child: TextFormField(
-            focusNode: CURPFocus,
-            controller: CURPController,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(domicilioFocus);
-            },
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.badge_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "CURP",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField(
+            'CURP',
+            CURPController,
+            Icons.badge_outlined,
+            false,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            1,
+            CURPFocus,
+            domicilioFocus),
       ],
     );
 
@@ -276,24 +280,15 @@ class _afectadoViewState extends State<afectadoView> {
     final domicilioField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
-          flex: 1,
-          child: TextFormField(
-            focusNode: domicilioFocus,
-            controller: domicilioController,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(tipoAFocus);
-            },
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.add_home_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "Domicilio",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField(
+            'Domicilio',
+            domicilioController,
+            Icons.add_home_outlined,
+            false,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            1,
+            domicilioFocus,
+            tipoAFocus),
       ],
     );
 
@@ -379,14 +374,6 @@ class _afectadoViewState extends State<afectadoView> {
       ],
     );
 
-    //RecepcionField
-    final RecepcionField =
-        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      Expanded(flex: 2, child: dateRecepcionField),
-      const SizedBox(width: 10),
-      Expanded(flex: 1, child: hourRecepcionField),
-    ]);
-
     //DateAltaField
     final dateAltaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -468,14 +455,6 @@ class _afectadoViewState extends State<afectadoView> {
       ],
     );
 
-    //AltaField
-    final AltaField =
-        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      Expanded(flex: 2, child: dateAltaField),
-      const SizedBox(width: 10),
-      Expanded(flex: 1, child: hourAltaField),
-    ]);
-
     //tipoAtencionField
     final tipoAtencionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -490,7 +469,7 @@ class _afectadoViewState extends State<afectadoView> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
             child: DropdownButton(
-              hint: Text('Tipo Atencion'),
+              hint: const Text('Tipo Atencion'),
               value: atencion,
               icon: const Icon(Icons.keyboard_arrow_down),
               items: listaAtencion.map((String items) {
@@ -501,7 +480,7 @@ class _afectadoViewState extends State<afectadoView> {
               }).toList(),
               onChanged: (newValue) {
                 setState(() {
-                  aseguradora = newValue.toString();
+                  atencion = newValue.toString();
                 });
               },
             ),
@@ -524,7 +503,6 @@ class _afectadoViewState extends State<afectadoView> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
             child: _listaAseguradora(),
-                
           ),
         ),
       ],
@@ -543,7 +521,7 @@ class _afectadoViewState extends State<afectadoView> {
           flex: 5,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-            child: _listaMedica(), 
+            child: _listaMedica(),
           ),
         ),
       ],
@@ -553,29 +531,21 @@ class _afectadoViewState extends State<afectadoView> {
     final descripcionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
-          flex: 4,
-          child: TextFormField(
-            focusNode: descripcionFocus,
-            controller: descripcionController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.bar_chart_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 05, 30),
-              hintText: "Descripcion",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField(
+            'Descripcion',
+            descripcionController,
+            Icons.bar_chart_outlined,
+            false,
+            const EdgeInsets.fromLTRB(20, 15, 05, 30),
+            4,
+            descripcionFocus,
+            descripcionFocus),
       ],
     );
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------Variables Locales-------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
     //----Return
     return Container(

@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:movilidad/src/providers/db_provider.dart';
 
-class placasEcoDialog extends StatefulWidget {
+class placasEcoView extends StatefulWidget {
   final Function(LevantamientoModel)
       addModel; // variable referencia al agregarManual de firstStep
-  placasEcoDialog(this.addModel); //constructor
+  placasEcoView(this.addModel); //constructor
 
   @override
-  State<placasEcoDialog> createState() => _placasEcoDialogState();
+  State<placasEcoView> createState() => _placasEcoViewState();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -32,6 +32,7 @@ final LevantamientoModel levantamiento = LevantamientoModel(
   ubicacion: '',
   entre: '',
   y: '',
+  entre2: '',
   longitud: '',
   latitud: '',
   noEconomico: '',
@@ -57,7 +58,7 @@ final LevantamientoModel levantamiento = LevantamientoModel(
 //----------------------------------------------------------------------Global Variable-------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-class _placasEcoDialogState extends State<placasEcoDialog> {
+class _placasEcoViewState extends State<placasEcoView> {
   @override
   Widget build(BuildContext context) {
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------

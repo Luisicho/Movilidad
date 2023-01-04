@@ -18,6 +18,7 @@ class firstStep extends StatefulWidget {
     ubicacion: '',
     entre: '',
     y: '',
+    entre2: '',
     longitud: '',
     latitud: '',
     noEconomico: '',
@@ -54,6 +55,7 @@ class _firstStepState extends State<firstStep> {
   final ubicacionFocus = FocusNode();
   final entreFocus = FocusNode();
   final yFocus = FocusNode();
+  final entre2Focus = FocusNode();
   final noEconomicoFocus = FocusNode();
   final placasFocus = FocusNode();
 
@@ -76,6 +78,7 @@ class _firstStepState extends State<firstStep> {
   final TextEditingController ubicacionController = TextEditingController();
   final TextEditingController entreController = TextEditingController();
   final TextEditingController yController = TextEditingController();
+  final TextEditingController entre2Controller = TextEditingController();
 
   //---------------------------------------------Inicio de variables y controladores------------------
 
@@ -292,24 +295,36 @@ class _firstStepState extends State<firstStep> {
               content: Container(
                 padding: const EdgeInsets.all(0),
                 width: MediaQuery.of(context).size.width,
-                child: placasEcoDialog(agregarManual),
+                child: placasEcoView(agregarManual),
               ),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
             );
           });
     } //widget
-    
+
+    FadeInImage fadeImg(File? file) {
+      return FadeInImage(
+        image: FileImage(file!),
+        placeholder: const AssetImage('assets/jar-loading.gif'),
+        fadeInDuration: const Duration(milliseconds: 200),
+        width: 100,
+        height: 100,
+        fit: BoxFit.cover,
+      );
+    }
+
     //Funcion que crea TextFields
-    Widget buildTextField(String hint, TextEditingController controller, IconData icon, bool enable, int flexint) {
+    Widget buildTextField(String hint, TextEditingController controller,
+        IconData icon, bool enable, EdgeInsets pad, int flexInt) {
       return Expanded(
-        flex: flexint,
+        flex: flexInt,
         child: TextFormField(
           controller: controller,
           readOnly: enable,
           decoration: InputDecoration(
             prefixIcon: Icon(icon),
-            contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+            contentPadding: pad,
             hintText: hint,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
@@ -346,7 +361,9 @@ class _firstStepState extends State<firstStep> {
       children: [
         const Text('No. Folio'),
         const SizedBox(width: 10),
-        buildTextField('Folio', folioController, Icons.pages, true, 2),
+        buildTextField('Folio', folioController, Icons.pages, true,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15), 2),
+        const SizedBox(width: 500),
       ],
     );
 
@@ -356,7 +373,9 @@ class _firstStepState extends State<firstStep> {
       children: [
         const Text('Fecha llegada'),
         const SizedBox(width: 30),
-        buildTextField('Fecha', fechaController, Icons.calendar_today, true, 2),
+        buildTextField('Fecha', fechaController, Icons.calendar_today, true,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15), 2),
+        const SizedBox(width: 70),
       ],
     );
 
@@ -365,8 +384,15 @@ class _firstStepState extends State<firstStep> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text('Hora llegada'),
-        const SizedBox(width: 30),
-        buildTextField('Hora llegada', hourLlegadaController, Icons.access_alarm, true, 2),
+        const SizedBox(width: 20),
+        buildTextField(
+            'Hora llegada',
+            hourLlegadaController,
+            Icons.access_alarm,
+            true,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            2),
+        const SizedBox(width: 100),
       ],
     );
 
@@ -410,6 +436,7 @@ class _firstStepState extends State<firstStep> {
             },
           ),
         ),
+        const SizedBox(width: 400),
       ],
     );
 
@@ -417,7 +444,7 @@ class _firstStepState extends State<firstStep> {
     final ubicacionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text('Ubicación'),
+        const Text('Ubicacion'),
         const SizedBox(width: 10),
         Expanded(
           flex: 2,
@@ -486,7 +513,7 @@ class _firstStepState extends State<firstStep> {
           child: TextFormField(
             focusNode: yFocus,
             onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(noEconomicoFocus);
+              FocusScope.of(context).requestFocus(entre2Focus);
             },
             controller: yController,
             decoration: InputDecoration(
@@ -506,13 +533,46 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
+    //entre2Field
+    final entre2Field = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text('Entre'),
+        const SizedBox(width: 10),
+        Expanded(
+          flex: 2,
+          child: TextFormField(
+            focusNode: entre2Focus,
+            onFieldSubmitted: (value) {
+              FocusScope.of(context).requestFocus(noEconomicoFocus);
+            },
+            controller: entre2Controller,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.add_location_alt_outlined),
+              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+              hintText: "Entre",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            onChanged: ((value) {
+              //Objeto cambio
+              widget.levantamiento.entre2 = value;
+            }),
+          ),
+        ),
+      ],
+    );
+
     //PosicionField
     final posicionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        buildTextField('Longitud', lonController, Icons.add_location_outlined, true, 1),
+        buildTextField('Longitud', lonController, Icons.add_location_outlined,
+            true, const EdgeInsets.fromLTRB(20, 15, 20, 15), 1),
         const SizedBox(width: 05),
-        buildTextField('Latitud', latController, Icons.add_location_outlined, true, 1),
+        buildTextField('Latitud', latController, Icons.add_location_outlined,
+            true, const EdgeInsets.fromLTRB(20, 15, 20, 15), 1),
         Expanded(
           flex: 1,
           child: TextButton(
@@ -572,14 +632,7 @@ class _firstStepState extends State<firstStep> {
             children: [
               //Condicion para reemplazar el boton con la imagen cargada
               image1 != null
-                  ? FadeInImage(
-                      image: FileImage(image1!),
-                      placeholder: const AssetImage('assets/jar-loading.gif'),
-                      fadeInDuration: const Duration(milliseconds: 200),
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    )
+                  ? fadeImg(image1)
                   : TextButton(
                       child: const Text(" + "),
                       onPressed: () async {
@@ -598,14 +651,7 @@ class _firstStepState extends State<firstStep> {
                     ),
               //Condicion para reemplazar el boton con la imagen cargada
               image2 != null
-                  ? FadeInImage(
-                      image: FileImage(image2!),
-                      placeholder: const AssetImage('assets/jar-loading.gif'),
-                      fadeInDuration: const Duration(milliseconds: 200),
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    )
+                  ? fadeImg(image2)
                   : TextButton(
                       child: const Text(" + "),
                       onPressed: () async {
@@ -633,14 +679,7 @@ class _firstStepState extends State<firstStep> {
             children: [
               //Condicion para reemplazar el boton con la imagen cargada
               image3 != null
-                  ? FadeInImage(
-                      image: FileImage(image3!),
-                      placeholder: const AssetImage('assets/jar-loading.gif'),
-                      fadeInDuration: const Duration(milliseconds: 200),
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    )
+                  ? fadeImg(image3)
                   : TextButton(
                       child: const Text(" + "),
                       onPressed: () async {
@@ -659,14 +698,7 @@ class _firstStepState extends State<firstStep> {
                     ),
               //Condicion para reemplazar el boton con la imagen cargada
               image4 != null
-                  ? FadeInImage(
-                      image: FileImage(image4!),
-                      placeholder: const AssetImage('assets/jar-loading.gif'),
-                      fadeInDuration: const Duration(milliseconds: 200),
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    )
+                  ? fadeImg(image4)
                   : TextButton(
                       child: const Text(" + "),
                       onPressed: () async {
@@ -694,14 +726,7 @@ class _firstStepState extends State<firstStep> {
             children: [
               //Condicion para reemplazar el boton con la imagen cargada
               image5 != null
-                  ? FadeInImage(
-                      image: FileImage(image5!),
-                      placeholder: const AssetImage('assets/jar-loading.gif'),
-                      fadeInDuration: const Duration(milliseconds: 200),
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    )
+                  ? fadeImg(image5)
                   : TextButton(
                       child: const Text(" + "),
                       onPressed: () async {
@@ -720,14 +745,7 @@ class _firstStepState extends State<firstStep> {
                     ),
               //Condicion para reemplazar el boton con la imagen cargada
               image6 != null
-                  ? FadeInImage(
-                      image: FileImage(image6!),
-                      placeholder: const AssetImage('assets/jar-loading.gif'),
-                      fadeInDuration: const Duration(milliseconds: 200),
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    )
+                  ? fadeImg(image6)
                   : TextButton(
                       child: const Text(" + "),
                       onPressed: () async {
@@ -950,11 +968,10 @@ class _firstStepState extends State<firstStep> {
     final descripcionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Descripcion"),
-        ),
-        buildTextField('', descripcionController, Icons.assessment_outlined, true, 2),
+        const Text("Descripcion"),
+        const SizedBox(width: 10),
+        buildTextField('', descripcionController, Icons.assessment_outlined,
+            true, const EdgeInsets.fromLTRB(20, 15, 20, 15), 2),
       ],
     );
 
@@ -962,26 +979,22 @@ class _firstStepState extends State<firstStep> {
     final consenParticularField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Concensionario / Particular"),
-        ),
-        buildTextField('', concesionController, Icons.account_circle_outlined, true, 2),
+        const Text("Concensionario / Particular"),
+        const SizedBox(width: 10),
+        buildTextField('', concesionController, Icons.account_circle_outlined,
+            true, const EdgeInsets.fromLTRB(20, 15, 20, 15), 2),
+        const SizedBox(width: 100),
       ],
     );
 
-    //NoLicencia
-    final noLicenciaField = Row(
+    //Busqueda Button
+    final busquedaButton = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("No. Licencia"),
-        ),
-        buildTextField('No. Licencia', nolicenciaController, Icons.account_box_sharp, false, 2),
         Expanded(
           flex: 1,
           child: TextButton(
+            child: const Text('Buscar'),
             onPressed: () {
               var mensaje = 'No encontrado';
               var color = Colors.red;
@@ -1011,12 +1024,36 @@ class _firstStepState extends State<firstStep> {
                   textColor: Colors.white,
                   fontSize: 16.0);
               //-------------Toast
-
               setState(() {});
             },
-            child: const Text('Buscar'),
           ),
         ),
+        Expanded(
+          flex: 1,
+          child: TextButton(
+            child: const Text('Agregado Manual'),
+            onPressed: () {
+              
+            },
+          ),
+        ),
+      ],
+    );
+
+    //NoLicencia
+    final noLicenciaField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text("No. Licencia"),
+        const SizedBox(width: 10),
+        buildTextField(
+            'No. Licencia',
+            nolicenciaController,
+            Icons.account_box_sharp,
+            false,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            2),
+        const SizedBox(width: 400),
       ],
     );
 
@@ -1024,23 +1061,11 @@ class _firstStepState extends State<firstStep> {
     final tipoField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Tipo"),
-        ),
-        buildTextField('', tipoController, Icons.contacts_outlined, true, 2),
-      ],
-    );
-
-    //NombreField
-    final nombreField = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Nombre"),
-        ),
-        buildTextField('', nombreController, Icons.document_scanner_outlined, true, 2),
+        const Text("Tipo"),
+        const SizedBox(width: 10),
+        buildTextField('', tipoController, Icons.contacts_outlined, true,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15), 2),
+        const SizedBox(width: 100),
       ],
     );
 
@@ -1048,11 +1073,23 @@ class _firstStepState extends State<firstStep> {
     final vigenciaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Vigencia"),
-        ),
-        buildTextField('', vigenciaController, Icons.ad_units_rounded, true, 2),
+        const Text("Vigencia"),
+        const SizedBox(width: 10),
+        buildTextField('', vigenciaController, Icons.ad_units_rounded, true,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15), 2),
+        const SizedBox(width: 100),
+      ],
+    );
+
+    //NombreField
+    final nombreField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text("Nombre"),
+        const SizedBox(width: 10),
+        buildTextField('', nombreController, Icons.document_scanner_outlined,
+            true, const EdgeInsets.fromLTRB(20, 15, 20, 15), 2),
+        const SizedBox(width: 100),
       ],
     );
 
@@ -1076,8 +1113,13 @@ class _firstStepState extends State<firstStep> {
             const Divider(
               thickness: 2,
             ),
-            dateField,
-            hourLlegadaField,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(flex: 1, child: dateField),
+                Expanded(flex: 1, child: hourLlegadaField),
+              ],
+            ),
             hourAccidenteField,
             const Divider(
               thickness: 2,
@@ -1085,6 +1127,7 @@ class _firstStepState extends State<firstStep> {
             ubicacionField,
             entreField,
             yField,
+            entre2Field,
             posicionField,
             fotoField,
             const Divider(
@@ -1099,9 +1142,15 @@ class _firstStepState extends State<firstStep> {
               thickness: 2,
             ),
             noLicenciaField,
-            tipoField,
+            busquedaButton,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(flex: 1, child: tipoField),
+                Expanded(flex: 1, child: vigenciaField),
+              ],
+            ),
             nombreField,
-            vigenciaField,
           ],
         ),
       ),
