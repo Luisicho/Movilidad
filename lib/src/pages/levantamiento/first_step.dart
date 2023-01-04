@@ -1085,7 +1085,7 @@ class _firstStepState extends State<firstStep> {
             false,
             const EdgeInsets.fromLTRB(20, 15, 20, 15),
             2),
-        const SizedBox(width: 400),
+        const SizedBox(width: 05),
       ],
     );
 
@@ -1173,8 +1173,13 @@ class _firstStepState extends State<firstStep> {
             const Divider(
               thickness: 2,
             ),
-            noLicenciaField,
-            busquedaButton,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(flex: 1, child: noLicenciaField),
+                Expanded(flex: 1, child: busquedaButton),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
