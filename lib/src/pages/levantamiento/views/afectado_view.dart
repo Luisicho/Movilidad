@@ -144,12 +144,12 @@ class _afectadoViewState extends State<afectadoView> {
         bool enable,
         EdgeInsets pad,
         int flexInt,
-        FocusNode Focus,
+        FocusNode focus,
         FocusNode nextFocus) {
       return Expanded(
         flex: flexInt,
         child: TextFormField(
-          focusNode: Focus,
+          focusNode: focus,
           onFieldSubmitted: (value) {
             FocusScope.of(context).requestFocus(nextFocus);
           },

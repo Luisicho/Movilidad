@@ -74,17 +74,15 @@ class _placasEcoViewState extends State<placasEcoView> {
     //Funcion que crea TextFields
     Widget buildTextField(String hint, TextEditingController controller,
         IconData icon, bool enable) {
-      return Container(
-        child: TextFormField(
-          controller: controller,
-          readOnly: enable,
-          decoration: InputDecoration(
-            prefixIcon: Icon(icon),
-            contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-            hintText: hint,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
+      return TextFormField(
+        controller: controller,
+        readOnly: enable,
+        decoration: InputDecoration(
+          prefixIcon: Icon(icon),
+          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          hintText: hint,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
           ),
         ),
       );

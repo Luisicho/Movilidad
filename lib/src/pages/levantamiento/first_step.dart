@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:movilidad/src/model/levantamiento_model.dart';
+import 'package:movilidad/src/pages/levantamiento/views/licencias_view.dart';
 import 'package:movilidad/src/pages/levantamiento/views/placasEconomico_view.dart';
 
 class firstStep extends StatefulWidget {
@@ -296,6 +297,37 @@ class _firstStepState extends State<firstStep> {
                 padding: const EdgeInsets.all(0),
                 width: MediaQuery.of(context).size.width,
                 child: placasEcoView(agregarManual),
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+            );
+          });
+    } //widget
+
+    void agregarManualLicencia(LevantamientoModel lev) {
+      //Asignacion
+      nolicenciaController.text = lev.noLicencia;
+      tipoController.text = lev.tipo;
+      vigenciaController.text = lev.vigencia;
+      nombreController.text = lev.nombre;
+      //Cambia objeto
+      widget.levantamiento.noLicencia = nolicenciaController.text;
+      widget.levantamiento.tipo = tipoController.text;
+      widget.levantamiento.vigencia = vigenciaController.text;
+      widget.levantamiento.nombre = nombreController.text;
+      setState(() {}); //Actualiza pantalla
+    }
+
+    void mostrarVentanaEmergenteLicencia(BuildContext context) {
+      showDialog(
+          context: context,
+          barrierDismissible: true,
+          builder: (context) {
+            return AlertDialog(
+              content: Container(
+                padding: const EdgeInsets.all(0),
+                width: MediaQuery.of(context).size.width,
+                child: licenciasView(agregarManualLicencia),
               ),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
@@ -1033,7 +1065,7 @@ class _firstStepState extends State<firstStep> {
           child: TextButton(
             child: const Text('Agregado Manual'),
             onPressed: () {
-              
+              mostrarVentanaEmergenteLicencia(context);
             },
           ),
         ),
@@ -1074,7 +1106,7 @@ class _firstStepState extends State<firstStep> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text("Vigencia"),
-        const SizedBox(width: 10),
+        const SizedBox(width: 05),
         buildTextField('', vigenciaController, Icons.ad_units_rounded, true,
             const EdgeInsets.fromLTRB(20, 15, 20, 15), 2),
         const SizedBox(width: 100),

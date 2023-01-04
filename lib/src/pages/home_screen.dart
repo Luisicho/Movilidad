@@ -53,11 +53,11 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Stack(children: [
           PageView(
             controller: _pageController,
-            children: [
+            children: const [
               //Screens from page
-              const HomeScreen1(),
-              const HomeScreen2(),
-              const HomeScreen3(),
+              HomeScreen1(),
+              HomeScreen2(),
+              HomeScreen3(),
             ],
           ),
           Container(
