@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 
 import 'package:movilidad/src/model/afectado_model.dart';
 import 'package:movilidad/src/providers/afectadoView_provider.dart';
+import 'package:movilidad/src/utils/colors_util.dart';
 
 class afectadoView extends StatefulWidget {
   //variables
@@ -201,6 +202,7 @@ class _afectadoViewState extends State<afectadoView> {
             1,
             polizaFocus,
             vigenciaFocus),
+        const SizedBox(width: 20),
       ],
     );
 
@@ -296,10 +298,7 @@ class _afectadoViewState extends State<afectadoView> {
     final dateRecepcionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Fecha Recepción"),
-        ),
+        const Text("Fecha Recepción"),
         const SizedBox(width: 10),
         Expanded(
           flex: 2,
@@ -331,6 +330,7 @@ class _afectadoViewState extends State<afectadoView> {
             },
           ),
         ),
+        const SizedBox(width: 20),
       ],
     );
 
@@ -338,10 +338,7 @@ class _afectadoViewState extends State<afectadoView> {
     final hourRecepcionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Hora"),
-        ),
+        const Text("Hora"),
         const SizedBox(width: 10),
         Expanded(
           flex: 2,
@@ -371,6 +368,7 @@ class _afectadoViewState extends State<afectadoView> {
             },
           ),
         ),
+        const SizedBox(width: 100),
       ],
     );
 
@@ -378,10 +376,7 @@ class _afectadoViewState extends State<afectadoView> {
     final dateAltaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Fecha Alta"),
-        ),
+        const Text("Fecha Alta"),
         const SizedBox(width: 10),
         Expanded(
           flex: 2,
@@ -413,6 +408,7 @@ class _afectadoViewState extends State<afectadoView> {
             },
           ),
         ),
+        const SizedBox(width: 20),
       ],
     );
 
@@ -420,10 +416,7 @@ class _afectadoViewState extends State<afectadoView> {
     final hourAltaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Hora"),
-        ),
+        const Text("Hora"),
         const SizedBox(width: 10),
         Expanded(
           flex: 2,
@@ -452,6 +445,7 @@ class _afectadoViewState extends State<afectadoView> {
             },
           ),
         ),
+        const SizedBox(width: 100),
       ],
     );
 
@@ -493,10 +487,7 @@ class _afectadoViewState extends State<afectadoView> {
     final aseguradoraField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Expanded(
-          flex: 1,
-          child: Text("Aseguradora"),
-        ),
+        const Text("Aseguradora"),
         const SizedBox(width: 10),
         Expanded(
           flex: 5,
@@ -513,12 +504,11 @@ class _afectadoViewState extends State<afectadoView> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Expanded(
-          flex: 1,
-          child: Text("Institucion Medica"),
+          flex: 2,
+          child: Text("Institucion Medica")
         ),
-        const SizedBox(width: 10),
         Expanded(
-          flex: 5,
+          flex: 10,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
             child: _listaMedica(),
@@ -562,16 +552,20 @@ class _afectadoViewState extends State<afectadoView> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 32,
-                color: Colors.blueGrey,
+                color: NEGRO,
               ),
             ),
             const SizedBox(height: 10),
             aseguradoraField,
             const SizedBox(height: 10),
-            polizaField,
-            const SizedBox(height: 10),
-            vigenciaField,
-            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(flex: 2, child: polizaField),
+                Expanded(flex: 1, child: vigenciaField),
+              ],
+            ),
+            const SizedBox(height: 20),
             const Divider(
               thickness: 2,
             ),
@@ -588,22 +582,27 @@ class _afectadoViewState extends State<afectadoView> {
             const SizedBox(height: 10),
             tipoAtencionField,
             const SizedBox(height: 10),
-            const Divider(
-              thickness: 2,
-            ),
-            const SizedBox(height: 10),
             institucionMedField,
             const SizedBox(height: 10),
-            dateRecepcionField,
-            const SizedBox(height: 10),
-            hourRecepcionField,
             const Divider(
               thickness: 2,
             ),
             const SizedBox(height: 10),
-            dateAltaField,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(flex: 1, child: dateRecepcionField),
+                Expanded(flex: 1, child: hourRecepcionField),
+              ],
+            ),
             const SizedBox(height: 10),
-            hourAltaField,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(flex: 1, child: dateAltaField),
+                Expanded(flex: 1, child: hourAltaField),
+              ],
+            ),
             const SizedBox(height: 10),
             const Divider(
               thickness: 2,

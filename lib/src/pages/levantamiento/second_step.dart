@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:movilidad/src/model/afectado_model.dart';
 import 'package:movilidad/src/pages/levantamiento/views/afectado_view.dart';
+import 'package:movilidad/src/utils/colors_util.dart';
 import 'package:movilidad/src/utils/icono_string_util.dart';
 
 class secondStep extends StatefulWidget {
@@ -115,6 +116,7 @@ class _secondStepState extends State<secondStep> {
             child: 
             FloatingActionButton.extended(
               label: const Text("Agregar"),
+              backgroundColor: VERDE,
               onPressed: () {
                 showAfectadoDialog();
               }

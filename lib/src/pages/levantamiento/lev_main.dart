@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:movilidad/src/pages/levantamiento/first_step.dart';
 import 'package:movilidad/src/pages/levantamiento/second_step.dart';
+import 'package:movilidad/src/utils/colors_util.dart';
 
 class levMain extends StatefulWidget {
   const levMain({super.key});
@@ -132,7 +133,7 @@ class _levMainState extends State<levMain> {
                     }
                   },
                   style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Colors.blue),
+                    backgroundColor: MaterialStatePropertyAll(MORADO),
                   ),
                   child: const Text(
                     'Continuar',
@@ -149,7 +150,7 @@ class _levMainState extends State<levMain> {
                   style: const ButtonStyle(),
                   child: const Text(
                     'Regresar',
-                    style: TextStyle(color: Colors.blue),
+                    style: TextStyle(color: MORADO),
                   ),
                 ),
               ],

@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:movilidad/src/pages/vehiculos/view/levantamiento_view.dart';
 import 'package:movilidad/src/providers/db_provider.dart';
 import 'package:movilidad/src/providers/vehiculo_provider.dart';
+import 'package:movilidad/src/utils/colors_util.dart';
 import 'package:movilidad/src/utils/icono_string_util.dart';
 import '../../model/levantamiento_model.dart';
 
@@ -57,7 +58,7 @@ class _MainVehiculoState extends State<MainVehiculo> {
             //-------------Toast
             setState(() => valueABuscar = ' ');
           },
-          backgroundColor: Colors.green,
+          backgroundColor: VERDE,
           child: const Icon(Icons.cloud),
         ),
         body: Column(
@@ -73,7 +74,7 @@ class _MainVehiculoState extends State<MainVehiculo> {
                   contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.blue)),
+                      borderSide: const BorderSide(color: MORADO)),
                 ),
                 onChanged: searchLevantamiento,
               ),
