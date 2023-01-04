@@ -2,8 +2,6 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import 'dart:convert';
 
-import 'package:movilidad/src/model/servicioMedico_model.dart';
-
 class _AfectadoViewProvider {
   List<dynamic> opciones = [];
 

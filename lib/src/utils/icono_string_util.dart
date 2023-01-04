@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:movilidad/src/utils/colors_util.dart';
+
 //Crea lista de Iconos que se traducen a la aplicacion
 final _icons = < String,IconData >{
   'add_alert'       : Icons.add_alert,

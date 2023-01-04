@@ -1,8 +1,7 @@
-import 'dart:ffi';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
 import 'package:movilidad/src/providers/db_provider.dart';
 
 class placasEcoView extends StatefulWidget {

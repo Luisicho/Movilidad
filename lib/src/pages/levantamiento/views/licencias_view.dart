@@ -1,7 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 
 import '../../../model/levantamiento_model.dart';
 
@@ -116,7 +116,7 @@ class _licenciasViewState extends State<licenciasView> {
       readOnly: true,
       controller: vigenciaController,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.access_alarm),
+        prefixIcon: const Icon(Icons.calendar_today),
         contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
         hintText: "Vigencia",
         border: OutlineInputBorder(
@@ -125,13 +125,17 @@ class _licenciasViewState extends State<licenciasView> {
       ),
       onTap: () async {
         // Get the date
-        TimeOfDay? timePicket = await showTimePicker(
+        DateTime? datePicket = await showDatePicker(
           context: context,
-          initialTime: TimeOfDay.now(),
+          initialDate: DateTime.now(),
+          firstDate: DateTime(1999),
+          lastDate: DateTime(2050),
+          locale: const Locale('es', 'ES'),
         );
-        if (timePicket != null) {
-          //make format to the time
-          vigenciaController.text = timePicket.format(context).toString();
+        if (datePicket != null) {
+          //make format to the date
+          var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
+          vigenciaController.text = formatedDate.toString();
         }
       },
     );

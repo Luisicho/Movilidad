@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../levantamiento/lev_main.dart';
-
 class HomeScreen3 extends StatefulWidget {
   const HomeScreen3({Key? key}) : super(key: key);
 

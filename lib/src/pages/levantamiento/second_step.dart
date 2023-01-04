@@ -1,6 +1,4 @@
-import 'dart:ffi';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:movilidad/src/model/afectado_model.dart';
 import 'package:movilidad/src/pages/levantamiento/views/afectado_view.dart';

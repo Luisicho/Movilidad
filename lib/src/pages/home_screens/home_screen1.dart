@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../maps/map_main.dart';
-
 class HomeScreen1 extends StatefulWidget {
   const HomeScreen1({Key? key}) : super(key: key);
 

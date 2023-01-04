@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:movilidad/src/pages/vehiculos/main_vehiculo.dart';
-
 class HomeScreen2 extends StatefulWidget {
   const HomeScreen2({Key? key}) : super(key: key);
 

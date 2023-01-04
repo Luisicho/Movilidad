@@ -1,8 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:movilidad/src/providers/levantamiento_provider.dart';
 
+import 'package:movilidad/src/providers/levantamiento_provider.dart';
 import '../../../utils/icono_string_util.dart';
 import '../../../model/levantamiento_model.dart';
 
@@ -46,7 +45,7 @@ class LevantamientoView extends StatefulWidget {
 class LevantamientoViewState extends State<LevantamientoView> {
   @override
   Widget build(BuildContext context) {
-    
+
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Funciones-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
