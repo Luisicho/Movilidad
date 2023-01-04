@@ -299,6 +299,26 @@ class _firstStepState extends State<firstStep> {
             );
           });
     } //widget
+    
+    //Funcion que crea TextFields
+    Widget buildTextField(String hint, TextEditingController controller, IconData icon, bool enable, int flexint) {
+      return Expanded(
+        flex: flexint,
+        child: TextFormField(
+          controller: controller,
+          readOnly: enable,
+          decoration: InputDecoration(
+            prefixIcon: Icon(icon),
+            contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+            hintText: hint,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
+      );
+    }
+
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Funciones-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -320,29 +340,13 @@ class _firstStepState extends State<firstStep> {
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Object Variable-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-    //----------------------------------------------Step No1
     //Folio Field
     final folioField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text('No. Folio'),
         const SizedBox(width: 10),
-        Expanded(
-          flex: 2,
-          child: TextFormField(
-            controller: folioController,
-            readOnly: true,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.pages),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "Folio",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField('Folio', folioController, Icons.pages, true, 2),
       ],
     );
 
@@ -352,21 +356,7 @@ class _firstStepState extends State<firstStep> {
       children: [
         const Text('Fecha llegada'),
         const SizedBox(width: 30),
-        Expanded(
-          flex: 2,
-          child: TextFormField(
-            readOnly: true,
-            controller: fechaController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.calendar_today),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "Fecha",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField('Fecha', fechaController, Icons.calendar_today, true, 2),
       ],
     );
 
@@ -376,21 +366,7 @@ class _firstStepState extends State<firstStep> {
       children: [
         const Text('Hora llegada'),
         const SizedBox(width: 30),
-        Expanded(
-          flex: 2,
-          child: TextFormField(
-            readOnly: true,
-            controller: hourLlegadaController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.access_alarm),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "Hora llegada",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField('Hora llegada', hourLlegadaController, Icons.access_alarm, true, 2),
       ],
     );
 
@@ -534,36 +510,9 @@ class _firstStepState extends State<firstStep> {
     final posicionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
-            flex: 1,
-            child: TextFormField(
-              readOnly: true,
-              controller: lonController,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.add_location_outlined),
-                contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
-                hintText: "Longitud",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-            )),
+        buildTextField('Longitud', lonController, Icons.add_location_outlined, true, 1),
         const SizedBox(width: 05),
-        Expanded(
-          flex: 1,
-          child: TextFormField(
-            readOnly: true,
-            controller: latController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.add_location_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
-              hintText: "Latitud",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField('Latitud', latController, Icons.add_location_outlined, true, 1),
         Expanded(
           flex: 1,
           child: TextButton(
@@ -582,8 +531,6 @@ class _firstStepState extends State<firstStep> {
                   _currentPosition.latitude.toString();
               widget.levantamiento.longitud =
                   _currentPosition.longitude.toString();
-              //print(latController.text);
-              //print(lonController.text);
             },
           ),
         ),
@@ -1007,20 +954,7 @@ class _firstStepState extends State<firstStep> {
           flex: 1,
           child: Text("Descripcion"),
         ),
-        Expanded(
-          flex: 3,
-          child: TextFormField(
-            readOnly: true,
-            controller: descripcionController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.assessment_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField('', descripcionController, Icons.assessment_outlined, true, 2),
       ],
     );
 
@@ -1032,20 +966,7 @@ class _firstStepState extends State<firstStep> {
           flex: 1,
           child: Text("Concensionario / Particular"),
         ),
-        Expanded(
-          flex: 2,
-          child: TextFormField(
-            readOnly: true,
-            controller: concesionController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.account_circle_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(05, 15, 05, 15),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField('', concesionController, Icons.account_circle_outlined, true, 2),
       ],
     );
 
@@ -1057,21 +978,7 @@ class _firstStepState extends State<firstStep> {
           flex: 1,
           child: Text("No. Licencia"),
         ),
-        Expanded(
-          flex: 3,
-          child: TextFormField(
-            focusNode: noLicenciaFocus,
-            controller: nolicenciaController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.account_box_sharp),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "No. Licencia",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField('No. Licencia', nolicenciaController, Icons.account_box_sharp, false, 2),
         Expanded(
           flex: 1,
           child: TextButton(
@@ -1121,20 +1028,7 @@ class _firstStepState extends State<firstStep> {
           flex: 1,
           child: Text("Tipo"),
         ),
-        Expanded(
-          flex: 5,
-          child: TextFormField(
-            readOnly: true,
-            controller: tipoController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.contacts_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField('', tipoController, Icons.contacts_outlined, true, 2),
       ],
     );
 
@@ -1146,20 +1040,7 @@ class _firstStepState extends State<firstStep> {
           flex: 1,
           child: Text("Nombre"),
         ),
-        Expanded(
-          flex: 4,
-          child: TextFormField(
-            readOnly: true,
-            controller: nombreController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.document_scanner_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField('', nombreController, Icons.document_scanner_outlined, true, 2),
       ],
     );
 
@@ -1171,25 +1052,9 @@ class _firstStepState extends State<firstStep> {
           flex: 1,
           child: Text("Vigencia"),
         ),
-        Expanded(
-          flex: 4,
-          child: TextFormField(
-            readOnly: true,
-            controller: vigenciaController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.ad_units_rounded),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
+        buildTextField('', vigenciaController, Icons.ad_units_rounded, true, 2),
       ],
     );
-
-    //------------------------------------------------------------------Step No1
-    //multi foto, Descripcion, concecionario, vehiculo field, no licencia, tipo, nombre, vigencia
 
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Object Variable-------------------------------------------------------------------------------
