@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:movilidad/src/pages/vehiculos/view/afectadoV_view.dart';
 
 import 'package:movilidad/src/providers/levantamiento_provider.dart';
 import '../../../utils/icono_string_util.dart';
@@ -8,34 +9,34 @@ import '../../../model/levantamiento_model.dart';
 class LevantamientoView extends StatefulWidget {
   //Caracteristicas
   LevantamientoModel levantamiento = LevantamientoModel(
-      folio: '',
-      fechaLlegada: '',
-      horaLlegada: '',
-      horaAccidente: '',
-      ubicacion: '',
-      entre: '',
-      y: '',
-      entre2: '',
-      longitud: '',
-      latitud: '',
-      noEconomico: '',
-      placas: '',
-      descripcion: '',
-      concesionario: '',
-      noLicencia: '',
-      tipo: '',
-      nombre: '',
-      vigencia: '',
-      fotosLev: [
-        File(''),
-        File(''),
-        File(''),
-        File(''),
-        File(''),
-        File(''),
-      ],
-      icon: 'car_crash',
-      );
+    folio: '',
+    fechaLlegada: '',
+    horaLlegada: '',
+    horaAccidente: '',
+    ubicacion: '',
+    entre: '',
+    y: '',
+    entre2: '',
+    longitud: '',
+    latitud: '',
+    noEconomico: '',
+    placas: '',
+    descripcion: '',
+    concesionario: '',
+    noLicencia: '',
+    tipo: '',
+    nombre: '',
+    vigencia: '',
+    fotosLev: [
+      File(''),
+      File(''),
+      File(''),
+      File(''),
+      File(''),
+      File(''),
+    ],
+    icon: 'car_crash',
+  );
   //Constructores
   LevantamientoView({super.key});
   @override
@@ -45,7 +46,6 @@ class LevantamientoView extends StatefulWidget {
 class LevantamientoViewState extends State<LevantamientoView> {
   @override
   Widget build(BuildContext context) {
-
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Funciones-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -53,7 +53,8 @@ class LevantamientoViewState extends State<LevantamientoView> {
     Widget _cardTipo1() {
       return Card(
         elevation: 10.0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
         child: Column(children: <Widget>[
           const ListTile(
             leading: Icon(
@@ -80,6 +81,24 @@ class LevantamientoViewState extends State<LevantamientoView> {
       );
     }
 
+    //Funcion que muestra ventada de accidentado
+    void mostrarVentanaAccidentado(BuildContext context) {
+      showDialog(
+          context: context,
+          barrierDismissible: true,
+          builder: (context) {
+            return AlertDialog(
+              content: Container(
+                padding: const EdgeInsets.all(0),
+                width: MediaQuery.of(context).size.width,
+                child: accidentadoVView(widget.levantamiento.folio),
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+            );
+          });
+    } //widget
+
     //Funcion que agrega elementos a la lista nueva
     List<Widget> _listaItems(List<dynamic>? data, BuildContext context) {
       final List<Widget> opciones = [];
@@ -96,10 +115,11 @@ class LevantamientoViewState extends State<LevantamientoView> {
         //Crea card por cada elemento
         final widgetTemp = Card(
           elevation: 10.0,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
           child: Column(children: <Widget>[
             ListTile(
-              title: Text(element['texto']),
+              title: Text(element['nombre']),
               subtitle: Text(element['descripcion']),
               leading: getIcon(element['icon']),
             ),
@@ -108,7 +128,9 @@ class LevantamientoViewState extends State<LevantamientoView> {
               children: <Widget>[
                 TextButton(
                   child: const Text('Mas Informacion'),
-                  onPressed: () {},
+                  onPressed: () {
+                    mostrarVentanaAccidentado(context);
+                  },
                 ),
                 const SizedBox(height: 15),
               ],
@@ -142,8 +164,6 @@ class LevantamientoViewState extends State<LevantamientoView> {
     //----------------------------------------------------------------------Funciones-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
     return WillPopScope(
       onWillPop: () async {
         Navigator.of(context).pop();
@@ -157,6 +177,4 @@ class LevantamientoViewState extends State<LevantamientoView> {
       ),
     );
   }
-
-  
 }
