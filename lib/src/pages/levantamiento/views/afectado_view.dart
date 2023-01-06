@@ -30,7 +30,6 @@ final domicilioFocus = FocusNode();
 final descripcionFocus = FocusNode();
 
 // editing controller
-//Step2
 final TextEditingController polizaController = TextEditingController();
 final TextEditingController vigenciaController = TextEditingController();
 final TextEditingController nombreAcController = TextEditingController();

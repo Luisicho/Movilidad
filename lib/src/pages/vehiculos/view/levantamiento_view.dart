@@ -90,6 +90,7 @@ class LevantamientoViewState extends State<LevantamientoView> {
             return AlertDialog(
               content: Container(
                 padding: const EdgeInsets.all(0),
+                height: 1000,
                 width: MediaQuery.of(context).size.width,
                 child: accidentadoVView(nombre),
               ),
@@ -119,8 +120,8 @@ class LevantamientoViewState extends State<LevantamientoView> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
           child: Column(children: <Widget>[
             ListTile(
-              title: Text(element['nombre']),
-              subtitle: Text(element['descripcion']),
+              title: Text(element['nombreAc']),
+              subtitle: Text(element['observaciones']),
               leading: getIcon(element['icon']),
             ),
             Row(
@@ -129,7 +130,7 @@ class LevantamientoViewState extends State<LevantamientoView> {
                 TextButton(
                   child: const Text('Mas Informacion'),
                   onPressed: () {
-                    mostrarVentanaAccidentado(context, element['nombre']);
+                    mostrarVentanaAccidentado(context, element['curp']);
                   },
                 ),
                 const SizedBox(height: 15),
