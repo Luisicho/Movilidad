@@ -82,7 +82,7 @@ class LevantamientoViewState extends State<LevantamientoView> {
     }
 
     //Funcion que muestra ventada de accidentado
-    void mostrarVentanaAccidentado(BuildContext context) {
+    void mostrarVentanaAccidentado(BuildContext context, String nombre) {
       showDialog(
           context: context,
           barrierDismissible: true,
@@ -91,7 +91,7 @@ class LevantamientoViewState extends State<LevantamientoView> {
               content: Container(
                 padding: const EdgeInsets.all(0),
                 width: MediaQuery.of(context).size.width,
-                child: accidentadoVView(widget.levantamiento.folio),
+                child: accidentadoVView(nombre),
               ),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
@@ -129,7 +129,7 @@ class LevantamientoViewState extends State<LevantamientoView> {
                 TextButton(
                   child: const Text('Mas Informacion'),
                   onPressed: () {
-                    mostrarVentanaAccidentado(context);
+                    mostrarVentanaAccidentado(context, element['nombre']);
                   },
                 ),
                 const SizedBox(height: 15),

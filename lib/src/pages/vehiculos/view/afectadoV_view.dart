@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:movilidad/src/model/afectado_model.dart';
+import 'package:movilidad/src/pages/levantamiento/views/afectado_view.dart';
 
 import '../../../providers/levantamiento_provider.dart';
 
 class accidentadoVView extends StatefulWidget {
-  final String folio; //Caracteristica folio
+  final String nombre; //Caracteristica folio
 
-  accidentadoVView(this.folio); //Constructor
+  accidentadoVView(this.nombre); //Constructor
 
   @override
   State<accidentadoVView> createState() => _accidentadoVViewState();
@@ -26,7 +27,6 @@ var listaAtencion = ['En sitio/ambulancia', 'Hospitalizacion', 'Defuncion'];
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------Variable Globales-------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 class _accidentadoVViewState extends State<accidentadoVView> {
   @override
@@ -73,7 +73,6 @@ class _accidentadoVViewState extends State<accidentadoVView> {
     //----------------------------------------------------------------------Variable local-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Funciones-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -118,16 +117,15 @@ class _accidentadoVViewState extends State<accidentadoVView> {
               observaciones: '',
               icon: '');
           snapshot.data!.where((element) {
-            final folio = element['folio'];
-            final input = widget.folio;
+            final nombre = element['nombre'];
+            final input = widget.nombre;
 
-            return folio.contains(input);
+            return nombre.contains(input);
           }).forEach((element) {
             //Actualiza objeto
             observacionesController.text = element['descripcion'];
             nombreController.text = element['nombre'];
             atencion = element['tipoAtencion'];
-            //setState(() {});
           });
 
           return Container(
