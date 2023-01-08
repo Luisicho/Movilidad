@@ -13,23 +13,6 @@ class firstStep extends StatefulWidget {
   //objeto
   final LevantamientoModel levantamiento = LevantamientoModel(
     folio: '',
-    fechaLlegada: '',
-    horaLlegada: '',
-    horaAccidente: '',
-    ubicacion: '',
-    entre: '',
-    y: '',
-    entre2: '',
-    longitud: '',
-    latitud: '',
-    noEconomico: '',
-    placas: '',
-    descripcion: '',
-    concesionario: '',
-    noLicencia: '',
-    tipo: '',
-    nombre: '',
-    vigencia: '',
     fotosLev: [
       File(''),
       File(''),
@@ -38,7 +21,6 @@ class firstStep extends StatefulWidget {
       File(''),
       File(''),
     ],
-    icon: 'car_crash',
   );
   firstStep({super.key});
 
@@ -55,8 +37,7 @@ class _firstStepState extends State<firstStep> {
   final noLicenciaFocus = FocusNode();
   final ubicacionFocus = FocusNode();
   final entreFocus = FocusNode();
-  final yFocus = FocusNode();
-  final entre2Focus = FocusNode();
+  final yentreFocus = FocusNode();
   final noEconomicoFocus = FocusNode();
   final placasFocus = FocusNode();
 
@@ -78,8 +59,7 @@ class _firstStepState extends State<firstStep> {
   final TextEditingController hourLlegadaController = TextEditingController();
   final TextEditingController ubicacionController = TextEditingController();
   final TextEditingController entreController = TextEditingController();
-  final TextEditingController yController = TextEditingController();
-  final TextEditingController entre2Controller = TextEditingController();
+  final TextEditingController yentreController = TextEditingController();
 
   //---------------------------------------------Inicio de variables y controladores------------------
 
@@ -267,20 +247,20 @@ class _firstStepState extends State<firstStep> {
       placasController.text = '';
       //Validacion
       if (lev.placas != '') {
-        placasController.text = lev.placas;
+        placasController.text = lev.placas!;
         //Cambia objeto
         widget.levantamiento.placas = lev.placas;
         VehiRespondable = "2";
       }
       if (lev.noEconomico != '') {
-        noeconomicoController.text = lev.noEconomico;
+        noeconomicoController.text = lev.noEconomico!;
         //Cambia objeto
         widget.levantamiento.noEconomico = lev.noEconomico;
         VehiRespondable = "1";
       }
       //Asignacion
-      descripcionController.text = lev.descripcion;
-      concesionController.text = lev.concesionario;
+      descripcionController.text = lev.descripcion!;
+      concesionController.text = lev.concesionario!;
       //Cambia objeto
       widget.levantamiento.concesionario = concesionController.text;
       widget.levantamiento.descripcion = descripcionController.text;
@@ -306,10 +286,10 @@ class _firstStepState extends State<firstStep> {
 
     void agregarManualLicencia(LevantamientoModel lev) {
       //Asignacion
-      nolicenciaController.text = lev.noLicencia;
-      tipoController.text = lev.tipo;
-      vigenciaController.text = lev.vigencia;
-      nombreController.text = lev.nombre;
+      nolicenciaController.text = lev.noLicencia!;
+      tipoController.text = lev.tipo!;
+      vigenciaController.text = lev.vigencia!;
+      nombreController.text = lev.nombre!;
       //Cambia objeto
       widget.levantamiento.noLicencia = nolicenciaController.text;
       widget.levantamiento.tipo = tipoController.text;
@@ -514,7 +494,7 @@ class _firstStepState extends State<firstStep> {
           child: TextFormField(
             focusNode: entreFocus,
             onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(yFocus);
+              FocusScope.of(context).requestFocus(yentreFocus);
             },
             controller: entreController,
             decoration: InputDecoration(
@@ -534,51 +514,20 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //YField
-    final yField = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text('y'),
-        const SizedBox(width: 10),
-        Expanded(
-          flex: 2,
-          child: TextFormField(
-            focusNode: yFocus,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(entre2Focus);
-            },
-            controller: yController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.add_location_alt_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "y",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-            onChanged: ((value) {
-              //Objeto cambio
-              widget.levantamiento.y = value;
-            }),
-          ),
-        ),
-      ],
-    );
-
     //entre2Field
-    final entre2Field = Row(
+    final yentreField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text('Entre'),
+        const Text('y entre'),
         const SizedBox(width: 10),
         Expanded(
           flex: 2,
           child: TextFormField(
-            focusNode: entre2Focus,
+            focusNode: yentreFocus,
             onFieldSubmitted: (value) {
               FocusScope.of(context).requestFocus(noEconomicoFocus);
             },
-            controller: entre2Controller,
+            controller: yentreController,
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.add_location_alt_outlined),
               contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
@@ -589,7 +538,7 @@ class _firstStepState extends State<firstStep> {
             ),
             onChanged: ((value) {
               //Objeto cambio
-              widget.levantamiento.entre2 = value;
+              widget.levantamiento.yentre = value;
             }),
           ),
         ),
@@ -1158,12 +1107,17 @@ class _firstStepState extends State<firstStep> {
             ),
             ubicacionField,
             entreField,
-            yField,
-            entre2Field,
+            yentreField,
             posicionField,
             fotoField,
             const Divider(
               thickness: 2,
+            ),
+            const Text('Vehiculo Responsable',
+            style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold
+              ),
             ),
             vehiculoField,
             placasField,

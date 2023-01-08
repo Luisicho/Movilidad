@@ -536,7 +536,7 @@ class _afectadoViewState extends State<afectadoView> {
 
     //----Return
     return Container(
-      height: 800,
+      height: 900,
       padding: const EdgeInsets.all(10),
       child: SingleChildScrollView(
         child:

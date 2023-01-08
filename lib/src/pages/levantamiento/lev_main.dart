@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:movilidad/src/pages/levantamiento/first_step.dart';
 import 'package:movilidad/src/pages/levantamiento/second_step.dart';
+import 'package:movilidad/src/pages/levantamiento/third_step.dart';
 import 'package:movilidad/src/utils/colors_util.dart';
 
 class levMain extends StatefulWidget {
@@ -17,6 +18,7 @@ class _levMainState extends State<levMain> {
   int currStep = 0;
   firstStep primerPaso = firstStep();
   secondStep segundoPaso = secondStep();
+  thirdStep tercerPaso = thirdStep();
 
   //-----Iniciar la ventana
   @override
@@ -40,12 +42,18 @@ class _levMainState extends State<levMain> {
           Step(
             state: currStep > 1 ? StepState.complete : StepState.indexed,
             isActive: currStep >= 1,
-            title: const Text('Afectados'),
+            title: const Text('Vehiculos'),
             content: segundoPaso,
           ),
           Step(
             state: currStep > 2 ? StepState.complete : StepState.indexed,
             isActive: currStep >= 2,
+            title: const Text('Afectados'),
+            content: tercerPaso,
+          ),
+          Step(
+            state: currStep > 3 ? StepState.complete : StepState.indexed,
+            isActive: currStep >= 3,
             title: const Text('Completado'),
             content: SizedBox(
               height: 500,
@@ -55,15 +63,15 @@ class _levMainState extends State<levMain> {
                   var error = '';
                   var firtStep = true;
                   var secStep = true;
-                  if (tempfirts.horaAccidente.isEmpty) {
+                  if (tempfirts.horaAccidente!.isEmpty) {
                     error += ' Hora accidente faltante \n';
                     firtStep = false;
                   }
-                  if (tempfirts.descripcion.isEmpty) {
+                  if (tempfirts.descripcion!.isEmpty) {
                     error += ' concesionario faltante \n';
                     firtStep = false;
                   }
-                  if (tempfirts.tipo.isEmpty) {
+                  if (tempfirts.tipo!.isEmpty) {
                     error += ' chofer faltante \n';
                     firtStep = false;
                   }
@@ -76,7 +84,7 @@ class _levMainState extends State<levMain> {
                     firtStep = false;
                   }
 
-                  if (segundoPaso.afectados.isEmpty) {
+                  if (tercerPaso.afectados.isEmpty) {
                     error += ' Agrege minimo 1 afectado \n';
                     secStep = false;
                   }

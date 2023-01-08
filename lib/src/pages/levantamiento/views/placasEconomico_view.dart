@@ -25,23 +25,6 @@ final TextEditingController conceController = TextEditingController();
 String VehiRespondable = "1";
 final LevantamientoModel levantamiento = LevantamientoModel(
   folio: '',
-  fechaLlegada: '',
-  horaLlegada: '',
-  horaAccidente: '',
-  ubicacion: '',
-  entre: '',
-  y: '',
-  entre2: '',
-  longitud: '',
-  latitud: '',
-  noEconomico: '',
-  placas: '',
-  descripcion: '',
-  concesionario: '',
-  noLicencia: '',
-  tipo: '',
-  nombre: '',
-  vigencia: '',
   fotosLev: [
     File(''),
     File(''),
@@ -50,7 +33,6 @@ final LevantamientoModel levantamiento = LevantamientoModel(
     File(''),
     File(''),
   ],
-  icon: 'car_crash',
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -30,23 +30,6 @@ final TextEditingController nombreController = TextEditingController();
 
 final LevantamientoModel levantamiento = LevantamientoModel(
   folio: '',
-  fechaLlegada: '',
-  horaLlegada: '',
-  horaAccidente: '',
-  ubicacion: '',
-  entre: '',
-  y: '',
-  entre2: '',
-  longitud: '',
-  latitud: '',
-  noEconomico: '',
-  placas: '',
-  descripcion: '',
-  concesionario: '',
-  noLicencia: '',
-  tipo: '',
-  nombre: '',
-  vigencia: '',
   fotosLev: [
     File(''),
     File(''),
@@ -55,7 +38,6 @@ final LevantamientoModel levantamiento = LevantamientoModel(
     File(''),
     File(''),
   ],
-  icon: 'car_crash',
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -198,8 +180,7 @@ class _licenciasViewState extends State<licenciasView> {
               ElevatedButton(
                 onPressed: () {
                   //Validacion
-                  if (noLicenciaController.text == '' ||
-                      nombreController.text == '') {
+                  if (noLicenciaController.text == '' || nombreController.text == '') {
                     //-------------Toast
                     Fluttertoast.showToast(
                         msg: "Campos vacios",

@@ -10,23 +10,6 @@ class LevantamientoView extends StatefulWidget {
   //Caracteristicas
   LevantamientoModel levantamiento = LevantamientoModel(
     folio: '',
-    fechaLlegada: '',
-    horaLlegada: '',
-    horaAccidente: '',
-    ubicacion: '',
-    entre: '',
-    y: '',
-    entre2: '',
-    longitud: '',
-    latitud: '',
-    noEconomico: '',
-    placas: '',
-    descripcion: '',
-    concesionario: '',
-    noLicencia: '',
-    tipo: '',
-    nombre: '',
-    vigencia: '',
     fotosLev: [
       File(''),
       File(''),
@@ -35,7 +18,6 @@ class LevantamientoView extends StatefulWidget {
       File(''),
       File(''),
     ],
-    icon: 'car_crash',
   );
   //Constructores
   LevantamientoView({super.key});

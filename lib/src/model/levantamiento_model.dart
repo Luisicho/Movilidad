@@ -15,45 +15,43 @@ String levantamientoModelToJson(LevantamientoModel data) =>
 class LevantamientoModel {
   LevantamientoModel({
     required this.folio,
-    required this.fechaLlegada,
-    required this.horaLlegada,
-    required this.horaAccidente,
-    required this.ubicacion,
-    required this.entre,
-    required this.y,
-    required this.entre2,
-    required this.longitud,
-    required this.latitud,
-    required this.noEconomico,
-    required this.placas,
-    required this.descripcion,
-    required this.concesionario,
-    required this.noLicencia,
-    required this.tipo,
-    required this.nombre,
-    required this.vigencia,
+    this.fechaLlegada,
+    this.horaLlegada,
+    this.horaAccidente,
+    this.ubicacion,
+    this.entre,
+    this.yentre,
+    this.longitud,
+    this.latitud,
+    this.noEconomico,
+    this.placas,
+    this.descripcion,
+    this.concesionario,
+    this.noLicencia,
+    this.tipo,
+    this.nombre,
+    this.vigencia,
     required this.fotosLev,
-    required this.icon,
+    this.icon,
   });
 
   String folio;
-  String fechaLlegada;
-  String horaLlegada;
-  String horaAccidente;
-  String ubicacion;
-  String entre;
-  String y;
-  String entre2;
-  String longitud;
-  String latitud;
-  String noEconomico;
-  String placas;
-  String descripcion;
-  String concesionario;
-  String noLicencia;
-  String tipo;
-  String nombre;
-  String vigencia;
+  String? fechaLlegada;
+  String? horaLlegada;
+  String? horaAccidente;
+  String? ubicacion;
+  String? entre;
+  String? yentre;
+  String? longitud;
+  String? latitud;
+  String? noEconomico;
+  String? placas;
+  String? descripcion;
+  String? concesionario;
+  String? noLicencia;
+  String? tipo;
+  String? nombre;
+  String? vigencia;
   List<File> fotosLev = [
     File(''),
     File(''),
@@ -62,7 +60,7 @@ class LevantamientoModel {
     File(''),
     File('')
   ];
-  String icon;
+  String? icon;
 
   factory LevantamientoModel.fromJson(Map<String, dynamic> json) =>
       LevantamientoModel(
@@ -72,8 +70,7 @@ class LevantamientoModel {
         horaAccidente: json["horaAccidente"],
         ubicacion: json["ubicacion"],
         entre: json["entre"],
-        y: json["y"],
-        entre2: json["entre2"],
+        yentre: json["yentre"],
         longitud: json["longitud"],
         latitud: json["latitud"],
         noEconomico: json["noEconomico"],
@@ -95,8 +92,7 @@ class LevantamientoModel {
         "horaAccidente": horaAccidente,
         "ubicacion": ubicacion,
         "entre": entre,
-        "y": y,
-        "entre2": entre2,
+        "entre2": yentre,
         "longitud": longitud,
         "latitud": latitud,
         "noEconomico": noEconomico,
@@ -112,7 +108,7 @@ class LevantamientoModel {
       };
   @override
   String toString() {
-    return "Folio: $folio Nombre: $nombre FechaLlegada: $fechaLlegada Descripcion: $descripcion HoraLlegada: $horaLlegada HoraAccidente: $horaAccidente Ubicacion: $ubicacion Entre: $entre Y: $y Entre2: $entre2 Longitud: $longitud Latitud: $latitud NoEconomico: $noEconomico Placas: $placas Concesionario: $concesionario NoLicencia: $noLicencia Tipo: $tipo Vigencia: $vigencia";
+    return "Folio: $folio Nombre: $nombre FechaLlegada: $fechaLlegada Descripcion: $descripcion HoraLlegada: $horaLlegada HoraAccidente: $horaAccidente Ubicacion: $ubicacion Entre: $entre Yentre: $yentre Longitud: $longitud Latitud: $latitud NoEconomico: $noEconomico Placas: $placas Concesionario: $concesionario NoLicencia: $noLicencia Tipo: $tipo Vigencia: $vigencia";
   }
 }
 
@@ -124,8 +120,7 @@ List<LevantamientoModel> listEjemploLevantamiento = [
     horaAccidente: 'HoraAccidente',
     ubicacion: 'Ubicacion',
     entre: 'Entre',
-    y: 'Y',
-    entre2: 'Entre2',
+    yentre: 'Entre2',
     longitud: 'Longitud',
     latitud: 'Latitud',
     noEconomico: 'NoEconomico',
@@ -146,8 +141,7 @@ List<LevantamientoModel> listEjemploLevantamiento = [
     horaAccidente: 'HoraAccidente',
     ubicacion: 'Ubicacion',
     entre: 'Entre',
-    y: 'Y',
-    entre2: 'Entre2',
+    yentre: 'Entre2',
     longitud: 'Longitud',
     latitud: 'Latitud',
     noEconomico: 'NoEconomico',
@@ -168,8 +162,7 @@ List<LevantamientoModel> listEjemploLevantamiento = [
     horaAccidente: 'HoraAccidente',
     ubicacion: 'Ubicacion',
     entre: 'Entre',
-    y: 'Y',
-    entre2: 'Entre2',
+    yentre: 'Entre2',
     longitud: 'Longitud',
     latitud: 'Latitud',
     noEconomico: 'NoEconomico',

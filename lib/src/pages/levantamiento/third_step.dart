@@ -1,33 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:movilidad/src/model/vehiculos_model.dart';
-import 'package:movilidad/src/pages/levantamiento/views/vehiculo_view.dart';
 
-import '../../utils/colors_util.dart';
-import '../../utils/icono_string_util.dart';
+import 'package:movilidad/src/model/afectado_model.dart';
+import 'package:movilidad/src/pages/levantamiento/views/afectado_view.dart';
+import 'package:movilidad/src/utils/colors_util.dart';
+import 'package:movilidad/src/utils/icono_string_util.dart';
 
-class secondStep extends StatefulWidget {
-  List<VehiculoModel> vehiculos = [];
-  secondStep({super.key});
+class thirdStep extends StatefulWidget {
+  //Lista de afectados
+  List<AfectadoModel> afectados = [];
+  thirdStep({super.key});
 
   @override
-  State<secondStep> createState() => _secondStepState();
+  State<thirdStep> createState() => _thirdStepState();
 }
 
-class _secondStepState extends State<secondStep> {
+class _thirdStepState extends State<thirdStep> {
   @override
   Widget build(BuildContext context) {
+
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Funciones-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //Agrega vehiculo a un arreglo
-    void addVehiculo(VehiculoModel vehiculo) {
+    //Agrega afectado a un arreglo
+    void addAfectado(AfectadoModel afectado) {
       setState(() {
-        widget.vehiculos.add(vehiculo);
+        widget.afectados.add(afectado);
       });
     }
 
-    //Funcion para mostrar el panel para agregar nuevos vehiculos
-    void showVehiculoDialog() {
+    //Funcion para mostrar el panel para agregar nuevos afectados
+    void showAfectadoDialog() {
       showDialog(
           context: context,
           barrierDismissible: true,
@@ -36,7 +38,7 @@ class _secondStepState extends State<secondStep> {
               content: Container(
                 padding: const EdgeInsets.all(0),
                 width: MediaQuery.of(context).size.width,
-                child: vehiculoView(addVehiculo),
+                child: afectadoView(addAfectado),
               ),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
@@ -49,6 +51,7 @@ class _secondStepState extends State<secondStep> {
     //----------------------------------------------------------------------Funciones-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
     return Container(
       height: MediaQuery.of(context).size.height * 0.75,
       child: Column(
@@ -59,7 +62,7 @@ class _secondStepState extends State<secondStep> {
             height: 50,
             child: 
             const Text(
-              "Lista de Vehiculos",
+              "Lista de Afectados",
               style: TextStyle(
                 fontSize: 22,
                 color: Colors.blueGrey,
@@ -67,7 +70,7 @@ class _secondStepState extends State<secondStep> {
               ),
             )
           ),
-          //Crea lista de vehiculos
+          //Crea lista de afectados
           Expanded(
             flex: 2,
             child: ListView.builder(
@@ -76,9 +79,9 @@ class _secondStepState extends State<secondStep> {
                   margin: const EdgeInsets.all(4),
                   elevation: 8,
                   child: ListTile(
-                    leading: getIcon('car_crash'),
+                    leading: getIcon('airline_seat_flat_outlined'),
                     title: Text(
-                      widget.vehiculos[index].descripcion!,
+                      widget.afectados[index].nombreAc!,
                       style: const TextStyle(
                         fontSize: 22,
                         color: Colors.blueGrey,
@@ -86,7 +89,7 @@ class _secondStepState extends State<secondStep> {
                       ),
                     ),
                     subtitle: Text(
-                      widget.vehiculos[index].concecionario!,
+                      widget.afectados[index].observaciones!,
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black12,
@@ -94,7 +97,7 @@ class _secondStepState extends State<secondStep> {
                       ),
                     ),
                     trailing: Text(
-                      widget.vehiculos[index].licencia!,
+                      widget.afectados[index].fechaRecepcion!,
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black26,
@@ -107,7 +110,7 @@ class _secondStepState extends State<secondStep> {
                   ), 
                 );
               },
-              itemCount: widget.vehiculos.length,
+              itemCount: widget.afectados.length,
             ),
           ),
           //Boton agregar
@@ -117,7 +120,7 @@ class _secondStepState extends State<secondStep> {
               //--------------Boton para agregar Vehiculo
               ElevatedButton(
                 onPressed: () {
-                  showVehiculoDialog();
+                  showAfectadoDialog();
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: VERDE,
