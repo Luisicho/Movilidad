@@ -62,7 +62,7 @@ class _levMainState extends State<levMain> {
                   var tempfirts = primerPaso.levantamiento;
                   var error = '';
                   var firtStep = true;
-                  var secStep = true;
+                  var thirStep = true;
                   if (tempfirts.horaAccidente!.isEmpty) {
                     error += ' Hora accidente faltante \n';
                     firtStep = false;
@@ -86,10 +86,10 @@ class _levMainState extends State<levMain> {
 
                   if (tercerPaso.afectados.isEmpty) {
                     error += ' Agrege minimo 1 afectado \n';
-                    secStep = false;
+                    thirStep = false;
                   }
 
-                  if (secStep && firtStep) {
+                  if (thirStep && firtStep) {
                     //-------------Toast
                     Fluttertoast.showToast(
                         msg: 'Enviando a la nube',
@@ -141,7 +141,7 @@ class _levMainState extends State<levMain> {
                 TextButton(
                   onPressed: () {
                     //onStepContinue(),
-                    if (!(currStep == 2)) {
+                    if (!(currStep == 3)) {
                       setState(() {
                         currStep++;
                       });
@@ -173,7 +173,7 @@ class _levMainState extends State<levMain> {
           },
           currentStep: currStep,
           onStepContinue: () {
-            if (!(currStep == 2)) {
+            if (!(currStep == 3)) {
               setState(() {
                 currStep++;
               });

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:movilidad/src/utils/colors_util.dart';
 
@@ -161,6 +162,16 @@ class _LoginScreenState extends State<LoginScreen> {
     //Base de datos Inicia
     //DBProvider.db.database;
     //Inicia la pantalla Home
+    //-------------Toast
+      Fluttertoast.showToast(
+          msg: 'Cuenta con Levantamientos sin cerrar',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0);
+      //-------------Toast
     Navigator.pushNamed(context, 'home_screen');
   }
 

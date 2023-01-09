@@ -64,9 +64,9 @@ class _thirdStepState extends State<thirdStep> {
             const Text(
               "Lista de Afectados",
               style: TextStyle(
-                fontSize: 22,
-                color: Colors.blueGrey,
-                fontWeight: FontWeight.w400,
+                fontSize: 30,
+                color: NEGRO,
+                fontWeight: FontWeight.bold,
               ),
             )
           ),

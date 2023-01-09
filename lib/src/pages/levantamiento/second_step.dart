@@ -61,9 +61,9 @@ class _secondStepState extends State<secondStep> {
             const Text(
               "Lista de Vehiculos",
               style: TextStyle(
-                fontSize: 22,
-                color: Colors.blueGrey,
-                fontWeight: FontWeight.w400,
+                fontSize: 30,
+                color: NEGRO,
+                fontWeight: FontWeight.bold,
               ),
             )
           ),
