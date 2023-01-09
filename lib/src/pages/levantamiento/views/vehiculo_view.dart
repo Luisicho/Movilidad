@@ -42,7 +42,6 @@ final TextEditingController descripcionController = TextEditingController();
 final TextEditingController conceController = TextEditingController();
 
 String VehiRespondable = "1";
-final VehiculoModel vehiculo = VehiculoModel();
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------Global Variable-------------------------------------------------------------------------------
@@ -298,6 +297,7 @@ class _vehiculoViewState extends State<vehiculoView> {
                 //--------------Boton para agregar Afectado
                 ElevatedButton(
                   onPressed: () {
+                    VehiculoModel vehiculo = VehiculoModel();
                     //Placas
                     //Validacion
                     if (noEconomicoController.text == '' &&
