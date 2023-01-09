@@ -59,7 +59,7 @@ class _secondStepState extends State<secondStep> {
             height: 50,
             child: 
             const Text(
-              "Lista de Vehiculos",
+              "Lista de Vehiculos afectados",
               style: TextStyle(
                 fontSize: 30,
                 color: NEGRO,
