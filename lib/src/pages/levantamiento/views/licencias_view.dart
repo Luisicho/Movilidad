@@ -40,6 +40,9 @@ final LevantamientoModel levantamiento = LevantamientoModel(
   ],
 );
 
+var tipo = 'Automovilista';
+var tipoLicArray = ['Automovilista', 'Chofer', 'Motociclista', 'Chofer Servicio Publico'];
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------Global Variable-------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -122,6 +125,40 @@ class _licenciasViewState extends State<licenciasView> {
       },
     );
 
+    //tipoAtencionField
+    final tipoLic = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text("Tipo Licencia"),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          flex: 5,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+            child: DropdownButton(
+              hint: const Text('Selecciona licencia'),
+              value: tipo,
+              icon: const Icon(Icons.keyboard_arrow_down),
+              items: tipoLicArray.map((String items) {
+                return DropdownMenuItem(
+                  value: items,
+                  child: Text(items),
+                );
+              }).toList(),
+              onChanged: (newValue) {
+                setState(() {
+                  tipo = newValue.toString();
+                });
+              },
+            ),
+          ),
+        ),
+      ],
+    );
+
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Object Variable-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -151,15 +188,7 @@ class _licenciasViewState extends State<licenciasView> {
             tipoFocus,
           ),
           const SizedBox(height: 10),
-          buildTextField(
-            'Tipo',
-            tipoController,
-            Icons.contacts_outlined,
-            false,
-            const EdgeInsets.fromLTRB(20, 15, 20, 15),
-            tipoFocus,
-            vigenciaFocus,
-          ),
+          tipoLic,
           const SizedBox(height: 10),
           vigenciaFieldField,
           const SizedBox(height: 10),
@@ -195,7 +224,7 @@ class _licenciasViewState extends State<licenciasView> {
                   }
                   //Asignacion
                   levantamiento.noLicencia = noLicenciaController.text;
-                  levantamiento.tipo = tipoController.text;
+                  levantamiento.tipo = tipo;
                   levantamiento.vigencia = vigenciaController.text;
                   levantamiento.nombre = nombreController.text;
                   widget.addLicencia(levantamiento);

@@ -9,8 +9,10 @@ import '../../../model/levantamiento_model.dart';
 
 class vehiculoView extends StatefulWidget {
   //variables
-  final Function(VehiculoModel)addVehiculo; // variable referencia al addAfectado de secondStep
-  vehiculoView(this.addVehiculo); // constructor que resive referencia de la funcion addAfectado de secondStep
+  final Function(VehiculoModel)
+      addVehiculo; // variable referencia al addAfectado de secondStep
+  vehiculoView(
+      this.addVehiculo); // constructor que resive referencia de la funcion addAfectado de secondStep
 
   @override
   State<vehiculoView> createState() => _vehiculoViewState();
@@ -42,11 +44,17 @@ final TextEditingController descripcionController = TextEditingController();
 final TextEditingController conceController = TextEditingController();
 
 String VehiRespondable = "1";
+var tipo = 'Automovilista';
+var tipoLicArray = [
+  'Automovilista',
+  'Chofer',
+  'Motociclista',
+  'Chofer Servicio Publico'
+];
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------Global Variable-------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 class _vehiculoViewState extends State<vehiculoView> {
   @override
@@ -146,41 +154,41 @@ class _vehiculoViewState extends State<vehiculoView> {
             flex: 1,
             child: VehiRespondable == "1"
                 ? buildTextField(
-                  'NoEconomico', 
-                  noEconomicoController,
-                  Icons.all_inbox, 
-                  false,
-                  const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                  noEconomicoFocus,
-                  descripcionFocus)
+                    'NoEconomico',
+                    noEconomicoController,
+                    Icons.all_inbox,
+                    false,
+                    const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                    noEconomicoFocus,
+                    descripcionFocus)
                 : buildTextField(
-                  'NoEconomico', 
-                  noEconomicoController,
-                  Icons.all_inbox, 
-                  true,
-                  const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                  noEconomicoFocus,
-                  descripcionFocus)),
+                    'NoEconomico',
+                    noEconomicoController,
+                    Icons.all_inbox,
+                    true,
+                    const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                    noEconomicoFocus,
+                    descripcionFocus)),
         const SizedBox(width: 05),
         Expanded(
             flex: 1,
             child: VehiRespondable == "2"
                 ? buildTextField(
-                  'Placas', 
-                  placasController, 
-                  Icons.calendar_view_week, 
-                  false,
-                  const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                  placasFocus,
-                  descripcionFocus)
+                    'Placas',
+                    placasController,
+                    Icons.calendar_view_week,
+                    false,
+                    const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                    placasFocus,
+                    descripcionFocus)
                 : buildTextField(
-                  'Placas', 
-                  placasController,
-                  Icons.calendar_view_week, 
-                  true,
-                  const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                  placasFocus,
-                  descripcionFocus)),
+                    'Placas',
+                    placasController,
+                    Icons.calendar_view_week,
+                    true,
+                    const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                    placasFocus,
+                    descripcionFocus)),
       ],
     );
 
@@ -213,87 +221,111 @@ class _vehiculoViewState extends State<vehiculoView> {
       },
     );
 
+    //tipoAtencionField
+    final tipoLic = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text("Tipo Licencia"),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          flex: 5,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+            child: DropdownButton(
+              hint: const Text('Selecciona licencia'),
+              value: tipo,
+              icon: const Icon(Icons.keyboard_arrow_down),
+              items: tipoLicArray.map((String items) {
+                return DropdownMenuItem(
+                  value: items,
+                  child: Text(items),
+                );
+              }).toList(),
+              onChanged: (newValue) {
+                setState(() {
+                  tipo = newValue.toString();
+                });
+              },
+            ),
+          ),
+        ),
+      ],
+    );
+
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Object Variable-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     return Container(
-      height: 650,
-      padding: const EdgeInsets.all(10),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Agregar Vehiculo',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 32,
-                color: Colors.blueGrey,
+        height: 650,
+        padding: const EdgeInsets.all(10),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Agregar Vehiculo',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 32,
+                  color: Colors.blueGrey,
+                ),
               ),
-            ),
-            vehiculoField,
-            const SizedBox(height: 10),
-            placasField,
-            const SizedBox(height: 10),
-            buildTextField(
-              'Descripcion', 
-              descripcionController,
-              Icons.assessment_outlined, 
-              false,
-              const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              descripcionFocus,
-              conceFocus),
-            const SizedBox(height: 10),
-            buildTextField(
-              'Concensionario / Particular', 
-              conceController,
-              Icons.account_circle_outlined, 
-              false,
-              const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              conceFocus,
-              noLicenciaFocus),
-            const SizedBox(height: 10),
-            const Divider(
-              thickness: 2,
-            ),
-            const SizedBox(height: 10),
-            const SizedBox(height: 10),
-          buildTextField(
-            'No.Licencia',
-            noLicenciaController,
-            Icons.account_box_sharp,
-            false,
-            const EdgeInsets.fromLTRB(20, 15, 20, 15),
-            noLicenciaFocus,
-            tipoFocus,
-          ),
-          const SizedBox(height: 10),
-          buildTextField(
-            'Tipo',
-            tipoController,
-            Icons.contacts_outlined,
-            false,
-            const EdgeInsets.fromLTRB(20, 15, 20, 15),
-            tipoFocus,
-            vigenciaFocus,
-          ),
-          const SizedBox(height: 10),
-          vigenciaFieldField,
-          const SizedBox(height: 10),
-          buildTextField(
-            'Nombre',
-            nombreController,
-            Icons.document_scanner_outlined,
-            false,
-            const EdgeInsets.fromLTRB(20, 15, 20, 15),
-            nombreFocus,
-            noLicenciaFocus,
-          ),
-          const SizedBox(height: 10),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              vehiculoField,
+              const SizedBox(height: 10),
+              placasField,
+              const SizedBox(height: 10),
+              buildTextField(
+                  'Descripcion',
+                  descripcionController,
+                  Icons.assessment_outlined,
+                  false,
+                  const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                  descripcionFocus,
+                  conceFocus),
+              const SizedBox(height: 10),
+              buildTextField(
+                  'Concensionario / Particular',
+                  conceController,
+                  Icons.account_circle_outlined,
+                  false,
+                  const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                  conceFocus,
+                  noLicenciaFocus),
+              const SizedBox(height: 10),
+              const Divider(
+                thickness: 2,
+              ),
+              const SizedBox(height: 10),
+              const SizedBox(height: 10),
+              buildTextField(
+                'No.Licencia',
+                noLicenciaController,
+                Icons.account_box_sharp,
+                false,
+                const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                noLicenciaFocus,
+                tipoFocus,
+              ),
+              const SizedBox(height: 10),
+              tipoLic,
+              const SizedBox(height: 10),
+              vigenciaFieldField,
+              const SizedBox(height: 10),
+              buildTextField(
+                'Nombre',
+                nombreController,
+                Icons.document_scanner_outlined,
+                false,
+                const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                nombreFocus,
+                noLicenciaFocus,
+              ),
+              const SizedBox(height: 10),
+              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                 //--------------Boton para agregar Afectado
                 ElevatedButton(
                   onPressed: () {
@@ -346,7 +378,23 @@ class _vehiculoViewState extends State<vehiculoView> {
                     }
                     //Asignacion
                     vehiculo.licencia = noLicenciaController.text;
-                    vehiculo.tipo = tipoController.text;
+                    var newTipo = '';
+                    switch (tipo) {
+                      case 'Automovilista':
+                        newTipo = 'A';
+                        break;
+                      case 'Chofer':
+                        newTipo = 'B';
+                        break;
+                      case 'Motociclista':
+                        newTipo = 'C';
+                        break;
+                      case 'Chofer Servicio Publico':
+                        newTipo = 'D';
+                        break;
+                      default:
+                    }
+                    vehiculo.tipo = newTipo;
                     vehiculo.vigencia = vigenciaController.text;
                     vehiculo.nombre = nombreController.text;
 
@@ -366,11 +414,9 @@ class _vehiculoViewState extends State<vehiculoView> {
                   },
                   child: const Text('Agregar'),
                 ),
-              ]
-            ),
-        ],
-        ),
-      )
-    );
+              ]),
+            ],
+          ),
+        ));
   }
 }

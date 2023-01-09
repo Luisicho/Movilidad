@@ -207,7 +207,7 @@ class _firstStepState extends State<firstStep> {
     },
     {
       'licencia': '11BDGTTN029445',
-      'tipo': "B",
+      'tipo': "D",
       'nombre': 'YESSICA SANDOVAL CASTILLO',
       'vigencia': '7/26/2024'
     },
@@ -983,7 +983,24 @@ class _firstStepState extends State<firstStep> {
                 var busquedatemp = licencias.where((element) =>
                     element['licencia'] == nolicenciaController.text);
                 if (busquedatemp.isNotEmpty) {
-                  tipoController.text = busquedatemp.first['tipo']!;
+                  var tipoLic = '';
+                  switch (busquedatemp.first['tipo']!) {
+                    case 'A':
+                      tipoLic = 'Automovilista';
+                      break;
+                    case 'B':
+                      tipoLic = 'Chofer';
+                      break;
+                    case 'C':
+                      tipoLic = 'Motociclista';
+                      break;
+                    case 'D':
+                      tipoLic = 'Chofer Servicio Publico';
+                      break;
+                    default:
+                      break;
+                  }
+                  tipoController.text = tipoLic;
                   nombreController.text = busquedatemp.first['nombre']!;
                   vigenciaController.text = busquedatemp.first['vigencia']!;
                   mensaje = 'Encontrado en nube';
@@ -1113,11 +1130,9 @@ class _firstStepState extends State<firstStep> {
             const Divider(
               thickness: 2,
             ),
-            const Text('Vehiculo Responsable',
-            style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold
-              ),
+            const Text(
+              'Vehiculo Responsable',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             vehiculoField,
             placasField,
