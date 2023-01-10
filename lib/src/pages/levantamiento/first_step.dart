@@ -27,19 +27,69 @@ class firstStep extends StatefulWidget {
   @override
   State<firstStep> createState() => _firstStepState();
 }
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------Variables Globales-------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+var estado = 'Aguascalientes';
+var listaestado = [
+  'Aguascalientes',
+  'Nayarit',
+  'Baja California',
+  'Baja California Sur',
+  'Campeche',
+  'Chiapas',
+  'Chihuahua',
+  'Ciudad de México',
+  'Coahuila',
+  'Colima',
+  'Durango',
+  'Estado de México',
+  'Guanajuato',
+  'Guerrero',
+  'Hidalgo',
+  'Jalisco',
+  'Michoacán',
+  'Morelos',
+  'Nuevo León',
+  'Oaxaca',
+  'Puebla',
+  'Querétaro',
+  'Quintana Roo',
+  'San Luis Potosí',
+  'Sinaloa',
+  'Sonora',
+  'Tabasco',
+  'Tamaulipas',
+  'Tlaxcala',
+  'Veracruz',
+  'Yucatán',
+  'Zacatecas',
+];
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------Variables Globales-------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class _firstStepState extends State<firstStep> {
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------Variables locales-------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
   // form key avisa los cambios
   final _formKey = GlobalKey<FormState>();
 
   // Focus Nodes
   //Step1
-  final noLicenciaFocus = FocusNode();
   final ubicacionFocus = FocusNode();
   final entreFocus = FocusNode();
   final yentreFocus = FocusNode();
   final noEconomicoFocus = FocusNode();
   final placasFocus = FocusNode();
+  final conceFocus = FocusNode();
+  final descFocus = FocusNode();
+  final noLicenciaFocus = FocusNode();
+  final nombreFocus = FocusNode();
 
   // editing controller
   //Step1
@@ -225,6 +275,10 @@ class _firstStepState extends State<firstStep> {
     },
   ];
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------Variables locales-------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
   @override
   Widget build(BuildContext context) {
     /* A MEJORAR
@@ -344,6 +398,61 @@ class _firstStepState extends State<firstStep> {
           ),
         ),
       );
+    }
+
+    //Funcion que crea TextFields
+    Widget buildTextFieldBasico(String hint, TextEditingController controller,
+        IconData icon, bool enable) {
+      return TextFormField(
+        controller: controller,
+        readOnly: enable,
+        decoration: InputDecoration(
+          prefixIcon: Icon(icon),
+          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          hintText: hint,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      );
+    }
+
+    //Funcion que crea TextFields
+    Widget buildTextFieldFocus(
+        String hint,
+        TextEditingController controller,
+        IconData icon,
+        bool enable,
+        EdgeInsets pad,
+        FocusNode Focus,
+        FocusNode nextFocus) {
+      return TextFormField(
+        focusNode: Focus,
+        onFieldSubmitted: (value) {
+          FocusScope.of(context).requestFocus(nextFocus);
+        },
+        controller: controller,
+        readOnly: enable,
+        decoration: InputDecoration(
+          prefixIcon: Icon(icon),
+          contentPadding: pad,
+          hintText: hint,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      );
+    }
+
+    void limpiarCeldas() {
+      noeconomicoController.text = '';
+      placasController.text = '';
+      descripcionController.text = '';
+      concesionController.text = '';
+      nolicenciaController.text = '';
+      tipoController.text = '';
+      vigenciaController.text = '';
+      nombreController.text = '';
     }
 
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -812,6 +921,10 @@ class _firstStepState extends State<firstStep> {
                       widget.levantamiento.noEconomico = value;
                     })
                 : TextFormField(
+                    focusNode: noEconomicoFocus,
+                    onFieldSubmitted: (value) {
+                      FocusScope.of(context).requestFocus(descFocus);
+                    },
                     enabled: false,
                     controller: noeconomicoController,
                     decoration: InputDecoration(
@@ -846,6 +959,10 @@ class _firstStepState extends State<firstStep> {
                       widget.levantamiento.placas = value;
                     })
                 : TextFormField(
+                    focusNode: placasFocus,
+                    onFieldSubmitted: (value) {
+                      FocusScope.of(context).requestFocus(descFocus);
+                    },
                     enabled: false,
                     controller: placasController,
                     decoration: InputDecoration(
@@ -933,7 +1050,7 @@ class _firstStepState extends State<firstStep> {
             },
             child: const Text('Buscar Placas / No.Economico'),
           ),
-        ), //-------------Fin boton Buscar placas
+        ), /*//-------------Fin boton Buscar placas
         Expanded(
           flex: 1,
           child: TextButton(
@@ -941,7 +1058,7 @@ class _firstStepState extends State<firstStep> {
               onPressed: () {
                 mostrarVentanaEmergente(context);
               }),
-        ),
+        ),*/
       ],
     );
 
@@ -1026,7 +1143,7 @@ class _firstStepState extends State<firstStep> {
             },
           ),
         ),
-        Expanded(
+        /*Expanded(
           flex: 1,
           child: TextButton(
             child: const Text('Agregado Manual'),
@@ -1034,7 +1151,7 @@ class _firstStepState extends State<firstStep> {
               mostrarVentanaEmergenteLicencia(context);
             },
           ),
-        ),
+        ),*/
       ],
     );
 
@@ -1091,6 +1208,194 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
+    //vigenciaField
+    final vigenciaFieldField = TextFormField(
+      readOnly: true,
+      controller: vigenciaController,
+      decoration: InputDecoration(
+        prefixIcon: const Icon(Icons.calendar_today),
+        contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
+        hintText: "Vigencia",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      onTap: () async {
+        // Get the date
+        DateTime? datePicket = await showDatePicker(
+          context: context,
+          initialDate: DateTime.now(),
+          firstDate: DateTime(1999),
+          lastDate: DateTime(2050),
+          locale: const Locale('es', 'ES'),
+        );
+        if (datePicket != null) {
+          //make format to the date
+          var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
+          vigenciaController.text = formatedDate.toString();
+        }
+      },
+    );
+
+    //tipoAtencionField
+    final tipoLic = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text("Tipo Licencia"),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          flex: 5,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+            child: DropdownButton(
+              hint: const Text('Selecciona licencia'),
+              value: tipo,
+              icon: const Icon(Icons.keyboard_arrow_down),
+              items: tipoLicArray.map((String items) {
+                return DropdownMenuItem(
+                  value: items,
+                  child: Text(items),
+                );
+              }).toList(),
+              onChanged: (newValue) {
+                setState(() {
+                  tipo = newValue.toString();
+                });
+              },
+            ),
+          ),
+        ),
+      ],
+    );
+
+    //EstadosField
+    final estadosField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text("Estado"),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          flex: 5,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+            child: DropdownButton(
+              hint: const Text('Selecciona Estado'),
+              value: estado,
+              icon: const Icon(Icons.keyboard_arrow_down),
+              items: listaestado.map((String items) {
+                return DropdownMenuItem(
+                  value: items,
+                  child: Text(items),
+                );
+              }).toList(),
+              onChanged: (newValue) {
+                limpiarCeldas();
+                setState(() {
+                  estado = newValue.toString();
+                });
+              },
+            ),
+          ),
+        ),
+      ],
+    );
+
+    var vehiculoConBD =
+        Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+      vehiculoField,
+      const SizedBox(height: 20),
+      placasField,
+      const SizedBox(height: 20),
+      buscarPlaca,
+      const SizedBox(height: 20),
+      descripcionField,
+      const SizedBox(height: 20),
+      consenParticularField,
+      const SizedBox(height: 20),
+      const Divider(
+        thickness: 2,
+      ),
+      const SizedBox(height: 20),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(flex: 1, child: noLicenciaField),
+          Expanded(flex: 1, child: busquedaButton),
+        ],
+      ),
+      const SizedBox(height: 20),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(flex: 1, child: tipoField),
+          Expanded(flex: 1, child: vigenciaField),
+        ],
+      ),
+      const SizedBox(height: 20),
+      nombreField,
+    ]);
+
+    var vehiculoManual = Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        vehiculoField,
+        const SizedBox(height: 10),
+        placasField,
+        const SizedBox(height: 10),
+        buildTextFieldFocus(
+          'Descripcion',
+          descripcionController,
+          Icons.assessment_outlined,
+          false,
+          const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          descFocus,
+          conceFocus,
+        ),
+        const SizedBox(height: 10),
+        buildTextFieldFocus(
+          'Concensionario / Particular',
+          conceController,
+          Icons.account_circle_outlined,
+          false,
+          const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          conceFocus,
+          noLicenciaFocus,
+        ),
+        const SizedBox(height: 10),
+        const SizedBox(height: 10),
+        buildTextFieldFocus(
+          'No.Licencia',
+          noLicenciaController,
+          Icons.account_box_sharp,
+          false,
+          const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          noLicenciaFocus,
+          nombreFocus,
+        ),
+        const SizedBox(height: 10),
+        tipoLic,
+        const SizedBox(height: 10),
+        vigenciaFieldField,
+        const SizedBox(height: 10),
+        buildTextFieldFocus(
+          'Nombre',
+          nombreController,
+          Icons.document_scanner_outlined,
+          false,
+          const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          nombreFocus,
+          noLicenciaFocus,
+        ),
+        const SizedBox(height: 10),
+      ],
+    );
+
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Object Variable-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1134,29 +1439,8 @@ class _firstStepState extends State<firstStep> {
               'Vehiculo Responsable',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
-            vehiculoField,
-            placasField,
-            buscarPlaca,
-            descripcionField,
-            consenParticularField,
-            const Divider(
-              thickness: 2,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(flex: 1, child: noLicenciaField),
-                Expanded(flex: 1, child: busquedaButton),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(flex: 1, child: tipoField),
-                Expanded(flex: 1, child: vigenciaField),
-              ],
-            ),
-            nombreField,
+            estadosField,
+            estado == 'Nayarit' ? vehiculoConBD : vehiculoManual
           ],
         ),
       ),
