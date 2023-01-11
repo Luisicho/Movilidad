@@ -386,8 +386,8 @@ class _firstStepState extends State<firstStep> {
       widget.levantamiento.concesionario = concesionController.text;
       widget.levantamiento.noLicencia = nolicenciaController.text;
       estado == 'Nayarit'
-          ? widget.levantamiento.tipo = tipo
-          : widget.levantamiento.tipo = tipoController.text;
+          ? widget.levantamiento.tipo = tipoController.text
+          : widget.levantamiento.tipo = tipo;
       widget.levantamiento.nombre = nombreController.text;
       widget.levantamiento.vigencia = vigenciaController.text;
     }
