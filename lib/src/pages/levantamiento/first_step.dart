@@ -6,8 +6,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:movilidad/src/model/levantamiento_model.dart';
-import 'package:movilidad/src/pages/levantamiento/views/licencias_view.dart';
-import 'package:movilidad/src/pages/levantamiento/views/placasEconomico_view.dart';
 
 class firstStep extends StatefulWidget {
   //objeto
@@ -89,7 +87,10 @@ class _firstStepState extends State<firstStep> {
   final conceFocus = FocusNode();
   final descFocus = FocusNode();
   final noLicenciaFocus = FocusNode();
+  final tipoFocus = FocusNode();
+  final vigenciaFocus = FocusNode();
   final nombreFocus = FocusNode();
+  
 
   // editing controller
   //Step1
@@ -119,6 +120,10 @@ class _firstStepState extends State<firstStep> {
   final List<XFile>? images = List<XFile>.empty();
   XFile? photo1, photo2, photo3, photo4, photo5, photo6 = XFile("no");
   File? image1, image2, image3, image4, image5, image6;
+
+  //DropDowns
+  var tipo = 'Automovilista';
+  var tipoLicArray = ['Automovilista', 'Chofer', 'Motociclista', 'Chofer Servicio Publico'];
 
   var servicioP = [
     {
@@ -275,30 +280,6 @@ class _firstStepState extends State<firstStep> {
     },
   ];
 
-  //Actualiza levantamiento
-  void ActualizarLev() {
-    widget.levantamiento.concesionario = concesionController.text;
-    widget.levantamiento.folio = folioController.text;
-    widget.levantamiento.fechaLlegada = fechaController.text;
-    widget.levantamiento.horaLlegada = hourLlegadaController.text;
-    widget.levantamiento.horaAccidente = hourAccidenteController.text;
-    widget.levantamiento.ubicacion = ubicacionController.text;
-    widget.levantamiento.entre = entreController.text;
-    widget.levantamiento.yentre = yentreController.text;
-    widget.levantamiento.longitud = lonController.text;
-    widget.levantamiento.latitud = latController.text;
-    widget.levantamiento.noEconomico = noeconomicoController.text;
-    widget.levantamiento.placas = placasController.text;
-    widget.levantamiento.descripcion = descripcionController.text;
-    widget.levantamiento.concesionario = concesionController.text;
-    widget.levantamiento.noLicencia = nolicenciaController.text;
-    estado == 'Nayarit'
-        ? widget.levantamiento.tipo = tipo
-        : widget.levantamiento.tipo = tipoController.text;
-    widget.levantamiento.nombre = nombreController.text;
-    widget.levantamiento.vigencia = vigenciaController.text;
-  }
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------Variables locales-------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -306,8 +287,7 @@ class _firstStepState extends State<firstStep> {
   @override
   Widget build(BuildContext context) {
     /* A MEJORAR
-      Se puede crear funcion que cree Fileds donde se pase nombre de field, icono y controlador asi reducimos codigo
-
+      Reduccion de funciones tipo buildField
     */
 
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -318,80 +298,6 @@ class _firstStepState extends State<firstStep> {
     String getFolio() {
       return "01";
     }
-
-    void agregarManual(LevantamientoModel lev) {
-      //Limpia celdas
-      noeconomicoController.text = '';
-      placasController.text = '';
-      //Validacion
-      if (lev.placas != '') {
-        placasController.text = lev.placas!;
-        //Cambia objeto
-        widget.levantamiento.placas = lev.placas;
-        VehiRespondable = "2";
-      }
-      if (lev.noEconomico != '') {
-        noeconomicoController.text = lev.noEconomico!;
-        //Cambia objeto
-        widget.levantamiento.noEconomico = lev.noEconomico;
-        VehiRespondable = "1";
-      }
-      //Asignacion
-      descripcionController.text = lev.descripcion!;
-      concesionController.text = lev.concesionario!;
-      //Cambia objeto
-      widget.levantamiento.concesionario = concesionController.text;
-      widget.levantamiento.descripcion = descripcionController.text;
-      setState(() {}); //Actualiza pantalla
-    }
-
-    void mostrarVentanaEmergente(BuildContext context) {
-      showDialog(
-          context: context,
-          barrierDismissible: true,
-          builder: (context) {
-            return AlertDialog(
-              content: Container(
-                padding: const EdgeInsets.all(0),
-                width: MediaQuery.of(context).size.width,
-                child: placasEcoView(agregarManual),
-              ),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-            );
-          });
-    } //widget
-
-    void agregarManualLicencia(LevantamientoModel lev) {
-      //Asignacion
-      nolicenciaController.text = lev.noLicencia!;
-      tipoController.text = lev.tipo!;
-      vigenciaController.text = lev.vigencia!;
-      nombreController.text = lev.nombre!;
-      //Cambia objeto
-      widget.levantamiento.noLicencia = nolicenciaController.text;
-      widget.levantamiento.tipo = tipoController.text;
-      widget.levantamiento.vigencia = vigenciaController.text;
-      widget.levantamiento.nombre = nombreController.text;
-      setState(() {}); //Actualiza pantalla
-    }
-
-    void mostrarVentanaEmergenteLicencia(BuildContext context) {
-      showDialog(
-          context: context,
-          barrierDismissible: true,
-          builder: (context) {
-            return AlertDialog(
-              content: Container(
-                padding: const EdgeInsets.all(0),
-                width: MediaQuery.of(context).size.width,
-                child: licenciasView(agregarManualLicencia),
-              ),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-            );
-          });
-    } //widget
 
     FadeInImage fadeImg(File? file) {
       return FadeInImage(
@@ -423,24 +329,7 @@ class _firstStepState extends State<firstStep> {
         ),
       );
     }
-
-    //Funcion que crea TextFields
-    Widget buildTextFieldBasico(String hint, TextEditingController controller,
-        IconData icon, bool enable) {
-      return TextFormField(
-        controller: controller,
-        readOnly: enable,
-        decoration: InputDecoration(
-          prefixIcon: Icon(icon),
-          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: hint,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-      );
-    }
-
+    
     //Funcion que crea TextFields
     Widget buildTextFieldFocus(
         String hint,
@@ -448,10 +337,10 @@ class _firstStepState extends State<firstStep> {
         IconData icon,
         bool enable,
         EdgeInsets pad,
-        FocusNode Focus,
+        FocusNode focus,
         FocusNode nextFocus) {
       return TextFormField(
-        focusNode: Focus,
+        focusNode: focus,
         onFieldSubmitted: (value) {
           FocusScope.of(context).requestFocus(nextFocus);
         },
@@ -477,6 +366,30 @@ class _firstStepState extends State<firstStep> {
       tipoController.text = '';
       vigenciaController.text = '';
       nombreController.text = '';
+    }
+
+    //Actualiza levantamiento
+    void ActualizarLev() {
+      widget.levantamiento.concesionario = concesionController.text;
+      widget.levantamiento.folio = folioController.text;
+      widget.levantamiento.fechaLlegada = fechaController.text;
+      widget.levantamiento.horaLlegada = hourLlegadaController.text;
+      widget.levantamiento.horaAccidente = hourAccidenteController.text;
+      widget.levantamiento.ubicacion = ubicacionController.text;
+      widget.levantamiento.entre = entreController.text;
+      widget.levantamiento.yentre = yentreController.text;
+      widget.levantamiento.longitud = lonController.text;
+      widget.levantamiento.latitud = latController.text;
+      widget.levantamiento.noEconomico = noeconomicoController.text;
+      widget.levantamiento.placas = placasController.text;
+      widget.levantamiento.descripcion = descripcionController.text;
+      widget.levantamiento.concesionario = concesionController.text;
+      widget.levantamiento.noLicencia = nolicenciaController.text;
+      estado == 'Nayarit'
+          ? widget.levantamiento.tipo = tipo
+          : widget.levantamiento.tipo = tipoController.text;
+      widget.levantamiento.nombre = nombreController.text;
+      widget.levantamiento.vigencia = vigenciaController.text;
     }
 
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1358,7 +1271,7 @@ class _firstStepState extends State<firstStep> {
         const SizedBox(height: 10),
         buildTextFieldFocus(
           'Concensionario / Particular',
-          conceController,
+          concesionController,
           Icons.account_circle_outlined,
           false,
           const EdgeInsets.fromLTRB(20, 15, 20, 15),
@@ -1372,7 +1285,7 @@ class _firstStepState extends State<firstStep> {
         const SizedBox(height: 10),
         buildTextFieldFocus(
           'No.Licencia',
-          noLicenciaController,
+          nolicenciaController,
           Icons.account_box_sharp,
           false,
           const EdgeInsets.fromLTRB(20, 15, 20, 15),
