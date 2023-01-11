@@ -32,7 +32,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                   children: [
                     Ink.image(
                         image: const AssetImage(
-                          "assets/mapicon.png",
+                          "assets/mapicon2.png",
                         ),
                         height: 400,
                         width: 400,

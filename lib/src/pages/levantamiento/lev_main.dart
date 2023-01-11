@@ -75,15 +75,18 @@ class _levMainState extends State<levMain> {
                     );
                     return;
                   }
-                  if (tempfirts.horaAccidente == null || tempfirts.horaAccidente!.isEmpty) {
+                  if (tempfirts.horaAccidente == null ||
+                      tempfirts.horaAccidente!.isEmpty) {
                     error += ' Hora accidente faltante \n';
                     firtStep = false;
                   }
-                  if (tempfirts.concesionario == null || tempfirts.concesionario!.isEmpty) {
+                  if (tempfirts.concesionario == null ||
+                      tempfirts.concesionario!.isEmpty) {
                     error += ' Concesionario faltante \n';
                     firtStep = false;
                   }
-                  if (tempfirts.vigencia == null || tempfirts.vigencia!.isEmpty) {
+                  if (tempfirts.vigencia == null ||
+                      tempfirts.vigencia!.isEmpty) {
                     error += ' Chofer faltante \n';
                     firtStep = false;
                   }
@@ -134,8 +137,21 @@ class _levMainState extends State<levMain> {
     //----return
     return WillPopScope(
       onWillPop: () async {
-        Navigator.of(context).pop();
-        return false;
+        return await QuickAlert.show(
+          context: context,
+          type: QuickAlertType.confirm,
+          title: '¿Quieres salir?',
+          text: 'No se guardara nada de la informacion ya capturada',
+          confirmBtnText: 'Si',
+          cancelBtnText: 'No',
+          confirmBtnColor: Colors.green,
+          onConfirmBtnTap: () {
+            Navigator.pop(context, true);
+          },
+          onCancelBtnTap: () {
+            Navigator.pop(context, false);
+          },
+        );
       },
       child: Scaffold(
         body: Stepper(
