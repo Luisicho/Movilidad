@@ -1327,9 +1327,11 @@ class _firstStepState extends State<firstStep> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             folioField,
+            const SizedBox(height: 20),
             const Divider(
               thickness: 2,
             ),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -1337,24 +1339,36 @@ class _firstStepState extends State<firstStep> {
                 Expanded(flex: 1, child: hourLlegadaField),
               ],
             ),
+            const SizedBox(height: 20),
             hourAccidenteField,
+            const SizedBox(height: 20),
             const Divider(
               thickness: 2,
             ),
+            const SizedBox(height: 20),
             ubicacionField,
+            const SizedBox(height: 20),
             entreField,
+            const SizedBox(height: 20),
             yentreField,
+            const SizedBox(height: 20),
             posicionField,
+            const SizedBox(height: 20),
             fotoField,
+            const SizedBox(height: 20),
             const Divider(
               thickness: 2,
             ),
+            const SizedBox(height: 20),
             const Text(
               'Vehiculo Responsable',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
+            const SizedBox(height: 20),
             estadosField,
-            estado == 'Nayarit' ? vehiculoConBD : vehiculoManual
+            const SizedBox(height: 20),
+            estado == 'Nayarit' ? vehiculoConBD : vehiculoManual,
+            const SizedBox(height: 20),
           ],
         ),
         onChanged: () {
