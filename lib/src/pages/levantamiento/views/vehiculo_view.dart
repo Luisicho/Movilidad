@@ -28,13 +28,11 @@ final descripcionFocus = FocusNode();
 final conceFocus = FocusNode();
 //licencia
 final noLicenciaFocus = FocusNode();
-final tipoFocus = FocusNode();
 final vigenciaFocus = FocusNode();
 final nombreFocus = FocusNode();
 
 //licencia
 final TextEditingController noLicenciaController = TextEditingController();
-final TextEditingController tipoController = TextEditingController();
 final TextEditingController vigenciaController = TextEditingController();
 final TextEditingController nombreController = TextEditingController();
 //Placas
@@ -70,7 +68,6 @@ class _vehiculoViewState extends State<vehiculoView> {
       conceController.text = '';
       //Licencia
       noLicenciaController.text = '';
-      tipoController.text = '';
       vigenciaController.text = '';
       nombreController.text = '';
     }
@@ -308,7 +305,7 @@ class _vehiculoViewState extends State<vehiculoView> {
                 false,
                 const EdgeInsets.fromLTRB(20, 15, 20, 15),
                 noLicenciaFocus,
-                tipoFocus,
+                nombreFocus,
               ),
               const SizedBox(height: 10),
               tipoLic,

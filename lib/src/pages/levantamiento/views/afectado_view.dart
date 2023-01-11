@@ -23,7 +23,6 @@ class afectadoView extends StatefulWidget {
 //Step2
 final polizaFocus = FocusNode();
 final vigenciaFocus = FocusNode();
-final tipoAFocus = FocusNode();
 final nombreAFocus = FocusNode();
 final CURPFocus = FocusNode();
 final domicilioFocus = FocusNode();
@@ -40,7 +39,6 @@ final TextEditingController hourRecepcionController = TextEditingController();
 final TextEditingController fechaAltaController = TextEditingController();
 final TextEditingController hourAltaController = TextEditingController();
 final TextEditingController descripcionController = TextEditingController();
-final TextEditingController tipoARController = TextEditingController();
 
 //Generales
 String? aseguradora;
@@ -171,7 +169,6 @@ class _afectadoViewState extends State<afectadoView> {
       CURPController.text = "";
       vigenciaController.text = "";
       domicilioController.text = "";
-      tipoARController.text = "";
       fechaRecepcionController.text = "";
       hourRecepcionController.text = "";
       fechaAltaController.text = "";
@@ -287,7 +284,7 @@ class _afectadoViewState extends State<afectadoView> {
             const EdgeInsets.fromLTRB(20, 15, 20, 15),
             1,
             domicilioFocus,
-            tipoAFocus),
+            descripcionFocus),
       ],
     );
 
@@ -634,7 +631,7 @@ class _afectadoViewState extends State<afectadoView> {
                         nombreAc: nombreAcController.text,
                         curp: CURPController.text,
                         domicilio: domicilioController.text,
-                        tipoAtencion: tipoARController.text,
+                        tipoAtencion: atencion,
                         institucionMedica: institucionMed,
                         fechaRecepcion: fechaRecepcionController.text,
                         horaRecepcion: hourRecepcionController.text,

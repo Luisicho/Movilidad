@@ -413,7 +413,8 @@ class _firstStepState extends State<firstStep> {
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Object Variable-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //Folio Field
+    
+    //-------------------------------------------------Folio Field
     final folioField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -425,7 +426,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //DateField
+    //-------------------------------------------------DateField
     final dateField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -437,7 +438,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //HourLlegadaField
+    //-------------------------------------------------HourLlegadaField
     final hourLlegadaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -454,7 +455,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //hourAccidenteField
+    //-------------------------------------------------hourAccidenteField
     final hourAccidenteField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -498,7 +499,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //UbicacionField
+    //-------------------------------------------------UbicacionField
     final ubicacionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -519,7 +520,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //entreField
+    //-------------------------------------------------entreField
     final entreField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -540,7 +541,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //entre2Field
+    //-------------------------------------------------entre2Field
     final yentreField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -561,7 +562,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //PosicionField
+    //-------------------------------------------------PosicionField
     final posicionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -594,7 +595,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //MultiFotoField
+    //-------------------------------------------------MultiFotoField
     final multiFotoField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -617,7 +618,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //FotoField
+    //-------------------------------------------------FotoField
     final fotoField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -765,7 +766,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //VehiculoField
+    //-------------------------------------------------VehiculoField
     final vehiculoField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -802,7 +803,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //PlacasField
+    //-------------------------------------------------PlacasField
     final placasField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -816,7 +817,7 @@ class _firstStepState extends State<firstStep> {
                     false,
                     const EdgeInsets.fromLTRB(20, 15, 20, 15),
                     noEconomicoFocus,
-                    noLicenciaFocus,
+                    descFocus,
                   )
                 : buildTextFieldFocus(
                     'No.Economico',
@@ -825,7 +826,7 @@ class _firstStepState extends State<firstStep> {
                     true,
                     const EdgeInsets.fromLTRB(20, 15, 20, 15),
                     noEconomicoFocus,
-                    noLicenciaFocus,
+                    descFocus,
                   )),
         const SizedBox(width: 05),
         Expanded(
@@ -852,7 +853,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //BuscarPlaca
+    //-------------------------------------------------BuscarPlaca
     final buscarPlaca = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -925,19 +926,11 @@ class _firstStepState extends State<firstStep> {
             },
             child: const Text('Buscar Placas / No.Economico'),
           ),
-        ), /*//-------------Fin boton Buscar placas
-        Expanded(
-          flex: 1,
-          child: TextButton(
-              child: const Text('Agregado Manual'),
-              onPressed: () {
-                mostrarVentanaEmergente(context);
-              }),
-        ),*/
+        ), 
       ],
     );
 
-    //DescripcionField
+    //-------------------------------------------------DescripcionField
     final descripcionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -958,7 +951,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //Consen/particularField
+    //-------------------------------------------------Consen/particularField
     final consenParticularField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -980,7 +973,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //Busqueda Button
+    //-------------------------------------------------Busqueda Button
     final busquedaButton = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -1038,19 +1031,10 @@ class _firstStepState extends State<firstStep> {
             },
           ),
         ),
-        /*Expanded(
-          flex: 1,
-          child: TextButton(
-            child: const Text('Agregado Manual'),
-            onPressed: () {
-              mostrarVentanaEmergenteLicencia(context);
-            },
-          ),
-        ),*/
       ],
     );
 
-    //NoLicencia
+    //-------------------------------------------------NoLicencia
     final noLicenciaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -1072,7 +1056,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //TipoField
+    //-------------------------------------------------TipoField
     final tipoField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -1094,7 +1078,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //NombreField
+    //-------------------------------------------------NombreField
     final nombreField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -1116,7 +1100,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //vigenciaField
+    //-------------------------------------------------vigenciaField
     final vigenciaField = TextFormField(
       readOnly: true,
       controller: vigenciaController,
@@ -1148,7 +1132,7 @@ class _firstStepState extends State<firstStep> {
       },
     );
 
-    //tipoLicenciaField
+    //-------------------------------------------------tipoLicenciaField
     final tipoLic = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -1182,7 +1166,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
-    //EstadosField
+    //-------------------------------------------------EstadosField
     final estadosField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -1217,6 +1201,7 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
+    //-------------------------------------------------vehiculoConDb
     var vehiculoConBD =
         Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
       vehiculoField,
@@ -1252,6 +1237,7 @@ class _firstStepState extends State<firstStep> {
       nombreField,
     ]);
 
+    //-------------------------------------------------vahiculoManual
     var vehiculoManual = Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -1315,7 +1301,7 @@ class _firstStepState extends State<firstStep> {
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     return Container(
-      height: 1200,
+      height: 1450,
       margin: const EdgeInsets.all(5.0),
       child:
           //------------Formulario
