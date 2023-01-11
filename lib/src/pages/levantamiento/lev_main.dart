@@ -5,6 +5,7 @@ import 'package:movilidad/src/pages/levantamiento/first_step.dart';
 import 'package:movilidad/src/pages/levantamiento/second_step.dart';
 import 'package:movilidad/src/pages/levantamiento/third_step.dart';
 import 'package:movilidad/src/utils/colors_util.dart';
+import 'package:quickalert/quickalert.dart';
 
 class levMain extends StatefulWidget {
   const levMain({super.key});
@@ -63,16 +64,27 @@ class _levMainState extends State<levMain> {
                   var error = '';
                   var firtStep = true;
                   var thirStep = true;
-                  if (tempfirts.horaAccidente!.isEmpty) {
+                  if (tempfirts.horaAccidente == null) {
+                    QuickAlert.show(
+                      context: context,
+                      barrierDismissible: true,
+                      title: 'Atencion',
+                      text: 'Agrege informacion al Levantamiento',
+                      type: QuickAlertType.error,
+                      confirmBtnText: 'Confirmar',
+                    );
+                    return;
+                  }
+                  if (tempfirts.horaAccidente == null || tempfirts.horaAccidente!.isEmpty) {
                     error += ' Hora accidente faltante \n';
                     firtStep = false;
                   }
-                  if (tempfirts.descripcion!.isEmpty) {
-                    error += ' concesionario faltante \n';
+                  if (tempfirts.concesionario == null || tempfirts.concesionario!.isEmpty) {
+                    error += ' Concesionario faltante \n';
                     firtStep = false;
                   }
-                  if (tempfirts.tipo!.isEmpty) {
-                    error += ' chofer faltante \n';
+                  if (tempfirts.vigencia == null || tempfirts.vigencia!.isEmpty) {
+                    error += ' Chofer faltante \n';
                     firtStep = false;
                   }
                   var fotos = 0;
@@ -80,13 +92,8 @@ class _levMainState extends State<levMain> {
                     if (element.path != '') fotos++;
                   });
                   if (fotos < 3) {
-                    error += ' minimo 3 fotos faltante \n';
+                    error += ' Minimo 3 fotos faltante \n';
                     firtStep = false;
-                  }
-
-                  if (tercerPaso.afectados.isEmpty) {
-                    error += ' Agrege minimo 1 afectado \n';
-                    thirStep = false;
                   }
 
                   if (thirStep && firtStep) {
@@ -102,16 +109,16 @@ class _levMainState extends State<levMain> {
                     //-------------Toast
                     Navigator.of(context).pop();
                   } else {
-                    //-------------Toast
-                    Fluttertoast.showToast(
-                        msg: error,
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.CENTER,
-                        timeInSecForIosWeb: 1,
-                        backgroundColor: Colors.red,
-                        textColor: Colors.white,
-                        fontSize: 16.0);
-                    //-------------Toast
+                    //------------------------------QuickAlert
+                    QuickAlert.show(
+                      context: context,
+                      barrierDismissible: true,
+                      title: 'Atencion',
+                      text: error,
+                      type: QuickAlertType.warning,
+                      confirmBtnText: 'Confirmar',
+                    );
+                    //------------------------------QuickAlert
                   }
                 },
                 child: const Text('Guardar Datos de Accidente'),

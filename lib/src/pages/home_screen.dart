@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quickalert/quickalert.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'package:movilidad/src/pages/home_screens/home_screen1.dart';
@@ -24,30 +25,20 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        final shouldPop = await showDialog<bool>(
+        return await QuickAlert.show(
           context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: const Text('¿Quieres regresar al inicio de secion?'),
-              actionsAlignment: MainAxisAlignment.spaceBetween,
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context, true);
-                  },
-                  child: const Text('Si'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context, false);
-                  },
-                  child: const Text('No'),
-                ),
-              ],
-            );
+          type: QuickAlertType.confirm,
+          title: '¿Quieres regresar al inicio de secion?',
+          confirmBtnText: 'Si',
+          cancelBtnText: 'No',
+          confirmBtnColor: Colors.green,
+          onConfirmBtnTap: () {
+            Navigator.pop(context, true);
+          },
+          onCancelBtnTap: () {
+            Navigator.pop(context, false);
           },
         );
-        return shouldPop!;
       },
       child: Scaffold(
         body: Stack(children: [
