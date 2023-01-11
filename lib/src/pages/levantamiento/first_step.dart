@@ -275,6 +275,30 @@ class _firstStepState extends State<firstStep> {
     },
   ];
 
+  //Actualiza levantamiento
+  void ActualizarLev() {
+    widget.levantamiento.concesionario = concesionController.text;
+    widget.levantamiento.folio = folioController.text;
+    widget.levantamiento.fechaLlegada = fechaController.text;
+    widget.levantamiento.horaLlegada = hourLlegadaController.text;
+    widget.levantamiento.horaAccidente = hourAccidenteController.text;
+    widget.levantamiento.ubicacion = ubicacionController.text;
+    widget.levantamiento.entre = entreController.text;
+    widget.levantamiento.yentre = yentreController.text;
+    widget.levantamiento.longitud = lonController.text;
+    widget.levantamiento.latitud = latController.text;
+    widget.levantamiento.noEconomico = noeconomicoController.text;
+    widget.levantamiento.placas = placasController.text;
+    widget.levantamiento.descripcion = descripcionController.text;
+    widget.levantamiento.concesionario = concesionController.text;
+    widget.levantamiento.noLicencia = nolicenciaController.text;
+    estado == 'Nayarit'
+        ? widget.levantamiento.tipo = tipo
+        : widget.levantamiento.tipo = tipoController.text;
+    widget.levantamiento.nombre = nombreController.text;
+    widget.levantamiento.vigencia = vigenciaController.text;
+  }
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------Variables locales-------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -569,24 +593,14 @@ class _firstStepState extends State<firstStep> {
         const SizedBox(width: 10),
         Expanded(
           flex: 2,
-          child: TextFormField(
-            focusNode: ubicacionFocus,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(entreFocus);
-            },
-            controller: ubicacionController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.add_location_alt_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "Ubicacion",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-            onChanged: ((value) {
-              //Objeto ubicacion
-              widget.levantamiento.ubicacion = value;
-            }),
+          child: buildTextFieldFocus(
+            'Ubicacion',
+            ubicacionController,
+            Icons.add_location_alt_outlined,
+            false,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            ubicacionFocus,
+            entreFocus,
           ),
         ),
       ],
@@ -600,24 +614,14 @@ class _firstStepState extends State<firstStep> {
         const SizedBox(width: 10),
         Expanded(
           flex: 2,
-          child: TextFormField(
-            focusNode: entreFocus,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(yentreFocus);
-            },
-            controller: entreController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.add_location_alt_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "Entre",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-            onChanged: ((value) {
-              //Objeto cambio
-              widget.levantamiento.entre = value;
-            }),
+          child: buildTextFieldFocus(
+            'Entre',
+            entreController,
+            Icons.add_location_alt_outlined,
+            false,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            entreFocus,
+            yentreFocus,
           ),
         ),
       ],
@@ -631,24 +635,14 @@ class _firstStepState extends State<firstStep> {
         const SizedBox(width: 10),
         Expanded(
           flex: 2,
-          child: TextFormField(
-            focusNode: yentreFocus,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(noEconomicoFocus);
-            },
-            controller: yentreController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.add_location_alt_outlined),
-              contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              hintText: "Entre",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-            onChanged: ((value) {
-              //Objeto cambio
-              widget.levantamiento.yentre = value;
-            }),
+          child: buildTextFieldFocus(
+            'yEntre',
+            yentreController,
+            Icons.add_location_alt_outlined,
+            false,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            yentreFocus,
+            ubicacionFocus,
           ),
         ),
       ],
@@ -902,77 +896,45 @@ class _firstStepState extends State<firstStep> {
         Expanded(
             flex: 1,
             child: VehiRespondable == "1"
-                ? TextFormField(
-                    enabled: true,
-                    controller: noeconomicoController,
-                    focusNode: noEconomicoFocus,
-                    onFieldSubmitted: (value) {
-                      FocusScope.of(context).requestFocus(noLicenciaFocus);
-                    },
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.all_inbox),
-                      contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                      hintText: "No.Economico",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    onChanged: (value) {
-                      widget.levantamiento.noEconomico = value;
-                    })
-                : TextFormField(
-                    focusNode: noEconomicoFocus,
-                    onFieldSubmitted: (value) {
-                      FocusScope.of(context).requestFocus(descFocus);
-                    },
-                    enabled: false,
-                    controller: noeconomicoController,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.all_inbox),
-                      contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                      hintText: "No.Economico",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+                ? buildTextFieldFocus(
+                    'No.Economico',
+                    noeconomicoController,
+                    Icons.all_inbox,
+                    false,
+                    const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                    noEconomicoFocus,
+                    noLicenciaFocus,
+                  )
+                : buildTextFieldFocus(
+                    'No.Economico',
+                    noeconomicoController,
+                    Icons.all_inbox,
+                    true,
+                    const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                    noEconomicoFocus,
+                    noLicenciaFocus,
                   )),
         const SizedBox(width: 05),
         Expanded(
             flex: 1,
             child: VehiRespondable == "2"
-                ? TextFormField(
-                    enabled: true,
-                    controller: placasController,
-                    focusNode: placasFocus,
-                    onFieldSubmitted: (value) {
-                      FocusScope.of(context).requestFocus(noLicenciaFocus);
-                    },
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.calendar_view_week),
-                      contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                      hintText: "Placas",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    onChanged: (value) {
-                      widget.levantamiento.placas = value;
-                    })
-                : TextFormField(
-                    focusNode: placasFocus,
-                    onFieldSubmitted: (value) {
-                      FocusScope.of(context).requestFocus(descFocus);
-                    },
-                    enabled: false,
-                    controller: placasController,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.calendar_view_week),
-                      contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                      hintText: "Placas",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+                ? buildTextFieldFocus(
+                    'Placas',
+                    placasController,
+                    Icons.calendar_view_week,
+                    false,
+                    const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                    placasFocus,
+                    noLicenciaFocus,
+                  )
+                : buildTextFieldFocus(
+                    'Placas',
+                    placasController,
+                    Icons.calendar_view_week,
+                    true,
+                    const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                    placasFocus,
+                    noLicenciaFocus,
                   )),
       ],
     );
@@ -1068,8 +1030,18 @@ class _firstStepState extends State<firstStep> {
       children: [
         const Text("Descripcion"),
         const SizedBox(width: 10),
-        buildTextField('', descripcionController, Icons.assessment_outlined,
-            true, const EdgeInsets.fromLTRB(20, 15, 20, 15), 2),
+        Expanded(
+          flex: 2,
+          child: buildTextFieldFocus(
+            '',
+            descripcionController,
+            Icons.assessment_outlined,
+            true,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            descFocus,
+            conceFocus,
+          ),
+        ),
       ],
     );
 
@@ -1079,8 +1051,18 @@ class _firstStepState extends State<firstStep> {
       children: [
         const Text("Concensionario / Particular"),
         const SizedBox(width: 10),
-        buildTextField('', concesionController, Icons.account_circle_outlined,
-            true, const EdgeInsets.fromLTRB(20, 15, 20, 15), 2),
+        Expanded(
+          flex: 2,
+          child: buildTextFieldFocus(
+            '',
+            concesionController,
+            Icons.account_circle_outlined,
+            true,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            conceFocus,
+            noLicenciaFocus,
+          ),
+        ),
         const SizedBox(width: 100),
       ],
     );
@@ -1161,13 +1143,18 @@ class _firstStepState extends State<firstStep> {
       children: [
         const Text("No. Licencia"),
         const SizedBox(width: 10),
-        buildTextField(
+        Expanded(
+          flex: 2,
+          child: buildTextFieldFocus(
             'No. Licencia',
             nolicenciaController,
-            Icons.account_box_sharp,
+            Icons.account_circle_outlined,
             false,
             const EdgeInsets.fromLTRB(20, 15, 20, 15),
-            2),
+            noLicenciaFocus,
+            tipoFocus,
+          ),
+        ),
         const SizedBox(width: 05),
       ],
     );
@@ -1178,20 +1165,18 @@ class _firstStepState extends State<firstStep> {
       children: [
         const Text("Tipo"),
         const SizedBox(width: 10),
-        buildTextField('', tipoController, Icons.contacts_outlined, true,
-            const EdgeInsets.fromLTRB(20, 15, 20, 15), 2),
-        const SizedBox(width: 100),
-      ],
-    );
-
-    //VigenciaField
-    final vigenciaField = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text("Vigencia"),
-        const SizedBox(width: 05),
-        buildTextField('', vigenciaController, Icons.ad_units_rounded, true,
-            const EdgeInsets.fromLTRB(20, 15, 20, 15), 2),
+        Expanded(
+          flex: 2,
+          child: buildTextFieldFocus(
+            '',
+            tipoController,
+            Icons.contacts_outlined,
+            true,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            tipoFocus,
+            vigenciaFocus,
+          ),
+        ),
         const SizedBox(width: 100),
       ],
     );
@@ -1202,14 +1187,24 @@ class _firstStepState extends State<firstStep> {
       children: [
         const Text("Nombre"),
         const SizedBox(width: 10),
-        buildTextField('', nombreController, Icons.document_scanner_outlined,
-            true, const EdgeInsets.fromLTRB(20, 15, 20, 15), 2),
+        Expanded(
+          flex: 2,
+          child: buildTextFieldFocus(
+            '',
+            nombreController,
+            Icons.document_scanner_outlined,
+            true,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            nombreFocus,
+            tipoFocus,
+          ), 
+        ),
         const SizedBox(width: 100),
       ],
     );
 
     //vigenciaField
-    final vigenciaFieldField = TextFormField(
+    final vigenciaField = TextFormField(
       readOnly: true,
       controller: vigenciaController,
       decoration: InputDecoration(
@@ -1235,9 +1230,12 @@ class _firstStepState extends State<firstStep> {
           vigenciaController.text = formatedDate.toString();
         }
       },
+      onChanged: (value) {
+        vigenciaController.text = value;
+      },
     );
 
-    //tipoAtencionField
+    //tipoLicenciaField
     final tipoLic = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -1368,6 +1366,9 @@ class _firstStepState extends State<firstStep> {
           noLicenciaFocus,
         ),
         const SizedBox(height: 10),
+        const Divider(
+          thickness: 2,
+        ),
         const SizedBox(height: 10),
         buildTextFieldFocus(
           'No.Licencia',
@@ -1381,16 +1382,16 @@ class _firstStepState extends State<firstStep> {
         const SizedBox(height: 10),
         tipoLic,
         const SizedBox(height: 10),
-        vigenciaFieldField,
+        vigenciaField,
         const SizedBox(height: 10),
         buildTextFieldFocus(
-          'Nombre',
+          '',
           nombreController,
           Icons.document_scanner_outlined,
           false,
           const EdgeInsets.fromLTRB(20, 15, 20, 15),
           nombreFocus,
-          noLicenciaFocus,
+          tipoFocus,
         ),
         const SizedBox(height: 10),
       ],
@@ -1443,6 +1444,9 @@ class _firstStepState extends State<firstStep> {
             estado == 'Nayarit' ? vehiculoConBD : vehiculoManual
           ],
         ),
+        onChanged: () {
+          ActualizarLev();
+        },
       ),
     );
   }
