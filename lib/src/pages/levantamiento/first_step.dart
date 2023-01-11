@@ -1301,7 +1301,7 @@ class _firstStepState extends State<firstStep> {
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     return Container(
-      height: 1450,
+      height: 1600,
       margin: const EdgeInsets.all(5.0),
       child:
           //------------Formulario
