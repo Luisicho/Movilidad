@@ -8,7 +8,6 @@ String afectadoModelToJson(AfectadoModel data) => json.encode(data.toJson());
 class AfectadoModel {
   AfectadoModel({
     this.aseguradora,
-    this.poliza,
     this.vigencia,
     this.nombreAc,
     this.curp,
@@ -24,7 +23,6 @@ class AfectadoModel {
   });
 
   String? aseguradora;
-  String? poliza;
   String? vigencia;
   String? nombreAc;
   String? curp;
@@ -40,7 +38,6 @@ class AfectadoModel {
 
   factory AfectadoModel.fromJson(Map<String, dynamic> json) => AfectadoModel(
         aseguradora: json["aseguradora"],
-        poliza: json["poliza"],
         vigencia: json["vigencia"],
         nombreAc: json["nombreAc"],
         curp: json["curp"],
@@ -57,7 +54,6 @@ class AfectadoModel {
 
   Map<String, dynamic> toJson() => {
         "aseguradora": aseguradora,
-        "poliza": poliza,
         "vigencia": vigencia,
         "nombreAc": nombreAc,
         "curp": curp,
@@ -74,6 +70,6 @@ class AfectadoModel {
 
   @override
   String toString() {
-    return "Aseguradora: $aseguradora Poliza: $poliza Vigencia: $vigencia NombreAc: $nombreAc CURP: $curp Domicilio: $domicilio TipoAtencion $tipoAtencion InstitucionMedica $institucionMedica FechaRecepcion: $fechaRecepcion HoraRecepcion $horaRecepcion FechaAlta: $fechaAlta HoraAlta: $horaAlta Observaciones $observaciones";
+    return "Aseguradora: $aseguradora Vigencia: $vigencia NombreAc: $nombreAc CURP: $curp Domicilio: $domicilio TipoAtencion $tipoAtencion InstitucionMedica $institucionMedica FechaRecepcion: $fechaRecepcion HoraRecepcion $horaRecepcion FechaAlta: $fechaAlta HoraAlta: $horaAlta Observaciones $observaciones";
   }
 }

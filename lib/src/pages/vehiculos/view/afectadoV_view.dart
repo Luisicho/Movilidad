@@ -407,7 +407,6 @@ class _accidentadoVViewState extends State<accidentadoVView> {
         builder: (context, snapshot) {
           AfectadoModel tempAfec = AfectadoModel(
               aseguradora: '',
-              poliza: '',
               vigencia: '',
               nombreAc: '',
               curp: '',

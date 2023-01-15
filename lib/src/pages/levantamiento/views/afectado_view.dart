@@ -21,7 +21,7 @@ class afectadoView extends StatefulWidget {
 //-----------Variables globales
 // Focus Nodes
 //Step2
-final polizaFocus = FocusNode();
+
 final vigenciaFocus = FocusNode();
 final nombreAFocus = FocusNode();
 final CURPFocus = FocusNode();
@@ -29,7 +29,6 @@ final domicilioFocus = FocusNode();
 final descripcionFocus = FocusNode();
 
 // editing controller
-final TextEditingController polizaController = TextEditingController();
 final TextEditingController vigenciaController = TextEditingController();
 final TextEditingController nombreAcController = TextEditingController();
 final TextEditingController CURPController = TextEditingController();
@@ -163,7 +162,6 @@ class _afectadoViewState extends State<afectadoView> {
     }
 
     void limpiarCeldas() {
-      polizaController.text = "";
       vigenciaController.text = "";
       nombreAcController.text = "";
       CURPController.text = "";
@@ -182,23 +180,6 @@ class _afectadoViewState extends State<afectadoView> {
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------Variables Locales-------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-    //polizaField
-    final polizaField = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        buildTextField(
-            'Poliza',
-            polizaController,
-            Icons.article_outlined,
-            false,
-            const EdgeInsets.fromLTRB(20, 15, 20, 15),
-            1,
-            polizaFocus,
-            vigenciaFocus),
-        const SizedBox(width: 20),
-      ],
-    );
 
     //vigenciaField
     final vigenciaField = Row(
@@ -552,13 +533,7 @@ class _afectadoViewState extends State<afectadoView> {
             const SizedBox(height: 10),
             aseguradoraField,
             const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(flex: 2, child: polizaField),
-                Expanded(flex: 1, child: vigenciaField),
-              ],
-            ),
+            vigenciaField,
             const SizedBox(height: 20),
             const Divider(
               thickness: 2,
@@ -626,7 +601,6 @@ class _afectadoViewState extends State<afectadoView> {
                       //Funcion agregar afectado
                       final afectado = AfectadoModel(
                         aseguradora: aseguradora,
-                        poliza: polizaController.text,
                         vigencia: vigenciaController.text,
                         nombreAc: nombreAcController.text,
                         curp: CURPController.text,

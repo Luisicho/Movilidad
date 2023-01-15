@@ -10,6 +10,7 @@ class LevantamientoView extends StatefulWidget {
   //Caracteristicas
   LevantamientoModel levantamiento = LevantamientoModel(
     folio: '',
+    poliza: '',
     fotosLev: [
       File(''),
       File(''),

@@ -11,6 +11,7 @@ class firstStep extends StatefulWidget {
   //objeto
   final LevantamientoModel levantamiento = LevantamientoModel(
     folio: '',
+    poliza: '',
     fotosLev: [
       File(''),
       File(''),
@@ -90,11 +91,12 @@ class _firstStepState extends State<firstStep> {
   final tipoFocus = FocusNode();
   final vigenciaFocus = FocusNode();
   final nombreFocus = FocusNode();
-  
+  final polizaFocus = FocusNode();
 
   // editing controller
   //Step1
   final TextEditingController folioController = TextEditingController();
+  final TextEditingController polizaController = TextEditingController();
   final TextEditingController fechaController = TextEditingController();
   final TextEditingController hourAccidenteController = TextEditingController();
   final TextEditingController latController = TextEditingController();
@@ -123,7 +125,12 @@ class _firstStepState extends State<firstStep> {
 
   //DropDowns
   var tipo = 'Automovilista';
-  var tipoLicArray = ['Automovilista', 'Chofer', 'Motociclista', 'Chofer Servicio Publico'];
+  var tipoLicArray = [
+    'Automovilista',
+    'Chofer',
+    'Motociclista',
+    'Chofer Servicio Publico'
+  ];
 
   var servicioP = [
     {
@@ -252,7 +259,7 @@ class _firstStepState extends State<firstStep> {
       'licencia': '1234',
       'tipo': "C",
       'nombre': 'ABNER ULISES MENDOZA HERNANDEZ',
-      'vigencia': '07/26/2025'
+      'vigencia': '07/26/2025',
     },
     {
       'licencia': '11BDGTTN029448',
@@ -329,7 +336,7 @@ class _firstStepState extends State<firstStep> {
         ),
       );
     }
-    
+
     //Funcion que crea TextFields
     Widget buildTextFieldFocus(
         String hint,
@@ -390,6 +397,7 @@ class _firstStepState extends State<firstStep> {
           : widget.levantamiento.tipo = tipo;
       widget.levantamiento.nombre = nombreController.text;
       widget.levantamiento.vigencia = vigenciaController.text;
+      widget.levantamiento.poliza = polizaController.text;
     }
 
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -413,7 +421,7 @@ class _firstStepState extends State<firstStep> {
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Object Variable-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
-    
+
     //-------------------------------------------------Folio Field
     final folioField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -926,7 +934,7 @@ class _firstStepState extends State<firstStep> {
             },
             child: const Text('Buscar Placas / No.Economico'),
           ),
-        ), 
+        ),
       ],
     );
 
@@ -1094,7 +1102,7 @@ class _firstStepState extends State<firstStep> {
             const EdgeInsets.fromLTRB(20, 15, 20, 15),
             nombreFocus,
             tipoFocus,
-          ), 
+          ),
         ),
         const SizedBox(width: 100),
       ],
@@ -1201,6 +1209,28 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
+    //-------------------------------------------------polizaField
+    final polizaField =
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+      const Expanded(
+        flex: 2,
+        child: Text("Poliza"),
+      ),
+      const SizedBox(width: 10),
+      Expanded(
+          flex: 10,
+          child: buildTextFieldFocus(
+            'Poliza',
+            polizaController,
+            Icons.article_outlined,
+            false,
+            const EdgeInsets.fromLTRB(10, 05, 10, 05),
+            polizaFocus,
+            noLicenciaFocus,
+          )),
+      const SizedBox(width: 50),
+    ]);
+
     //-------------------------------------------------vehiculoConDb
     var vehiculoConBD =
         Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
@@ -1235,6 +1265,8 @@ class _firstStepState extends State<firstStep> {
       ),
       const SizedBox(height: 20),
       nombreField,
+      const SizedBox(height: 20),
+      polizaField,
     ]);
 
     //-------------------------------------------------vahiculoManual
@@ -1290,9 +1322,10 @@ class _firstStepState extends State<firstStep> {
           false,
           const EdgeInsets.fromLTRB(20, 15, 20, 15),
           nombreFocus,
-          tipoFocus,
+          polizaFocus,
         ),
         const SizedBox(height: 10),
+        polizaField,
       ],
     );
 
