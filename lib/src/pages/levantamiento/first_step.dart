@@ -1336,6 +1336,13 @@ class _firstStepState extends State<firstStep> {
     return Container(
       height: 1600,
       margin: const EdgeInsets.all(5.0),
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage(
+              "assets/Secretaria-de-Movilidad-01.jpg",
+            ),
+            fit: BoxFit.fitWidth),
+      ),
       child:
           //------------Formulario
           Form(

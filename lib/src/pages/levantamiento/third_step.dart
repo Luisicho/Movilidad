@@ -54,6 +54,13 @@ class _thirdStepState extends State<thirdStep> {
 
     return Container(
       height: MediaQuery.of(context).size.height * 0.75,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage(
+              "assets/Secretaria-de-Movilidad-01.jpg",
+            ),
+            fit: BoxFit.fitWidth),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

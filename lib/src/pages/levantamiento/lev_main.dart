@@ -56,75 +56,84 @@ class _levMainState extends State<levMain> {
             state: currStep > 3 ? StepState.complete : StepState.indexed,
             isActive: currStep >= 3,
             title: const Text('Completado'),
-            content: SizedBox(
-              height: 500,
-              child: TextButton(
-                onPressed: () {
-                  var tempfirts = primerPaso.levantamiento;
-                  var error = '';
-                  var firtStep = true;
-                  var thirStep = true;
-                  if (tempfirts.horaAccidente == null) {
-                    QuickAlert.show(
-                      context: context,
-                      barrierDismissible: true,
-                      title: 'Atencion',
-                      text: 'Agrege informacion al Levantamiento',
-                      type: QuickAlertType.error,
-                      confirmBtnText: 'Confirmar',
-                    );
-                    return;
-                  }
-                  if (tempfirts.horaAccidente == null ||
-                      tempfirts.horaAccidente!.isEmpty) {
-                    error += ' Hora accidente faltante \n';
-                    firtStep = false;
-                  }
-                  if (tempfirts.concesionario == null ||
-                      tempfirts.concesionario!.isEmpty) {
-                    error += ' Concesionario faltante \n';
-                    firtStep = false;
-                  }
-                  if (tempfirts.vigencia == null ||
-                      tempfirts.vigencia!.isEmpty) {
-                    error += ' Chofer faltante \n';
-                    firtStep = false;
-                  }
-                  var fotos = 0;
-                  tempfirts.fotosLev.forEach((element) {
-                    if (element.path != '') fotos++;
-                  });
-                  if (fotos < 3) {
-                    error += ' Minimo 3 fotos faltante \n';
-                    firtStep = false;
-                  }
+            content: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(
+                      "assets/Secretaria-de-Movilidad-01.jpg",
+                    ),
+                    fit: BoxFit.fitWidth),
+              ),
+              child: SizedBox(
+                height: 500,
+                child: TextButton(
+                  onPressed: () {
+                    var tempfirts = primerPaso.levantamiento;
+                    var error = '';
+                    var firtStep = true;
+                    var thirStep = true;
+                    if (tempfirts.horaAccidente == null) {
+                      QuickAlert.show(
+                        context: context,
+                        barrierDismissible: true,
+                        title: 'Atencion',
+                        text: 'Agrege informacion al Levantamiento',
+                        type: QuickAlertType.error,
+                        confirmBtnText: 'Confirmar',
+                      );
+                      return;
+                    }
+                    if (tempfirts.horaAccidente == null ||
+                        tempfirts.horaAccidente!.isEmpty) {
+                      error += ' Hora accidente faltante \n';
+                      firtStep = false;
+                    }
+                    if (tempfirts.concesionario == null ||
+                        tempfirts.concesionario!.isEmpty) {
+                      error += ' Concesionario faltante \n';
+                      firtStep = false;
+                    }
+                    if (tempfirts.vigencia == null ||
+                        tempfirts.vigencia!.isEmpty) {
+                      error += ' Chofer faltante \n';
+                      firtStep = false;
+                    }
+                    var fotos = 0;
+                    tempfirts.fotosLev.forEach((element) {
+                      if (element.path != '') fotos++;
+                    });
+                    if (fotos < 3) {
+                      error += ' Minimo 3 fotos faltante \n';
+                      firtStep = false;
+                    }
 
-                  if (thirStep && firtStep) {
-                    //-------------Toast
-                    Fluttertoast.showToast(
-                        msg: 'Enviando a la nube',
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.CENTER,
-                        timeInSecForIosWeb: 1,
-                        backgroundColor: Colors.green,
-                        textColor: Colors.white,
-                        fontSize: 16.0);
-                    //-------------Toast
-                    Navigator.of(context).pop();
-                  } else {
-                    //------------------------------QuickAlert
-                    QuickAlert.show(
-                      context: context,
-                      barrierDismissible: true,
-                      title: 'Atencion',
-                      text: error,
-                      type: QuickAlertType.warning,
-                      confirmBtnText: 'Confirmar',
-                    );
-                    //------------------------------QuickAlert
-                  }
-                },
-                child: const Text('Guardar Datos de Accidente'),
+                    if (thirStep && firtStep) {
+                      //-------------Toast
+                      Fluttertoast.showToast(
+                          msg: 'Enviando a la nube',
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.green,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
+                      //-------------Toast
+                      Navigator.of(context).pop();
+                    } else {
+                      //------------------------------QuickAlert
+                      QuickAlert.show(
+                        context: context,
+                        barrierDismissible: true,
+                        title: 'Atencion',
+                        text: error,
+                        type: QuickAlertType.warning,
+                        confirmBtnText: 'Confirmar',
+                      );
+                      //------------------------------QuickAlert
+                    }
+                  },
+                  child: const Text('Guardar Datos de Accidente'),
+                ),
               ),
             ),
           ),

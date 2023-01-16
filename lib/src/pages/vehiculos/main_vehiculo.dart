@@ -159,7 +159,15 @@ class _MainVehiculoState extends State<MainVehiculo> {
               ),
             ),
             Expanded(
-              child: _lista(),
+              child: Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(
+                        "assets/Secretaria-de-Movilidad-01.jpg",
+                      ),
+                      fit: BoxFit.fitWidth),
+                ),
+                child: _lista()),
             ),
           ],
         ),
