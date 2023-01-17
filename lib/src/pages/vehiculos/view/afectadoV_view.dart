@@ -442,6 +442,13 @@ class _accidentadoVViewState extends State<accidentadoVView> {
           return Container(
               height: 1000,
               padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(
+                      "assets/Secretaria-de-Movilidad-01.png",
+                    ),
+                    fit: BoxFit.fitWidth),
+              ),
               child: SingleChildScrollView(
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

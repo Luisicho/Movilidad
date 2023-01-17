@@ -60,7 +60,7 @@ class _levMainState extends State<levMain> {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(
-                      "assets/Secretaria-de-Movilidad-01.jpg",
+                      "assets/Secretaria-de-Movilidad-01.png",
                     ),
                     fit: BoxFit.fitWidth),
               ),
@@ -132,7 +132,11 @@ class _levMainState extends State<levMain> {
                       //------------------------------QuickAlert
                     }
                   },
-                  child: const Text('Guardar Datos de Accidente'),
+                  child: const Text(
+                    'Guardar Datos de Accidente',
+                    style: TextStyle(
+                      fontSize: 30
+                    ),),
                 ),
               ),
             ),

@@ -163,7 +163,7 @@ class _MainVehiculoState extends State<MainVehiculo> {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
-                        "assets/Secretaria-de-Movilidad-01.jpg",
+                        "assets/Secretaria-de-Movilidad-01.png",
                       ),
                       fit: BoxFit.fitWidth),
                 ),

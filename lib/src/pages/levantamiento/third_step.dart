@@ -57,7 +57,7 @@ class _thirdStepState extends State<thirdStep> {
       decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage(
-              "assets/Secretaria-de-Movilidad-01.jpg",
+              "assets/Secretaria-de-Movilidad-01.png",
             ),
             fit: BoxFit.fitWidth),
       ),

@@ -1339,9 +1339,11 @@ class _firstStepState extends State<firstStep> {
       decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage(
-              "assets/Secretaria-de-Movilidad-01.jpg",
+              "assets/Secretaria-de-Movilidad-01.png",
             ),
-            fit: BoxFit.fitWidth),
+            fit: BoxFit.fitWidth,
+            alignment: Alignment.topCenter
+            ),
       ),
       child:
           //------------Formulario
