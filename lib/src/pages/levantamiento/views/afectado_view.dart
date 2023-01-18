@@ -82,6 +82,14 @@ class _afectadoViewState extends State<afectadoView> {
               });
               //Retrona objeto dropdown
               return DropdownButton(
+                underline: Container(
+                  height: 2,
+                  color: Colors.black,
+                ),
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                ),
                 hint: const Text('Selecciona Institucion'),
                 value: institucionMed,
                 icon: const Icon(Icons.keyboard_arrow_down),
@@ -115,6 +123,14 @@ class _afectadoViewState extends State<afectadoView> {
               });
               //Retrona objeto dropdown
               return DropdownButton(
+                underline: Container(
+                  height: 2,
+                  color: Colors.black,
+                ),
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                ),
                 hint: const Text('Selecciona Aseguradora'),
                 value: aseguradora,
                 icon: const Icon(Icons.keyboard_arrow_down),
@@ -147,14 +163,24 @@ class _afectadoViewState extends State<afectadoView> {
           onFieldSubmitted: (value) {
             FocusScope.of(context).requestFocus(nextFocus);
           },
+          style: const TextStyle(
+            fontWeight: FontWeight.w600,
+          ),
           controller: controller,
           readOnly: enable,
           decoration: InputDecoration(
-            prefixIcon: Icon(icon),
+            prefixIcon: Icon(icon, color: Colors.black,),
             contentPadding: pad,
             hintText: hint,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: const BorderSide(
+                color: Colors.black,
+                width: 1.5,
+              ),
             ),
           ),
         ),
@@ -195,11 +221,18 @@ class _afectadoViewState extends State<afectadoView> {
             },
             controller: vigenciaController,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.calendar_today),
+              prefixIcon: const Icon(Icons.calendar_today, color: Colors.black),
               contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
               hintText: "Vigencia",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: const BorderSide(
+                  color: Colors.black,
+                  width: 1.5,
+                ),
               ),
             ),
             onTap: () async {
@@ -273,7 +306,11 @@ class _afectadoViewState extends State<afectadoView> {
     final dateRecepcionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Fecha Recepción"),
+        const Text("Fecha Recepción",
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         const SizedBox(width: 10),
         Expanded(
           flex: 2,
@@ -281,11 +318,18 @@ class _afectadoViewState extends State<afectadoView> {
             readOnly: true,
             controller: fechaRecepcionController,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.calendar_today),
+              prefixIcon: const Icon(Icons.calendar_today, color: Colors.black,),
               contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
               hintText: "Fecha",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: const BorderSide(
+                  color: Colors.black,
+                  width: 1.5,
+                ),
               ),
             ),
             onTap: () async {
@@ -313,7 +357,11 @@ class _afectadoViewState extends State<afectadoView> {
     final hourRecepcionField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Hora"),
+        const Text("Hora",
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         const SizedBox(width: 10),
         Expanded(
           flex: 2,
@@ -321,11 +369,18 @@ class _afectadoViewState extends State<afectadoView> {
             readOnly: true,
             controller: hourRecepcionController,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.access_alarm),
+              prefixIcon: const Icon(Icons.access_alarm, color: Colors.black),
               contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
               hintText: "Hora",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: const BorderSide(
+                  color: Colors.black,
+                  width: 1.5,
+                ),
               ),
             ),
             onTap: () async {
@@ -351,7 +406,11 @@ class _afectadoViewState extends State<afectadoView> {
     final dateAltaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Fecha Alta"),
+        const Text("Fecha Alta",
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         const SizedBox(width: 10),
         Expanded(
           flex: 2,
@@ -359,11 +418,18 @@ class _afectadoViewState extends State<afectadoView> {
             readOnly: true,
             controller: fechaAltaController,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.calendar_today),
+              prefixIcon: const Icon(Icons.calendar_today, color: Colors.black),
               contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
               hintText: "Fecha",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: const BorderSide(
+                  color: Colors.black,
+                  width: 1.5,
+                ),
               ),
             ),
             onTap: () async {
@@ -391,7 +457,11 @@ class _afectadoViewState extends State<afectadoView> {
     final hourAltaField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Hora"),
+        const Text("Hora",
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         const SizedBox(width: 10),
         Expanded(
           flex: 2,
@@ -399,11 +469,18 @@ class _afectadoViewState extends State<afectadoView> {
             readOnly: true,
             controller: hourAltaController,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.access_alarm),
+              prefixIcon: const Icon(Icons.access_alarm, color: Colors.black),
               contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
               hintText: "Hora",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: const BorderSide(
+                  color: Colors.black,
+                  width: 1.5,
+                ),
               ),
             ),
             onTap: () async {
@@ -430,7 +507,11 @@ class _afectadoViewState extends State<afectadoView> {
       children: [
         const Expanded(
           flex: 1,
-          child: Text("Tipo Atencion"),
+          child: Text("Tipo Atencion",
+            style: TextStyle(
+            fontWeight: FontWeight.w600,
+          ),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -438,6 +519,14 @@ class _afectadoViewState extends State<afectadoView> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
             child: DropdownButton(
+              underline: Container(
+                height: 2,
+                color: Colors.black,
+              ),
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+              ),
               hint: const Text('Tipo Atencion'),
               value: atencion,
               icon: const Icon(Icons.keyboard_arrow_down),
@@ -462,7 +551,11 @@ class _afectadoViewState extends State<afectadoView> {
     final aseguradoraField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Aseguradora"),
+        const Text("Aseguradora",
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         const SizedBox(width: 10),
         Expanded(
           flex: 5,
@@ -480,7 +573,11 @@ class _afectadoViewState extends State<afectadoView> {
       children: [
         const Expanded(
           flex: 2,
-          child: Text("Institucion Medica")
+          child: Text("Institucion Medica",
+            style: TextStyle(
+            fontWeight: FontWeight.w600,
+          ),
+          ),
         ),
         Expanded(
           flex: 10,
@@ -585,6 +682,7 @@ class _afectadoViewState extends State<afectadoView> {
             ),
             const SizedBox(height: 10),
             descripcionField,
+            const SizedBox(height: 10),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -648,6 +746,13 @@ class _afectadoViewState extends State<afectadoView> {
                       //-------------Toast
                     }
                   },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(20),
+                    textStyle: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                   child: const Text('Agregar'),
                 ),
               ],
