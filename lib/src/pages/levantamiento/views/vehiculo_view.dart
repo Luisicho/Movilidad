@@ -86,14 +86,24 @@ class _vehiculoViewState extends State<vehiculoView> {
         onFieldSubmitted: (value) {
           FocusScope.of(context).requestFocus(nextFocus);
         },
+        style: const TextStyle(
+          fontWeight: FontWeight.w600,
+        ),
         controller: controller,
         readOnly: enable,
         decoration: InputDecoration(
-          prefixIcon: Icon(icon),
+          prefixIcon: Icon(icon, color: Colors.black,),
           contentPadding: pad,
           hintText: hint,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: const BorderSide(
+              color: Colors.black,
+              width: 1.5,
+            ),
           ),
         ),
       );
@@ -194,11 +204,18 @@ class _vehiculoViewState extends State<vehiculoView> {
       readOnly: true,
       controller: vigenciaController,
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.calendar_today),
+        prefixIcon: const Icon(Icons.calendar_today, color: Colors.black,),
         contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
         hintText: "Vigencia",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: const BorderSide(
+            color: Colors.black,
+            width: 1.5,
+          ),
         ),
       ),
       onTap: () async {
@@ -224,7 +241,11 @@ class _vehiculoViewState extends State<vehiculoView> {
       children: [
         const Expanded(
           flex: 1,
-          child: Text("Tipo Licencia"),
+          child: Text("Tipo Licencia",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -232,6 +253,14 @@ class _vehiculoViewState extends State<vehiculoView> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
             child: DropdownButton(
+              underline: Container(
+                height: 2,
+                color: Colors.black,
+              ),
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+              ),
               hint: const Text('Selecciona licencia'),
               value: tipo,
               icon: const Icon(Icons.keyboard_arrow_down),
@@ -416,6 +445,13 @@ class _vehiculoViewState extends State<vehiculoView> {
                     limpiarCeldas();
                     Navigator.of(context).pop();
                   },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(20),
+                    textStyle: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                   child: const Text('Agregar'),
                 ),
               ]),
