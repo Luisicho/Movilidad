@@ -13,7 +13,7 @@ final _icons = < String,IconData >{
   'accessible_outlined'             :Icons.accessible_outlined,
 };
 //Consigue el icono en base a los ya existente en el arreglo
-Icon getIcon( String nombreIcono ){
+Icon getIcon( String nombreIcono, [double size = 24.0]){
   
-  return Icon( _icons[nombreIcono], color: AZUL, );
+  return Icon( _icons[nombreIcono], color: AZUL, size: size,);
 }

@@ -257,7 +257,7 @@ class _firstStepState extends State<firstStep> {
   var licencias = [
     {
       'licencia': '1234',
-      'tipo': "C",
+      'tipo': "A",
       'nombre': 'ABNER ULISES MENDOZA HERNANDEZ',
       'vigencia': '07/26/2025',
     },
@@ -1336,15 +1336,6 @@ class _firstStepState extends State<firstStep> {
     return Container(
       height: 1600,
       margin: const EdgeInsets.all(5.0),
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage(
-              "assets/Secretaria-de-Movilidad-01.png",
-            ),
-            fit: BoxFit.fitWidth,
-            alignment: Alignment.topCenter
-            ),
-      ),
       child:
           //------------Formulario
           Form(

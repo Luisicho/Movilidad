@@ -48,12 +48,22 @@ class _accidentadoVViewState extends State<accidentadoVView> {
       return TextFormField(
         controller: controller,
         readOnly: enable,
+        style: const TextStyle(
+          fontWeight: FontWeight.w600,
+        ),
         decoration: InputDecoration(
-          prefixIcon: Icon(icon),
+          prefixIcon: Icon(icon,color: Colors.black),
           contentPadding: pad,
           hintText: hint,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: const BorderSide(
+              color: Colors.black,
+              width: 1.5,
+            ),
           ),
         ),
       );
@@ -69,7 +79,11 @@ class _accidentadoVViewState extends State<accidentadoVView> {
       children: [
         const Expanded(
           flex: 1,
-          child: Text("Tipo Atencion"),
+          child: Text("Tipo Atencion",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -77,6 +91,14 @@ class _accidentadoVViewState extends State<accidentadoVView> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
             child: DropdownButton(
+              underline: Container(
+                height: 2,
+                color: Colors.black,
+              ),
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+              ),
               hint: const Text('Tipo Atencion'),
               value: atencion,
               icon: const Icon(Icons.keyboard_arrow_down),
@@ -103,7 +125,11 @@ class _accidentadoVViewState extends State<accidentadoVView> {
       children: [
         const Expanded(
           flex: 2,
-          child: Text("Poliza"),
+          child: Text("Poliza",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -126,7 +152,11 @@ class _accidentadoVViewState extends State<accidentadoVView> {
       children: [
         const Expanded(
           flex: 1,
-          child: Text("Vigencia"),
+          child: Text("Vigencia",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -148,7 +178,11 @@ class _accidentadoVViewState extends State<accidentadoVView> {
       children: [
         const Expanded(
           flex: 2,
-          child: Text("Nombre"),
+          child: Text("Nombre",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -170,7 +204,11 @@ class _accidentadoVViewState extends State<accidentadoVView> {
       children: [
         const Expanded(
           flex: 2,
-          child: Text("CURP"),
+          child: Text("CURP",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -192,7 +230,11 @@ class _accidentadoVViewState extends State<accidentadoVView> {
       children: [
         const Expanded(
           flex: 2,
-          child: Text("Domicilio"),
+          child: Text("Domicilio",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -214,7 +256,11 @@ class _accidentadoVViewState extends State<accidentadoVView> {
       children: [
         const Expanded(
           flex: 4,
-          child: Text("Fecha Recepción"),
+          child: Text("Fecha Recepción",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -237,7 +283,11 @@ class _accidentadoVViewState extends State<accidentadoVView> {
       children: [
         const Expanded(
           flex: 4,
-          child: Text("Hora Recepción"),
+          child: Text("Hora Recepción",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -260,7 +310,11 @@ class _accidentadoVViewState extends State<accidentadoVView> {
       children: [
         const Expanded(
           flex: 4,
-          child: Text("Fecha Alta"),
+          child: Text("Fecha Alta",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -268,12 +322,23 @@ class _accidentadoVViewState extends State<accidentadoVView> {
           child: TextFormField(
             readOnly: true,
             controller: fechaAltaController,
+            style: const TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.calendar_today),
               contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
               hintText: "Fecha Alta",
+              
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: const BorderSide(
+                  color: Colors.black,
+                  width: 1.5,
+                ),
               ),
             ),
             onTap: () async {
@@ -303,7 +368,11 @@ class _accidentadoVViewState extends State<accidentadoVView> {
       children: [
         const Expanded(
           flex: 4,
-          child: Text("Hora Alta"),
+          child: Text("Hora Alta",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -311,12 +380,22 @@ class _accidentadoVViewState extends State<accidentadoVView> {
           child: TextFormField(
             readOnly: true,
             controller: hourAltaController,
+            style: const TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.access_alarm),
               contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
               hintText: "Hora Alta",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: const BorderSide(
+                  color: Colors.black,
+                  width: 1.5,
+                ),
               ),
             ),
             onTap: () async {
@@ -343,7 +422,11 @@ class _accidentadoVViewState extends State<accidentadoVView> {
       children: [
         const Expanded(
           flex: 2,
-          child: Text("Aseguradora"),
+          child: Text("Aseguradora",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -365,7 +448,11 @@ class _accidentadoVViewState extends State<accidentadoVView> {
       children: [
         const Expanded(
           flex: 2,
-          child: Text("Institucion Medica"),
+          child: Text("Institucion Medica",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -515,6 +602,7 @@ class _accidentadoVViewState extends State<accidentadoVView> {
                     ),
                     const SizedBox(height: 10),
                     descripcionField,
+                    const SizedBox(height: 10),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -522,6 +610,13 @@ class _accidentadoVViewState extends State<accidentadoVView> {
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.all(20),
+                            textStyle: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                           child: const Text('Aceptar'),
                         ),
                       ],

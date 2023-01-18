@@ -103,15 +103,29 @@ class LevantamientoViewState extends State<LevantamientoView> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
           child: Column(children: <Widget>[
             ListTile(
-              title: Text(element['nombreAc']),
-              subtitle: Text(element['observaciones']),
-              leading: getIcon(element['icon']),
+              title: Text(element['nombreAc'],
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              subtitle: Text(element['curp'],
+                style: const TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              leading: getIcon(element['icon'], 34),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 TextButton(
-                  child: const Text('Mas Informacion'),
+                  child: const Text('Mas Informacion',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                   onPressed: () {
                     mostrarVentanaAccidentado(context, element['curp']);
                   },

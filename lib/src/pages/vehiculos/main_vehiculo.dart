@@ -51,9 +51,18 @@ class _MainVehiculoState extends State<MainVehiculo> {
         return folio.contains(input);
       }).forEach((element) {
         final widgetTemp = ListTile(
-          title: Text(element['folio']),
-          subtitle: Text(element['descripcion']),
-          leading: getIcon(element['icon']),
+          title: Text(element['folio'],
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          subtitle: Text(element['descripcion'],
+            style: const TextStyle(
+              fontSize: 20,
+            ),
+          ),
+          leading: getIcon(element['icon'], 30.0),
           trailing: const Icon(Icons.keyboard_arrow_right),
           onTap: () {
             //Funcion para entrar a la ventana levantamiento
@@ -102,7 +111,6 @@ class _MainVehiculoState extends State<MainVehiculo> {
           itemBuilder: (context, index) {
             //variable que lee levantamiento a levantamiento
             final levantamiento = levantamientos[index];
-
             return Column(
               children: [
                 ListTile(
@@ -147,13 +155,24 @@ class _MainVehiculoState extends State<MainVehiculo> {
               child: TextField(
                 keyboardType: TextInputType.number,
                 controller: searchController,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
                 decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.search),
+                  prefixIcon: const Icon(Icons.search, size: 30.0,),
                   hintText: 'Codigo Folio',
                   contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: MORADO)),
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: MORADO)
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(
+                      width: 1.5,
+                    ),
+                  ),
                 ),
                 onChanged: searchLevantamiento,
               ),

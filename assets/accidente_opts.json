@@ -16,7 +16,7 @@
             "horaRecepcion": "12:05 PM",
             "fechaAlta": "",
             "horaAlta": "",
-            "observaciones": "Un vehiculo lo golpeo por su derecha y le rompio el pie"
+            "observaciones": ""
         },
         {
             "icon" : "accessible_outlined",
@@ -32,7 +32,7 @@
             "horaRecepcion": "09:10 AM",
             "fechaAlta": "",
             "horaAlta": "",
-            "observaciones": "Fue golpeado en el lobulo frontal",
+            "observaciones": "",
             "tipoAtencion": "Hospitalizacion"
         },
         {
@@ -49,7 +49,7 @@
             "horaRecepcion": "5:00 PM",
             "fechaAlta": "",
             "horaAlta": "",
-            "observaciones": "Muerte Cerebrar por golpe en cabeza",
+            "observaciones": "",
             "tipoAtencion": "Defuncion"
         },
         {
@@ -67,7 +67,7 @@
             "horaRecepcion": "02:12 PM",
             "fechaAlta": "",
             "horaAlta": "",
-            "observaciones": "Su brazo resulto seriamente dañado por el accidente"
+            "observaciones": ""
         },
         {
             "icon" : "accessible_outlined",
@@ -83,7 +83,7 @@
             "horaRecepcion": "10:00 AM",
             "fechaAlta": "",
             "horaAlta": "",
-            "observaciones": "Sus piernas dejaron de funcionar",
+            "observaciones": "",
             "tipoAtencion": "Hospitalizacion"
         },
         {
@@ -100,7 +100,7 @@
             "horaRecepcion": "11:00 AM",
             "fechaAlta": "",
             "horaAlta": "",
-            "observaciones": "Inconciente esperando que sus medicos nos den una respuesta",
+            "observaciones": "",
             "tipoAtencion": "Defuncion"
         },
         {
@@ -117,7 +117,7 @@
             "horaRecepcion": "05:00 PM",
             "fechaAlta": "",
             "horaAlta": "",
-            "observaciones": "Una de sus puernas resulto dañada, la otra sin daño aparente",
+            "observaciones": "",
             "tipoAtencion": "En sitio/ambulancia"
         },
         {
@@ -134,7 +134,7 @@
             "horaRecepcion": "10:20 PM",
             "fechaAlta": "",
             "horaAlta": "",
-            "observaciones": "La leccion superficial no se ve, falta revicion por medicos especialistas",
+            "observaciones": "",
             "tipoAtencion": "Hospitalizacion"
         }
     ]
