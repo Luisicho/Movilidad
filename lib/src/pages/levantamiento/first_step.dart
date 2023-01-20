@@ -115,6 +115,7 @@ class _firstStepState extends State<firstStep> {
   final TextEditingController ubicacionController = TextEditingController();
   final TextEditingController entreController = TextEditingController();
   final TextEditingController yentreController = TextEditingController();
+  final TextEditingController vigenciaAscController = TextEditingController();
 
   //---------------------------------------------Inicio de variables y controladores------------------
 
@@ -435,6 +436,7 @@ class _firstStepState extends State<firstStep> {
       widget.levantamiento.vigencia = vigenciaController.text;
       widget.levantamiento.poliza = polizaController.text;
       widget.levantamiento.aseguradora = aseguradora;
+      widget.levantamiento.vigenciaAsc = vigenciaAscController.text;
     }
 
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1286,6 +1288,49 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
+    //vigenciaAseField
+    final vigenciaAseField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: TextFormField(
+            readOnly: true,
+            controller: vigenciaAscController,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.calendar_today, color: Colors.black),
+              contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
+              hintText: "Vigencia Aseguradora",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: const BorderSide(
+                  color: Colors.black,
+                  width: 1.5,
+                ),
+              ),
+            ),
+            onTap: () async {
+              // Get the date
+              DateTime? datePicket = await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(1999),
+                lastDate: DateTime(2050),
+              );
+              if (datePicket != null) {
+                //make format to the date
+                var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
+                vigenciaAscController.text = formatedDate.toString();
+              }
+            },
+          ),
+        ),
+      ],
+    );
+
     //-------------------------------------------------vehiculoConDb
     var vehiculoConBD =
         Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
@@ -1324,6 +1369,8 @@ class _firstStepState extends State<firstStep> {
       polizaField,
       const SizedBox(height: 10),
       aseguradoraField,
+      const SizedBox(height: 10),
+      vigenciaAseField,
     ]);
 
     //-------------------------------------------------vahiculoManual
@@ -1385,6 +1432,8 @@ class _firstStepState extends State<firstStep> {
         polizaField,
         const SizedBox(height: 10),
         aseguradoraField,
+        const SizedBox(height: 10),
+        vigenciaAseField,
       ],
     );
 
@@ -1393,7 +1442,7 @@ class _firstStepState extends State<firstStep> {
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     return Container(
-      height: 1600,
+      height: 1900,
       margin: const EdgeInsets.all(5.0),
       child:
           //------------Formulario

@@ -17,6 +17,7 @@ class LevantamientoModel {
     required this.folio,
     required this.poliza,
     this.aseguradora,
+    this.vigencia,
     this.fechaLlegada,
     this.horaLlegada,
     this.horaAccidente,
@@ -32,7 +33,7 @@ class LevantamientoModel {
     this.noLicencia,
     this.tipo,
     this.nombre,
-    this.vigencia,
+    this.vigenciaAsc,
     required this.fotosLev,
     this.icon,
   });
@@ -40,6 +41,7 @@ class LevantamientoModel {
   String folio;
   String poliza;
   String? aseguradora;
+  String? vigenciaAsc;
   String? fechaLlegada;
   String? horaLlegada;
   String? horaAccidente;
@@ -71,6 +73,7 @@ class LevantamientoModel {
         folio: json["folio"],
         poliza: json["poliza"],
         aseguradora: json["aseguradora"],
+        vigenciaAsc: json["vigenciaAsc"],
         fechaLlegada: json["fechaLlegada"],
         horaLlegada: json["horaLlegada"],
         horaAccidente: json["horaAccidente"],
@@ -95,6 +98,7 @@ class LevantamientoModel {
         "folio": folio,
         "poliza": poliza,
         "aseguradora": aseguradora,
+        "vigenciaAsc": vigenciaAsc,
         "fechaLlegada": fechaLlegada,
         "horaLlegada": horaLlegada,
         "horaAccidente": horaAccidente,
@@ -116,7 +120,7 @@ class LevantamientoModel {
       };
   @override
   String toString() {
-    return "Folio: $folio Poliza $poliza Aseguradora: $aseguradora Nombre: $nombre FechaLlegada: $fechaLlegada Descripcion: $descripcion HoraLlegada: $horaLlegada HoraAccidente: $horaAccidente Ubicacion: $ubicacion Entre: $entre Yentre: $yentre Longitud: $longitud Latitud: $latitud NoEconomico: $noEconomico Placas: $placas Concesionario: $concesionario NoLicencia: $noLicencia Tipo: $tipo Vigencia: $vigencia";
+    return "Folio: $folio Poliza $poliza Aseguradora: $aseguradora VigenciaAsc: $vigenciaAsc Nombre: $nombre FechaLlegada: $fechaLlegada Descripcion: $descripcion HoraLlegada: $horaLlegada HoraAccidente: $horaAccidente Ubicacion: $ubicacion Entre: $entre Yentre: $yentre Longitud: $longitud Latitud: $latitud NoEconomico: $noEconomico Placas: $placas Concesionario: $concesionario NoLicencia: $noLicencia Tipo: $tipo Vigencia: $vigencia";
   }
 }
 

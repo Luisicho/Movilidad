@@ -171,52 +171,7 @@ class _afectadoViewState extends State<afectadoView> {
 //----------------------------------------------------------------------Variables Locales-------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //vigenciaField
-    final vigenciaField = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Expanded(
-          flex: 1,
-          child: TextFormField(
-            readOnly: true,
-            focusNode: vigenciaFocus,
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(nombreAFocus);
-            },
-            controller: vigenciaController,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.calendar_today, color: Colors.black),
-              contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
-              hintText: "Vigencia",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-                borderSide: const BorderSide(
-                  color: Colors.black,
-                  width: 1.5,
-                ),
-              ),
-            ),
-            onTap: () async {
-              // Get the date
-              DateTime? datePicket = await showDatePicker(
-                context: context,
-                initialDate: DateTime.now(),
-                firstDate: DateTime(1999),
-                lastDate: DateTime(2050),
-              );
-              if (datePicket != null) {
-                //make format to the date
-                var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
-                vigenciaController.text = formatedDate.toString();
-              }
-            },
-          ),
-        ),
-      ],
-    );
+    
 
     //nombreAcField
     final nombreAcField = Row(
@@ -578,8 +533,6 @@ class _afectadoViewState extends State<afectadoView> {
                 color: NEGRO,
               ),
             ),
-            const SizedBox(height: 10),
-            vigenciaField,
             const SizedBox(height: 20),
             const Divider(
               thickness: 2,
