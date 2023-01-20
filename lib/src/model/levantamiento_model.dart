@@ -16,6 +16,7 @@ class LevantamientoModel {
   LevantamientoModel({
     required this.folio,
     required this.poliza,
+    this.aseguradora,
     this.fechaLlegada,
     this.horaLlegada,
     this.horaAccidente,
@@ -38,6 +39,7 @@ class LevantamientoModel {
 
   String folio;
   String poliza;
+  String? aseguradora;
   String? fechaLlegada;
   String? horaLlegada;
   String? horaAccidente;
@@ -68,6 +70,7 @@ class LevantamientoModel {
       LevantamientoModel(
         folio: json["folio"],
         poliza: json["poliza"],
+        aseguradora: json["aseguradora"],
         fechaLlegada: json["fechaLlegada"],
         horaLlegada: json["horaLlegada"],
         horaAccidente: json["horaAccidente"],
@@ -91,6 +94,7 @@ class LevantamientoModel {
   Map<String, dynamic> toJson() => {
         "folio": folio,
         "poliza": poliza,
+        "aseguradora": aseguradora,
         "fechaLlegada": fechaLlegada,
         "horaLlegada": horaLlegada,
         "horaAccidente": horaAccidente,
@@ -112,7 +116,7 @@ class LevantamientoModel {
       };
   @override
   String toString() {
-    return "Folio: $folio Poliza $poliza Nombre: $nombre FechaLlegada: $fechaLlegada Descripcion: $descripcion HoraLlegada: $horaLlegada HoraAccidente: $horaAccidente Ubicacion: $ubicacion Entre: $entre Yentre: $yentre Longitud: $longitud Latitud: $latitud NoEconomico: $noEconomico Placas: $placas Concesionario: $concesionario NoLicencia: $noLicencia Tipo: $tipo Vigencia: $vigencia";
+    return "Folio: $folio Poliza $poliza Aseguradora: $aseguradora Nombre: $nombre FechaLlegada: $fechaLlegada Descripcion: $descripcion HoraLlegada: $horaLlegada HoraAccidente: $horaAccidente Ubicacion: $ubicacion Entre: $entre Yentre: $yentre Longitud: $longitud Latitud: $latitud NoEconomico: $noEconomico Placas: $placas Concesionario: $concesionario NoLicencia: $noLicencia Tipo: $tipo Vigencia: $vigencia";
   }
 }
 
@@ -120,6 +124,7 @@ List<LevantamientoModel> listEjemploLevantamiento = [
   LevantamientoModel(
     folio: '01',
     poliza: '01',
+    aseguradora: '',
     fechaLlegada: 'FechaLlegada',
     horaLlegada: 'HoraLlegada',
     horaAccidente: 'HoraAccidente',
@@ -142,6 +147,7 @@ List<LevantamientoModel> listEjemploLevantamiento = [
   LevantamientoModel(
     folio: '02',
     poliza: '01',
+    aseguradora: '',
     fechaLlegada: 'FechaLlegada',
     horaLlegada: 'HoraLlegada',
     horaAccidente: 'HoraAccidente',
@@ -164,6 +170,7 @@ List<LevantamientoModel> listEjemploLevantamiento = [
   LevantamientoModel(
     folio: '03',
     poliza: '01',
+    aseguradora: '',
     fechaLlegada: 'FechaLlegada',
     horaLlegada: 'HoraLlegada',
     horaAccidente: 'HoraAccidente',

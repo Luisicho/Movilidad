@@ -18,7 +18,10 @@ class afectadoView extends StatefulWidget {
   State<afectadoView> createState() => _afectadoViewState();
 }
 
-//-----------Variables globales
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------Variables globales-------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 // Focus Nodes
 //Step2
 
@@ -40,8 +43,6 @@ final TextEditingController hourAltaController = TextEditingController();
 final TextEditingController descripcionController = TextEditingController();
 
 //Generales
-String? aseguradora;
-
 String? institucionMed;
 
 //Generales
@@ -57,6 +58,10 @@ class _afectadoViewState extends State<afectadoView> {
       Se puede crear funcion que cree Fileds donde se pase nombre de field, icono y controlador asi reducimos codigo
 
     */
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------Variables globales-------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------Proveedores, Funciones-------------------------------------------------------------------------------
@@ -97,47 +102,6 @@ class _afectadoViewState extends State<afectadoView> {
                 onChanged: (newValue) {
                   setState(() {
                     institucionMed = newValue.toString();
-                  });
-                },
-              );
-            }
-            return const Text('no data');
-          });
-    }
-
-    Widget _listaAseguradora() {
-      return FutureBuilder(
-          future: afectadoViewProvider.cargarDataAseguradora(),
-          initialData: [],
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              //Variable que contiene la informacion
-              var data = snapshot.data!;
-              //Lista temporal con la informacion para los dropdown
-              List<DropdownMenuItem> tempList = [];
-              data.forEach((element) {
-                tempList.add(DropdownMenuItem(
-                  child: Text(element['nombre']),
-                  value: element['nombre'],
-                ));
-              });
-              //Retrona objeto dropdown
-              return DropdownButton(
-                underline: Container(
-                  height: 2,
-                  color: Colors.black,
-                ),
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                ),
-                hint: const Text('Selecciona Aseguradora'),
-                value: aseguradora,
-                icon: const Icon(Icons.keyboard_arrow_down),
-                items: tempList,
-                onChanged: (newValue) {
-                  setState(() {
-                    aseguradora = newValue.toString();
                   });
                 },
               );
@@ -547,26 +511,6 @@ class _afectadoViewState extends State<afectadoView> {
       ],
     );
 
-    //aseguradoraField
-    final aseguradoraField = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text("Aseguradora",
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        const SizedBox(width: 10),
-        Expanded(
-          flex: 5,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-            child: _listaAseguradora(),
-          ),
-        ),
-      ],
-    );
-
     //institucionMedField
     final institucionMedField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -634,8 +578,6 @@ class _afectadoViewState extends State<afectadoView> {
                 color: NEGRO,
               ),
             ),
-            const SizedBox(height: 10),
-            aseguradoraField,
             const SizedBox(height: 10),
             vigenciaField,
             const SizedBox(height: 20),
@@ -705,7 +647,6 @@ class _afectadoViewState extends State<afectadoView> {
                       }
                       //Funcion agregar afectado
                       final afectado = AfectadoModel(
-                        aseguradora: aseguradora,
                         vigencia: vigenciaController.text,
                         nombreAc: nombreAcController.text,
                         curp: CURPController.text,

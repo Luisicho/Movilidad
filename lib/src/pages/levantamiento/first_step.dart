@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 
 import 'package:movilidad/src/model/levantamiento_model.dart';
 
+import '../../providers/afectadoView_provider.dart';
+
 class firstStep extends StatefulWidget {
   //objeto
   final LevantamientoModel levantamiento = LevantamientoModel(
@@ -116,6 +118,7 @@ class _firstStepState extends State<firstStep> {
 
   //---------------------------------------------Inicio de variables y controladores------------------
 
+  String? aseguradora;
   String VehiRespondable = "1";
   //ImagePicker
   final ImagePicker _picker = ImagePicker();
@@ -375,6 +378,39 @@ class _firstStepState extends State<firstStep> {
       nombreController.text = '';
     }
 
+    Widget _listaAseguradora() {
+      return FutureBuilder(
+          future: afectadoViewProvider.cargarDataAseguradora(),
+          initialData: [],
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              //Variable que contiene la informacion
+              var data = snapshot.data!;
+              //Lista temporal con la informacion para los dropdown
+              List<DropdownMenuItem> tempList = [];
+              data.forEach((element) {
+                tempList.add(DropdownMenuItem(
+                  child: Text(element['nombre']),
+                  value: element['nombre'],
+                ));
+              });
+              //Retrona objeto dropdown
+              return DropdownButton(
+                hint: const Text('Selecciona Aseguradora'),
+                value: aseguradora,
+                icon: const Icon(Icons.keyboard_arrow_down),
+                items: tempList,
+                onChanged: (newValue) {
+                  setState(() {
+                    aseguradora = newValue.toString();
+                  });
+                },
+              );
+            }
+            return const Text('no data');
+          });
+    }
+
     //Actualiza levantamiento
     void ActualizarLev() {
       widget.levantamiento.concesionario = concesionController.text;
@@ -398,6 +434,7 @@ class _firstStepState extends State<firstStep> {
       widget.levantamiento.nombre = nombreController.text;
       widget.levantamiento.vigencia = vigenciaController.text;
       widget.levantamiento.poliza = polizaController.text;
+      widget.levantamiento.aseguradora = aseguradora;
     }
 
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1231,6 +1268,24 @@ class _firstStepState extends State<firstStep> {
       const SizedBox(width: 50),
     ]);
 
+    //-------------------------------------------------aseguradoraField
+    final aseguradoraField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          "Aseguradora",
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          flex: 5,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+            child: _listaAseguradora(),
+          ),
+        ),
+      ],
+    );
+
     //-------------------------------------------------vehiculoConDb
     var vehiculoConBD =
         Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
@@ -1267,6 +1322,8 @@ class _firstStepState extends State<firstStep> {
       nombreField,
       const SizedBox(height: 20),
       polizaField,
+      const SizedBox(height: 10),
+      aseguradoraField,
     ]);
 
     //-------------------------------------------------vahiculoManual
@@ -1326,6 +1383,8 @@ class _firstStepState extends State<firstStep> {
         ),
         const SizedBox(height: 10),
         polizaField,
+        const SizedBox(height: 10),
+        aseguradoraField,
       ],
     );
 
