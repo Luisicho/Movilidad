@@ -1300,7 +1300,7 @@ class _firstStepState extends State<firstStep> {
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.calendar_today, color: Colors.black),
               contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
-              hintText: "Vigencia Aseguradora",
+              hintText: "Vigencia de poliza",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
