@@ -212,7 +212,7 @@ class _firstStepState extends State<firstStep> {
       'concecion': 'PEDRO PEREZ LOPEZ'
     },
     {
-      'placas': ',RGD-40-00',
+      'placas': 'RGD-40-00',
       'descripcion': "NISSAN",
       'concecion': 'PEDRO PEREZ LOPEZ'
     },
@@ -261,14 +261,14 @@ class _firstStepState extends State<firstStep> {
   var licencias = [
     {
       'licencia': '1234',
-      'tipo': "A",
+      'tipo': "B",
       'nombre': 'ABNER ULISES MENDOZA HERNANDEZ',
       'vigencia': '07/26/2025',
     },
     {
       'licencia': '11BDGTTN029448',
       'tipo': "B",
-      'nombre': 'FERNANDO ELIASPALOMEQUE PEREZ',
+      'nombre': 'FERNANDO ELIAS PALOMEQUE PEREZ',
       'vigencia': '7/26/2024'
     },
     {
@@ -280,7 +280,7 @@ class _firstStepState extends State<firstStep> {
     {
       'licencia': '11ADGTTN005413',
       'tipo': "A",
-      'nombre': 'ANA  MATILDE DE LAS MERCEDESPARDO HERNANDEZ',
+      'nombre': 'ANA  MATILDE DE LAS MERCEDES PARDO HERNANDEZ',
       'vigencia': '7/26/2024'
     },
     {
