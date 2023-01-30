@@ -21,6 +21,41 @@ class vehiculoView extends StatefulWidget {
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------Global Variable-------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+var estado = 'Aguascalientes';
+var listaestado = [
+  'Aguascalientes',
+  'Baja California',
+  'Baja California Sur',
+  'Campeche',
+  'Chiapas',
+  'Chihuahua',
+  'Ciudad de México',
+  'Coahuila',
+  'Colima',
+  'Durango',
+  'Estado de México',
+  'Guanajuato',
+  'Guerrero',
+  'Hidalgo',
+  'Jalisco',
+  'Michoacán',
+  'Morelos',
+  'Nayarit',
+  'Nuevo León',
+  'Oaxaca',
+  'Puebla',
+  'Querétaro',
+  'Quintana Roo',
+  'San Luis Potosí',
+  'Sinaloa',
+  'Sonora',
+  'Tabasco',
+  'Tamaulipas',
+  'Tlaxcala',
+  'Veracruz',
+  'Yucatán',
+  'Zacatecas',
+];
 //Placas
 final noEconomicoFocus = FocusNode();
 final placasFocus = FocusNode();
@@ -30,11 +65,13 @@ final conceFocus = FocusNode();
 final noLicenciaFocus = FocusNode();
 final vigenciaFocus = FocusNode();
 final nombreFocus = FocusNode();
+final tipoFocus = FocusNode();
 
 //licencia
 final TextEditingController noLicenciaController = TextEditingController();
 final TextEditingController vigenciaController = TextEditingController();
 final TextEditingController nombreController = TextEditingController();
+final TextEditingController tipoController = TextEditingController();
 //Placas
 final TextEditingController noEconomicoController = TextEditingController();
 final TextEditingController placasController = TextEditingController();
@@ -73,7 +110,7 @@ class _vehiculoViewState extends State<vehiculoView> {
     }
 
     //Funcion que crea TextFields Con Focus
-    Widget buildTextField(
+    Widget buildTextFieldFocus(
         String hint,
         TextEditingController controller,
         IconData icon,
@@ -117,6 +154,82 @@ class _vehiculoViewState extends State<vehiculoView> {
     //----------------------------------------------------------------------Object Variable-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    //-------------------------------------------------DescripcionField
+    final descripcionField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: buildTextFieldFocus(
+            'Descripcion',
+            descripcionController,
+            Icons.assessment_outlined,
+            true,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            descripcionFocus,
+            conceFocus,
+          ),
+        ),
+      ],
+    );
+
+    //-------------------------------------------------Consen/particularField
+    final consenParticularField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: buildTextFieldFocus(
+            'Concensionario / Particular',
+            conceController,
+            Icons.account_circle_outlined,
+            true,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            conceFocus,
+            noLicenciaFocus,
+          ),
+        ),
+      ],
+    );
+
+    //-------------------------------------------------NoLicencia
+    final noLicenciaField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: buildTextFieldFocus(
+            'No. Licencia',
+            noLicenciaController,
+            Icons.account_circle_outlined,
+            false,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            noLicenciaFocus,
+            tipoFocus,
+          ),
+        ),
+      ],
+    );
+
+    //-------------------------------------------------TipoField
+    final tipoField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: buildTextFieldFocus(
+            'Tipo Licencia',
+            tipoController,
+            Icons.contacts_outlined,
+            true,
+            const EdgeInsets.fromLTRB(20, 15, 20, 15),
+            tipoFocus,
+            vigenciaFocus,
+          ),
+        ),
+      ],
+    );
+
     //VehiculoField
     final vehiculoField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -124,7 +237,11 @@ class _vehiculoViewState extends State<vehiculoView> {
         Expanded(
           flex: 1,
           child: RadioListTile(
-            title: const Text("Servicio Publico"),
+            title: const Text("Servicio Publico",
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
             value: "1",
             groupValue: VehiRespondable,
             onChanged: (value) {
@@ -139,7 +256,11 @@ class _vehiculoViewState extends State<vehiculoView> {
         Expanded(
           flex: 1,
           child: RadioListTile(
-            title: const Text("Particular"),
+            title: const Text("Particular",
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
             value: "2",
             groupValue: VehiRespondable,
             onChanged: (value) {
@@ -160,7 +281,7 @@ class _vehiculoViewState extends State<vehiculoView> {
         Expanded(
             flex: 1,
             child: VehiRespondable == "1"
-                ? buildTextField(
+                ? buildTextFieldFocus(
                     'NoEconomico',
                     noEconomicoController,
                     Icons.all_inbox,
@@ -168,7 +289,7 @@ class _vehiculoViewState extends State<vehiculoView> {
                     const EdgeInsets.fromLTRB(20, 15, 20, 15),
                     noEconomicoFocus,
                     descripcionFocus)
-                : buildTextField(
+                : buildTextFieldFocus(
                     'NoEconomico',
                     noEconomicoController,
                     Icons.all_inbox,
@@ -180,7 +301,7 @@ class _vehiculoViewState extends State<vehiculoView> {
         Expanded(
             flex: 1,
             child: VehiRespondable == "2"
-                ? buildTextField(
+                ? buildTextFieldFocus(
                     'Placas',
                     placasController,
                     Icons.calendar_view_week,
@@ -188,7 +309,7 @@ class _vehiculoViewState extends State<vehiculoView> {
                     const EdgeInsets.fromLTRB(20, 15, 20, 15),
                     placasFocus,
                     descripcionFocus)
-                : buildTextField(
+                : buildTextFieldFocus(
                     'Placas',
                     placasController,
                     Icons.calendar_view_week,
@@ -199,10 +320,37 @@ class _vehiculoViewState extends State<vehiculoView> {
       ],
     );
 
-    //vigenciaField
-    final vigenciaFieldField = TextFormField(
+    //-------------------------------------------------vigenciaReadField
+    final vigenciaReadField = TextFormField(
       readOnly: true,
       controller: vigenciaController,
+      style: const TextStyle(
+        fontWeight: FontWeight.w600,
+      ),
+      decoration: InputDecoration(
+        prefixIcon: const Icon(Icons.calendar_today),
+        contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
+        hintText: "Vigencia",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: const BorderSide(
+            color: Colors.black,
+            width: 1.5,
+          ),
+        ),
+      ),
+    );
+
+    //vigenciaField
+    final vigenciaField = TextFormField(
+      readOnly: true,
+      controller: vigenciaController,
+      style: const TextStyle(
+        fontWeight: FontWeight.w600,
+      ),
       decoration: InputDecoration(
         prefixIcon: const Icon(Icons.calendar_today, color: Colors.black,),
         contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
@@ -281,6 +429,145 @@ class _vehiculoViewState extends State<vehiculoView> {
       ],
     );
 
+    //-------------------------------------------------EstadosField
+    final estadosField = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text("Estado",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          flex: 5,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+            child: DropdownButton(
+              underline: Container(
+                height: 2,
+                color: Colors.black,
+              ),
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+              ),
+              hint: const Text('Selecciona Estado'),
+              value: estado,
+              icon: const Icon(Icons.keyboard_arrow_down),
+              items: listaestado.map((String items) {
+                return DropdownMenuItem(
+                  value: items,
+                  child: Text(items),
+                );
+              }).toList(),
+              onChanged: (newValue) {
+                limpiarCeldas();
+                setState(() {
+                  estado = newValue.toString();
+                });
+              },
+            ),
+          ),
+        ),
+      ],
+    );
+
+    //-------------------------------------------------vehiculoConDb
+    var vehiculoConBD =
+        Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+      vehiculoField,
+      const SizedBox(height: 20),
+      placasField,
+      const SizedBox(height: 20),
+      //buscarPlaca,
+      const SizedBox(height: 20),
+      descripcionField,
+      const SizedBox(height: 20),
+      consenParticularField,
+      const SizedBox(height: 20),
+      const Divider(
+        thickness: 2,
+      ),
+      const SizedBox(height: 20),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(flex: 1, child: noLicenciaField),
+          //Expanded(flex: 1, child: busquedaButton),
+        ],
+      ),
+      const SizedBox(height: 20),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(flex: 1, child: tipoField),
+          Expanded(flex: 1, child: vigenciaReadField),
+        ],
+      ),
+    ]);
+
+    //-------------------------------------------------vahiculoManual
+    var vehiculoManual = Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        vehiculoField,
+        const SizedBox(height: 10),
+        placasField,
+        const SizedBox(height: 10),
+        buildTextFieldFocus(
+          'Descripcion',
+          descripcionController,
+          Icons.assessment_outlined,
+          false,
+          const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          descripcionFocus,
+          conceFocus,
+        ),
+        const SizedBox(height: 10),
+        buildTextFieldFocus(
+          'Concensionario / Particular',
+          conceController,
+          Icons.account_circle_outlined,
+          false,
+          const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          conceFocus,
+          noLicenciaFocus,
+        ),
+        const SizedBox(height: 10),
+        const Divider(
+          thickness: 2,
+        ),
+        const SizedBox(height: 10),
+        buildTextFieldFocus(
+          'No.Licencia',
+          noLicenciaController,
+          Icons.account_box_sharp,
+          false,
+          const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          noLicenciaFocus,
+          nombreFocus,
+        ),
+        const SizedBox(height: 10),
+        tipoLic,
+        const SizedBox(height: 10),
+        vigenciaField,
+        const SizedBox(height: 10),
+        buildTextFieldFocus(
+          'Nombre',
+          nombreController,
+          Icons.document_scanner_outlined,
+          false,
+          const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          nombreFocus,
+          noLicenciaFocus,
+        ),
+      ],
+    );
+
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Object Variable-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -307,57 +594,13 @@ class _vehiculoViewState extends State<vehiculoView> {
                   color: Colors.blueGrey,
                 ),
               ),
-              vehiculoField,
               const SizedBox(height: 10),
-              placasField,
+              estadosField,
               const SizedBox(height: 10),
-              buildTextField(
-                  'Descripcion',
-                  descripcionController,
-                  Icons.assessment_outlined,
-                  false,
-                  const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                  descripcionFocus,
-                  conceFocus),
+              estado == 'Nayarit' ? vehiculoConBD : vehiculoManual,
               const SizedBox(height: 10),
-              buildTextField(
-                  'Concensionario / Particular',
-                  conceController,
-                  Icons.account_circle_outlined,
-                  false,
-                  const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                  conceFocus,
-                  noLicenciaFocus),
-              const SizedBox(height: 10),
-              const Divider(
-                thickness: 2,
-              ),
-              const SizedBox(height: 10),
-              const SizedBox(height: 10),
-              buildTextField(
-                'No.Licencia',
-                noLicenciaController,
-                Icons.account_box_sharp,
-                false,
-                const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                noLicenciaFocus,
-                nombreFocus,
-              ),
-              const SizedBox(height: 10),
-              tipoLic,
-              const SizedBox(height: 10),
-              vigenciaFieldField,
-              const SizedBox(height: 10),
-              buildTextField(
-                'Nombre',
-                nombreController,
-                Icons.document_scanner_outlined,
-                false,
-                const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                nombreFocus,
-                noLicenciaFocus,
-              ),
-              const SizedBox(height: 10),
+
+              //------------------------BOTONES--------------------------
               Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                 //--------------Boton para agregar Afectado
                 ElevatedButton(

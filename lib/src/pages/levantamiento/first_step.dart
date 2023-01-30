@@ -35,7 +35,6 @@ class firstStep extends StatefulWidget {
 var estado = 'Aguascalientes';
 var listaestado = [
   'Aguascalientes',
-  'Nayarit',
   'Baja California',
   'Baja California Sur',
   'Campeche',
@@ -52,6 +51,7 @@ var listaestado = [
   'Jalisco',
   'Michoacán',
   'Morelos',
+  'Nayarit',
   'Nuevo León',
   'Oaxaca',
   'Puebla',
@@ -1147,6 +1147,20 @@ class _firstStepState extends State<firstStep> {
       ],
     );
 
+    //-------------------------------------------------vigenciaReadField
+    final vigenciaReadField = TextFormField(
+      readOnly: true,
+      controller: vigenciaController,
+      decoration: InputDecoration(
+        prefixIcon: const Icon(Icons.calendar_today),
+        contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
+        hintText: "",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+    );
+    
     //-------------------------------------------------vigenciaField
     final vigenciaField = TextFormField(
       readOnly: true,
@@ -1298,18 +1312,11 @@ class _firstStepState extends State<firstStep> {
             readOnly: true,
             controller: vigenciaAscController,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.calendar_today, color: Colors.black),
+              prefixIcon: const Icon(Icons.calendar_today),
               contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
               hintText: "Vigencia de poliza",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-                borderSide: const BorderSide(
-                  color: Colors.black,
-                  width: 1.5,
-                ),
               ),
             ),
             onTap: () async {
@@ -1360,7 +1367,7 @@ class _firstStepState extends State<firstStep> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(flex: 1, child: tipoField),
-          Expanded(flex: 1, child: vigenciaField),
+          Expanded(flex: 1, child: vigenciaReadField),
         ],
       ),
       const SizedBox(height: 20),
@@ -1420,7 +1427,7 @@ class _firstStepState extends State<firstStep> {
         vigenciaField,
         const SizedBox(height: 10),
         buildTextFieldFocus(
-          '',
+          'Nombre',
           nombreController,
           Icons.document_scanner_outlined,
           false,
