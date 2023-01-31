@@ -828,6 +828,9 @@ class _firstStepState extends State<firstStep> {
                 vehiRespondable = value.toString();
                 noeconomicoController.text = "";
                 placasController.text = "";
+                descripcionController.text = "";
+                nombreController.text = "";
+                concesionController.text = "";
               });
             },
           ),
@@ -843,6 +846,9 @@ class _firstStepState extends State<firstStep> {
                 vehiRespondable = value.toString();
                 noeconomicoController.text = "";
                 placasController.text = "";
+                descripcionController.text = "";
+                nombreController.text = "";
+                concesionController.text = "";
               });
             },
           ),
@@ -1160,7 +1166,7 @@ class _firstStepState extends State<firstStep> {
         ),
       ),
     );
-    
+
     //-------------------------------------------------vigenciaField
     final vigenciaField = TextFormField(
       readOnly: true,
