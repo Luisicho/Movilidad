@@ -54,6 +54,158 @@ var listaestado = [
   'Yucatán',
   'Zacatecas',
 ];
+
+var servicioP = [
+  {
+    'noeconomico': '1234',
+    'nuevonoeconomico': '1234',
+    'descripcion': "Taxi, NISSAN",
+    'concecion': 'Abrego Valdivia Martin'
+  },
+  {
+    'noeconomico': 'GTX-2239',
+    'nuevonoeconomico': 'NTP1963',
+    'descripcion': "TAXI",
+    'concecion': 'ABREGO GAMBOA BRENDA ARLIN,'
+  },
+  {
+    'noeconomico': 'GTX-4902',
+    'nuevonoeconomico': 'NTP2744',
+    'descripcion': "TAXI",
+    'concecion': 'ABREGO TOPETE PEDRO OSVALDO'
+  },
+  {
+    'noeconomico': 'GTX-1507',
+    'nuevonoeconomico': 'NTP3222',
+    'descripcion': "TAXI",
+    'concecion': 'ABREGO PERALES CARLOS ALBERTO'
+  },
+  {
+    'noeconomico': 'GTX-4927',
+    'nuevonoeconomico': 'NTP4714',
+    'descripcion': "TAXI",
+    'concecion': 'ABREGO MEDRANO EDUARDO'
+  },
+  {
+    'noeconomico': 'GTX-2742',
+    'nuevonoeconomico': 'NTP4819',
+    'descripcion': "TAXI",
+    'concecion': 'SAUCEDO MIRAMONTES ROBERTO ENRIQUE'
+  },
+  {
+    'noeconomico': 'GTX-5467',
+    'nuevonoeconomico': 'NTP4890',
+    'descripcion': "TAXI",
+    'concecion': 'ABALOS RODRIGUEZ JULIO ALFREDO'
+  },
+  {
+    'noeconomico': 'GTX-2516',
+    'nuevonoeconomico': 'NTP5312',
+    'descripcion': "TAXI",
+    'concecion': 'ABALOS MARIN ELIAZAR'
+  },
+  {
+    'noeconomico': 'GTX-551',
+    'nuevonoeconomico': 'NTP551',
+    'descripcion': "TAXI",
+    'concecion': 'PEREZ BAÑUELOS DIONICIO'
+  },
+  {
+    'noeconomico': 'GTX-559',
+    'nuevonoeconomico': 'NTP559',
+    'descripcion': "TAXI",
+    'concecion': 'MARTINEZ GOMEZ MA. MERCEDES'
+  },
+  {
+    'noeconomico': 'GTX-789',
+    'nuevonoeconomico': 'NTP789',
+    'descripcion': "TAXI",
+    'concecion': 'SALDATE CASTILLON VICTOR MANUEL'
+  },
+];
+
+var placas = [
+  {'placas': '1234', 'descripcion': "NISSAN", 'concecion': 'PEDRO PEREZ LOPEZ'},
+  {
+    'placas': 'RGD-40-00',
+    'descripcion': "NISSAN",
+    'concecion': 'PEDRO PEREZ LOPEZ'
+  },
+  {
+    'placas': 'RGD-50-55',
+    'descripcion': "VOLKSWAGEN",
+    'concecion': 'ELI GARNICA LOZANO'
+  },
+  {
+    'placas': 'RGJ-52-10',
+    'descripcion': "FORD",
+    'concecion': 'OSCAR BUENO CARLOS'
+  },
+  {
+    'placas': 'RGY-52-10',
+    'descripcion': "HYUNDAI",
+    'concecion': 'RAUL LOPEZ PADILLA'
+  },
+  {
+    'placas': 'RGL-26-80',
+    'descripcion': "NISSAN",
+    'concecion': 'HERNAN COLINA DIAZ'
+  },
+  {
+    'placas': 'RGA-50-55',
+    'descripcion': "TOYOTA",
+    'concecion': 'FELIPE LAMAS MARTINEZ'
+  },
+  {
+    'placas': 'L156K',
+    'descripcion': "HONDA",
+    'concecion': 'JUANA PLACENCIA LOYOLA'
+  },
+  {
+    'placas': 'PF-25-920',
+    'descripcion': "FORD",
+    'concecion': 'CARMEN POLANCO PEREZ'
+  },
+  {
+    'placas': 'RGH-50-01',
+    'descripcion': "VOLKSWAGEN",
+    'concecion': 'CARLOS OCAÑA DIAZ'
+  },
+];
+
+var licencias = [
+  {
+    'licencia': '1234',
+    'tipo': "B",
+    'nombre': 'ABNER ULISES MENDOZA HERNANDEZ',
+    'vigencia': '07/26/2025',
+  },
+  {
+    'licencia': '11BDGTTN029448',
+    'tipo': "B",
+    'nombre': 'FERNANDO ELIAS PALOMEQUE PEREZ',
+    'vigencia': '7/26/2024'
+  },
+  {
+    'licencia': '11BDGTTN029445',
+    'tipo': "D",
+    'nombre': 'YESSICA SANDOVAL CASTILLO',
+    'vigencia': '7/26/2024'
+  },
+  {
+    'licencia': '11ADGTTN005413',
+    'tipo': "A",
+    'nombre': 'ANA  MATILDE DE LAS MERCEDES PARDO HERNANDEZ',
+    'vigencia': '7/26/2024'
+  },
+  {
+    'licencia': '11ADGTTN005414',
+    'tipo': "C",
+    'nombre': 'ROSALIA GUADALUPEPEREZ PEREZ',
+    'vigencia': '7/26/2024,A'
+  },
+];
+
 //Placas
 final noEconomicoFocus = FocusNode();
 final placasFocus = FocusNode();
@@ -127,7 +279,10 @@ class _vehiculoViewState extends State<vehiculoView> {
         controller: controller,
         readOnly: enable,
         decoration: InputDecoration(
-          prefixIcon: Icon(icon, color: Colors.black,),
+          prefixIcon: Icon(
+            icon,
+            color: Colors.black,
+          ),
           contentPadding: pad,
           hintText: hint,
           border: OutlineInputBorder(
@@ -151,6 +306,127 @@ class _vehiculoViewState extends State<vehiculoView> {
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Object Variable-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    //-------------------------------------------------Busqueda Button
+    final busquedaButton = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: TextButton(
+            child: const Text('Buscar'),
+            onPressed: () {
+              var mensaje = 'No encontrado';
+              var color = Colors.red;
+              if (noLicenciaController.text != "") {
+                var busquedatemp = licencias.where((element) =>
+                    element['licencia'] == noLicenciaController.text);
+                if (busquedatemp.isNotEmpty) {
+                  var tipoLic = '';
+                  switch (busquedatemp.first['tipo']!) {
+                    case 'A':
+                      tipoLic = 'Automovilista';
+                      break;
+                    case 'B':
+                      tipoLic = 'Chofer';
+                      break;
+                    case 'C':
+                      tipoLic = 'Motociclista';
+                      break;
+                    case 'D':
+                      tipoLic = 'Chofer Servicio Publico';
+                      break;
+                    default:
+                      break;
+                  }
+                  tipoController.text = tipoLic;
+                  nombreController.text = busquedatemp.first['nombre']!;
+                  vigenciaController.text = busquedatemp.first['vigencia']!;
+                  mensaje = 'Encontrado en nube';
+                  color = Colors.green;
+                }
+              }
+              //-------------Toast
+              Fluttertoast.showToast(
+                  msg: mensaje,
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: color,
+                  textColor: Colors.white,
+                  fontSize: 16.0);
+              //-------------Toast
+              setState(() {});
+            },
+          ),
+        ),
+      ],
+    );
+
+    //-------------------------------------------------BuscarPlaca
+    final buscarPlaca = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1,
+          child: TextButton(
+            onPressed: () {
+              var mensaje = 'No encontrado';
+              var color = Colors.red;
+              if (noEconomicoController.text != "") {
+                //Variables locales
+                //Condicion para la busqueda
+                var busquedatemp = servicioP.where((element) =>
+                    element['noeconomico'] == noEconomicoController.text);
+
+                if (busquedatemp.isNotEmpty) {
+                  descripcionController.text =
+                      busquedatemp.first['descripcion']!;
+                  conceController.text = busquedatemp.first['concecion']!;
+                  mensaje = 'Encontrado en nube';
+                  color = Colors.green;
+                }
+                var busquedatemp2 = servicioP.where((element) =>
+                    element['nuevonoeconomico'] == noEconomicoController.text);
+
+                if (busquedatemp2.isNotEmpty) {
+                  descripcionController.text =
+                      busquedatemp2.first['descripcion']!;
+                  conceController.text = busquedatemp2.first['concecion']!;
+                  mensaje = 'Encontrado en nube';
+                  color = Colors.green;
+                }
+              }
+              if (placasController.text != "") {
+                //Variables locales
+                //Condicion para la busqueda
+                var busquedatemp = placas.where(
+                    (element) => element['placas'] == placasController.text);
+                if (busquedatemp.isNotEmpty) {
+                  descripcionController.text =
+                      busquedatemp.first['descripcion']!;
+                  conceController.text = busquedatemp.first['concecion']!;
+                  mensaje = 'Encontrado en nube';
+                  color = Colors.green;
+                }
+              }
+              //-------------Toast
+              Fluttertoast.showToast(
+                  msg: mensaje,
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: color,
+                  textColor: Colors.white,
+                  fontSize: 16.0);
+              //-------------Toast
+              setState(() {});
+            },
+            child: const Text('Buscar Placas / No.Economico'),
+          ),
+        ),
+      ],
+    );
 
     //-------------------------------------------------DescripcionField
     final descripcionField = Row(
@@ -235,7 +511,8 @@ class _vehiculoViewState extends State<vehiculoView> {
         Expanded(
           flex: 1,
           child: RadioListTile(
-            title: const Text("Servicio Publico",
+            title: const Text(
+              "Servicio Publico",
               style: TextStyle(
                 fontWeight: FontWeight.w600,
               ),
@@ -247,6 +524,9 @@ class _vehiculoViewState extends State<vehiculoView> {
                 vehiRespondable = value.toString();
                 noEconomicoController.text = "";
                 placasController.text = "";
+                descripcionController.text = "";
+                nombreController.text = "";
+                conceController.text = "";
               });
             },
           ),
@@ -254,7 +534,8 @@ class _vehiculoViewState extends State<vehiculoView> {
         Expanded(
           flex: 1,
           child: RadioListTile(
-            title: const Text("Particular",
+            title: const Text(
+              "Particular",
               style: TextStyle(
                 fontWeight: FontWeight.w600,
               ),
@@ -266,6 +547,9 @@ class _vehiculoViewState extends State<vehiculoView> {
                 vehiRespondable = value.toString();
                 noEconomicoController.text = "";
                 placasController.text = "";
+                descripcionController.text = "";
+                nombreController.text = "";
+                conceController.text = "";
               });
             },
           ),
@@ -350,7 +634,10 @@ class _vehiculoViewState extends State<vehiculoView> {
         fontWeight: FontWeight.w600,
       ),
       decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.calendar_today, color: Colors.black,),
+        prefixIcon: const Icon(
+          Icons.calendar_today,
+          color: Colors.black,
+        ),
         contentPadding: const EdgeInsets.fromLTRB(05, 0, 05, 0),
         hintText: "Vigencia",
         border: OutlineInputBorder(
@@ -387,7 +674,8 @@ class _vehiculoViewState extends State<vehiculoView> {
       children: [
         const Expanded(
           flex: 1,
-          child: Text("Tipo Licencia",
+          child: Text(
+            "Tipo Licencia",
             style: TextStyle(
               fontWeight: FontWeight.w600,
             ),
@@ -433,7 +721,8 @@ class _vehiculoViewState extends State<vehiculoView> {
       children: [
         const Expanded(
           flex: 1,
-          child: Text("Estado",
+          child: Text(
+            "Estado",
             style: TextStyle(
               fontWeight: FontWeight.w600,
             ),
@@ -481,7 +770,7 @@ class _vehiculoViewState extends State<vehiculoView> {
       const SizedBox(height: 20),
       placasField,
       const SizedBox(height: 20),
-      //buscarPlaca,
+      buscarPlaca,
       const SizedBox(height: 20),
       descripcionField,
       const SizedBox(height: 20),
@@ -495,7 +784,7 @@ class _vehiculoViewState extends State<vehiculoView> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(flex: 1, child: noLicenciaField),
-          //Expanded(flex: 1, child: busquedaButton),
+          Expanded(flex: 1, child: busquedaButton),
         ],
       ),
       const SizedBox(height: 20),
