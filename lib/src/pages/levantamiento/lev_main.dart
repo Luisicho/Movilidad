@@ -99,9 +99,9 @@ class _levMainState extends State<levMain> {
                       firtStep = false;
                     }
                     var fotos = 0;
-                    tempfirts.fotosLev.forEach((element) {
+                    for (var element in tempfirts.fotosLev) {
                       if (element.path != '') fotos++;
-                    });
+                    }
                     if (fotos < 3) {
                       error += ' Minimo 3 fotos faltante \n';
                       firtStep = false;

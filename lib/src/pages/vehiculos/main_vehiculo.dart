@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:movilidad/src/pages/vehiculos/view/levantamiento_view.dart';
 import 'package:movilidad/src/providers/db_provider.dart';
@@ -93,7 +92,7 @@ class _MainVehiculoState extends State<MainVehiculo> {
       //Widget Future para crear lista a futuro luego de resivir la informacion
       return FutureBuilder(
         future: vehiculoProvider.cargarData(),
-        initialData: [],
+        initialData: const [],
         builder: (context, snapshot) {
           return ListView(
             children: _listaItems(snapshot.data, context),

@@ -120,7 +120,7 @@ class _firstStepState extends State<firstStep> {
   //---------------------------------------------Inicio de variables y controladores------------------
 
   String? aseguradora;
-  String VehiRespondable = "1";
+  String vehiRespondable = "1";
   //ImagePicker
   final ImagePicker _picker = ImagePicker();
   final List<XFile>? images = List<XFile>.empty();
@@ -205,7 +205,7 @@ class _firstStepState extends State<firstStep> {
     },
   ];
 
-  var Placas = [
+  var placas = [
     {
       'placas': '1234',
       'descripcion': "NISSAN",
@@ -382,19 +382,19 @@ class _firstStepState extends State<firstStep> {
     Widget _listaAseguradora() {
       return FutureBuilder(
           future: afectadoViewProvider.cargarDataAseguradora(),
-          initialData: [],
+          initialData: const [],
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               //Variable que contiene la informacion
               var data = snapshot.data!;
               //Lista temporal con la informacion para los dropdown
               List<DropdownMenuItem> tempList = [];
-              data.forEach((element) {
+              for (var element in data) {
                 tempList.add(DropdownMenuItem(
-                  child: Text(element['nombre']),
                   value: element['nombre'],
+                  child: Text(element['nombre']),
                 ));
-              });
+              }
               //Retrona objeto dropdown
               return DropdownButton(
                 hint: const Text('Selecciona Aseguradora'),
@@ -627,15 +627,15 @@ class _firstStepState extends State<firstStep> {
               LocationPermission permission =
                   await Geolocator.requestPermission();
               //Consigue posicion actual
-              Position _currentPosition = await Geolocator.getCurrentPosition(
+              Position currentPosition = await Geolocator.getCurrentPosition(
                   desiredAccuracy: LocationAccuracy.high);
               //Asigna coordenadas a Txt
-              latController.text = _currentPosition.latitude.toString();
-              lonController.text = _currentPosition.longitude.toString();
+              latController.text = currentPosition.latitude.toString();
+              lonController.text = currentPosition.longitude.toString();
               widget.levantamiento.latitud =
-                  _currentPosition.latitude.toString();
+                  currentPosition.latitude.toString();
               widget.levantamiento.longitud =
-                  _currentPosition.longitude.toString();
+                  currentPosition.longitude.toString();
             },
           ),
         ),
@@ -690,7 +690,7 @@ class _firstStepState extends State<firstStep> {
                         //Agrega foto a la lista
                         widget.levantamiento.fotosLev[0] = imageTemporal;
                         setState(() {
-                          this.image1 = imageTemporal;
+                          image1 = imageTemporal;
                         });
                       },
                     ),
@@ -709,7 +709,7 @@ class _firstStepState extends State<firstStep> {
                         //Agrega foto a la lista
                         widget.levantamiento.fotosLev[1] = imageTemporal;
                         setState(() {
-                          this.image2 = imageTemporal;
+                          image2 = imageTemporal;
                         });
                       },
                     ),
@@ -737,7 +737,7 @@ class _firstStepState extends State<firstStep> {
                         //Agrega foto a la lista
                         widget.levantamiento.fotosLev[2] = imageTemporal;
                         setState(() {
-                          this.image3 = imageTemporal;
+                          image3 = imageTemporal;
                         });
                       },
                     ),
@@ -756,7 +756,7 @@ class _firstStepState extends State<firstStep> {
                         //Agrega foto a la lista
                         widget.levantamiento.fotosLev[3] = imageTemporal;
                         setState(() {
-                          this.image4 = imageTemporal;
+                          image4 = imageTemporal;
                         });
                       },
                     ),
@@ -784,7 +784,7 @@ class _firstStepState extends State<firstStep> {
                         //Agrega foto a la lista
                         widget.levantamiento.fotosLev[4] = imageTemporal;
                         setState(() {
-                          this.image5 = imageTemporal;
+                          image5 = imageTemporal;
                         });
                       },
                     ),
@@ -803,7 +803,7 @@ class _firstStepState extends State<firstStep> {
                         //Agrega foto a la lista
                         widget.levantamiento.fotosLev[5] = imageTemporal;
                         setState(() {
-                          this.image6 = imageTemporal;
+                          image6 = imageTemporal;
                         });
                       },
                     ),
@@ -822,10 +822,10 @@ class _firstStepState extends State<firstStep> {
           child: RadioListTile(
             title: const Text("Servicio Publico"),
             value: "1",
-            groupValue: VehiRespondable,
+            groupValue: vehiRespondable,
             onChanged: (value) {
               setState(() {
-                VehiRespondable = value.toString();
+                vehiRespondable = value.toString();
                 noeconomicoController.text = "";
                 placasController.text = "";
               });
@@ -837,10 +837,10 @@ class _firstStepState extends State<firstStep> {
           child: RadioListTile(
             title: const Text("Particular"),
             value: "2",
-            groupValue: VehiRespondable,
+            groupValue: vehiRespondable,
             onChanged: (value) {
               setState(() {
-                VehiRespondable = value.toString();
+                vehiRespondable = value.toString();
                 noeconomicoController.text = "";
                 placasController.text = "";
               });
@@ -856,7 +856,7 @@ class _firstStepState extends State<firstStep> {
       children: [
         Expanded(
             flex: 1,
-            child: VehiRespondable == "1"
+            child: vehiRespondable == "1"
                 ? buildTextFieldFocus(
                     'No.Economico',
                     noeconomicoController,
@@ -878,7 +878,7 @@ class _firstStepState extends State<firstStep> {
         const SizedBox(width: 05),
         Expanded(
             flex: 1,
-            child: VehiRespondable == "2"
+            child: vehiRespondable == "2"
                 ? buildTextFieldFocus(
                     'Placas',
                     placasController,
@@ -945,7 +945,7 @@ class _firstStepState extends State<firstStep> {
               if (placasController.text != "") {
                 //Variables locales
                 //Condicion para la busqueda
-                var busquedatemp = Placas.where(
+                var busquedatemp = placas.where(
                     (element) => element['placas'] == placasController.text);
                 if (busquedatemp.isNotEmpty) {
                   descripcionController.text =

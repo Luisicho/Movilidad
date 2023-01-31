@@ -15,8 +15,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
   // editing controller
-  final TextEditingController userController = new TextEditingController();
-  final TextEditingController passwordController = new TextEditingController();
+  final TextEditingController userController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   //focus nodes
   FocusNode textSecondFocusNode = FocusNode();
@@ -34,6 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
         if (value!.isEmpty) {
           return ("El Usuario es requerido para ingresar");
         }
+        return null;
       },
       onSaved: (value) {
         userController.text = value!;
@@ -61,13 +62,14 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       obscureText: true,
       validator: (value) {
-        RegExp regex = new RegExp(r'^.{6,}$');
+        RegExp regex = RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
           return ("La Contraseña es requerida para ingresar");
         }
         if (!regex.hasMatch(value)) {
           return ("Ingrese Contraseña valida(Min 6 Caracteres)");
         }
+        return null;
       },
       onSaved: (value) {
         passwordController.text = value!;

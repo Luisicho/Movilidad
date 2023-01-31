@@ -5,8 +5,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:movilidad/src/model/vehiculos_model.dart';
 
-import '../../../model/levantamiento_model.dart';
-
 class vehiculoView extends StatefulWidget {
   //variables
   final Function(VehiculoModel)
@@ -78,7 +76,7 @@ final TextEditingController placasController = TextEditingController();
 final TextEditingController descripcionController = TextEditingController();
 final TextEditingController conceController = TextEditingController();
 
-String VehiRespondable = "1";
+String vehiRespondable = "1";
 var tipo = 'Automovilista';
 var tipoLicArray = [
   'Automovilista',
@@ -116,10 +114,10 @@ class _vehiculoViewState extends State<vehiculoView> {
         IconData icon,
         bool enable,
         EdgeInsets pad,
-        FocusNode Focus,
+        FocusNode focus,
         FocusNode nextFocus) {
       return TextFormField(
-        focusNode: Focus,
+        focusNode: focus,
         onFieldSubmitted: (value) {
           FocusScope.of(context).requestFocus(nextFocus);
         },
@@ -243,10 +241,10 @@ class _vehiculoViewState extends State<vehiculoView> {
               ),
             ),
             value: "1",
-            groupValue: VehiRespondable,
+            groupValue: vehiRespondable,
             onChanged: (value) {
               setState(() {
-                VehiRespondable = value.toString();
+                vehiRespondable = value.toString();
                 noEconomicoController.text = "";
                 placasController.text = "";
               });
@@ -262,10 +260,10 @@ class _vehiculoViewState extends State<vehiculoView> {
               ),
             ),
             value: "2",
-            groupValue: VehiRespondable,
+            groupValue: vehiRespondable,
             onChanged: (value) {
               setState(() {
-                VehiRespondable = value.toString();
+                vehiRespondable = value.toString();
                 noEconomicoController.text = "";
                 placasController.text = "";
               });
@@ -280,7 +278,7 @@ class _vehiculoViewState extends State<vehiculoView> {
       children: [
         Expanded(
             flex: 1,
-            child: VehiRespondable == "1"
+            child: vehiRespondable == "1"
                 ? buildTextFieldFocus(
                     'NoEconomico',
                     noEconomicoController,
@@ -300,7 +298,7 @@ class _vehiculoViewState extends State<vehiculoView> {
         const SizedBox(width: 05),
         Expanded(
             flex: 1,
-            child: VehiRespondable == "2"
+            child: vehiRespondable == "2"
                 ? buildTextFieldFocus(
                     'Placas',
                     placasController,

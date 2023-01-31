@@ -72,19 +72,19 @@ class _afectadoViewState extends State<afectadoView> {
       //Widget Future para crear lista a futuro luego de resivir la informacion
       return FutureBuilder(
           future: afectadoViewProvider.cargarDataMedica(),
-          initialData: [],
+          initialData: const [],
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               //Variable que contiene la informacion
               var data = snapshot.data!;
               //Lista temporal con la informacion para los dropdown
               List<DropdownMenuItem> tempList = [];
-              data.forEach((element) {
+              for (var element in data) {
                 tempList.add(DropdownMenuItem(
-                  child: Text(element['nom_estab']),
                   value: element['nom_estab'],
+                  child: Text(element['nom_estab']),
                 ));
-              });
+              }
               //Retrona objeto dropdown
               return DropdownButton(
                 underline: Container(

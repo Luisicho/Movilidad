@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movilidad/src/model/afectado_model.dart';
-import 'package:movilidad/src/pages/levantamiento/views/afectado_view.dart';
 import 'package:intl/intl.dart';
 
 import '../../../providers/levantamiento_provider.dart';
@@ -490,7 +489,7 @@ class _accidentadoVViewState extends State<accidentadoVView> {
       //Widget Future para crear lista a futuro luego de resivir la informacion
       return FutureBuilder(
         future: levantamientoProvider.cargarData(),
-        initialData: [],
+        initialData: const [],
         builder: (context, snapshot) {
           AfectadoModel tempAfec = AfectadoModel(
               aseguradora: '',

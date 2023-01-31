@@ -15,9 +15,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // form key
-  final _formKey = GlobalKey<FormState>();
-
   //PagueController
   final PageController _pageController = PageController();
 

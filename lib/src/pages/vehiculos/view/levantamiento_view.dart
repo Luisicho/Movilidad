@@ -148,7 +148,7 @@ class LevantamientoViewState extends State<LevantamientoView> {
       //Widget Future para crear lista a futuro luego de resivir la informacion
       return FutureBuilder(
         future: levantamientoProvider.cargarData(),
-        initialData: [],
+        initialData: const [],
         builder: (context, snapshot) {
           return ListView(
             padding: const EdgeInsets.all(10),
