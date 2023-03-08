@@ -16,7 +16,7 @@
             "horaRecepcion": "12:05 PM",
             "fechaAlta": "",
             "horaAlta": "",
-            "observaciones": ""
+            "observaciones": "Hospitalizacion"
         },
         {
             "icon" : "accessible_outlined",
@@ -50,7 +50,7 @@
             "fechaAlta": "",
             "horaAlta": "",
             "observaciones": "",
-            "tipoAtencion": "Defuncion"
+            "tipoAtencion": "Hospitalizacion"
         },
         {
             "icon" : "accessible_outlined",
@@ -67,7 +67,7 @@
             "horaRecepcion": "02:12 PM",
             "fechaAlta": "",
             "horaAlta": "",
-            "observaciones": ""
+            "observaciones": "Hospitalizacion"
         },
         {
             "icon" : "accessible_outlined",
@@ -101,7 +101,7 @@
             "fechaAlta": "",
             "horaAlta": "",
             "observaciones": "",
-            "tipoAtencion": "Defuncion"
+            "tipoAtencion": "Hospitalizacion"
         },
         {
             "icon" : "accessible_outlined",
@@ -118,7 +118,7 @@
             "fechaAlta": "",
             "horaAlta": "",
             "observaciones": "",
-            "tipoAtencion": "En sitio/ambulancia"
+            "tipoAtencion": "Hospitalizacion"
         },
         {
             "icon" : "accessible_outlined",
