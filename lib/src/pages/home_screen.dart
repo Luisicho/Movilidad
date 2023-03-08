@@ -43,8 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
             controller: _pageController,
             children: const [
               //Screens from page
-              HomeScreen2(),
               HomeScreen3(),
+              HomeScreen2(),
             ],
           ),
           Container(
