@@ -141,15 +141,15 @@
             "cve_ent": "18",
             "entidad": "NAYARIT",
             "cve_mun": "020",
-            "municipio": "BahÝa de Banderas",
+            "municipio": "Bahia de Banderas",
             "cve_loc": "0013",
             "localidad": "Bucerias",
             "latitud": 20.75326077,
             "longitud": -105.33128991
         },
         {
-            "nom_estab": "HOSPITAL DE ESPECIALIDADES PUERTA DE HIERRO TEPIC, S.A. DE C.V.",
-            "raz_social": "HOSPITAL DE ESPECIALIDADES PUERTA DE HIERRO TEPIC SA DE CV",
+            "nom_estab": "HOSPITAL PUERTA DE HIERRO TEPIC, S.A. DE C.V.",
+            "raz_social": "HOSPITAL PUERTA DE HIERRO TEPIC SA DE CV",
             "nom_vial": "EMILIO MANUEL GONZALEZ PARRA",
             "nom_v_e_1": "AGUAMILPA",
             "nom_v_e_2": "NINGUNO",
@@ -206,7 +206,7 @@
             "longitud": -104.89751627
         },
         {
-            "nom_estab": "UNIDAD MEDICA FAMILIAR NO 27 DE SAN JOSE DEL VALLE NAYARIT",
+            "nom_estab": "UNIDAD MEDICA FAM.NO 27 SAN JOSE DEL VALLE NAYARIT",
             "raz_social": "INSTITUTO MEXICANO DEL SEGURO SOCIAL",
             "nom_vial": "1",
             "nom_v_e_1": "ARBOLEDAS",
@@ -321,7 +321,7 @@
             "longitud": -105.36940934
         },
         {
-            "nom_estab": "UNIDAD M╔DICA RURAL N┌MERO 71 COASTECOMATILLO",
+            "nom_estab": "UNIDAD MEDICA RURAL NUMERO 71 COASTECOMATILLO",
             "raz_social": "INSTITUTO MEXICANO DEL SEGURO SOCIAL",
             "nom_vial": "BENITO JUAREZ",
             "nom_v_e_1": "NINGUNO",
@@ -378,7 +378,7 @@
         },
         {
             "nom_estab": "UNIDAD BASICA DE REABILITACION",
-            "raz_social": "SISTEMA MUNICIPAL PARA EL DESARROYO INTEGRAL DE LA FAMILIA DE ACAPONETA NAYARIT",
+            "raz_social": "SISTEMA MUNICIPAL DIF ACAPONETA NAYARIT",
             "nom_vial": "5 DE MAYO",
             "nom_v_e_1": "NINGUNO",
             "nom_v_e_2": "IGNACIO LOPEZ RAYON",
@@ -471,7 +471,7 @@
             "longitud": -104.89870371
         },
         {
-            "nom_estab": "HOSPITAL INTEGRAL B┴SICO COMUNITARIO DE IXTLAN DEL RIO NAY",
+            "nom_estab": "HOSPITAL INTEGRAL BASICO COMUNITARIO IXTLAN DEL RIO",
             "raz_social": "SERVICIOS DE SALUD DE NAYARIT",
             "nom_vial": "MIGUEL HIDALGO",
             "nom_v_e_1": "EMILIO M. GONZALEZ",
@@ -529,7 +529,7 @@
         },
         {
             "nom_estab": "HOSPITAL PREMIUM HILLS",
-            "raz_social": "SERVI ESPECIALIDADES MEDICAS DE NAYARIT S DE RL DE CV",
+            "raz_social": "SERVI ESP. MEDICAS DE NAYARIT S DE RL DE CV",
             "nom_vial": "LIBRAMIENTO",
             "nom_v_e_1": "JARDINES",
             "nom_v_e_2": "LANGOSTA",
@@ -660,8 +660,8 @@
             "longitud": -105.43361587
         },
         {
-            "nom_estab": "INSTITUTO DE SEGURIDAD SOCIAL AL SERVICIO DE LOS TRABAJADORES DEL ESTADO",
-            "raz_social": "INSTITUTO DE SEGURIDAD SOCIAL AL SERVICIO DE LOS TRABAJADORES DEL ESTADO",
+            "nom_estab": "ISSSTE DEL ESTADO MICHOACAN",
+            "raz_social": "ISSSTE DEL ESTADO MICHOACAN",
             "nom_vial": "MICHOACAN SUR",
             "nom_v_e_1": "MIGUEL HIDALGO PONIENTE",
             "nom_v_e_2": "JOSE MARIA MORELOS PONIENTE",
@@ -679,8 +679,8 @@
             "longitud": -105.14138331
         },
         {
-            "nom_estab": "INSTITUTO DE SEGURIDAD SOCIAL PARA EL SERVICIO DE LOS TRABAJADORES DEL ESTADO DE NAYARIT",
-            "raz_social": "INSTITUTO DE SEGURIDAD SOCIAL AL SERVICIO DE LOS TRABAJADORES DEL ESTADO",
+            "nom_estab": "ISSSTE DEL ESTADO DE NAYARIT",
+            "raz_social": "ISSSTE DEL ESTADO DE NAYARIT LIMON",
             "nom_vial": "LIMON SUPREMO",
             "nom_v_e_1": "LIMON REAL",
             "nom_v_e_2": "LIMON SUPREMO",
@@ -719,7 +719,7 @@
             "longitud": -104.89881244
         },
         {
-            "nom_estab": "IMSS",
+            "nom_estab": "IMSS RUIZ NAYARIT",
             "raz_social": "INSTITUTO MEXICANO DEL SEGURO SOCIAL",
             "nom_vial": "GUADALAJARA",
             "nom_v_e_1": "LAURELES Y GONGORA",
@@ -759,10 +759,10 @@
             "longitud": -105.18764512
         },
         {
-            "nom_estab": "INSTITUTO MEXICANO DEL SEGURO SOCIAL HOSPITAL GENERAL DE ZONA N 1",
+            "nom_estab": "IMSS HOSPITAL GENERAL DE ZONA N 1",
             "raz_social": "INSTITUTO MEXICANO DEL SEGURO SOCIAL",
             "nom_vial": "AVENIDA DE LOS INSURGENTES PONIENTE",
-            "nom_v_e_1": "SAN ┴NGEL",
+            "nom_v_e_1": "SAN ANGEL",
             "nom_v_e_2": "NINGUNO",
             "nom_v_e_3": "CHOFERES",
             "numero_ext": "727",
@@ -797,7 +797,7 @@
             "longitud": -104.89733299
         },
         {
-            "nom_estab": "INSTITUTO DE SEGURIDAD Y SERVICIO SOCIAL PARA LOS TRABAJADORES DEL ESTADO",
+            "nom_estab": "ISSSTE HOSPITAL AQUILES CALLES RAMIREZ",
             "raz_social": "HOSPITAL GENERAL DR AQUILES CALLES RAMIREZ",
             "nom_vial": "PASEO DE LA LOMA",
             "nom_v_e_1": "ENFERMERIA",
@@ -816,8 +816,8 @@
             "longitud": -104.89793689
         },
         {
-            "nom_estab": "INSTITUTO DE SEGURIDAD Y SERVICIOS SOCIALES DE LOS TRABAJDORES DEL ESTADO",
-            "raz_social": "INSTITUTO DE SEGURIDAD SOCIAL AL SERVICIO DE LOS TRABAJADORES DEL ESTADO",
+            "nom_estab": "ISSSTE INSURGENTES",
+            "raz_social": "ISSSTE INSURGENTES",
             "nom_vial": "AVENIDA DE LOS INSURGENTES PONIENTE",
             "nom_v_e_1": "MAZATLAN",
             "nom_v_e_2": "OAXACA SUR",
@@ -891,7 +891,7 @@
             "longitud": -104.88671408
         },
         {
-            "nom_estab": "INSTITUTO MEXICANO DEL SEGURO SOCIAL IMSS",
+            "nom_estab": "IMSS COMPOSTELA",
             "raz_social": "INSTITUTO MEXICANO DEL SEGURO SOCIAL",
             "nom_vial": "MIGUEL HIDALGO PONIENTE",
             "nom_v_e_1": "SONORA SUR",
@@ -990,8 +990,8 @@
             "longitud": -104.89032422
         },
         {
-            "nom_estab": "CLINICA DE MEDICINA FAMILIAR DOCTOR JOAQUIN CANOVAS PUCHADES",
-            "raz_social": "INSTITUTO DE SEGURIDAD SOCIAL AL SERVICIO DE LOS TRABAJADORES DEL ESTADO",
+            "nom_estab": "CLINICA DE MEDICINA FAMILIAR DR.JOAQUIN CANOVAS PUCHADES",
+            "raz_social": "ISSSTE INSURGENTES PONIENTE",
             "nom_vial": "AVENIDA DE LOS INSURGENTES PONIENTE",
             "nom_v_e_1": "NINGUNO",
             "nom_v_e_2": "PLAYA SANTA CRUZ",
@@ -1010,8 +1010,8 @@
             "longitud": -104.91546312
         },
         {
-            "nom_estab": "INSTITUTO DE SEGURIDAD SOCIAL AL SERVICIO DE LOS TRABAJADORES DEL ESTADO",
-            "raz_social": "INSTITUTO DE SEGURIDAD SOCIAL AL SERVICIO DE LOS TRABAJADORES DEL ESTADO",
+            "nom_estab": "ISSSTE CONSTITUCION",
+            "raz_social": "ISSSTE CONSTITUCION",
             "nom_vial": "INGENIERO JOSE DE JESUS H. CASAS",
             "nom_v_e_1": "VICTORIA ANAYA TOVAR",
             "nom_v_e_2": "CONSTITUCION",
@@ -1123,7 +1123,7 @@
             "longitud": -104.89747076
         },
         {
-            "nom_estab": "SANATORIO GUADALUPE",
+            "nom_estab": "SANATORIO GUADALUPE DE TEPIC SA",
             "raz_social": "SANATORIO GUADALUPE DE TEPIC SA",
             "nom_vial": "JUAN ESCUTIA",
             "nom_v_e_1": "JOSE MARIA MORELOS PONIENTE",
@@ -1237,7 +1237,7 @@
             "longitud": -104.89418771
         },
         {
-            "nom_estab": "SANATORIO GUADALUPE",
+            "nom_estab": "SANATORIO GUADALUPE MORELOS",
             "nom_vial": "JOSE MARIA MORELOS PONIENTE",
             "nom_v_e_1": "QUERETARO SUR",
             "nom_v_e_2": "OAXACA SUR",

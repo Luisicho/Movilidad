@@ -7,40 +7,37 @@ String afectadoModelToJson(AfectadoModel data) => json.encode(data.toJson());
 
 class AfectadoModel {
   AfectadoModel({
-    required this.aseguradora,
-    required this.poliza,
-    required this.vigencia,
-    required this.nombreAc,
-    required this.curp,
-    required this.domicilio,
-    required this.tipoAtencion,
-    required this.institucionMedica,
-    required this.fechaRecepcion,
-    required this.horaRecepcion,
-    required this.fechaAlta,
-    required this.horaAlta,
-    required this.observaciones,
-    required this.icon,
+    this.aseguradora,
+    this.vigencia,
+    this.nombreAc,
+    this.curp,
+    this.domicilio,
+    this.tipoAtencion,
+    this.institucionMedica,
+    this.fechaRecepcion,
+    this.horaRecepcion,
+    this.fechaAlta,
+    this.horaAlta,
+    this.observaciones,
+    this.icon,
   });
 
   String? aseguradora;
-  String poliza;
-  String vigencia;
-  String nombreAc;
-  String curp;
-  String domicilio;
-  String tipoAtencion;
+  String? vigencia;
+  String? nombreAc;
+  String? curp;
+  String? domicilio;
+  String? tipoAtencion;
   String? institucionMedica;
-  String fechaRecepcion;
-  String horaRecepcion;
-  String fechaAlta;
-  String horaAlta;
-  String observaciones;
-  String icon;
+  String? fechaRecepcion;
+  String? horaRecepcion;
+  String? fechaAlta;
+  String? horaAlta;
+  String? observaciones;
+  String? icon;
 
   factory AfectadoModel.fromJson(Map<String, dynamic> json) => AfectadoModel(
         aseguradora: json["aseguradora"],
-        poliza: json["poliza"],
         vigencia: json["vigencia"],
         nombreAc: json["nombreAc"],
         curp: json["curp"],
@@ -57,7 +54,6 @@ class AfectadoModel {
 
   Map<String, dynamic> toJson() => {
         "aseguradora": aseguradora,
-        "poliza": poliza,
         "vigencia": vigencia,
         "nombreAc": nombreAc,
         "curp": curp,
@@ -74,7 +70,6 @@ class AfectadoModel {
 
   @override
   String toString() {
-    // TODO: implement toString
-    return "Aseguradora: $aseguradora Poliza: $poliza Vigencia: $vigencia NombreAc: $nombreAc CURP: $curp Domicilio: $domicilio TipoAtencion $tipoAtencion InstitucionMedica $institucionMedica FechaRecepcion: $fechaRecepcion HoraRecepcion $horaRecepcion FechaAlta: $fechaAlta HoraAlta: $horaAlta Observaciones $observaciones";
+    return "Aseguradora: $aseguradora Vigencia: $vigencia NombreAc: $nombreAc CURP: $curp Domicilio: $domicilio TipoAtencion $tipoAtencion InstitucionMedica $institucionMedica FechaRecepcion: $fechaRecepcion HoraRecepcion $horaRecepcion FechaAlta: $fechaAlta HoraAlta: $horaAlta Observaciones $observaciones";
   }
 }

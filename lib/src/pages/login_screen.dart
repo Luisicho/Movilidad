@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:movilidad/src/utils/colors_util.dart';
+import 'package:quickalert/quickalert.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -12,8 +15,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
   // editing controller
-  final TextEditingController userController = new TextEditingController();
-  final TextEditingController passwordController = new TextEditingController();
+  final TextEditingController userController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   //focus nodes
   FocusNode textSecondFocusNode = FocusNode();
@@ -31,6 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
         if (value!.isEmpty) {
           return ("El Usuario es requerido para ingresar");
         }
+        return null;
       },
       onSaved: (value) {
         userController.text = value!;
@@ -58,13 +62,14 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       obscureText: true,
       validator: (value) {
-        RegExp regex = new RegExp(r'^.{6,}$');
+        RegExp regex = RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
           return ("La Contraseña es requerida para ingresar");
         }
         if (!regex.hasMatch(value)) {
           return ("Ingrese Contraseña valida(Min 6 Caracteres)");
         }
+        return null;
       },
       onSaved: (value) {
         passwordController.text = value!;
@@ -84,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final loginButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
-      color: Colors.purple,
+      color: MORADOFUERTE,
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
@@ -109,57 +114,71 @@ class _LoginScreenState extends State<LoginScreen> {
     );
     //View complete
     return Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage(
-                "assets/fondoSinMovilidad.png",
-              ),
-              fit: BoxFit.cover),
-        ),
-        child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: Center(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(36.0),
-                child: Form(
-                  key: _formKey,
-                  //Valida automaticamente al escribir
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      SizedBox(
-                        height: 200,
-                        child: Image.asset(
-                          "assets/logoMovilidad.png",
-                          fit: BoxFit.contain,
-                        ),
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage(
+              "assets/fondoSinMovilidad.png",
+            ),
+            fit: BoxFit.cover),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(36.0),
+              child: Form(
+                key: _formKey,
+                //Valida automaticamente al escribir
+                //autovalidateMode: AutovalidateMode.onUserInteraction,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(
+                      height: 200,
+                      child: Image.asset(
+                        "assets/logoMovilidad.png",
+                        fit: BoxFit.contain,
                       ),
-                      const SizedBox(height: 45),
-                      usuarioField,
-                      const SizedBox(height: 25),
-                      passwordField,
-                      const SizedBox(height: 35),
-                      loginButton,
-                      const SizedBox(height: 15),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 45),
+                    usuarioField,
+                    const SizedBox(height: 25),
+                    passwordField,
+                    const SizedBox(height: 35),
+                    loginButton,
+                    const SizedBox(height: 15),
+                  ],
                 ),
               ),
             ),
           ),
         ),
-      );
+      ),
+    );
   }
 
   void signIn(String username, String password) {
     clearTXT();
     //Base de datos Inicia
     //DBProvider.db.database;
-    //Inicia la pantalla Home
-    Navigator.pushNamed(context, 'home_screen');
+    //------------------------------QuickAlert
+    QuickAlert.show(
+      context: context,
+      barrierDismissible: false,
+      title: 'Atencion',
+      text: 'Tienes levantamientos sin cerrar',
+      type: QuickAlertType.info,
+      confirmBtnText: 'Confirmar',
+      onConfirmBtnTap: () {
+        //Sale del QuickAlert
+        Navigator.pop(context);
+        //Inicia la pantalla Home
+        Navigator.pushNamed(context, 'home_screen');
+      },
+    );
+    //------------------------------QuickAlert
   }
 
   void clearTXT() {

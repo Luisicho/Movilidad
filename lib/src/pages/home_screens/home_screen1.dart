@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../maps/map_main.dart';
-
 class HomeScreen1 extends StatefulWidget {
   const HomeScreen1({Key? key}) : super(key: key);
 
@@ -34,7 +32,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
                   children: [
                     Ink.image(
                         image: const AssetImage(
-                          "assets/mapicon.png",
+                          "assets/mapicon2.png",
                         ),
                         height: 400,
                         width: 400,

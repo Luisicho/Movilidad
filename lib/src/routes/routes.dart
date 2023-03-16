@@ -8,10 +8,10 @@ import '../pages/login_screen.dart';
 
 Map<String, WidgetBuilder> getAplicationRoutes() {
   return <String, WidgetBuilder>{
-    '/': (context) => LoginScreen(),
-    'home_screen': (context) => HomeScreen(),
-    'lev_main': (context) => levMain(),
-    'map_main': (context) => MapMain(),
-    'main_vehiculo': (context) => MainVehiculo(),
+    '/': (context) => const LoginScreen(),
+    'home_screen': (context) => const HomeScreen(),
+    'lev_main': (context) => const levMain(),
+    'map_main': (context) => const MapMain(),
+    'main_vehiculo': (context) => const MainVehiculo(),
   };
 }

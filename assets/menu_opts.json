@@ -6,21 +6,24 @@
             "icon" : "car_crash",
             "texto": "Alertas",
             "folio": "01",
-            "descripcion": "Automovil con choque muy aparatoso"
+            "descripcion": "Automovil con choque muy aparatoso",
+            "poliza": "98DSAF23"
         },
         {
             "ruta" : "avatar",
             "icon" : "car_crash",
             "texto": "Avatars",
             "folio": "02",
-            "descripcion": "Vehiculo moticiclista accidentado"
+            "descripcion": "Vehiculo moticiclista accidentado",
+            "poliza": "KSJ8344"
         },
         {
             "ruta" : "card",
             "icon" : "car_crash",
             "texto": "Cards - Tarjetas",
             "folio": "03",
-            "descripcion": "Siniestro poco comun, ocurrio una tristesa"
+            "descripcion": "Siniestro poco comun, ocurrio una tristesa",
+            "poliza": "HERUI214"
         }
         ,
         {
@@ -28,7 +31,8 @@
             "icon" : "car_crash",
             "texto": "Cards - Tarjetas",
             "folio": "04",
-            "descripcion": "El vehiculo publico choco con una combi"
+            "descripcion": "El vehiculo publico choco con una combi",
+            "poliza": "PDI431"
         }
     ]
 }

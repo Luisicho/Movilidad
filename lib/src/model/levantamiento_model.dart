@@ -15,43 +15,49 @@ String levantamientoModelToJson(LevantamientoModel data) =>
 class LevantamientoModel {
   LevantamientoModel({
     required this.folio,
-    required this.fechaLlegada,
-    required this.horaLlegada,
-    required this.horaAccidente,
-    required this.ubicacion,
-    required this.entre,
-    required this.y,
-    required this.longitud,
-    required this.latitud,
-    required this.noEconomico,
-    required this.placas,
-    required this.descripcion,
-    required this.concesionario,
-    required this.noLicencia,
-    required this.tipo,
-    required this.nombre,
-    required this.vigencia,
+    required this.poliza,
+    this.aseguradora,
+    this.vigencia,
+    this.fechaLlegada,
+    this.horaLlegada,
+    this.horaAccidente,
+    this.ubicacion,
+    this.entre,
+    this.yentre,
+    this.longitud,
+    this.latitud,
+    this.noEconomico,
+    this.placas,
+    this.descripcion,
+    this.concesionario,
+    this.noLicencia,
+    this.tipo,
+    this.nombre,
+    this.vigenciaAsc,
     required this.fotosLev,
-    required this.icon,
+    this.icon,
   });
 
   String folio;
-  String fechaLlegada;
-  String horaLlegada;
-  String horaAccidente;
-  String ubicacion;
-  String entre;
-  String y;
-  String longitud;
-  String latitud;
-  String noEconomico;
-  String placas;
-  String descripcion;
-  String concesionario;
-  String noLicencia;
-  String tipo;
-  String nombre;
-  String vigencia;
+  String poliza;
+  String? aseguradora;
+  String? vigenciaAsc;
+  String? fechaLlegada;
+  String? horaLlegada;
+  String? horaAccidente;
+  String? ubicacion;
+  String? entre;
+  String? yentre;
+  String? longitud;
+  String? latitud;
+  String? noEconomico;
+  String? placas;
+  String? descripcion;
+  String? concesionario;
+  String? noLicencia;
+  String? tipo;
+  String? nombre;
+  String? vigencia;
   List<File> fotosLev = [
     File(''),
     File(''),
@@ -60,17 +66,20 @@ class LevantamientoModel {
     File(''),
     File('')
   ];
-  String icon;
+  String? icon;
 
   factory LevantamientoModel.fromJson(Map<String, dynamic> json) =>
       LevantamientoModel(
         folio: json["folio"],
+        poliza: json["poliza"],
+        aseguradora: json["aseguradora"],
+        vigenciaAsc: json["vigenciaAsc"],
         fechaLlegada: json["fechaLlegada"],
         horaLlegada: json["horaLlegada"],
         horaAccidente: json["horaAccidente"],
         ubicacion: json["ubicacion"],
         entre: json["entre"],
-        y: json["y"],
+        yentre: json["yentre"],
         longitud: json["longitud"],
         latitud: json["latitud"],
         noEconomico: json["noEconomico"],
@@ -87,12 +96,15 @@ class LevantamientoModel {
 
   Map<String, dynamic> toJson() => {
         "folio": folio,
+        "poliza": poliza,
+        "aseguradora": aseguradora,
+        "vigenciaAsc": vigenciaAsc,
         "fechaLlegada": fechaLlegada,
         "horaLlegada": horaLlegada,
         "horaAccidente": horaAccidente,
         "ubicacion": ubicacion,
         "entre": entre,
-        "y": y,
+        "entre2": yentre,
         "longitud": longitud,
         "latitud": latitud,
         "noEconomico": noEconomico,
@@ -108,19 +120,21 @@ class LevantamientoModel {
       };
   @override
   String toString() {
-    return "Folio: $folio Nombre: $nombre FechaLlegada: $fechaLlegada Descripcion: $descripcion HoraLlegada: $horaLlegada HoraAccidente: $horaAccidente Ubicacion: $ubicacion Entre: $entre Y: $y Longitud: $longitud Latitud: $latitud NoEconomico: $noEconomico Placas: $placas Concesionario: $concesionario NoLicencia: $noLicencia Tipo: $tipo Vigencia: $vigencia";
+    return "Folio: $folio Poliza $poliza Aseguradora: $aseguradora VigenciaAsc: $vigenciaAsc Nombre: $nombre FechaLlegada: $fechaLlegada Descripcion: $descripcion HoraLlegada: $horaLlegada HoraAccidente: $horaAccidente Ubicacion: $ubicacion Entre: $entre Yentre: $yentre Longitud: $longitud Latitud: $latitud NoEconomico: $noEconomico Placas: $placas Concesionario: $concesionario NoLicencia: $noLicencia Tipo: $tipo Vigencia: $vigencia";
   }
 }
 
 List<LevantamientoModel> listEjemploLevantamiento = [
   LevantamientoModel(
     folio: '01',
+    poliza: '01',
+    aseguradora: '',
     fechaLlegada: 'FechaLlegada',
     horaLlegada: 'HoraLlegada',
     horaAccidente: 'HoraAccidente',
     ubicacion: 'Ubicacion',
     entre: 'Entre',
-    y: 'Y',
+    yentre: 'Entre2',
     longitud: 'Longitud',
     latitud: 'Latitud',
     noEconomico: 'NoEconomico',
@@ -136,12 +150,14 @@ List<LevantamientoModel> listEjemploLevantamiento = [
   ),
   LevantamientoModel(
     folio: '02',
+    poliza: '01',
+    aseguradora: '',
     fechaLlegada: 'FechaLlegada',
     horaLlegada: 'HoraLlegada',
     horaAccidente: 'HoraAccidente',
     ubicacion: 'Ubicacion',
     entre: 'Entre',
-    y: 'Y',
+    yentre: 'Entre2',
     longitud: 'Longitud',
     latitud: 'Latitud',
     noEconomico: 'NoEconomico',
@@ -157,12 +173,14 @@ List<LevantamientoModel> listEjemploLevantamiento = [
   ),
   LevantamientoModel(
     folio: '03',
+    poliza: '01',
+    aseguradora: '',
     fechaLlegada: 'FechaLlegada',
     horaLlegada: 'HoraLlegada',
     horaAccidente: 'HoraAccidente',
     ubicacion: 'Ubicacion',
     entre: 'Entre',
-    y: 'Y',
+    yentre: 'Entre2',
     longitud: 'Longitud',
     latitud: 'Latitud',
     noEconomico: 'NoEconomico',
