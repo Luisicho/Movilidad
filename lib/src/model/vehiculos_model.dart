@@ -14,7 +14,7 @@ class VehiculoModel {
         this.noeconomico,
         this.placas,
         this.descripcion,
-        this.concecionario,
+        this.concesionario,
         this.licencia,
         this.tipo,
         this.vigencia,
@@ -25,7 +25,7 @@ class VehiculoModel {
     String? noeconomico;
     String? placas;
     String? descripcion;
-    String? concecionario;
+    String? concesionario;
     String? licencia;
     String? tipo;
     String? vigencia;
@@ -36,7 +36,7 @@ class VehiculoModel {
         noeconomico: json["noeconomico"],
         placas: json["placas"],
         descripcion: json["descripcion"],
-        concecionario: json["concecionario"],
+        concesionario: json["concesionario"],
         licencia: json["licencia"],
         tipo: json["tipo"],
         vigencia: json["vigencia"],
@@ -48,7 +48,7 @@ class VehiculoModel {
         "noeconomico": noeconomico,
         "placas": placas,
         "descripcion": descripcion,
-        "concecionario": concecionario,
+        "concesionario": concesionario,
         "licencia": licencia,
         "tipo": tipo,
         "vigencia": vigencia,

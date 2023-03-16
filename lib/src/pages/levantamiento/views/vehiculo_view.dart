@@ -920,7 +920,7 @@ class _vehiculoViewState extends State<vehiculoView> {
                       vehiculo.noeconomico = '';
                     }
                     //Asignacion
-                    vehiculo.concecionario = conceController.text;
+                    vehiculo.concesionario = conceController.text;
                     vehiculo.descripcion = descripcionController.text;
 
                     //------------------LICENCIAS----------------

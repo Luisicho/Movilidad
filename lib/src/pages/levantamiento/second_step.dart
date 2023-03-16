@@ -93,7 +93,7 @@ class _secondStepState extends State<secondStep> {
                       ),
                     ),
                     subtitle: Text(
-                      widget.vehiculos[index].concecionario!,
+                      widget.vehiculos[index].concesionario!,
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black12,
