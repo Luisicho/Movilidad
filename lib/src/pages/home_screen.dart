@@ -45,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
               //Screens from page
               HomeScreen3(),
               HomeScreen2(),
+              HomeScreen1(),
             ],
           ),
           Container(
@@ -53,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 //dot indicator
                 SmoothPageIndicator(
               controller: _pageController,
-              count: 2,
+              count: 3,
             ),
           )
         ]),

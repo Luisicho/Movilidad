@@ -32,13 +32,13 @@ class _HomeScreen1State extends State<HomeScreen1> {
                   children: [
                     Ink.image(
                         image: const AssetImage(
-                          "assets/mapicon2.png",
+                          "assets/ticket.png",
                         ),
                         height: 400,
                         width: 400,
                         fit: BoxFit.contain),
                     const Text(
-                      'Maps & GO',
+                      'Tickets',
                       style: TextStyle(fontSize: 32, color: Colors.white),
                     ),
                   ],
@@ -50,7 +50,7 @@ class _HomeScreen1State extends State<HomeScreen1> {
   }
 
   void goToMain() {
-    //Inicia la pantalla MapMain
-    Navigator.pushNamed(context, 'map_main');
+    //Inicia la pantalla ticket_main
+    Navigator.pushNamed(context, 'main_ticket');
   }
 }

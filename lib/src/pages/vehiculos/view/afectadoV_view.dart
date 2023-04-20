@@ -293,7 +293,7 @@ class _accidentadoVViewState extends State<accidentadoVView> {
           flex: 5,
           child: buildTextField(
             'Hora Recepción',
-            fechaRecepcionController,
+            hourRecepcionController,
             Icons.access_alarm,
             true,
             const EdgeInsets.fromLTRB(10, 05, 10, 05),
