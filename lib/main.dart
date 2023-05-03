@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: MORADOMATERIAL,
         bottomAppBarColor: MORADOMATERIAL,
       ),
-      initialRoute: '/',
+      initialRoute: 'request',
       //Rutas de la APP
       routes: getAplicationRoutes(),
     );

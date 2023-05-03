@@ -14,50 +14,52 @@ String levantamientoModelToJson(LevantamientoModel data) =>
 
 class LevantamientoModel {
   LevantamientoModel({
+    this.name,
     required this.folio,
     required this.poliza,
-    this.aseguradora,
-    this.vigencia,
-    this.fechaLlegada,
-    this.horaLlegada,
-    this.horaAccidente,
-    this.ubicacion,
-    this.entre,
-    this.yentre,
-    this.longitud,
-    this.latitud,
-    this.noEconomico,
-    this.placas,
-    this.descripcion,
-    this.concesionario,
-    this.noLicencia,
-    this.tipo,
-    this.nombre,
-    this.vigenciaAsc,
+    this.aseguradora = "",
+    this.vigencia = "",
+    this.fechaLlegada = "",
+    this.horaLlegada = "",
+    this.horaAccidente = "",
+    this.ubicacion = "",
+    this.entre = "",
+    this.yentre = "",
+    this.longitud = "",
+    this.latitud = "",
+    this.noEconomico = "",
+    this.placas = "",
+    this.descripcion = "",
+    this.concesionario = "",
+    this.noLicencia = "",
+    this.tipo = "",
+    this.nombre = "",
+    this.vigenciaAsc = "",
     required this.fotosLev,
-    this.icon,
+    this.icon = "",
   });
 
+  String? name;
   String folio;
   String poliza;
   String? aseguradora;
-  String? vigenciaAsc;
-  String? fechaLlegada;
-  String? horaLlegada;
-  String? horaAccidente;
-  String? ubicacion;
-  String? entre;
-  String? yentre;
-  String? longitud;
-  String? latitud;
-  String? noEconomico;
-  String? placas;
-  String? descripcion;
-  String? concesionario;
-  String? noLicencia;
-  String? tipo;
-  String? nombre;
-  String? vigencia;
+  String vigenciaAsc;
+  String fechaLlegada;
+  String horaLlegada;
+  String horaAccidente;
+  String ubicacion;
+  String entre;
+  String yentre;
+  String longitud;
+  String latitud;
+  String noEconomico;
+  String placas;
+  String descripcion;
+  String concesionario;
+  String noLicencia;
+  String tipo;
+  String nombre;
+  String vigencia;
   List<File> fotosLev = [
     File(''),
     File(''),
@@ -66,10 +68,11 @@ class LevantamientoModel {
     File(''),
     File('')
   ];
-  String? icon;
+  String icon;
 
   factory LevantamientoModel.fromJson(Map<String, dynamic> json) =>
       LevantamientoModel(
+        name: json["name"],
         folio: json["folio"],
         poliza: json["poliza"],
         aseguradora: json["aseguradora"],
@@ -95,6 +98,7 @@ class LevantamientoModel {
       );
 
   Map<String, dynamic> toJson() => {
+        "name": name,
         "folio": folio,
         "poliza": poliza,
         "aseguradora": aseguradora,

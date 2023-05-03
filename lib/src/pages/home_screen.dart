@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 //dot indicator
                 SmoothPageIndicator(
               controller: _pageController,
-              count: 3,
+              count: 2,
             ),
           )
         ]),

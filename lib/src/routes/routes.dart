@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movilidad/src/pages/request.dart';
 import 'package:movilidad/src/pages/ticket/ticket_main.dart';
 
 import '../pages/levantamiento/lev_main.dart';
@@ -15,5 +16,6 @@ Map<String, WidgetBuilder> getAplicationRoutes() {
     'map_main': (context) => const MapMain(),
     'main_vehiculo': (context) => const MainVehiculo(),
     'main_ticket': (context) => const TicketMain(),
+    'request': (context) => const request(),
   };
 }
