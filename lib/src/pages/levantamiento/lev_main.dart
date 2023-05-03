@@ -84,17 +84,17 @@ class _levMainState extends State<levMain> {
                       return;
                     }
                     if (tempfirts.horaAccidente == null ||
-                        tempfirts.horaAccidente!.isEmpty) {
+                        tempfirts.horaAccidente.isEmpty) {
                       error += ' Hora accidente faltante \n';
                       firtStep = false;
                     }
                     if (tempfirts.concesionario == null ||
-                        tempfirts.concesionario!.isEmpty) {
+                        tempfirts.concesionario.isEmpty) {
                       error += ' Concesionario faltante \n';
                       firtStep = false;
                     }
                     if (tempfirts.vigencia == null ||
-                        tempfirts.vigencia!.isEmpty) {
+                        tempfirts.vigencia.isEmpty) {
                       error += ' Chofer faltante \n';
                       firtStep = false;
                     }

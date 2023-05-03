@@ -114,7 +114,7 @@ class _MainVehiculoState extends State<MainVehiculo> {
               children: [
                 ListTile(
                   title: Text(levantamiento.folio),
-                  subtitle: Text(levantamiento.descripcion!),
+                  subtitle: Text(levantamiento.descripcion),
                   leading: const Icon(Icons.car_crash),
                   trailing: const Icon(Icons.keyboard_arrow_right),
                   onTap: () {
