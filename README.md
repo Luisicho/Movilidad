@@ -1,10 +1,11 @@
-# movilidad
+# Movilidad
 
-A new Flutter project.
+Este es un proyecto desarrollado en flutter para la Secretaria de Movilidad del Estado de Nayarit.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Para poder utilizar esta aplicacion es necesario un dispositivo movil, 
+asi como el SDK de Flutter encontrado en https://docs.flutter.dev/get-started/install.
 
 A few resources to get you started if this is your first Flutter project:
 
