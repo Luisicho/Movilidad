@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:movilidad/src/model/levantamiento_model.dart';
+import 'package:movilidad/src/model/afectado_model.dart';
 import 'package:movilidad/src/utils/tools_util.dart';
 
 class _ApiWebProvider {
@@ -9,6 +10,7 @@ class _ApiWebProvider {
   final String api_secret = "210a5620fc253a0";
   final String ip = "http://10.0.2.2:8000";
   String request = "";
+  String request2 = "";
   String token = "";
   
   //ApiWebConstructor
@@ -68,6 +70,43 @@ class _ApiWebProvider {
     } else {
       throw Exception('Error al insertar');
     }
+  }
+
+  //POST /Afectado
+  Future<String> postAfectado(AfectadoModel afectado) async {
+    request = "$ip/api/resource/Afectado";
+    request2 = "$ip/api/resource/Detalle Afectados";
+    token = "token $api_key:$api_secret";
+    //add Afectado
+    final response = await http.post(Uri.parse(request), headers: {
+      "Authorization": token
+    }, body: {
+      "idafectado": 0,
+    });
+    final idRe = jsonDecode(response.body)['data']['name'];
+    //add Detalle Afectado
+    final response2 = await http.post(Uri.parse(request2), headers: {
+      "Authorization": token
+    }, body: {
+      "idafectado": "0",
+      "aseguradora": afectado.aseguradora,
+      "vigenciaaseguradora": ReverseDate(afectado.vigencia),
+      "nombreac": "asd",
+      "curp": "sad",
+      "domicilio": "asd",
+      "tipoatencion": "En sitio/ambulancia",
+      "institucionmedica": "CRUZ ROJA MEXICANA IAP",
+      "fecharecepcion": "2023-05-08",
+      "horarecepcion": "8:13:47.460203",
+      "fechaalta": "2023-05-24",
+      "horaalta": "8:13:47.460293",
+      "observaciones": "asda",
+      "parent": idRe,
+      "parentfield": "listaafectado",
+      "parenttype": "Afectado",
+      "doctype": "Detalle Afectados",
+    });
+    return "";
   }
 
 }
