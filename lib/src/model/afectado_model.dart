@@ -7,34 +7,34 @@ String afectadoModelToJson(AfectadoModel data) => json.encode(data.toJson());
 
 class AfectadoModel {
   AfectadoModel({
-    this.aseguradora,
-    this.vigencia,
-    this.nombreAc,
-    this.curp,
-    this.domicilio,
-    this.tipoAtencion,
-    this.institucionMedica,
-    this.fechaRecepcion,
-    this.horaRecepcion,
-    this.fechaAlta,
-    this.horaAlta,
-    this.observaciones,
-    this.icon,
+    this.aseguradora = "",
+    this.vigencia = "",
+    this.nombreAc = "",
+    this.curp = "",
+    this.domicilio = "",
+    this.tipoAtencion = "",
+    this.institucionMedica = "",
+    this.fechaRecepcion = "",
+    this.horaRecepcion = "",
+    this.fechaAlta = "",
+    this.horaAlta = "",
+    this.observaciones = "",
+    this.icon = "airline_seat_flat_outlined",
   });
 
-  String? aseguradora;
-  String? vigencia;
-  String? nombreAc;
-  String? curp;
-  String? domicilio;
-  String? tipoAtencion;
-  String? institucionMedica;
-  String? fechaRecepcion;
-  String? horaRecepcion;
-  String? fechaAlta;
-  String? horaAlta;
-  String? observaciones;
-  String? icon;
+  String aseguradora;
+  String vigencia;
+  String nombreAc;
+  String curp;
+  String domicilio;
+  String tipoAtencion;
+  String institucionMedica;
+  String fechaRecepcion;
+  String horaRecepcion;
+  String fechaAlta;
+  String horaAlta;
+  String observaciones;
+  String icon;
 
   factory AfectadoModel.fromJson(Map<String, dynamic> json) => AfectadoModel(
         aseguradora: json["aseguradora"],
