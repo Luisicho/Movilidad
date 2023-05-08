@@ -68,7 +68,7 @@ class _ApiWebProvider {
     if (response.statusCode == 200) {
       return "OK";
     } else {
-      throw Exception('Error al insertar');
+      throw Exception('Error al insertar LEVANTAMIENTO');
     }
   }
 
@@ -81,8 +81,12 @@ class _ApiWebProvider {
     final response = await http.post(Uri.parse(request), headers: {
       "Authorization": token
     }, body: {
-      "idafectado": 0,
+      "idafectado": "0",
     });
+    if (response.statusCode == 200) {
+    } else {
+      throw Exception('Error al insertar AFECTADO');
+    }
     final idRe = jsonDecode(response.body)['data']['name'];
     //add Detalle Afectado
     final response2 = await http.post(Uri.parse(request2), headers: {
@@ -106,7 +110,11 @@ class _ApiWebProvider {
       "parenttype": "Afectado",
       "doctype": "Detalle Afectados",
     });
-    return "";
+    if (response2.statusCode == 200) {
+      return "OK";
+    } else {
+      throw Exception('Error al insertar DETALLE AFECTADO');
+    }
   }
 
 }

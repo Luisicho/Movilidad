@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:movilidad/src/model/afectado_model.dart';
 import 'package:movilidad/src/model/levantamiento_model.dart';
 import 'package:movilidad/src/providers/ApiWeb_provider.dart';
 
@@ -81,11 +82,9 @@ class _requestState extends State<request> {
       ),
       body: Center(
         child: FutureBuilder(
-          future: apiWebProvider.postLevantamiento(
-            LevantamientoModel(
-              folio: "6", 
-              poliza: "324f", 
-              fotosLev: List<File>.empty(),
+          future: apiWebProvider.postAfectado(
+            AfectadoModel(
+              aseguradora: 'Ninguna'
             ),
           ),
           builder: (context, snapshot) {
