@@ -10,26 +10,26 @@ String vehiculoModelToJson(VehiculoModel? data) => json.encode(data!.toJson());
 
 class VehiculoModel {
     VehiculoModel({
-        this.id,
-        this.noeconomico,
-        this.placas,
-        this.descripcion,
-        this.concesionario,
-        this.licencia,
-        this.tipo,
-        this.vigencia,
-        this.nombre,
+        this.id = '',
+        this.noeconomico = '',
+        this.placas = '',
+        this.descripcion = '',
+        this.concesionario = '',
+        this.licencia = '',
+        this.tipo = 'Chofer',
+        this.vigencia = '',
+        this.nombre = '',
     });
 
-    String? id;
-    String? noeconomico;
-    String? placas;
-    String? descripcion;
-    String? concesionario;
-    String? licencia;
-    String? tipo;
-    String? vigencia;
-    String? nombre;
+    String id;
+    String noeconomico;
+    String placas;
+    String descripcion;
+    String concesionario;
+    String licencia;
+    String tipo;
+    String vigencia;
+    String nombre;
 
     factory VehiculoModel.fromJson(Map<String, dynamic> json) => VehiculoModel(
         id: json["id"],
