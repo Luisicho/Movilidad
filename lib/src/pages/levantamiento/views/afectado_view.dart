@@ -43,7 +43,7 @@ final TextEditingController hourAltaController = TextEditingController();
 final TextEditingController descripcionController = TextEditingController();
 
 //Generales
-String? institucionMed;
+String institucionMed = "Ninguno";
 
 //Generales
 var atencion = 'En sitio/ambulancia';

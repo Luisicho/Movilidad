@@ -2,6 +2,10 @@
     "nombreApp" : "Componentes",
     "serviciosMedicos" : [
         {
+            "nom_estab": "Ninguno",
+            "raz_social": "Ninguno"
+        },
+        {
             "nom_estab": "CRUZ ROJA MEXICANA IAP",
             "raz_social": "CRUZ ROJA MEXICANA IAP",
             "nom_vial": "AVENIDA DE LOS INSURGENTES ORIENTE",
