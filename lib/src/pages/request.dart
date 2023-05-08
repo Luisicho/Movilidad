@@ -83,9 +83,14 @@ class _requestState extends State<request> {
       body: Center(
         child: FutureBuilder(
           future: apiWebProvider.postAfectado(
-            AfectadoModel(
-              aseguradora: 'Ninguna'
-            ),
+            [
+              AfectadoModel(
+                aseguradora: 'Ninguna'
+              ),
+              AfectadoModel(
+                aseguradora: 'Ninguna'
+              ),
+            ]
           ),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
