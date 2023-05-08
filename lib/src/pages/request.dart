@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:movilidad/src/model/afectado_model.dart';
 import 'package:movilidad/src/model/levantamiento_model.dart';
+import 'package:movilidad/src/model/vehiculos_model.dart';
 import 'package:movilidad/src/providers/ApiWeb_provider.dart';
 
 Future<Album> fetchAlbum() async {
@@ -82,13 +83,13 @@ class _requestState extends State<request> {
       ),
       body: Center(
         child: FutureBuilder(
-          future: apiWebProvider.postAfectado(
+          future: apiWebProvider.postVehiculo(
             [
-              AfectadoModel(
-                aseguradora: 'Ninguna'
+              VehiculoModel(
+                noeconomico: '1'
               ),
-              AfectadoModel(
-                aseguradora: 'Ninguna'
+              VehiculoModel(
+                noeconomico: '2'
               ),
             ]
           ),

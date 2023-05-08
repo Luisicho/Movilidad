@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:movilidad/src/model/levantamiento_model.dart';
 import 'package:movilidad/src/model/afectado_model.dart';
+import 'package:movilidad/src/model/vehiculos_model.dart';
 import 'package:movilidad/src/utils/tools_util.dart';
 
 class _ApiWebProvider {
@@ -111,6 +112,48 @@ class _ApiWebProvider {
     });
     return "OK";
   }
+
+  //POST /Vehiculo
+  Future<String> postVehiculo(List<VehiculoModel> vehiculo) async {
+    request = "$ip/api/resource/Vehiculo";
+    request2 = "$ip/api/resource/Detalle Vehiculos";
+    token = "token $api_key:$api_secret";
+    //add Afectado
+    final response = await http.post(Uri.parse(request), headers: {
+      "Authorization": token
+    }, body: {
+      "idvehiculo": "0",
+    });
+    if (response.statusCode != 200) {
+      throw Exception('Error al insertar VEHICULO');
+    }
+    final idRe = jsonDecode(response.body)['data']['name'];
+    //add Detalle Afectado
+    vehiculo.forEach((element) async{
+      final response2 = await http.post(Uri.parse(request2), headers: {
+        "Authorization": token
+      }, body: {
+        "idvehiculo": "0",
+        "noeconomico": element.noeconomico,
+        "placas": element.placas,
+        "descripcion": element.descripcion,
+        "concesionario": element.concesionario,
+        "licencia": element.licencia,
+        "tipo": element.tipo,
+        "vigencia": element.vigencia,
+        "nombre": element.nombre,
+        "parent": idRe,
+        "parentfield": "listavehiculos",
+        "parenttype": "Vehiculo",
+        "doctype": "Detalle Vehiculos"
+      });
+      if (response2.statusCode != 200) {
+        throw Exception('Error al insertar DETALLE VEHICULO');
+      }
+    });
+    return "OK";
+  }
+
 }
 
 //Inicializa el proveedor
