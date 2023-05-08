@@ -88,7 +88,7 @@ class _thirdStepState extends State<thirdStep> {
                   child: ListTile(
                     leading: getIcon('airline_seat_flat_outlined'),
                     title: Text(
-                      widget.afectados[index].nombreAc!,
+                      widget.afectados[index].nombreAc,
                       style: const TextStyle(
                         fontSize: 22,
                         color: Colors.blueGrey,
@@ -96,7 +96,7 @@ class _thirdStepState extends State<thirdStep> {
                       ),
                     ),
                     subtitle: Text(
-                      widget.afectados[index].observaciones!,
+                      widget.afectados[index].observaciones,
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black12,
@@ -104,7 +104,7 @@ class _thirdStepState extends State<thirdStep> {
                       ),
                     ),
                     trailing: Text(
-                      widget.afectados[index].fechaRecepcion!,
+                      widget.afectados[index].fechaRecepcion,
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black26,

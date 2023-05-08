@@ -85,7 +85,7 @@ class _secondStepState extends State<secondStep> {
                   child: ListTile(
                     leading: getIcon('car_crash'),
                     title: Text(
-                      widget.vehiculos[index].descripcion!,
+                      widget.vehiculos[index].descripcion,
                       style: const TextStyle(
                         fontSize: 22,
                         color: Colors.blueGrey,
@@ -93,7 +93,7 @@ class _secondStepState extends State<secondStep> {
                       ),
                     ),
                     subtitle: Text(
-                      widget.vehiculos[index].concesionario!,
+                      widget.vehiculos[index].concesionario,
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black12,
@@ -101,7 +101,7 @@ class _secondStepState extends State<secondStep> {
                       ),
                     ),
                     trailing: Text(
-                      widget.vehiculos[index].licencia!,
+                      widget.vehiculos[index].licencia,
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black26,
