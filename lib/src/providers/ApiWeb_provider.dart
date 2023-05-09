@@ -12,6 +12,7 @@ class _ApiWebProvider {
   String request = "";
   String request2 = "";
   String token = "";
+  String idV = "", idA = "";
 
   //ApiWebConstructor
   ApiWebProvider() {}
@@ -33,7 +34,8 @@ class _ApiWebProvider {
   }
 
   //POST /Levantamiento
-  Future<String> postLevantamiento(LevantamientoModel levantamiento) async {
+  Future<String> postLevantamiento(
+      LevantamientoModel levantamiento, String nameV, String nameA) async {
     request = "$ip/api/resource/Levantamiento";
     token = "token $api_key:$api_secret";
     final response = await http.post(Uri.parse(request), headers: {
@@ -59,10 +61,12 @@ class _ApiWebProvider {
       "tipo": levantamiento.tipo,
       "nombre": levantamiento.nombre,
       "vigencia": levantamiento.vigencia,
+      "casovehiculo": nameV,
+      "casoafectado": nameA,
     });
-
+    final idRe = jsonDecode(response.body)['data']['name'];
     if (response.statusCode == 200) {
-      return "OK";
+      return idRe + "";
     } else {
       throw Exception('Error al insertar LEVANTAMIENTO');
     }
@@ -82,9 +86,10 @@ class _ApiWebProvider {
     if (response.statusCode != 200) {
       throw Exception('Error al insertar AFECTADO');
     }
-    final idRe = jsonDecode(response.body)['data']['name'];
+    final String idRe = jsonDecode(response.body)['data']['name'];
+    idA = idRe;
     //add Detalle Afectado
-    afectado.forEach((element) async{
+    afectado.forEach((element) async {
       final response2 = await http.post(Uri.parse(request2), headers: {
         "Authorization": token
       }, body: {
@@ -110,7 +115,7 @@ class _ApiWebProvider {
         throw Exception('Error al insertar DETALLE AFECTADO');
       }
     });
-    return "OK";
+    return idRe;
   }
 
   //POST /Vehiculo
@@ -127,9 +132,10 @@ class _ApiWebProvider {
     if (response.statusCode != 200) {
       throw Exception('Error al insertar VEHICULO');
     }
-    final idRe = jsonDecode(response.body)['data']['name'];
+    final String idRe = jsonDecode(response.body)['data']['name'];
+    idV = idRe;
     //add Detalle Afectado
-    vehiculo.forEach((element) async{
+    vehiculo.forEach((element) async {
       final response2 = await http.post(Uri.parse(request2), headers: {
         "Authorization": token
       }, body: {
@@ -151,6 +157,15 @@ class _ApiWebProvider {
         throw Exception('Error al insertar DETALLE VEHICULO');
       }
     });
+    return idRe;
+  }
+
+  //POST /LVA
+  Future<String> postLVA(LevantamientoModel levantamiento,
+      List<VehiculoModel> vehiculo, List<AfectadoModel> afectado) async {
+    await apiWebProvider.postAfectado(afectado);
+    await apiWebProvider.postVehiculo(vehiculo);
+    postLevantamiento(levantamiento, idV, idA);
     return "OK";
   }
 

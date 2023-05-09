@@ -83,7 +83,8 @@ class _requestState extends State<request> {
       ),
       body: Center(
         child: FutureBuilder(
-          future: apiWebProvider.postVehiculo(
+          future: apiWebProvider.postLVA(
+            LevantamientoModel(folio: '1', poliza: '2', fotosLev: List.empty()),
             [
               VehiculoModel(
                 noeconomico: '1'
@@ -91,12 +92,20 @@ class _requestState extends State<request> {
               VehiculoModel(
                 noeconomico: '2'
               ),
+            ],
+            [
+              AfectadoModel(
+                nombreAc: '1'
+              ),
+              AfectadoModel(
+                nombreAc: '2'
+              ),
             ]
           ),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Container(
-                child: Text(snapshot.data!),
+                child: Text(snapshot.toString()),
               );
             } else if (snapshot.hasError) {
               return Text('${snapshot.error}');
