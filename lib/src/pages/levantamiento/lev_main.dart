@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:movilidad/src/model/afectado_model.dart';
+import 'package:movilidad/src/model/levantamiento_model.dart';
+import 'package:movilidad/src/model/vehiculos_model.dart';
 
 import 'package:movilidad/src/pages/levantamiento/first_step.dart';
 import 'package:movilidad/src/pages/levantamiento/second_step.dart';
 import 'package:movilidad/src/pages/levantamiento/third_step.dart';
+import 'package:movilidad/src/providers/ApiWeb_provider.dart';
 import 'package:movilidad/src/utils/colors_util.dart';
 import 'package:quickalert/quickalert.dart';
 
@@ -32,6 +36,19 @@ class _levMainState extends State<levMain> {
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Funciones-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    bool agregarLevantamientoNube(LevantamientoModel levantamiento,
+        List<VehiculoModel> vehiculo, List<AfectadoModel> afectado) {
+      //Se agrega aseguradora y vigencia a la lista de afetados
+      afectado.forEach((element) {
+        element.aseguradora = levantamiento.aseguradora;
+        element.vigencia = levantamiento.vigenciaAsc;
+      });
+      //Peticion de agregar Levantamiento, vehiculo y afectado a API
+      Future<String> resul =
+          apiWebProvider.postLVA(levantamiento, vehiculo, afectado);
+      return resul.toString() == "OK" ? true : false;
+    }
 
     List<Step> getSteps() => [
           Step(
@@ -68,11 +85,11 @@ class _levMainState extends State<levMain> {
                 height: 500,
                 child: TextButton(
                   onPressed: () {
-                    var tempfirts = primerPaso.levantamiento;
+                    var tempLevfirts = primerPaso.levantamiento;
                     var error = '';
                     var firtStep = true;
                     var thirStep = true;
-                    if (tempfirts.horaAccidente == null) {
+                    if (tempLevfirts.horaAccidente.isEmpty) {
                       QuickAlert.show(
                         context: context,
                         barrierDismissible: true,
@@ -83,23 +100,20 @@ class _levMainState extends State<levMain> {
                       );
                       return;
                     }
-                    if (tempfirts.horaAccidente == null ||
-                        tempfirts.horaAccidente.isEmpty) {
+                    if (tempLevfirts.horaAccidente.isEmpty) {
                       error += ' Hora accidente faltante \n';
                       firtStep = false;
                     }
-                    if (tempfirts.concesionario == null ||
-                        tempfirts.concesionario.isEmpty) {
+                    if (tempLevfirts.concesionario.isEmpty) {
                       error += ' Concesionario faltante \n';
                       firtStep = false;
                     }
-                    if (tempfirts.vigencia == null ||
-                        tempfirts.vigencia.isEmpty) {
+                    if (tempLevfirts.vigencia.isEmpty) {
                       error += ' Chofer faltante \n';
                       firtStep = false;
                     }
                     var fotos = 0;
-                    for (var element in tempfirts.fotosLev) {
+                    for (var element in tempLevfirts.fotosLev) {
                       if (element.path != '') fotos++;
                     }
                     if (fotos < 3) {
@@ -108,17 +122,31 @@ class _levMainState extends State<levMain> {
                     }
 
                     if (thirStep && firtStep) {
-                      //-------------Toast
-                      Fluttertoast.showToast(
-                          msg: 'Enviando a la nube',
-                          toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.CENTER,
-                          timeInSecForIosWeb: 1,
-                          backgroundColor: Colors.green,
-                          textColor: Colors.white,
-                          fontSize: 16.0);
-                      //-------------Toast
-                      Navigator.of(context).pop();
+                      if (agregarLevantamientoNube(tempLevfirts,
+                          segundoPaso.vehiculos, tercerPaso.afectados)) {
+                        //-------------Toast
+                        Fluttertoast.showToast(
+                            msg: 'Enviando a la nube',
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.CENTER,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.green,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
+                        //-------------Toast
+                      } else {
+                        //-------------Toast
+                        Fluttertoast.showToast(
+                            msg: 'Error al enviar',
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.CENTER,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
+                        //-------------Toast
+                      }
+                      //Navigator.of(context).pop();
                     } else {
                       //------------------------------QuickAlert
                       QuickAlert.show(
@@ -134,15 +162,13 @@ class _levMainState extends State<levMain> {
                   },
                   child: const Text(
                     'Guardar Datos de Accidente',
-                    style: TextStyle(
-                      fontSize: 30
-                    ),),
+                    style: TextStyle(fontSize: 30),
+                  ),
                 ),
               ),
             ),
           ),
         ];
-
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------Funciones-------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
