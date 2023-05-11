@@ -119,7 +119,7 @@ class _firstStepState extends State<firstStep> {
 
   //---------------------------------------------Inicio de variables y controladores------------------
 
-  String? aseguradora;
+  String aseguradora = "Ninguna";
   String vehiRespondable = "1";
   //ImagePicker
   final ImagePicker _picker = ImagePicker();
@@ -444,7 +444,7 @@ class _firstStepState extends State<firstStep> {
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //ASIGNA HORA DE HOY
-    hourLlegadaController.text = TimeOfDay.now().format(context).toString();
+    hourLlegadaController.text = TimeOfDay.now().format(context).toString().split(" ")[0];
     //Objeto
     widget.levantamiento.horaLlegada =
         TimeOfDay.now().format(context).toString();
@@ -534,10 +534,10 @@ class _firstStepState extends State<firstStep> {
                 //make format to the time
                 //var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
                 hourAccidenteController.text =
-                    timePicket.format(context).toString();
+                    timePicket.format(context).toString().split(" ")[0];
                 //Guarda hora en objeto levantamiento
                 widget.levantamiento.horaAccidente =
-                    timePicket.format(context).toString();
+                    hourAccidenteController.text;
               }
             },
           ),
