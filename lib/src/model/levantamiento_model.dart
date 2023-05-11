@@ -17,7 +17,7 @@ class LevantamientoModel {
     this.name,
     required this.folio,
     required this.poliza,
-    this.aseguradora = "",
+    this.aseguradora = "Ninguna",
     this.vigencia = "",
     this.fechaLlegada = "",
     this.horaLlegada = "",
@@ -42,7 +42,7 @@ class LevantamientoModel {
   String? name;
   String folio;
   String poliza;
-  String? aseguradora;
+  String aseguradora;
   String vigenciaAsc;
   String fechaLlegada;
   String horaLlegada;
