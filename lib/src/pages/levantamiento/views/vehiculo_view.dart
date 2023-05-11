@@ -176,13 +176,13 @@ var placas = [
 var licencias = [
   {
     'licencia': '1234',
-    'tipo': "B",
+    'tipo': "Chofer",
     'nombre': 'ABNER ULISES MENDOZA HERNANDEZ',
     'vigencia': '07/26/2025',
   },
   {
     'licencia': '11BDGTTN029448',
-    'tipo': "B",
+    'tipo': "Chofer",
     'nombre': 'FERNANDO ELIAS PALOMEQUE PEREZ',
     'vigencia': '7/26/2024'
   },
@@ -194,13 +194,13 @@ var licencias = [
   },
   {
     'licencia': '11ADGTTN005413',
-    'tipo': "A",
+    'tipo': "Automovilista",
     'nombre': 'ANA  MATILDE DE LAS MERCEDES PARDO HERNANDEZ',
     'vigencia': '7/26/2024'
   },
   {
     'licencia': '11ADGTTN005414',
-    'tipo': "C",
+    'tipo': "Motociclista",
     'nombre': 'ROSALIA GUADALUPEPEREZ PEREZ',
     'vigencia': '7/26/2024,A'
   },
@@ -321,7 +321,7 @@ class _vehiculoViewState extends State<vehiculoView> {
               if (noLicenciaController.text != "") {
                 var busquedatemp = licencias.where((element) =>
                     element['licencia'] == noLicenciaController.text);
-                if (busquedatemp.isNotEmpty) {
+                /*if (busquedatemp.isNotEmpty) {
                   var tipoLic = '';
                   switch (busquedatemp.first['tipo']!) {
                     case 'A':
@@ -339,12 +339,13 @@ class _vehiculoViewState extends State<vehiculoView> {
                     default:
                       break;
                   }
-                  tipoController.text = tipoLic;
-                  nombreController.text = busquedatemp.first['nombre']!;
-                  vigenciaController.text = busquedatemp.first['vigencia']!;
-                  mensaje = 'Encontrado en nube';
-                  color = Colors.green;
-                }
+                  
+                }*/
+                tipoController.text = busquedatemp.first['tipo']!;
+                nombreController.text = busquedatemp.first['nombre']!;
+                vigenciaController.text = busquedatemp.first['vigencia']!;
+                mensaje = 'Encontrado en nube';
+                color = Colors.green;
               }
               //-------------Toast
               Fluttertoast.showToast(
@@ -941,7 +942,7 @@ class _vehiculoViewState extends State<vehiculoView> {
                     }
                     //Asignacion
                     vehiculo.licencia = noLicenciaController.text;
-                    var newTipo = '';
+                    /*var newTipo = '';
                     switch (tipo) {
                       case 'Automovilista':
                         newTipo = 'A';
@@ -956,8 +957,9 @@ class _vehiculoViewState extends State<vehiculoView> {
                         newTipo = 'D';
                         break;
                       default:
-                    }
-                    vehiculo.tipo = newTipo;
+                      
+                    }*/
+                    vehiculo.tipo = tipo;
                     vehiculo.vigencia = vigenciaController.text;
                     vehiculo.nombre = nombreController.text;
 
