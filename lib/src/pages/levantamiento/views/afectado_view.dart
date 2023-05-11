@@ -311,7 +311,7 @@ class _afectadoViewState extends State<afectadoView> {
               if (timePicket != null) {
                 //make format to the time
                 //var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
-                hourRecepcionController.text = timePicket.format(context).toString().split(" ")[0];
+                hourRecepcionController.text = "${timePicket.hour}:${timePicket.minute}";;
 
               }
             },
@@ -411,7 +411,7 @@ class _afectadoViewState extends State<afectadoView> {
               if (timePicket != null) {
                 //make format to the time
                 //var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
-                hourAltaController.text = timePicket.format(context).toString().split(" ")[0];
+                hourAltaController.text = "${timePicket.hour}:${timePicket.minute}";;
               }
             },
           ),
