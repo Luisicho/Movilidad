@@ -43,7 +43,7 @@ final TextEditingController hourAltaController = TextEditingController();
 final TextEditingController descripcionController = TextEditingController();
 
 //Generales
-String institucionMed = "Ninguno";
+String institucionMed = "Ninguna";
 
 //Generales
 var atencion = 'En sitio/ambulancia';
@@ -311,8 +311,8 @@ class _afectadoViewState extends State<afectadoView> {
               if (timePicket != null) {
                 //make format to the time
                 //var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
-                hourRecepcionController.text =
-                    timePicket.format(context).toString();
+                hourRecepcionController.text = timePicket.format(context).toString().split(" ")[0];
+
               }
             },
           ),
@@ -411,7 +411,7 @@ class _afectadoViewState extends State<afectadoView> {
               if (timePicket != null) {
                 //make format to the time
                 //var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
-                hourAltaController.text = timePicket.format(context).toString();
+                hourAltaController.text = timePicket.format(context).toString().split(" ")[0];
               }
             },
           ),
