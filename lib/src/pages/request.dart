@@ -83,16 +83,7 @@ class _requestState extends State<request> {
       ),
       body: Center(
         child: FutureBuilder(
-          future: apiWebProvider.postLVA(
-            LevantamientoModel(folio: '1', poliza: '2', fotosLev: List.empty()),
-            [
-              VehiculoModel(
-                noeconomico: '1'
-              ),
-              VehiculoModel(
-                noeconomico: '2'
-              ),
-            ],
+          future: apiWebProvider.postAfectado(
             [
               AfectadoModel(
                 nombreAc: '1'

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:movilidad/src/model/vehiculos_model.dart';
+import 'package:movilidad/src/utils/tools_util.dart';
 
 class vehiculoView extends StatefulWidget {
   //variables
@@ -178,31 +179,31 @@ var licencias = [
     'licencia': '1234',
     'tipo': "Chofer",
     'nombre': 'ABNER ULISES MENDOZA HERNANDEZ',
-    'vigencia': '07/26/2025',
+    'vigencia': '07-10-2025',
   },
   {
     'licencia': '11BDGTTN029448',
     'tipo': "Chofer",
     'nombre': 'FERNANDO ELIAS PALOMEQUE PEREZ',
-    'vigencia': '7/26/2024'
+    'vigencia': '07-11-2024'
   },
   {
     'licencia': '11BDGTTN029445',
     'tipo': "D",
     'nombre': 'YESSICA SANDOVAL CASTILLO',
-    'vigencia': '7/26/2024'
+    'vigencia': '07-10-2024'
   },
   {
     'licencia': '11ADGTTN005413',
     'tipo': "Automovilista",
     'nombre': 'ANA  MATILDE DE LAS MERCEDES PARDO HERNANDEZ',
-    'vigencia': '7/26/2024'
+    'vigencia': '07-05-2024'
   },
   {
     'licencia': '11ADGTTN005414',
     'tipo': "Motociclista",
     'nombre': 'ROSALIA GUADALUPEPEREZ PEREZ',
-    'vigencia': '7/26/2024,A'
+    'vigencia': '07-07-2024'
   },
 ];
 
@@ -960,7 +961,7 @@ class _vehiculoViewState extends State<vehiculoView> {
                       
                     }*/
                     vehiculo.tipo = tipo;
-                    vehiculo.vigencia = vigenciaController.text;
+                    vehiculo.vigencia = ReverseDate(vigenciaController.text);
                     vehiculo.nombre = nombreController.text;
 
                     widget.addVehiculo(vehiculo);

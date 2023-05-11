@@ -123,7 +123,7 @@ class _ApiWebProvider {
     request = "$ip/api/resource/Vehiculo";
     request2 = "$ip/api/resource/Detalle Vehiculos";
     token = "token $api_key:$api_secret";
-    //add Afectado
+    //add Vehiculo
     final response = await http.post(Uri.parse(request), headers: {
       "Authorization": token
     }, body: {
@@ -134,7 +134,7 @@ class _ApiWebProvider {
     }
     final String idRe = jsonDecode(response.body)['data']['name'];
     idV = idRe;
-    //add Detalle Afectado
+    //add Detalle Vehiculo
     vehiculo.forEach((element) async {
       final response2 = await http.post(Uri.parse(request2), headers: {
         "Authorization": token
@@ -158,15 +158,6 @@ class _ApiWebProvider {
       }
     });
     return idRe;
-  }
-
-  //POST /LVA
-  Future<String> postLVA(LevantamientoModel levantamiento,
-      List<VehiculoModel> vehiculo, List<AfectadoModel> afectado) async {
-    await apiWebProvider.postAfectado(afectado);
-    await apiWebProvider.postVehiculo(vehiculo);
-    postLevantamiento(levantamiento, idV, idA);
-    return "OK";
   }
 
 }
