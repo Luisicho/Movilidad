@@ -7,7 +7,7 @@ String afectadoModelToJson(AfectadoModel data) => json.encode(data.toJson());
 
 class AfectadoModel {
   AfectadoModel({
-    this.aseguradora = "",
+    this.aseguradora = "Ninguna",
     this.vigencia = "",
     this.nombreAc = "",
     this.curp = "",
