@@ -45,12 +45,12 @@ class _levMainState extends State<levMain> {
         element.vigencia = levantamiento.vigenciaAsc;
       });
       //Peticion de agregar Levantamiento, vehiculo y afectado a API
-      //var resul = await apiWebProvider.postAfectado(afectado);
-      var resul2 = await apiWebProvider.postVehiculo(vehiculo);
+      var resul = await apiWebProvider.postAfectado(afectado);
+      //var resul2 = await apiWebProvider.postVehiculo(vehiculo);
       // var result3 =
       //     await apiWebProvider.postLevantamiento(levantamiento, resul, resul2);
       // resul.isEmpty || resul2.isEmpty || result3.isEmpty
-      if (resul2.isEmpty) {
+      if (resul.isEmpty) {
         //-------------Toast
         Fluttertoast.showToast(
           msg: 'Error al enviar',
