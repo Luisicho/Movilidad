@@ -45,34 +45,36 @@ class _levMainState extends State<levMain> {
         element.vigencia = levantamiento.vigenciaAsc;
       });
       //Peticion de agregar Levantamiento, vehiculo y afectado a API
-      var resul = await apiWebProvider.postAfectado(afectado);
-      //var resul2 = await apiWebProvider.postVehiculo(vehiculo);
-      // var result3 =
-      //     await apiWebProvider.postLevantamiento(levantamiento, resul, resul2);
-      // resul.isEmpty || resul2.isEmpty || result3.isEmpty
-      if (resul.isEmpty) {
-        //-------------Toast
-        Fluttertoast.showToast(
-          msg: 'Error al enviar',
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0);
-        //-------------Toast
-      }else{
-        //-------------Toast
-        Fluttertoast.showToast(
-          msg: 'Enviando a la nube',
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.green,
-          textColor: Colors.white,
-          fontSize: 16.0);
-        //-------------Toast
-      }
+      var resul = apiWebProvider.postAfectado(afectado).then((value) {
+        apiWebProvider.postVehiculo(vehiculo).then((value2) {
+          //Respuesta luego de insertar levantamiento
+          var res = apiWebProvider.postLevantamiento(levantamiento,value2,value);
+          // Mesaje si ocure error
+          if (res.toString().isEmpty) {
+            //-------------Toast
+            Fluttertoast.showToast(
+                msg: 'Error al enviar',
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.CENTER,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 16.0);
+            //-------------Toast
+          } else {
+            //-------------Toast
+            Fluttertoast.showToast(
+                msg: 'Enviando a la nube',
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.CENTER,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.green,
+                textColor: Colors.white,
+                fontSize: 16.0);
+            //-------------Toast
+          }
+        });
+      });
     }
 
     List<Step> getSteps() => [
@@ -149,7 +151,7 @@ class _levMainState extends State<levMain> {
                     if (thirStep && firtStep) {
                       agregarLevantamientoNube(tempLevfirts,
                           segundoPaso.vehiculos, tercerPaso.afectados);
-                      
+
                       //Navigator.of(context).pop();
                     } else {
                       //------------------------------QuickAlert

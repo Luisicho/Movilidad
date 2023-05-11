@@ -53,6 +53,12 @@ class _ApiWebProvider {
       "yentre": levantamiento.yentre,
       "longitud": levantamiento.longitud,
       "latitud": levantamiento.latitud,
+      "foto1": levantamiento.fotosLev[0].path,
+      "foto2": levantamiento.fotosLev[1].path,
+      "foto3": levantamiento.fotosLev[2].path,
+      "foto4": levantamiento.fotosLev[3].path,
+      "foto5": levantamiento.fotosLev[4].path,
+      "foto6": levantamiento.fotosLev[5].path,
       "noeconomico": levantamiento.noEconomico,
       "placas": levantamiento.placas,
       "descripcion": levantamiento.descripcion,
@@ -64,9 +70,8 @@ class _ApiWebProvider {
       "casovehiculo": nameV,
       "casoafectado": nameA,
     });
-    final idRe = jsonDecode(response.body)['data']['name'];
     if (response.statusCode == 200) {
-      return idRe + "";
+      return "OK";
     } else {
       throw Exception('Error al insertar LEVANTAMIENTO');
     }
@@ -81,7 +86,6 @@ class _ApiWebProvider {
     final response = await http.post(Uri.parse(request), headers: {
       "Authorization": token
     }, body: {
-      "idafectado": "0",
     });
     if (response.statusCode != 200) {
       throw Exception('Error al insertar AFECTADO');
@@ -93,7 +97,6 @@ class _ApiWebProvider {
       final response2 = await http.post(Uri.parse(request2), headers: {
         "Authorization": token
       }, body: {
-        "idafectado": "0",
         "aseguradora": element.aseguradora,
         "vigenciaaseguradora": ReverseDate(element.vigencia),
         "nombreac": element.nombreAc,
@@ -127,7 +130,6 @@ class _ApiWebProvider {
     final response = await http.post(Uri.parse(request), headers: {
       "Authorization": token
     }, body: {
-      "idvehiculo": "0",
     });
     if (response.statusCode != 200) {
       throw Exception('Error al insertar VEHICULO');
@@ -139,7 +141,6 @@ class _ApiWebProvider {
       final response2 = await http.post(Uri.parse(request2), headers: {
         "Authorization": token
       }, body: {
-        "idvehiculo": "0",
         "noeconomico": element.noeconomico,
         "placas": element.placas,
         "descripcion": element.descripcion,
