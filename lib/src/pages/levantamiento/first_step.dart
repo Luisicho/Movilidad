@@ -444,10 +444,11 @@ class _firstStepState extends State<firstStep> {
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //ASIGNA HORA DE HOY
-    hourLlegadaController.text = TimeOfDay.now().format(context).toString().split(" ")[0];
+    hourLlegadaController.text =
+        TimeOfDay.now().format(context).toString().split(" ")[0];
     //Objeto
     widget.levantamiento.horaLlegada =
-        TimeOfDay.now().format(context).toString();
+        "${TimeOfDay.now().hour}:${TimeOfDay.now().minute}";
     //ASIGNA DIA DE HOY
     fechaController.text = DateFormat("dd-MM-yyyy").format(DateTime.now());
     //Objeto
@@ -529,12 +530,20 @@ class _firstStepState extends State<firstStep> {
               TimeOfDay? timePicket = await showTimePicker(
                 context: context,
                 initialTime: TimeOfDay.now(),
+                /* // Formato para 24Horas
+                builder: (context, child) {
+                  return MediaQuery(
+                    data: MediaQuery.of(context)
+                        .copyWith(alwaysUse24HourFormat: true),
+                    child: child!,
+                  );
+                },*/
               );
               if (timePicket != null) {
                 //make format to the time
                 //var formatedDate = DateFormat("dd-MM-yyyy").format(datePicket);
                 hourAccidenteController.text =
-                    timePicket.format(context).toString().split(" ")[0];
+                    "${timePicket.hour}:${timePicket.minute}";
                 //Guarda hora en objeto levantamiento
                 widget.levantamiento.horaAccidente =
                     hourAccidenteController.text;
