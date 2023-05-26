@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movilidad/src/model/afectado_model.dart';
 import 'package:intl/intl.dart';
 
 import '../../../providers/levantamiento_provider.dart';
@@ -491,20 +490,6 @@ class _accidentadoVViewState extends State<accidentadoVView> {
         future: levantamientoProvider.cargarData(),
         initialData: const [],
         builder: (context, snapshot) {
-          AfectadoModel tempAfec = AfectadoModel(
-              aseguradora: '',
-              vigencia: '',
-              nombreAc: '',
-              curp: '',
-              domicilio: '',
-              tipoAtencion: '',
-              institucionMedica: '',
-              fechaRecepcion: '',
-              horaRecepcion: '',
-              fechaAlta: '',
-              horaAlta: '',
-              observaciones: '',
-              icon: '');
           snapshot.data!.where((element) {
             //Valida si curp coincide
             return element['curp'].contains(widget.curp);

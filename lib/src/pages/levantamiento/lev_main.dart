@@ -45,6 +45,7 @@ class _levMainState extends State<levMain> {
         element.vigencia = levantamiento.vigenciaAsc;
       });
       //Peticion de agregar Levantamiento, vehiculo y afectado a API
+      // ignore: unused_local_variable
       var resul = apiWebProvider.postAfectado(afectado).then((value) {
         apiWebProvider.postVehiculo(vehiculo).then((value2) {
           //Respuesta luego de insertar levantamiento
@@ -113,7 +114,7 @@ class _levMainState extends State<levMain> {
                 child: TextButton(
                   onPressed: () {
                     var tempLevfirts = primerPaso.levantamiento;
-                    var error = '';
+                    //var error = '';
                     var firtStep = true;
                     var thirStep = true;
                     /*if (tempLevfirts.horaAccidente.isEmpty) {
@@ -153,17 +154,6 @@ class _levMainState extends State<levMain> {
                           segundoPaso.vehiculos, tercerPaso.afectados);
 
                       //Navigator.of(context).pop();
-                    } else {
-                      //------------------------------QuickAlert
-                      QuickAlert.show(
-                        context: context,
-                        barrierDismissible: true,
-                        title: 'Atencion',
-                        text: error,
-                        type: QuickAlertType.warning,
-                        confirmBtnText: 'Confirmar',
-                      );
-                      //------------------------------QuickAlert
                     }
                   },
                   child: const Text(

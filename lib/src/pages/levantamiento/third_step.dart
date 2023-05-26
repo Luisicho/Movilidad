@@ -5,6 +5,7 @@ import 'package:movilidad/src/pages/levantamiento/views/afectado_view.dart';
 import 'package:movilidad/src/utils/colors_util.dart';
 import 'package:movilidad/src/utils/icono_string_util.dart';
 
+// ignore: camel_case_types, must_be_immutable
 class thirdStep extends StatefulWidget {
   //Lista de afectados
   List<AfectadoModel> afectados = [];

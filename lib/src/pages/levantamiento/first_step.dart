@@ -133,7 +133,8 @@ class _firstStepState extends State<firstStep> {
     'Automovilista',
     'Chofer',
     'Motociclista',
-    'Chofer Servicio Publico'
+    'Chofer Servicio Publico',
+    'Permiso Menor'
   ];
 
   var servicioP = [
@@ -633,6 +634,7 @@ class _firstStepState extends State<firstStep> {
             child: const Text('Cargar Posicion'),
             onPressed: () async {
               //Pedir permiso para posicion actual
+              // ignore: unused_local_variable
               LocationPermission permission =
                   await Geolocator.requestPermission();
               //Consigue posicion actual
@@ -652,7 +654,7 @@ class _firstStepState extends State<firstStep> {
     );
 
     //-------------------------------------------------MultiFotoField
-    final multiFotoField = Row(
+    /*final multiFotoField = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
@@ -665,14 +667,14 @@ class _firstStepState extends State<firstStep> {
             label: const Text("Abrir Galeria"),
             onPressed: () async {
               //Abro galeria y pido fotografias
-              final List<XFile>? images2 = await _picker.pickMultiImage();
+              final List<XFile> images2 = await _picker.pickMultiImage();
               //-----Agregar For y colocanado todas las fotografias en el list de arriba
               //images.add(images2.sin);
             },
           ),
         ),
       ],
-    );
+    );*/
 
     //-------------------------------------------------FotoField
     final fotoField = Row(

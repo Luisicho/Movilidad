@@ -23,7 +23,7 @@ class DBProvider {
     print(path);
 
     //Verifica si ya se inicio la instancia de DB
-    if (database != null) return _database;
+    //if (database != null) return _database;
 
     //Crea nueva instancia de DB
     _database = await initDB();

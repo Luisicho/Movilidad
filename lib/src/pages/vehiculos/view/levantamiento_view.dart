@@ -6,6 +6,7 @@ import 'package:movilidad/src/providers/levantamiento_provider.dart';
 import '../../../utils/icono_string_util.dart';
 import '../../../model/levantamiento_model.dart';
 
+// ignore: must_be_immutable
 class LevantamientoView extends StatefulWidget {
   //Caracteristicas
   LevantamientoModel levantamiento = LevantamientoModel(

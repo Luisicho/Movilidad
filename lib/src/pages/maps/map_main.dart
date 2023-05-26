@@ -87,10 +87,10 @@ class _MapMainState extends State<MapMain> {
             zoom: 13,
           ),
           nonRotatedChildren: [
-            AttributionWidget.defaultWidget(
+            /*AttributionWidget.defaultWidget(
               source: 'OpenStreetMap contributors',
               onSourceTapped: null,
-            ),
+            ),*/
           ],
           children: [
             TileLayer(

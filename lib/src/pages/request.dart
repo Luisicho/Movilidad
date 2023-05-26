@@ -1,12 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-import 'package:movilidad/src/model/afectado_model.dart';
-import 'package:movilidad/src/model/levantamiento_model.dart';
-import 'package:movilidad/src/model/vehiculos_model.dart';
 import 'package:movilidad/src/providers/ApiWeb_provider.dart';
 
 Future<Album> fetchAlbum() async {
@@ -68,12 +64,12 @@ class request extends StatefulWidget {
 
 class _requestState extends State<request> {
   late Future<Album> futureAlbum;
-
+/*
   @override
   void initState() {
     super.initState();
     futureAlbum = fetchAlbum();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -83,16 +79,7 @@ class _requestState extends State<request> {
       ),
       body: Center(
         child: FutureBuilder(
-          future: apiWebProvider.postAfectado(
-            [
-              AfectadoModel(
-                nombreAc: '1'
-              ),
-              AfectadoModel(
-                nombreAc: '2'
-              ),
-            ]
-          ),
+          future: apiWebProvider.getAllLevantamiento(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Container(

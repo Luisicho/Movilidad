@@ -5,6 +5,7 @@ import 'package:movilidad/src/pages/levantamiento/views/vehiculo_view.dart';
 import '../../utils/colors_util.dart';
 import '../../utils/icono_string_util.dart';
 
+// ignore: camel_case_types, must_be_immutable
 class secondStep extends StatefulWidget {
   List<VehiculoModel> vehiculos = [];
   secondStep({super.key});

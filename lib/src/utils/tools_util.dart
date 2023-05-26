@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 String ReverseDate(String date) {
   if (date.isNotEmpty) {
@@ -6,4 +5,8 @@ String ReverseDate(String date) {
     return splitDate[2] + "-" + splitDate[1] + "-" + splitDate[0];
   }
   return "";
+}
+
+int CountListResult(){
+  return 0;
 }
