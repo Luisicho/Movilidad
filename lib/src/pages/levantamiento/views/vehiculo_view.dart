@@ -132,12 +132,12 @@ var placas = [
     'concecion': 'PEDRO PEREZ LOPEZ'
   },
   {
-    'placas': 'RGD-50-55',
+    'placas': '4321',
     'descripcion': "VOLKSWAGEN",
     'concecion': 'ELI GARNICA LOZANO'
   },
   {
-    'placas': 'RGJ-52-10',
+    'placas': '12345',
     'descripcion': "FORD",
     'concecion': 'OSCAR BUENO CARLOS'
   },
@@ -234,7 +234,8 @@ var tipoLicArray = [
   'Automovilista',
   'Chofer',
   'Motociclista',
-  'Chofer Servicio Publico'
+  'Chofer Servicio Publico',
+  'Permiso Menor'
 ];
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------

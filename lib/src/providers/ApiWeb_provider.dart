@@ -6,6 +6,9 @@ import 'package:movilidad/src/model/vehiculos_model.dart';
 import 'package:movilidad/src/utils/tools_util.dart';
 
 class _ApiWebProvider {
+  // final String api_key = "12d87509ef28943";
+  // final String api_secret = "33a253270d10c3a";
+  // final String ip = "http://10.0.2.2:8001";
   final String api_key = "008b0db425b77d3";
   final String api_secret = "a42bfad28ce2110";
   final String ip = "http://10.0.2.2:8000";
@@ -63,6 +66,7 @@ class _ApiWebProvider {
       "Authorization": token
     }, body: {
       "folio": levantamiento.folio,
+      "asignado": 'luism18.1999@gmail.com',
       "poliza": levantamiento.poliza,
       "aseguradora": levantamiento.aseguradora,
       "vigenciaaseguradora": levantamiento.vigenciaAsc,
@@ -97,7 +101,7 @@ class _ApiWebProvider {
       throw Exception('Error al insertar LEVANTAMIENTO');
     }
   }
-
+  
   //POST /Afectado
   Future<String> postAfectado(List<AfectadoModel> afectado) async {
     request = "$ip/api/resource/Afectado";
@@ -105,10 +109,12 @@ class _ApiWebProvider {
     token = "token $api_key:$api_secret";
     //add Afectado
     final response = await http.post(Uri.parse(request), headers: {
-      "Authorization": token
+      "Authorization": token,
+      //"Keep-Alive": ''
     }, body: {
     });
     if (response.statusCode != 200) {
+
       throw Exception('Error al insertar AFECTADO');
     }
     final String idRe = jsonDecode(response.body)['data']['name'];
